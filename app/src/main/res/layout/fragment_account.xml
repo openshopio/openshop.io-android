@@ -89,16 +89,6 @@
             android:layout_marginTop="@dimen/base_margin_vertical"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/account_login_logout_btn"
-                style="@style/buttonPrimaryStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/base_margin"
-                android:text="@string/Log_in"
-                android:visibility="visible"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,6 +146,16 @@
                     android:layout_weight="1"
                     android:text="@string/Settings"/>
             </LinearLayout>
+
+            <Button
+                android:id="@+id/account_login_logout_btn"
+                style="@style/buttonPrimaryStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/base_margin"
+                android:text="@string/Log_in"
+                android:visibility="visible"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

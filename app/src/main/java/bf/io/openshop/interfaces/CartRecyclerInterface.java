@@ -13,6 +13,4 @@ public interface CartRecyclerInterface {
 
     void onProductSelect(long productId);
 
-    void onDiscountAdd();
-
 }

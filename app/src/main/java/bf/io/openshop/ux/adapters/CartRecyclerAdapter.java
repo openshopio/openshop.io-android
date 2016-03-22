@@ -28,14 +28,11 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     private static final int TYPE_ITEM_PRODUCT = 0;
     private static final int TYPE_ITEM_DISCOUNT = 1;
-    private static final int TYPE_FOOTER = 2;
     private final List<CartProductItem> cartProductItems = new ArrayList<>();
     private final List<CartDiscountItem> cartDiscountItems = new ArrayList<>();
     private final CartRecyclerInterface cartRecyclerInterface;
     private final Context context;
     LayoutInflater layoutInflater;
-    private String cartTotalPriceFormatted;
-    private int cartQuantity = 0;
 
     /**
      * Creates an adapter that handles a list of cart items.
@@ -50,25 +47,23 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return cartProductItems.size() + cartDiscountItems.size() + 1;
+        return cartProductItems.size() + cartDiscountItems.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0) {
-            return TYPE_FOOTER;
-        } else if (position <= cartDiscountItems.size()) {
-            return TYPE_ITEM_DISCOUNT;
-        } else
+        if (position < cartProductItems.size())
             return TYPE_ITEM_PRODUCT;
+        else
+            return TYPE_ITEM_DISCOUNT;
     }
 
     private CartDiscountItem getCartDiscountItem(int position) {
-        return cartDiscountItems.get(position - 1);
+        return cartDiscountItems.get(position - cartProductItems.size());
     }
 
     private CartProductItem getCartProductItem(int position) {
-        return cartProductItems.get(position - 1 - cartDiscountItems.size());
+        return cartProductItems.get(position);
     }
 
     @Override
@@ -79,12 +74,9 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (viewType == TYPE_ITEM_DISCOUNT) {
             View view = layoutInflater.inflate(R.layout.list_item_cart_discount, parent, false);
             return new ViewHolderDiscount(view, cartRecyclerInterface);
-        } else if (viewType == TYPE_ITEM_PRODUCT) {
+        } else {
             View view = layoutInflater.inflate(R.layout.list_item_cart_product, parent, false);
             return new ViewHolderProduct(view, cartRecyclerInterface);
-        } else {
-            View view = layoutInflater.inflate(R.layout.list_item_cart_footer, parent, false);
-            return new ViewHolderFooter(view, cartRecyclerInterface);
         }
     }
 
@@ -118,11 +110,6 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolderDiscount.bindContent(cartDiscountItem);
             viewHolderDiscount.cartDiscountName.setText(cartDiscountItem.getDiscount().getName());
             viewHolderDiscount.cartDiscountValue.setText(cartDiscountItem.getDiscount().getValueFormatted());
-        } else if (holder instanceof ViewHolderFooter) {
-            ViewHolderFooter viewHolderFooter = (ViewHolderFooter) holder;
-
-            viewHolderFooter.cartQuantity.setText(context.getString(R.string.format_item_quantity, cartQuantity));
-            viewHolderFooter.cartTotalPrice.setText(cartTotalPriceFormatted);
         } else {
             Timber.e(new RuntimeException(), "Unknown ViewHolder in class: " + CartRecyclerAdapter.class.getSimpleName());
         }
@@ -134,8 +121,6 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             cartDiscountItems.clear();
             cartProductItems.addAll(cart.getItems());
             cartDiscountItems.addAll(cart.getDiscounts());
-            cartTotalPriceFormatted = cart.getTotalPriceFormatted();
-            cartQuantity = cart.getProductCount();
             notifyDataSetChanged();
         } else {
             Timber.e("Setting cart content with null cart");
@@ -216,27 +201,6 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public void bindContent(CartProductItem cartProductItem) {
             this.cartProductItem = cartProductItem;
-        }
-    }
-
-    public static class ViewHolderFooter extends RecyclerView.ViewHolder {
-
-        public TextView discountAction;
-        public TextView cartQuantity;
-        public TextView cartTotalPrice;
-
-        public ViewHolderFooter(View headerView, final CartRecyclerInterface cartRecyclerInterface) {
-            super(headerView);
-            discountAction = (TextView) headerView.findViewById(R.id.list_item_cart_footer_action);
-            cartQuantity = (TextView) headerView.findViewById(R.id.list_item_cart_footer_quantity);
-            cartTotalPrice = (TextView) headerView.findViewById(R.id.list_item_cart_footer_price);
-
-            discountAction.setOnClickListener(new OnSingleClickListener() {
-                @Override
-                public void onSingleClick(View view) {
-                    cartRecyclerInterface.onDiscountAdd();
-                }
-            });
         }
     }
 }

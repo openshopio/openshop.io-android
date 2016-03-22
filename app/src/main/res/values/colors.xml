@@ -32,7 +32,7 @@
     <color name="background_grey">#f2f2f2</color>
     <color name="line_lighter_grey">#dedede</color>
     <color name="line_light_grey">#d7a7a7a7</color>
-    <color name="pressed_item_gray">#eeeeee</color>
+    <color name="item_grey">#eeeeee</color>
     <color name="grey_lighter">#bcbcbc</color>
     <color name="grey">#d7666666</color>
 

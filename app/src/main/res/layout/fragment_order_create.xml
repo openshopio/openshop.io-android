@@ -66,19 +66,19 @@
 
             <!-- Delivery part -->
             <RelativeLayout
-                android:id="@+id/order_create_delivery_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/base_margin_horizontal"
-                android:paddingRight="@dimen/base_margin_horizontal"
-                android:visibility="invisible">
+                android:paddingRight="@dimen/base_margin_horizontal">
 
                 <LinearLayout
                     android:id="@+id/order_create_delivery_shipping_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="invisible"
+                    tools:visibility="visible">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -124,7 +124,8 @@
                     android:layout_below="@id/order_create_delivery_shipping_layout"
                     android:background="?attr/selectableItemBackground"
                     android:orientation="vertical"
-                    android:visibility="invisible">
+                    android:visibility="invisible"
+                    tools:visibility="visible">
 
                     <TextView
                         android:layout_width="fill_parent"

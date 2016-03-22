@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         if (BuildConfig.DEBUG) {
             // Only debug properties, used for checking image memory management.
-            Picasso.with(this).setIndicatorsEnabled(true);
+//            Picasso.with(this).setIndicatorsEnabled(true);
 //            Picasso.with(this).setLoggingEnabled(true);
         }
 

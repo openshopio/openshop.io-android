@@ -54,7 +54,7 @@ public class Utils {
      * @return dialog
      */
     public static ProgressDialog generateProgressDialog(Context context, boolean cancelable) {
-        ProgressDialog progressDialog = new ProgressDialog(context);
+        ProgressDialog progressDialog = new ProgressDialog(context, R.style.ProgressTheme);
         progressDialog.setMessage(context.getString(R.string.Loading));
         progressDialog.setCancelable(cancelable);
         return progressDialog;

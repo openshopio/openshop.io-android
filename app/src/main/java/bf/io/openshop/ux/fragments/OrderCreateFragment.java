@@ -85,14 +85,13 @@ public class OrderCreateFragment extends Fragment {
     private Delivery delivery;
     private Payment selectedPayment;
     private Shipping selectedShipping;
-    private View deliveryContent;
     private ProgressBar deliveryProgressBar;
+    private View deliveryShippingLayout;
     private View deliveryPaymentLayout;
     private TextView selectedShippingNameTv;
     private TextView selectedShippingPriceTv;
     private TextView selectedPaymentNameTv;
     private TextView selectedPaymentPriceTv;
-
 
 
     @Override
@@ -212,13 +211,13 @@ public class OrderCreateFragment extends Fragment {
             // Check if shipping and payment is selected
             if (selectedShipping == null) {
                 MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Choose_shipping_method), MsgUtils.ToastLength.SHORT);
-                scrollLayout.smoothScrollTo(0, deliveryContent.getTop());
+                scrollLayout.smoothScrollTo(0, deliveryShippingLayout.getTop());
                 return false;
             }
 
             if (selectedPayment == null) {
                 MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Choose_payment_method), MsgUtils.ToastLength.SHORT);
-                scrollLayout.smoothScrollTo(0, deliveryContent.getTop());
+                scrollLayout.smoothScrollTo(0, deliveryShippingLayout.getTop());
                 return false;
             }
             return true;
@@ -229,13 +228,12 @@ public class OrderCreateFragment extends Fragment {
 
 
     private void prepareDeliveryLayout(View view) {
-        deliveryContent = view.findViewById(R.id.order_create_delivery_layout);
         deliveryProgressBar = (ProgressBar) view.findViewById(R.id.delivery_progress);
 
 //        final View deliveryShippingBtn = view.findViewById(R.id.order_create_delivery_shipping_button);
 //        final View deliveryPaymentBtn = view.findViewById(R.id.order_create_delivery_payment_button);
 
-        final View deliveryShippingLayout = view.findViewById(R.id.order_create_delivery_shipping_layout);
+        this.deliveryShippingLayout = view.findViewById(R.id.order_create_delivery_shipping_layout);
         this.deliveryPaymentLayout = view.findViewById(R.id.order_create_delivery_payment_layout);
 
         selectedShippingNameTv = (TextView) view.findViewById(R.id.order_create_delivery_shipping_name);
@@ -406,7 +404,7 @@ public class OrderCreateFragment extends Fragment {
                             Timber.d("GetDelivery:" + deliveryResp.toString());
                             delivery = deliveryResp.getDelivery();
                             deliveryProgressBar.setVisibility(View.GONE);
-                            deliveryContent.setVisibility(View.VISIBLE);
+                            deliveryShippingLayout.setVisibility(View.VISIBLE);
                         }
                     }, new Response.ErrorListener() {
                 @Override
@@ -415,7 +413,6 @@ public class OrderCreateFragment extends Fragment {
                     MsgUtils.logAndShowErrorMessage(getActivity(), error);
 
                     deliveryProgressBar.setVisibility(View.GONE);
-                    deliveryContent.setVisibility(View.VISIBLE);
                     if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
                 }
             }, getFragmentManager(), user.getAccessToken());

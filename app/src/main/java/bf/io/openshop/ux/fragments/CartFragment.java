@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -51,11 +52,14 @@ public class CartFragment extends Fragment {
     private ProgressDialog progressDialog;
 
     private View emptyCart;
-    private View cartButtons;
+    private View cartFooter;
 
     private RecyclerView cartRecycler;
     private CartRecyclerAdapter cartRecyclerAdapter;
 
+    // Footer views and variables
+    private TextView cartItemCountTv;
+    private TextView cartTotalPriceTv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,7 +85,30 @@ public class CartFragment extends Fragment {
                 }
             }
         });
-        cartButtons = view.findViewById(R.id.cart_buttons);
+
+        cartFooter = view.findViewById(R.id.cart_footer);
+        cartItemCountTv = (TextView) view.findViewById(R.id.cart_footer_quantity);
+        cartTotalPriceTv = (TextView) view.findViewById(R.id.cart_footer_price);
+        view.findViewById(R.id.cart_footer_action).setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                DiscountDialogFragment discountDialog = DiscountDialogFragment.newInstance(new RequestListener() {
+                    @Override
+                    public void requestSuccess(long newId) {
+                        getCartContent();
+                    }
+
+                    @Override
+                    public void requestFailed(VolleyError error) {
+                        MsgUtils.logAndShowErrorMessage(getActivity(), error);
+                    }
+                });
+
+                if (discountDialog != null) {
+                    discountDialog.show(getFragmentManager(), DiscountDialogFragment.class.getSimpleName());
+                }
+            }
+        });
 
         Button order = (Button) view.findViewById(R.id.cart_order);
         order.setOnClickListener(new OnSingleClickListener() {
@@ -115,6 +142,9 @@ public class CartFragment extends Fragment {
                             } else {
                                 setCartVisibility(true);
                                 cartRecyclerAdapter.refreshItems(cart);
+
+                                cartItemCountTv.setText(getString(R.string.format_item_quantity, cart.getProductCount()));
+                                cartTotalPriceTv.setText(cart.getTotalPriceFormatted());
                             }
                         }
                     }, new Response.ErrorListener() {
@@ -140,12 +170,12 @@ public class CartFragment extends Fragment {
         if (visible) {
             if (emptyCart != null) emptyCart.setVisibility(View.GONE);
             if (cartRecycler != null) cartRecycler.setVisibility(View.VISIBLE);
-            if (cartButtons != null) cartButtons.setVisibility(View.VISIBLE);
+            if (cartFooter != null) cartFooter.setVisibility(View.VISIBLE);
         } else {
             if (cartRecyclerAdapter != null) cartRecyclerAdapter.cleatCart();
             if (emptyCart != null) emptyCart.setVisibility(View.VISIBLE);
             if (cartRecycler != null) cartRecycler.setVisibility(View.GONE);
-            if (cartButtons != null) cartButtons.setVisibility(View.GONE);
+            if (cartFooter != null) cartFooter.setVisibility(View.GONE);
         }
     }
 
@@ -154,9 +184,7 @@ public class CartFragment extends Fragment {
         cartRecycler.addItemDecoration(new RecyclerDividerDecorator(getActivity()));
         cartRecycler.setItemAnimator(new DefaultItemAnimator());
         cartRecycler.setHasFixedSize(true);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
-        mLayoutManager.setReverseLayout(true);
-        cartRecycler.setLayoutManager(mLayoutManager);
+        cartRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
         cartRecyclerAdapter = new CartRecyclerAdapter(getActivity(), new CartRecyclerInterface() {
             @Override
             public void onProductUpdate(CartProductItem cartProductItem) {
@@ -197,25 +225,6 @@ public class CartFragment extends Fragment {
             public void onProductSelect(long productId) {
                 if (getActivity() instanceof MainActivity)
                     ((MainActivity) getActivity()).onProductSelected(productId);
-            }
-
-            @Override
-            public void onDiscountAdd() {
-                DiscountDialogFragment discountDialog = DiscountDialogFragment.newInstance(new RequestListener() {
-                    @Override
-                    public void requestSuccess(long newId) {
-                        getCartContent();
-                    }
-
-                    @Override
-                    public void requestFailed(VolleyError error) {
-                        MsgUtils.logAndShowErrorMessage(getActivity(), error);
-                    }
-                });
-
-                if (discountDialog != null) {
-                    discountDialog.show(getFragmentManager(), DiscountDialogFragment.class.getSimpleName());
-                }
             }
 
             private void deleteItemFromCart(long id, boolean isDiscount) {

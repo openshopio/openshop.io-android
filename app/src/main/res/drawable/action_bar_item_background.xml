@@ -3,14 +3,14 @@
     <item android:state_pressed="true">
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
-            <solid android:color="@color/pressed_item_gray"/>
+            <solid android:color="@color/item_grey"/>
         </shape>
     </item>
 
     <item android:state_focused="true">
         <shape xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
-            <solid android:color="@color/pressed_item_gray"/>
+            <solid android:color="@color/item_grey"/>
         </shape>
     </item>
 
