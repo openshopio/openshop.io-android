@@ -45,7 +45,7 @@ OpenShop.io uses Gradle as a dependency manager for OpenShop.io Android project.
 * **Development requirements:** Android studio - the latest version is the best version. Simply download Android studio, import github project, build it with gradle and development is ready.
 
 ## Graphics template
-[Here](link to psd) you will find the PSD template which served as the guideline for implementing user interface in the OpenShop app.
+[Here](http://openshop.io/sources/openshop.io-ui_resources-android.zip) you will find the PSD template which served as the guideline for implementing user interface in the OpenShop app.
 
 ## Run the app
 The example OpenShop.io application you can download from this repository or [Google Play](http://play.google.com/store/apps) runs on our custom sample data source (product, payments, shipping, branches,...). If you want to integrate your feed within the app take a look at the section [how to connect](#how-to-connect).
@@ -85,7 +85,7 @@ Implementing these features will significantly help you with getting to know the
 
 
 # Development
-Now let's talk a bit more technically. If you wish to make more significant changes we are providing the basic description of the implementation on our [wiki pages](https://github.com/business-factory/openshop.io-android/wiki) but you will find more in-depth comments inside the code. 
+The application is written with the help of widespread libraries, so the source code should be easy to read. If you wish to make more significant changes and better understanding what's going on we are providing in-depth comments inside the code. 
 
 Don't you have your mobile development team? We totally understand that pain, when your IT department is super busy or you don't have your own in-house mobile development team. We will connect you with one of our integration partners to build the app for you. Just [contact us](#contact-us).
 
