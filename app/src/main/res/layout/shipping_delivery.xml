@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/shipping_dialog_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:minHeight="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/shipping_dialog_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_back_arrow"
+            android:src="@drawable/back_arrow"/>
+
+        <TextView
+            android:id="@+id/shipping_dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Shipping"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/shipping_dialog_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/shipping_dialog_toolbar"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:id="@+id/shipping_dialog_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipping_dialog_toolbar"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@drawable/wish_list_big"/>-->
+
+        <TextView
+            style="@style/emptyLayoutText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/Shipping_is_empty"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/shipping_dialog_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipping_dialog_toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:visibility="visible"/>
+
+</RelativeLayout>

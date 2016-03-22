@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:minHeight="50dp"
+              android:orientation="vertical">
+
+    <View
+        android:id="@+id/payment_separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line_light_grey"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/payment_is_selected"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"/>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
+
+            <TextView
+                android:id="@+id/payment_title"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textColor="@color/textPrimary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="Payment Title"/>
+
+            <TextView
+                android:id="@+id/payment_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                tools:text="Free"/>
+
+            <TextView
+                android:id="@+id/payment_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="14sp"
+                tools:text="Small Text"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
+

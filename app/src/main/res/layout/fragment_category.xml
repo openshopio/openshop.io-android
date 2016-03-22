@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/category_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/category_coordinator"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/category_appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_grey"
+            android:fitsSystemWindows="true"
+            android:paddingLeft="@dimen/base_margin_horizontal"
+            android:paddingRight="@dimen/base_margin_horizontal"
+            app:elevation="0dp">
+
+            <RelativeLayout
+                android:id="@+id/category_buttons_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <ImageSwitcher
+                    android:id="@+id/category_switch_layout_manager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+                </ImageSwitcher>
+
+                <ImageView
+                    android:id="@+id/category_filter_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/filter_unselected"/>
+
+                <Spinner
+                    android:id="@+id/category_sort_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/category_filter_button"
+                    android:background="@drawable/spinner_selector_black"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:popupBackground="@color/colorPrimary"
+                    android:spinnerMode="dropdown"/>
+            </RelativeLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/category_products_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <TextView
+            android:id="@+id/category_products_empty"
+            style="@style/emptyLayoutText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="@string/Products_not_found"
+            android:visibility="gone"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:id="@+id/category_load_more_progress"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/semi_lighter_transparent"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/android:progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"/>
+    </LinearLayout>
+</RelativeLayout>

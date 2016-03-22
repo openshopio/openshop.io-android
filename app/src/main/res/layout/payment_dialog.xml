@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorAccent"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:minHeight="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/payment_dialog_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/content_description_back_arrow"
+            android:src="@drawable/back_arrow"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Payment"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/payment_dialog_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:visibility="visible"/>
+</LinearLayout>

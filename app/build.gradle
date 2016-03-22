@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    // needed for okHttp from 23sdk. https://medium.com/android-news/android-networking-i-okhttp-volley-and-gson-72004efff196#.gsfpn3ez8
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "bf.io.openshop"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(KEYSTORE_PATH)
+            storePassword KEYSTORE_PASSWORD
+            keyAlias KEYSTORE_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+
+        release {
+            minifyEnabled false
+            debuggable false
+            signingConfig signingConfigs.release
+
+            // For release build should be added custom proGuard
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile project(':volley')
+
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
+    compile 'com.android.support:recyclerview-v7:23.2.0'
+    compile 'com.jakewharton.timber:timber:3.1.0'
+    compile 'com.google.android.gms:play-services-analytics:8.4.0'
+    compile 'com.google.android.gms:play-services-gcm:8.4.0'
+    compile 'com.google.android.gms:play-services-maps:8.4.0'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'mbanje.kurt:fabbutton:1.2.1'
+    compile 'com.facebook.android:facebook-android-sdk:4.9.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.squareup.okhttp3:okhttp:3.1.1'
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+

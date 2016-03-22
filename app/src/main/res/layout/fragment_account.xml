@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/base_margin">
+
+        <LinearLayout
+            android:id="@+id/account_user_info"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Name_colon"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"
+                tools:text="User and Surname"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:text="@string/Address"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/account_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_marginRight="6dp"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"
+                tools:text="Brnenska 14, Brno, 61200"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:text="@string/Email_colon"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/account_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"
+                tools:text="test@mailing.com"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:text="@string/Phone_colon"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/account_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"
+                tools:text="903578123"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_vertical"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/account_login_logout_btn"
+                style="@style/buttonPrimaryStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/base_margin"
+                android:text="@string/Log_in"
+                android:visibility="visible"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/account_update"
+                    style="@style/buttonSecondaryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Account"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+
+                <View
+                    android:layout_width="@dimen/base_margin"
+                    android:layout_height="match_parent"/>
+
+                <Button
+                    android:id="@+id/account_my_orders"
+                    style="@style/buttonSecondaryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/My_orders"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/account_dispensing_places"
+                    style="@style/buttonSecondaryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Branches"/>
+
+                <View
+                    android:layout_width="@dimen/base_margin"
+                    android:layout_height="match_parent"/>
+
+                <Button
+                    android:id="@+id/account_settings"
+                    style="@style/buttonSecondaryStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Settings"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

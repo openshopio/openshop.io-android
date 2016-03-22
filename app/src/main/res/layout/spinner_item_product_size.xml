@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/size_spinner_text"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:gravity="center_vertical"
+    android:paddingBottom="12dp"
+    android:paddingEnd="1dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="1dp"
+    android:paddingStart="5dp"
+    android:paddingTop="12dp"
+    android:singleLine="true"
+    android:textAppearance="@style/TextAppearance.AppCompat.Widget.TextView.SpinnerItem" />

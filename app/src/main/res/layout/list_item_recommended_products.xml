@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:minWidth="128dp"
+              android:orientation="vertical"
+              android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/list_item_recommended_products_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/Product_image"
+        android:scaleType="fitCenter"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/list_item_recommended_products_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingTop="1dp"
+            android:textSize="12sp"
+            tools:text="Product Name"/>
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_item_recommended_products_name"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:shrinkColumns="0">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/list_item_recommended_products_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="10sp"
+                    tools:text="150 USD"/>
+
+                <TextView
+                    android:id="@+id/list_item_recommended_products_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="none"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    tools:text="149 USD"/>
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+</LinearLayout>

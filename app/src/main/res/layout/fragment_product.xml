@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/product_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true">
+
+    <ScrollView
+        android:id="@+id/product_scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Recycler height set in code -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/product_images_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <HorizontalScrollView
+                android:id="@+id/product_images_scroll_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/product_images_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+                    <!-- 	imageViews here are added programmatically in ProductFragment -->
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/product_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/product_content"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:id="@+id/product_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+
+                    <!-- Name, code and price -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/base_margin_horizontal"
+                        android:paddingRight="@dimen/base_margin_horizontal"
+                        android:paddingTop="8dp">
+
+                        <TextView
+                            android:id="@+id/product_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="16sp"
+                            tools:text="Test product name"/>
+
+                        <RelativeLayout
+                            android:id="@+id/product_price_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp">
+
+                            <TextView
+                                android:id="@+id/product_price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toLeftOf="@+id/product_price_discount"
+                                android:layout_toStartOf="@+id/product_price_discount"
+                                android:padding="6dp"
+                                android:textSize="15sp"
+                                tools:text="995 eur"/>
+
+                            <TextView
+                                android:id="@+id/product_price_discount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:padding="6dp"
+                                android:textColor="@color/colorAccent"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                tools:text="995 eur"/>
+
+                            <TextView
+                                android:id="@+id/product_price_discount_percent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginStart="6dp"
+                                android:layout_toEndOf="@+id/product_price_discount"
+                                android:layout_toRightOf="@+id/product_price_discount"
+                                android:background="@color/colorAccent"
+                                android:padding="6dp"
+                                android:textColor="@color/textIconColorPrimary"
+                                android:textSize="15sp"
+                                tools:text="-50%"/>
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginBottom="@dimen/base_margin_vertical"
+                        android:layout_marginTop="@dimen/base_margin_vertical_half"
+                        android:background="@color/line_light_grey"/>
+
+                    <!-- Product size and color-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/base_margin_horizontal"
+                        android:paddingRight="@dimen/base_margin_horizontal">
+
+                        <Spinner
+                            android:id="@+id/product_color_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/spinner_background_black_baseline"
+                            android:gravity="start"
+                            android:paddingBottom="8dp"
+                            android:spinnerMode="dialog"/>
+
+                        <Spinner
+                            android:id="@+id/product_size_spinner"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/spinner_background_black_baseline"
+                            android:gravity="start"
+                            android:paddingBottom="8dp"
+                            android:spinnerMode="dialog"/>
+                    </LinearLayout>
+
+                    <!-- Add to cart button with progress bar-->
+                    <RelativeLayout
+                        android:id="@+id/product_add_to_cart_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/base_margin_horizontal"
+                        android:layout_marginRight="@dimen/base_margin_horizontal"
+                        android:layout_marginTop="@dimen/base_margin_vertical"
+                        android:background="@drawable/button_primary_action_ripple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:minHeight="48dp"
+                        android:paddingEnd="@dimen/base_margin_horizontal"
+                        android:paddingLeft="@dimen/base_margin_horizontal"
+                        android:paddingRight="@dimen/base_margin_horizontal"
+                        android:paddingStart="@dimen/base_margin_horizontal">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginStart="3dp"
+                            android:layout_toEndOf="@+id/product_add_to_cart_image"
+                            android:layout_toRightOf="@+id/product_add_to_cart_image"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:text="@string/ADD_TO_CART"
+                            android:textColor="@color/textIconColorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <ImageView
+                            android:id="@+id/product_add_to_cart_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/cart_add"/>
+
+                        <ProgressBar
+                            android:id="@+id/product_add_to_cart_progress"
+                            style="?android:attr/progressBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:indeterminate="true"
+                            android:visibility="gone"/>
+                    </RelativeLayout>
+
+                    <!-- Product info section-->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginTop="@dimen/base_margin_vertical"
+                        android:background="@color/line_light_grey"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/base_margin_horizontal">
+
+                        <!--<TextView-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:paddingBottom="@dimen/base_margin_vertical"-->
+                        <!--android:paddingTop="@dimen/base_margin_vertical"-->
+                        <!--android:text="@string/PRODUCT_INFO"-->
+                        <!--android:textSize="16sp"/>-->
+
+                        <TextView
+                            android:id="@+id/product_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/base_margin_vertical"
+                            android:fontFamily="sans-serif-light"
+                            android:textSize="14sp"/>
+
+                        <Button
+                            android:id="@+id/product_send_to_a_friend"
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/button_facebook_style"
+                            android:drawableLeft="@drawable/facebook_icon"
+                            android:drawablePadding="3dp"
+                            android:drawableStart="@drawable/facebook_icon"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/base_margin_horizontal"
+                            android:paddingRight="@dimen/base_margin_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/SEND_TO_A_FRIEND"
+                            android:textColor="@color/textIconColorPrimary"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/base_margin_vertical"
+                            android:text="@string/RECOMMENDED"
+                            android:textSize="16sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+
+                    <!-- Recycler height set in code -->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/product_recommended_images_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <view
+        android:id="@+id/product_add_to_wish_list"
+        class="mbanje.kurt.fabbutton.FabButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:color="@color/white"
+        android:indeterminate="true"
+        android:src="@drawable/wish_list"
+        android:visibility="invisible"
+        app:fbb_autoStart="true"
+        app:fbb_endBitmap="@drawable/wish_list_pressed"
+        app:fbb_hideProgressOnComplete="true"
+        app:fbb_progressColor="@color/colorAccent"
+        app:fbb_progressWidthRatio="0.1"
+        app:fbb_showEndBitmap="true"
+        app:fbb_showShadow="true"/>
+
+    <ProgressBar
+        android:id="@+id/product_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/product_empty_layout"
+        style="@style/emptyLayoutText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/Product_not_found"
+        android:visibility="gone"/>
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="@dimen/base_margin">
+
+    <LinearLayout
+        android:id="@+id/settings_shop_selection_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Choose_shop"
+            android:textColor="@color/textPrimary"
+            android:textSize="17sp"/>
+
+        <Spinner
+            android:id="@+id/settings_shop_selection_spinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_vertical_half"
+            android:background="@drawable/spinner_selector_black_baseline"/>
+    </LinearLayout>
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="1dp"-->
+    <!--android:background="@color/line_light_grey"/>-->
+
+    <LinearLayout
+        android:id="@+id/settings_licenses_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/base_margin_vertical"
+        android:paddingTop="@dimen/base_margin_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Open_source_libraries"
+            android:textColor="@color/textPrimary"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/License_details_for_open_source_software"
+            android:textColor="@color/textSecondary"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/settings_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/line_light_grey"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:visibility="gone"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/settings_cancel"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/button_secondary_action_ripple"
+            android:gravity="center"
+            android:text="@string/Cancel"
+            android:textAllCaps="true"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/settings_apply"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/button_primary_action_ripple"
+            android:gravity="center"
+            android:text="@string/Apply"
+            android:textAllCaps="true"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+</LinearLayout>

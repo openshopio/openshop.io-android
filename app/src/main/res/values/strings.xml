@@ -1,0 +1,203 @@
+<resources>
+
+    <string name="app_name" translatable="false">OpenShop.io</string>
+    <string name="facebook_app_id" translatable="false">226667166080</string>
+    <string name="android_key" translatable="false">AIzaSyB4b2hBDqGh6yakmERv95JNMuSGbvf20jo</string>
+
+    <!-- General strings-->
+    <string name="No_network_connection">No network connection</string>
+    <string name="Internal_error">Internal error, please try it later</string>
+    <string name="Loading">Loading …</string>
+    <string name="Retry">Retry</string>
+
+    <!-- Strings related to splash screen -->
+    <string name="Select_shop">Select shop</string>
+
+
+    <!-- Strings related to login -->
+    <string name="Email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="Continue">Continue</string>
+    <string name="Select_the_country_where_you_want_to_shop">Select the country \n where you want to shop </string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+    <string name="another_click_for_leaving_app">Another click for leaving app</string>
+    <string name="content_description_submenu">Populate submenu</string>
+    <string name="all_categories">All categories</string>
+    <string name="No_banners">No banners</string>
+    <string name="Show_offers">Show offers</string>
+    <string name="FILTER">FILTER</string>
+    <string name="filter_unavailable">Filter is unavailable</string>
+    <string name="Recommended">Recommended</string>
+    <string name="Whats_new">What\'s new</string>
+    <string name="Highest_price">Highest price</string>
+    <string name="Lowest_price">Lowest price</string>
+
+
+    <string name="Products_not_found">Products not found.</string>
+    <string name="Product_not_found">Product not found.</string>
+    <string name="PRODUCT_INFO">O PRODUKTU</string>
+    <string name="ADD_TO_CART">ADD TO CART</string>
+    <string name="SEND_TO_A_FRIEND">SEND TO A FRIEND</string>
+    <string name="RECOMMENDED">RECOMMENDED</string>
+    <string name="Size">Size</string>
+    <string name="Profile">Profile</string>
+    <string name="Log_in_to_shop_via">Log in to shop via</string>
+    <string name="Log_in_to_shop_via_email">Log in to shop via email</string>
+    <string name="Log_in">Log in</string>
+    <string name="Dont_have_an_account">Don\'t have an account?</string>
+    <string name="Skip">Skip</string>
+    <string name="Cancel">Cancel</string>
+    <string name="Confirm">Confirm</string>
+    <string name="Forgot_your_password">Forget your password?</string>
+    <string name="Email_for_recovery">Email for recovery</string>
+    <string name="Reset">Reset</string>
+    <string name="Log_me_in">Log me in</string>
+    <string name="Missing_some_required_fields">Missing some required fields</string>
+    <string name="action_log_in">Log in</string>
+    <string name="Required_field">Required field</string>
+    <string name="Check_your_email_we_sent_you_an_confirmation_email">Check your email. We sent you an confirmation email about reseting password</string>
+    <string name="Name_colon">Name:</string>
+    <string name="Address">Address:</string>
+    <string name="City_and_ZIP"><![CDATA[City & ZIP:]]></string>
+    <string name="Email_colon">Email:</string>
+    <string name="Phone">Phone</string>
+    <string name="Phone_colon">Phone:</string>
+    <string name="Update_account">Update account</string>
+    <string name="My_orders">My orders</string>
+    <string name="Log_out">Log out</string>
+    <string name="Settings">Settings</string>
+
+    <!-- Format strings -->
+    <string name="format_space_prefix"> %1$s</string>
+    <string name="format_comma_prefix">, %1$s</string>
+    <string name="format_item_quantity">%1$d products</string>
+    <string name="format_string_division">%1$s / %2$s</string>
+    <string name="format_quantity">%1$d pcs</string>
+    <string name="format_string_quantity">%1$s %2$dx</string>
+    <string name="format_plus">+ %1$s</string>
+    <string name="format_number">%1$d</string>
+    <string name="format_price_range">%1$d %2$s - %3$d %4$s</string>
+    <string name="format_price_discount_percents">-%1$d %%</string>
+
+
+    <string name="Unknown_user">Unknown user</string>
+    <string name="Type_your_wish">Type your wish</string>
+    <string name="shopping_cart">Shopping cart</string>
+    <string name="Your_cart_is_empty">Your cart is empty</string>
+    <string name="START_SHOPPING">START SHOPPING</string>
+    <string name="SHIPPING_AND_PAYMENT">SHIPPING and PAYMENT</string>
+    <string name="Please_select_a_size">Please select a size</string>
+    <string name="Product">Product</string>
+    <string name="added_to_cart">added to cart</string>
+    <string name="Go_to_cart">Go to cart</string>
+    <string name="Delete">Delete</string>
+    <string name="Edit">Edit</string>
+
+    <string name="price_with_DPH">Price with DPH</string>
+    <string name="do_you_have_a_discount_code">Do you have a discount code?</string>
+    <string name="Order_summary">Order summary</string>
+    <string name="Shipping">Shipping</string>
+    <string name="Payment">Payment</string>
+    <string name="Shipping_method">Shipping method</string>
+    <string name="Choose_shipping_method">Choose shipping method</string>
+    <string name="Choose_payment_method">Choose payment method</string>
+    <string name="Shipping_details">Shipping details</string>
+    <string name="Note">Note</string>
+    <string name="Click_on_Order_to_allow_our_Terms_and_Conditions">Click on Order to allow our <![CDATA[<b><font color=#ee1f65>Terms and Conditions</b>]]></string>
+    <string name="Finish_order">Finish order</string>
+    <string name="Street">Street</string>
+    <string name="House_code">House code</string>
+    <string name="City">City</string>
+    <string name="ZIP">ZIP</string>
+    <string name="Shipping_is_empty">Shipping is empty</string>
+    <string name="Personal_pickup">Personal pickup</string>
+    <string name="Shipping_info">Shipping info</string>
+    <string name="free">free</string>
+    <string name="action_cart">Shopping cart</string>
+    <string name="action_wishlist">Wishlist</string>
+    <string name="Your_wishlist_is_empty">Your wishlist is empty.</string>
+    <string name="Wishlist">Wishlist</string>
+    <string name="Undo">Undo</string>
+    <string name="Product_deleted_from_wishlist">Product deleted from wishlist</string>
+    <string name="Account">Account</string>
+    <string name="Changing_the_password">Changing the password</string>
+    <string name="Current_password">Current password</string>
+    <string name="New_password">New password</string>
+    <string name="Password_again">Password again</string>
+    <string name="Change_password">Change password</string>
+    <string name="Save">Save</string>
+    <string name="Choose_shop">Choose shop</string>
+    <string name="Open_source_libraries">Open source libraries</string>
+    <string name="License_details_for_open_source_software">License details for open source software</string>
+    <string name="Apply">Apply</string>
+    <string name="Restart">Restart</string>
+    <string name="App_needs_to_be_restarted">App needs to be restarted</string>
+    <string name="Ok">OK</string>
+    <string name="Facebook_login_failed">Facebook login failed.</string>
+    <string name="Receiving_facebook_profile_failed">Receiving facebook profile failed</string>
+    <string name="Oops_login_expired">Oops login expired</string>
+    <string name="Your_session_has_expired_Please_log_in_again">Your session has expired Please log in again.</string>
+    <string name="Product_image">Product image</string>
+    <string name="Price">Price</string>
+    <string name="Color">Color</string>
+    <string name="Brand">Brand</string>
+    <string name="All">All</string>
+    <string name="content_description_move_right">Move righ</string>
+    <string name="content_description_move_left">Move left</string>
+    <string name="Close">Close</string>
+    <string name="The_item_has_been_successfully_removed">The item has been successfully removed</string>
+    <string name="Update_item">Update:</string>
+    <string name="Internal_error_reload_cart_please">Internal error. Reload cart please.</string>
+    <string name="Enter_the_discount_code">Enter the discount code</string>
+    <string name="Discount_code">Discount code</string>
+    <string name="The_entries_must_match">The entries must match</string>
+    <string name="Order">Order</string>
+    <string name="Order_colon">Order:</string>
+    <string name="Date_created">Date created</string>
+    <string name="Date_created_colon">Date created:</string>
+    <string name="Total_price">Total price</string>
+    <string name="Thank_you_for_your_order">Thank you for your order</string>
+    <string name="Wait_for_sms_or_email_order_confirmation">Wait for &lt;b>SMS&lt;/b> or &lt;b>email&lt;/b> order confirmation.</string>
+    <string name="Your_orders_history_is_empty">Your order history is empty</string>
+    <string name="Order_details">Order details</string>
+    <string name="Total_colon">Total:</string>
+    <string name="Shipping_type_colon">Shipping type:</string>
+    <string name="Shipping_price_colon">Shipping price:</string>
+    <string name="Content_is_empty">Content is empty.</string>
+    <string name="Clear">Clear</string>
+    <string name="Product_added_to_wishlist">Product added to wishlist</string>
+    <string name="Go_to_wishlist">Go to wishlist</string>
+    <string name="content_description_background">Background</string>
+    <string name="content_description_back_arrow">Back arrow</string>
+    <string name="content_description_intro_screen">Intro screen</string>
+    <string name="E_MAIL">E-MAIL</string>
+    <string name="FACEBOOK">FACEBOOK</string>
+    <string name="Register">Register</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
+    <string name="Just_arrived">Just arrived</string>
+    <string name="Select_size">Select size</string>
+    <string name="Link_is_invalid">Link is invalid</string>
+    <string name="Shopping_cart">Shopping cart</string>
+    <string name="including_VAT">inc. VAT</string>
+    <string name="Summary">Summary</string>
+    <string name="Min">Min</string>
+    <string name="Max">Max</string>
+    <string name="Order_history">Order history</string>
+    <string name="Branches">Branches</string>
+    <string name="Select">Select</string>
+
+
+</resources>

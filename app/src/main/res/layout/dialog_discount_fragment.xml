@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minWidth="280dp">
+
+    <LinearLayout
+        android:id="@+id/discount_code_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/base_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Enter_the_discount_code"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:id="@+id/discount_code_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/Cancel"
+                android:padding="5dp"
+                android:src="@drawable/close_black"/>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/discount_code_input_wrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/base_margin_vertical"
+            android:layout_marginTop="@dimen/base_margin_vertical"
+            android:textColorHint="@color/colorPrimaryLight">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/base_margin_vertical"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:hint="@string/Discount_code"
+                android:inputType="textNoSuggestions"
+                android:textColor="@color/textPrimary"
+                android:textSize="16sp"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/discount_code_confirm"
+            style="@style/buttonPrimaryStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Ok"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/discount_code_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/discount_code_layout"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/black_transparent_70percent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"/>
+    </LinearLayout>
+</RelativeLayout>

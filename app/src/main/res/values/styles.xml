@@ -1,0 +1,106 @@
+<resources>
+
+    <!-- App theme for pre-lollipop devices -->
+    <style name="MaterialTheme" parent="MaterialThemeSupportBase"/>
+
+    <!-- Base application theme. -->
+    <style name="MaterialThemeSupportBase" parent="Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:textColorPrimary">@color/textIconColorPrimary</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+        <item name="colorControlNormal">@color/colorPrimaryLight</item>
+        <item name="android:dropDownItemStyle">@style/myDropDownItemStyle</item>
+        <item name="android:dropDownListViewStyle">@style/myDropDownListViewStyle</item>
+
+    </style>
+
+    <style name="button_action_style">
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="myDropDownItemStyle" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">@color/textSecondary</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="myDropDownListViewStyle" parent="Widget.AppCompat.ListView.DropDown">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="myAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textSecondary</item>
+    </style>
+
+    <style name="MaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="MaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <style name="dialogFullscreen" parent="MaterialTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="dialogNoTitle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:textColorPrimary">@color/textIconColorPrimary</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textColorHint">@color/textSecondary</item>
+        <item name="colorControlNormal">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="dialogFragmentAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_appear</item>
+        <item name="android:windowExitAnimation">@anim/slide_away_disappear</item>
+    </style>
+
+    <style name="alertDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/abc_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/abc_fade_out</item>
+    </style>
+
+    <style name="alertDialogNoTitle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- -->
+    <style name="buttonPrimaryStyle" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_primary_action_ripple</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textIconColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- -->
+    <style name="buttonSecondaryStyle" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_secondary_action_ripple</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- -->
+    <style name="emptyLayoutText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textPrimary</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+</resources>

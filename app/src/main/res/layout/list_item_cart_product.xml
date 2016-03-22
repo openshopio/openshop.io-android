@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center_vertical"
+              android:baselineAligned="true"
+              android:descendantFocusability="blocksDescendants"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+              android:paddingBottom="8dp"
+              android:paddingTop="8dp"
+              android:weightSum="1">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3">
+
+        <ImageView
+            android:id="@+id/cart_product_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/Product"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.7"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <TextView
+                android:id="@+id/cart_product_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="2"
+                android:paddingBottom="4dp"
+                android:textSize="15sp"
+                tools:text="Product name"/>
+
+            <TextView
+                android:id="@+id/cart_product_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                tools:text="1500 USD"/>
+
+            <TextView
+                android:id="@+id/cart_product_quantity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="1"
+                android:textSize="14sp"
+                tools:text="15 pcs"/>
+
+            <TextView
+                android:id="@+id/cart_product_details"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:maxLines="2"
+                android:paddingTop="4dp"
+                android:textColor="@color/textSecondary"
+                android:textSize="14sp"
+                tools:text="Some product info"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/cart_product_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp">
+
+            <TextView
+                android:id="@+id/cart_product_delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:drawablePadding="3dp"
+                android:drawableTop="@drawable/delete"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/Delete"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/cart_product_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:drawablePadding="3dp"
+                android:drawableTop="@drawable/update"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@string/Edit"
+                android:textColor="@color/textSecondary"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

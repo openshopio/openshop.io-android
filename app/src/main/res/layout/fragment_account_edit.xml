@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/base_margin_horizontal"
+            android:paddingRight="@dimen/base_margin_horizontal">
+
+            <!-- Account update form-->
+            <LinearLayout
+                android:id="@+id/account_edit_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible"
+                tools:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/base_margin_vertical"
+                    android:text="@string/Account"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="17sp"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_edit_name_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/account_edit_name_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Name_colon"
+                        android:inputType="textPersonName"
+                        android:nextFocusForward="@+id/account_edit_street_et"
+                        android:singleLine="true"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/account_edit_street_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.65"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/account_edit_street_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/Street"
+                            android:inputType="textPostalAddress"
+                            android:nextFocusDown="@+id/account_edit_house_number_et"
+                            android:nextFocusForward="@+id/account_edit_house_number_et"
+                            android:nextFocusRight="@+id/account_edit_house_number_et"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/account_edit_house_number_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.35"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/account_edit_house_number_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/House_code"
+                            android:inputType="textPostalAddress"
+                            android:nextFocusDown="@+id/account_edit_city_et"
+                            android:nextFocusForward="@+id/account_edit_city_et"
+                            android:nextFocusLeft="@+id/account_edit_street_et"
+                            android:nextFocusRight="@+id/account_edit_city_et"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/account_edit_city_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.65"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/account_edit_city_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/City"
+                            android:inputType="textPostalAddress"
+                            android:nextFocusDown="@+id/account_edit_zip_et"
+                            android:nextFocusForward="@+id/account_edit_zip_et"
+                            android:nextFocusLeft="@+id/account_edit_house_number_et"
+                            android:nextFocusRight="@+id/account_edit_zip_et"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/account_edit_zip_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_weight="0.35"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/account_edit_zip_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/ZIP"
+                            android:inputType="number"
+                            android:nextFocusDown="@+id/account_edit_phone_et"
+                            android:nextFocusForward="@+id/account_edit_phone_et"
+                            android:nextFocusLeft="@+id/account_edit_city_et"
+                            android:nextFocusRight="@+id/account_edit_phone_et"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_edit_email_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/account_edit_email_et"
+                        style="@style/Widget.AppCompat.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:hint="@string/Email"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@color/textSecondary"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_edit_phone_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/account_edit_phone_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Phone"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/account_edit_password_form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="16dp"
+                    android:text="@string/Changing_the_password"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="17sp"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_edit_password_current_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/account_edit_password_current"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Current_password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_edit_password_new_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/account_edit_password_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/New_password"
+                        android:inputType="textPassword"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/account_edit_password_new_again_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/account_edit_password_new_again"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/Password_again"
+                        android:inputType="textPassword"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/account_edit_change_form_btn"
+                style="@style/buttonSecondaryStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="@string/Change_password"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/account_edit_confirm_button"
+        style="@style/buttonPrimaryStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Save"/>
+</LinearLayout>

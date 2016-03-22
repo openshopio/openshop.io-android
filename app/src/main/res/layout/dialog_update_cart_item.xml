@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/dialog_update_cart_item_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/Update_item"
+            android:textSize="19sp"/>
+
+        <TextView
+            android:id="@+id/dialog_update_cart_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dialog_update_cart_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_update_cart_item_title_layout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <Spinner
+                android:id="@+id/dialog_update_cart_item_color_spin"
+                android:background="@drawable/spinner_background_white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="false"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"/>
+
+            <Spinner
+                android:id="@+id/dialog_update_cart_item_size_spin"
+                android:background="@drawable/spinner_background_white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:focusable="false"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"/>
+
+            <Spinner
+                android:id="@+id/dialog_update_cart_item_quantity_spin"
+                android:background="@drawable/spinner_background_white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:focusable="false"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/dialog_update_cart_item_cancel_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/button_secondary_action_ripple"
+                android:gravity="center"
+                android:minHeight="1dp"
+                android:minWidth="1dp"
+                android:paddingBottom="14dp"
+                android:paddingTop="14dp"
+                android:text="@string/Cancel"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/dialog_update_cart_item_save_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_primary_action_ripple"
+                android:gravity="center"
+                android:minHeight="1dp"
+                android:minWidth="1dp"
+                android:paddingBottom="14dp"
+                android:paddingTop="14dp"
+                android:text="@string/Save"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/dialog_update_cart_item_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_update_cart_item_title_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="75dp"/>
+</RelativeLayout>

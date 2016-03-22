@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:id="@+id/order_create_scroll_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/base_margin_vertical"
+            android:paddingTop="@dimen/base_margin_vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Summary"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textBlack"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <!-- Cart content-->
+                <LinearLayout
+                    android:id="@+id/order_create_cart_items_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"/>
+
+                <!-- Total cart price-->
+                <TextView
+                    android:id="@+id/order_create_total_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:paddingTop="4dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="15212 USD"/>
+            </LinearLayout>
+
+            <!-- Visual screen divider-->
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/base_margin_vertical"
+                android:layout_marginBottom="@dimen/base_margin_vertical"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:background="@color/background_grey"/>
+
+            <!-- Delivery part -->
+            <RelativeLayout
+                android:id="@+id/order_create_delivery_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal"
+                android:visibility="invisible">
+
+                <LinearLayout
+                    android:id="@+id/order_create_delivery_shipping_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Shipping_method"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textBlack"
+                        android:textSize="14sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_background_black_baseline"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/order_create_delivery_shipping_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:text="@string/Choose_shipping_method"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            tools:text="Ostrava poruba por dasokaf "/>
+
+                        <TextView
+                            android:id="@+id/order_create_delivery_shipping_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            tools:text="free"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/order_create_delivery_payment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/order_create_delivery_shipping_layout"
+                    android:background="?attr/selectableItemBackground"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="16dp"
+                        android:text="@string/Payment"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textBlack"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/spinner_background_black_baseline"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/order_create_delivery_payment_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:text="@string/Choose_payment_method"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            tools:text="Ostrava poruba por dasokaf "/>
+
+                        <TextView
+                            android:id="@+id/order_create_delivery_payment_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            tools:text="free"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/delivery_progress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="visible"/>
+            </RelativeLayout>
+
+            <!-- Visual screen divider-->
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/base_margin_vertical"
+                android:layout_marginBottom="@dimen/base_margin_vertical"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:background="@color/background_grey"/>
+
+            <!-- Shipping details part -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Shipping_details"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textBlack"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/order_create_name_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/order_create_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:hint="@string/Name_colon"
+                        android:inputType="textPersonName"
+                        android:nextFocusForward="@+id/order_create_street"
+                        android:singleLine="true"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/order_create_street_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/order_create_street"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="@string/Street"
+                            android:inputType="textPostalAddress"
+                            android:nextFocusDown="@+id/order_create_houseNumber"
+                            android:nextFocusForward="@+id/order_create_houseNumber"
+                            android:nextFocusRight="@+id/order_create_houseNumber"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/order_create_houseNumber_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/order_create_houseNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="@string/House_code"
+                            android:inputType="textPostalAddress"
+                            android:nextFocusDown="@+id/order_create_city"
+                            android:nextFocusForward="@+id/order_create_city"
+                            android:nextFocusLeft="@+id/order_create_street"
+                            android:nextFocusRight="@+id/order_create_city"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="true"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/order_create_city_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.65"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/order_create_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="@string/City"
+                            android:inputType="textPostalAddress"
+                            android:nextFocusDown="@+id/order_create_zip"
+                            android:nextFocusForward="@+id/order_create_zip"
+                            android:nextFocusLeft="@+id/order_create_houseNumber"
+                            android:nextFocusRight="@+id/order_create_zip"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/order_create_zip_wrapper"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.35"
+                        android:textColorHint="@color/colorPrimaryLight">
+
+                        <EditText
+                            android:id="@+id/order_create_zip"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:hint="@string/ZIP"
+                            android:inputType="number"
+                            android:nextFocusDown="@+id/order_create_email"
+                            android:nextFocusForward="@+id/order_create_email"
+                            android:nextFocusLeft="@+id/order_create_city"
+                            android:nextFocusRight="@+id/order_create_email"
+                            android:singleLine="true"
+                            android:textColor="@color/textPrimary"/>
+                    </android.support.design.widget.TextInputLayout>
+                </LinearLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/order_create_email_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/order_create_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:hint="@string/Email"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/order_create_phone_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/order_create_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/Phone"
+                        android:inputType="phone"
+                        android:singleLine="true"
+                        android:textColor="@color/textPrimary"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/order_create_note_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colorPrimaryLight">
+
+                    <EditText
+                        android:id="@+id/order_create_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:hint="@string/Note"
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:maxLength="1024"
+                        android:minHeight="50dp"
+                        android:textColor="@color/textPrimary"
+                        android:textSize="18sp"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Visual screen divider-->
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/base_margin_vertical"
+                android:layout_marginBottom="@dimen/base_margin_vertical_half"
+                android:layout_marginTop="@dimen/base_margin_vertical_half"
+                android:background="@color/background_grey"/>
+
+            <!-- Price, Terms and finish order -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/base_margin_vertical"
+                    android:layout_marginTop="@dimen/base_margin_vertical"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/order_create_summary_terms_and_condition"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/Click_on_Order_to_allow_our_Terms_and_Conditions"
+                        android:textColor="@color/textSecondary"
+                        android:textSize="10sp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/base_margin_horizontal_half"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/order_create_summary_total_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:textColor="@color/textPrimary"
+                            android:textSize="14sp"
+                            tools:text="9995 USD"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="@string/including_VAT"
+                            android:textColor="@color/textSecondary"
+                            android:textSize="13sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/order_create_finish"
+                    style="@style/buttonPrimaryStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Finish_order"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/splash_intro_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_screen"
+        android:contentDescription="@string/content_description_intro_screen"/>
+
+    <RelativeLayout
+        android:id="@+id/splash_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description_background"
+            android:scaleType="centerCrop"
+            android:src="@drawable/login_background"/>
+
+        <LinearLayout
+            android:id="@+id/splash_content_no_connection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_transparent_70percent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="30dp"
+            android:paddingLeft="@dimen/base_margin_horizontal"
+            android:paddingRight="@dimen/base_margin_horizontal"
+            android:paddingTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="2"
+                android:paddingTop="20dp"
+                android:text="@string/No_network_connection"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="normal"/>
+
+            <Button
+                android:id="@+id/splash_re_run_btn"
+                style="@style/buttonPrimaryStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/base_margin_vertical"
+                android:text="@string/Retry"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/splash_content_select_shop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_transparent_70percent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="30dp"
+            android:paddingLeft="@dimen/base_margin_horizontal"
+            android:paddingRight="@dimen/base_margin_horizontal"
+            android:paddingTop="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="2"
+                android:paddingTop="20dp"
+                android:text="@string/Select_the_country_where_you_want_to_shop"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="normal"/>
+
+            <Spinner
+                android:id="@+id/splash_shop_selection_spinner"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/base_margin_vertical"
+                android:layout_marginTop="@dimen/base_margin_vertical_half"
+                android:background="@drawable/spinner_selector_white"
+                android:spinnerMode="dialog"
+                tools:visibility="visible"/>
+
+            <Button
+                android:id="@+id/splash_continue_to_shop_btn"
+                style="@style/buttonPrimaryStyle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Continue"
+                android:visibility="invisible"
+                tools:visibility="visible"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

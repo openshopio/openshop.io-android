@@ -1,0 +1,70 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/navigation_drawer_size"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/drawer_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+
+    <LinearLayout
+        android:id="@+id/drawer_submenu_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/drawer_submenu_back_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ripple_selector_transparent"
+            android:drawableLeft="@drawable/arrow_left_black"
+            android:drawablePadding="7dp"
+            android:drawableStart="@drawable/arrow_left_black"
+            android:gravity="start"
+            android:padding="20dp"
+            android:text="@string/all_categories"
+            android:textSize="15sp"
+            android:textStyle="normal"/>
+
+        <TextView
+            android:id="@+id/drawer_submenu_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#dedede"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="#646464"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/drawer_submenu_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/drawer_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/drawer_retry_btn"
+        style="@style/buttonPrimaryStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:text="@string/Retry"
+        android:visibility="gone"/>
+</RelativeLayout>

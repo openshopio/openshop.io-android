@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    style="@android:style/Widget.ActionButton"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:clickable="true"
+    android:contentDescription="@string/shopping_cart"
+    android:focusable="true"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/shopping_cart_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:contentDescription="@string/shopping_cart"
+        android:gravity="center"
+        android:padding="3dp"
+        android:src="@drawable/ic_shopping_cart_white_24dp"/>
+
+    <TextView
+        android:id="@+id/shopping_cart_notify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/shopping_cart_icon"
+        android:layout_alignRight="@id/shopping_cart_icon"
+        android:layout_alignTop="@id/shopping_cart_icon"
+        android:background="@drawable/badge_oval"
+        android:gravity="center"
+        android:minWidth="17sp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="12sp"
+        android:visibility="visible"/>
+</RelativeLayout>

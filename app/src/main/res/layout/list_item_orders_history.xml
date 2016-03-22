@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:padding="4dp"
+              android:weightSum="1">
+
+    <TextView
+        android:id="@+id/order_history_item_id"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:gravity="start"
+        android:textSize="14sp"
+        tools:text="125364"/>
+
+    <TextView
+        android:id="@+id/order_history_item_dateCreated"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.4"
+        android:gravity="start"
+        android:textSize="14sp"
+        tools:text="2.8.1992"/>
+
+    <TextView
+        android:id="@+id/order_history_item_totalPrice"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.3"
+        android:gravity="end"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        tools:text="1580 USD"/>
+
+</LinearLayout>

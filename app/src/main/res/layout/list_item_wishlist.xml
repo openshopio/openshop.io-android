@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/list_item_wishlist_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/Product_image"
+        android:scaleType="fitCenter"/>
+
+    <RelativeLayout
+        android:id="@+id/product_item_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/list_item_wishlist_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/list_item_wishlist_button"
+            android:layout_toStartOf="@+id/list_item_wishlist_button"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-light"
+            android:maxLines="2"
+            android:textSize="13sp"
+            tools:text="Kotnickove ponozky s krajkou"/>
+
+        <ImageView
+            android:id="@+id/list_item_wishlist_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/wish_list_pressed"
+            android:contentDescription="@string/Wishlist"
+            android:padding="2dp"/>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_item_wishlist_name"
+            android:layout_toLeftOf="@+id/list_item_wishlist_button"
+            android:layout_toStartOf="@+id/list_item_wishlist_button"
+            android:shrinkColumns="0"
+            android:stretchColumns="1">
+
+            <TableRow>
+                <TextView
+                    android:id="@+id/list_item_wishlist_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:textColor="@color/textPrimary"
+                    android:textSize="12sp"
+                    tools:text="150 USD"/>
+
+                <TextView
+                    android:id="@+id/list_item_wishlist_discount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="none"
+                    android:paddingLeft="4dp"
+                    android:paddingRight="4dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    tools:text="149 USD"/>
+            </TableRow>
+        </TableLayout>
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/list_item_wishlist_name"-->
+        <!--android:layout_toLeftOf="@+id/list_item_wishlist_button"-->
+        <!--android:layout_toStartOf="@+id/list_item_wishlist_button"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/list_item_wishlist_price"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ellipsize="end"-->
+        <!--android:maxLines="1"-->
+        <!--android:paddingLeft="4dp"-->
+        <!--android:paddingRight="4dp"-->
+        <!--android:textColor="@color/textPrimary"-->
+        <!--android:textSize="12sp"-->
+        <!--tools:text="150 USD"/>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/list_item_wishlist_discount"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:maxLines="1"-->
+        <!--android:paddingLeft="4dp"-->
+        <!--android:paddingRight="4dp"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="12sp"-->
+        <!--android:textStyle="bold"-->
+        <!--tools:text="149 USD"/>-->
+        <!--</LinearLayout>-->
+    </RelativeLayout>
+</LinearLayout>
