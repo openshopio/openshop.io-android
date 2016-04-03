@@ -1,33 +1,20 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/color_picker_root_element"
+    android:id="@+id/text_root_element"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:paddingBottom="1dp"
+    android:minHeight="40dp"
     android:paddingEnd="1dp"
     android:paddingLeft="5dp"
     android:paddingRight="1dp"
     android:paddingStart="5dp"
     android:paddingTop="2dp">
 
-    <LinearLayout
-        android:id="@+id/color_picker_image_stroke"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/oval_stroke">
-
-        <bf.io.openshop.views.RoundedImageView
-            android:id="@+id/color_picker_image_view"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="4dp"
-            android:background="@drawable/rounded_color_drawable" />
-    </LinearLayout>
-
     <TextView
-        android:id="@+id/color_picker_text"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:ellipsize="end"

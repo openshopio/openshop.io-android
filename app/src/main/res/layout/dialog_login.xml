@@ -206,9 +206,6 @@
                     android:drawableEnd="@android:drawable/ic_menu_view"
                     android:drawableRight="@android:drawable/ic_menu_view"
                     android:hint="@string/prompt_password"
-                    android:imeActionId="123"
-                    android:imeActionLabel="@string/action_sign_up"
-                    android:imeOptions="actionSend"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:paddingEnd="@dimen/base_margin_horizontal_half"
@@ -217,6 +214,10 @@
                     android:paddingStart="@dimen/base_margin_horizontal"
                     android:singleLine="true"/>
             </android.support.design.widget.TextInputLayout>
+
+            <!--android:imeActionId="123"-->
+            <!--android:imeActionLabel="@string/action_sign_up"-->
+            <!--android:imeOptions="actionSend"-->
 
             <RadioGroup
                 android:id="@+id/login_registration_sex"

@@ -49,32 +49,29 @@
 
             <Spinner
                 android:id="@+id/dialog_update_cart_item_color_spin"
-                android:background="@drawable/spinner_background_white"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:focusable="false"
-                android:paddingBottom="12dp"
-                android:paddingTop="12dp"/>
+                android:background="@drawable/spinner_background_black_baseline"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"/>
 
             <Spinner
                 android:id="@+id/dialog_update_cart_item_size_spin"
-                android:background="@drawable/spinner_background_white"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:focusable="false"
-                android:paddingBottom="12dp"
-                android:paddingTop="12dp"/>
+                android:layout_marginTop="4dp"
+                android:background="@drawable/spinner_background_black_baseline"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"/>
 
             <Spinner
                 android:id="@+id/dialog_update_cart_item_quantity_spin"
-                android:background="@drawable/spinner_background_white"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:focusable="false"
-                android:paddingBottom="12dp"
-                android:paddingTop="12dp"/>
+                android:layout_marginTop="4dp"
+                android:background="@drawable/spinner_background_black_baseline"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"/>
         </LinearLayout>
 
         <LinearLayout

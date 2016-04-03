@@ -50,7 +50,7 @@ public class ProductImagesRecyclerAdapter extends RecyclerView.Adapter<ProductIm
 
     @Override
     public void onBindViewHolder(ProductImagesRecyclerAdapter.ViewHolder holder, int position) {
-        Timber.e("ProductImage position: " + position);
+//        Timber.d("ProductImage position: " + position);
         String productImageUrl = getItem(position);
         holder.setPosition(position);
         Picasso.with(context)

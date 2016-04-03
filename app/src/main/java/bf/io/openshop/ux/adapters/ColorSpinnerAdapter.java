@@ -1,12 +1,16 @@
 package bf.io.openshop.ux.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,31 +88,31 @@ public class ColorSpinnerAdapter extends ArrayAdapter<ProductColor> {
         }
 
         ProductColor color = productColorList.get(position);
+        Picasso.with(getContext()).cancelRequest(holder.colorImage);
         if (color != null) {
             holder.colorText.setText(color.getValue());
 
-            // TODO Now is only text used.
-//            if (color.getId() == -5) {
-//                holder.colorStroke.setVisibility(View.INVISIBLE);
-//            } else {
-//                if (color.getCode() != null && (!color.getCode().isEmpty())) {
-//                    final String hexColor = color.getCode();
-//                    //        Log.i("setColorsPicker", "hexColor: " + hexColor);
-//                    GradientDrawable gradDrawable = (GradientDrawable) holder.colorImage.getBackground();
-//                    int resultColor = 0xffffffff;
-//                    try {
-//                        resultColor = Color.parseColor(hexColor);
-//                    } catch (Exception e) {
-//                        Timber.e(e, "CustomSpinnerColors parse color exception");
-//                    }
-//                    gradDrawable.setColor(resultColor);
-//                } else {
-//                    //        Log.i("setColorsPicker", "multicolor");
-//                    Picasso.with(getContext()).load(color.getImg()).into(holder.colorImage);
-//                    GradientDrawable gradDrawable = (GradientDrawable) holder.colorImage.getBackground();
-//                    gradDrawable.setColor(Color.TRANSPARENT);
-//                }
-//            }
+            // TODO otestovat a pridat barvy
+            Timber.e("Color: " + color.toString());
+            if (color.getId() == -5) {
+                holder.colorStroke.setVisibility(View.INVISIBLE);
+            } else {
+                if (color.getCode() != null && (!color.getCode().isEmpty())) {
+                    final String hexColor = color.getCode();
+                    GradientDrawable gradDrawable = (GradientDrawable) holder.colorImage.getBackground();
+                    int resultColor = 0xffffffff;
+                    try {
+                        resultColor = Color.parseColor(hexColor);
+                    } catch (Exception e) {
+                        Timber.e(e, "CustomSpinnerColors parse color exception");
+                    }
+                    gradDrawable.setColor(resultColor);
+                } else {
+                    Picasso.with(getContext()).load(color.getImg()).fit().into(holder.colorImage);
+                    GradientDrawable gradDrawable = (GradientDrawable) holder.colorImage.getBackground();
+                    gradDrawable.setColor(Color.TRANSPARENT);
+                }
+            }
         } else {
             Timber.e("Received null productColor in " + this.getClass().getSimpleName());
         }

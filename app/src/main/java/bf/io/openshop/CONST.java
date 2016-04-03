@@ -6,7 +6,7 @@ public class CONST {
     /**
      * Specific organization ID, received by successful integration.
      */
-    public static final int ORGANIZATION_ID = 2;
+    public static final int ORGANIZATION_ID = 4;
     /**
      * ID used for simulate empty/null value
      */

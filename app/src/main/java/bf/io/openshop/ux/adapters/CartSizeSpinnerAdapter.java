@@ -10,43 +10,43 @@ import android.widget.TextView;
 import java.util.List;
 
 import bf.io.openshop.R;
-import bf.io.openshop.entities.product.ProductQuantity;
+import bf.io.openshop.entities.product.ProductVariant;
 import timber.log.Timber;
 
 /**
- * Simple arrayAdapter for quantity selection.
+ * Simple arrayAdapter for size selection.
  */
-public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
+public class CartSizeSpinnerAdapter extends ArrayAdapter<ProductVariant> {
 
     private static final int layoutID = R.layout.spinner_item_simple_text;
     private final LayoutInflater layoutInflater;
 
     public Context context;
-    public List<ProductQuantity> quantities;
+    public List<ProductVariant> sizes;
 
     /**
-     * Creates an adapter for quantity selection.
+     * Creates an adapter for size selection.
      *
-     * @param context    activity context.
-     * @param quantities list of items.
+     * @param context activity context.
+     * @param sizes   list of items.
      */
-    public QuantitySpinnerAdapter(Context context, List<ProductQuantity> quantities) {
-        super(context, layoutID, quantities);
+    public CartSizeSpinnerAdapter(Context context, List<ProductVariant> sizes) {
+        super(context, layoutID, sizes);
         this.context = context;
-        this.quantities = quantities;
+        this.sizes = sizes;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public int getCount() {
-        return quantities.size();
+        return sizes.size();
     }
 
-    public ProductQuantity getItem(int position) {
-        return quantities.get(position);
+    public ProductVariant getItem(int position) {
+        return sizes.get(position);
     }
 
     public long getItemId(int position) {
-        return quantities.get(position).getQuantity();
+        return sizes.get(position).getId();
     }
 
     @Override
@@ -72,10 +72,10 @@ public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
             holder = (ListItemHolder) v.getTag();
         }
 
-        if (getItem(position) != null) {
-            holder.text.setText(getItem(position).getValue());
+        if (getItem(position) != null && getItem(position).getSize() != null) {
+            holder.text.setText(getItem(position).getSize().getValue());
         } else {
-            Timber.e("Received null value in " + this.getClass().getSimpleName());
+            Timber.e("Received null productSize in " + this.getClass().getSimpleName());
         }
 
         return v;
@@ -84,5 +84,4 @@ public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
     static class ListItemHolder {
         TextView text;
     }
-
 }

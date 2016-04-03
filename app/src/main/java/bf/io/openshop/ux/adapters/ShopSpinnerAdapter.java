@@ -84,6 +84,7 @@ public class ShopSpinnerAdapter extends ArrayAdapter<Shop> {
             holder.shopLanguageName.setTextColor(ContextCompat.getColor(getContext(), R.color.textIconColorPrimary));
         }
 
+        Picasso.with(getContext()).cancelRequest(holder.shopFlagIcon);
         if (shop != null) {
             holder.shopLanguageName.setText(shop.getName());
             Picasso.with(getContext()).load(shop.getFlagIcon()).into(holder.shopFlagIcon);

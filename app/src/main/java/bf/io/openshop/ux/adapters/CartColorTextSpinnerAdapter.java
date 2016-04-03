@@ -10,43 +10,42 @@ import android.widget.TextView;
 import java.util.List;
 
 import bf.io.openshop.R;
-import bf.io.openshop.entities.product.ProductQuantity;
-import timber.log.Timber;
+import bf.io.openshop.entities.product.ProductColor;
 
 /**
- * Simple arrayAdapter for quantity selection.
+ * Simple arrayAdapter for color selection. Color is represented only by text.
  */
-public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
+public class CartColorTextSpinnerAdapter extends ArrayAdapter<ProductColor> {
 
     private static final int layoutID = R.layout.spinner_item_simple_text;
     private final LayoutInflater layoutInflater;
 
     public Context context;
-    public List<ProductQuantity> quantities;
+    public List<ProductColor> colors;
 
     /**
-     * Creates an adapter for quantity selection.
+     * Creates an adapter for color selection. Color is represented only by text.
      *
-     * @param context    activity context.
-     * @param quantities list of items.
+     * @param context activity context.
+     * @param colors  list of items.
      */
-    public QuantitySpinnerAdapter(Context context, List<ProductQuantity> quantities) {
-        super(context, layoutID, quantities);
+    public CartColorTextSpinnerAdapter(Context context, List<ProductColor> colors) {
+        super(context, layoutID, colors);
         this.context = context;
-        this.quantities = quantities;
+        this.colors = colors;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public int getCount() {
-        return quantities.size();
+        return colors.size();
     }
 
-    public ProductQuantity getItem(int position) {
-        return quantities.get(position);
+    public ProductColor getItem(int position) {
+        return colors.get(position);
     }
 
     public long getItemId(int position) {
-        return quantities.get(position).getQuantity();
+        return colors.get(position).getId();
     }
 
     @Override
@@ -66,23 +65,17 @@ public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
         if (v == null) {
             v = layoutInflater.inflate(layoutID, parent, false);
             holder = new ListItemHolder();
-            holder.text = (TextView) v.findViewById(R.id.text);
+            holder.colorText = (TextView) v.findViewById(R.id.text);
             v.setTag(holder);
         } else {
             holder = (ListItemHolder) v.getTag();
         }
 
-        if (getItem(position) != null) {
-            holder.text.setText(getItem(position).getValue());
-        } else {
-            Timber.e("Received null value in " + this.getClass().getSimpleName());
-        }
-
+        holder.colorText.setText(getItem(position).getValue());
         return v;
     }
 
     static class ListItemHolder {
-        TextView text;
+        TextView colorText;
     }
-
 }

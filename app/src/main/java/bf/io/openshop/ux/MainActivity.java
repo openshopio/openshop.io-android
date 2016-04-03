@@ -49,7 +49,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.facebook.appevents.AppEventsLogger;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -517,6 +516,26 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     }
 
     /**
+     * Method clear fragment backStack (back history). On bottom of stack will remain Fragment added by {@link #addInitialFragment()}.
+     */
+    private void clearBackStack() {
+        Timber.d("Clearing backStack");
+        FragmentManager manager = getSupportFragmentManager();
+        if (manager.getBackStackEntryCount() > 0) {
+            if (BuildConfig.DEBUG) {
+                for (int i = 0; i < manager.getBackStackEntryCount(); i++) {
+                    Timber.d("BackStack content_" + i + "= id:" + manager.getBackStackEntryAt(i).getId() + ", name:" + manager.getBackStackEntryAt(i).getName());
+                }
+            }
+            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
+            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+        Timber.d("backStack cleared.");
+//        TODO maybe implement own fragment backStack handling to prevent banner fragment recreation during clearing.
+//        http://stackoverflow.com/questions/12529499/problems-with-android-fragment-back-stack
+    }
+
+    /**
      * Method create new {@link CategoryFragment} with defined search query.
      *
      * @param searchQuery text used for products search.
@@ -718,24 +737,6 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         } else {
             Timber.e("Creating order detail with null data.");
         }
-    }
-
-    /**
-     * Method clear fragment backStack (back history). On bottom of stack will remain Fragment added by {@link #addInitialFragment()}.
-     */
-    private void clearBackStack() {
-        Timber.d("Clearing backStack");
-        FragmentManager manager = getSupportFragmentManager();
-        if (manager.getBackStackEntryCount() > 0) {
-            if (BuildConfig.DEBUG) {
-                for (int i = 0; i < manager.getBackStackEntryCount(); i++) {
-                    Timber.d("BackStack content_" + i + "= id:" + manager.getBackStackEntryAt(i).getId() + ", name:" + manager.getBackStackEntryAt(i).getName());
-                }
-            }
-            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
-            manager.popBackStackImmediate(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        }
-        Timber.d("backStack cleared.");
     }
 
     @Override

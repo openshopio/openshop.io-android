@@ -22,7 +22,6 @@ import bf.io.openshop.entities.filtr.FilterTypeSelect;
 import bf.io.openshop.entities.filtr.FilterValueColor;
 import bf.io.openshop.entities.filtr.FilterValueSelect;
 import bf.io.openshop.entities.filtr.Filters;
-import bf.io.openshop.interfaces.FilterRecyclerInterface;
 import bf.io.openshop.views.RangeSeekBar;
 import timber.log.Timber;
 
@@ -41,7 +40,6 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private static final int TYPE_ITEM_RANGE = 2;
 
     private final List<FilterType> filterTypeList = new ArrayList<>();
-    private final FilterRecyclerInterface filterRecyclerInterface;
 
     private final Context context;
     LayoutInflater layoutInflater;
@@ -54,8 +52,6 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
      */
     public FilterRecyclerAdapter(Context context, Filters filterData) {
         this.context = context;
-        this.filterRecyclerInterface = new FilterRecyclerInterface() {
-        };
 
         // Add default values
         for (FilterType filterType : filterData.getFilters()) {
@@ -96,13 +92,13 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         if (viewType == TYPE_ITEM_COLOR) {
             View view = layoutInflater.inflate(R.layout.list_item_filter_select, parent, false);
-            return new ViewHolderColor(view, context, filterRecyclerInterface);
+            return new ViewHolderColor(view, context);
         } else if (viewType == TYPE_ITEM_SELECT) {
             View view = layoutInflater.inflate(R.layout.list_item_filter_select, parent, false);
-            return new ViewHolderSelect(view, context, filterRecyclerInterface);
+            return new ViewHolderSelect(view, context);
         } else {
             View view = layoutInflater.inflate(R.layout.list_item_filter_range, parent, false);
-            return new ViewHolderRange(view, filterRecyclerInterface);
+            return new ViewHolderRange(view);
         }
     }
 
@@ -127,21 +123,6 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
             final FilterTypeRange filterTypeRange = (FilterTypeRange) filterTypeList.get(position);
             viewHolderRange.rangeName.setText(filterTypeRange.getName());
-
-////            viewHolderRange.rangeBar.setTickStart(filterTypeRange.getMin());
-////            viewHolderRange.rangeBar.setTickEnd(filterTypeRange.getMax());
-//
-//            if (filterTypeRange.getSelectedMin() < 0 && filterTypeRange.getSelectedMax() <= 0) {
-//                filterTypeRange.setSelectedMin(filterTypeRange.getMin());
-//                filterTypeRange.setSelectedMax(filterTypeRange.getMax());
-//            }
-//            viewHolderRange.rangeBar.setRangePinsByValue(filterTypeRange.getSelectedMin(), filterTypeRange.getSelectedMax());
-//            viewHolderRange.rangeBar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
-//                @Override
-//                public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex, int rightPinIndex, String leftPinValue, String rightPinValue) {
-//                    Timber.d("leftPinValue:" + leftPinValue + "rightPinValue" + rightPinValue);
-//                }
-//            });
 
             RangeSeekBar<Integer> seekBar = new RangeSeekBar<>(context);
             seekBar.setRangeValues(filterTypeRange.getMin(), filterTypeRange.getMax());
@@ -184,7 +165,7 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         private FilterTypeColor filterTypeColor;
 
-        public ViewHolderColor(View itemView, Context context, final FilterRecyclerInterface filterRecyclerInterface) {
+        public ViewHolderColor(View itemView, Context context) {
             super(itemView);
             colorName = (TextView) itemView.findViewById(R.id.list_item_filter_select_title);
             colorSpinner = (Spinner) itemView.findViewById(R.id.list_item_filter_select_spinner);
@@ -195,8 +176,8 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Timber.e("Color- type: " + filterTypeColor.toString());
-                    Timber.e("Color- selected: " + filterTypeColor.getValues().get(position));
+//                    Timber.d("Color- type: " + filterTypeColor.toString());
+//                    Timber.d("Color- selected: " + filterTypeColor.getValues().get(position));
                     if (filterTypeColor.getValues().get(position).getId() != DEFAULT_ID) {
                         filterTypeColor.setSelectedValue(filterTypeColor.getValues().get(position));
                     } else {
@@ -225,7 +206,7 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         private FilterTypeSelect filterTypeSelect;
 
-        public ViewHolderSelect(View itemView, Context context, final FilterRecyclerInterface filterRecyclerInterface) {
+        public ViewHolderSelect(View itemView, Context context) {
             super(itemView);
             selectName = (TextView) itemView.findViewById(R.id.list_item_filter_select_title);
             selectSpinner = (Spinner) itemView.findViewById(R.id.list_item_filter_select_spinner);
@@ -236,8 +217,8 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             selectSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    Timber.e("Selec- type: " + filterTypeSelect.toString());
-                    Timber.e("Selec- selected: " + filterTypeSelect.getValues().get(position));
+//                    Timber.d("Selec- type: " + filterTypeSelect.toString());
+//                    Timber.d("Selec- selected: " + filterTypeSelect.getValues().get(position));
                     if (filterTypeSelect.getValues().get(position).getId() != DEFAULT_ID) {
                         filterTypeSelect.setSelectedValue(filterTypeSelect.getValues().get(position));
                     } else {
@@ -264,7 +245,7 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         public TextView rangeResult;
         public LinearLayout seekBarLayout;
 
-        public ViewHolderRange(View itemView, final FilterRecyclerInterface filterRecyclerInterface) {
+        public ViewHolderRange(View itemView) {
             super(itemView);
             rangeName = (TextView) itemView.findViewById(R.id.list_item_filter_range_title);
             rangeResult = (TextView) itemView.findViewById(R.id.list_item_filter_range_result);

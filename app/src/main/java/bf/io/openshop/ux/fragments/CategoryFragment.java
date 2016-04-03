@@ -105,7 +105,6 @@ public class CategoryFragment extends Fragment {
 
     // Properties used to restore previous state
     private int toolbarOffset = -1;
-    private int lastSortSpinnerPosition = -1;
     private boolean isList = false;
     private Parcelable recyclerState;
 
@@ -219,14 +218,16 @@ public class CategoryFragment extends Fragment {
                 filterButton.setImageResource(R.drawable.filter_unselected);
             }
 
-            prepareProductRecycler(view);
-            prepareSortSpinner();
-//           // Opened first time (not form backstack)
+            // Opened first time (not form backstack)
             if (categoryRecyclerAdapter == null || categoryRecyclerAdapter.getItemCount() == 0) {
+                prepareRecyclerAdapter();
+                prepareProductRecycler(view);
+                prepareSortSpinner();
                 getProducts(null);
 
                 Analytics.logCategoryView(categoryId, categoryName, isSearch);
             } else {
+                prepareProductRecycler(view);
                 Timber.d("Restore previous category state. (Products already loaded) ");
             }
         } else {
@@ -275,16 +276,6 @@ public class CategoryFragment extends Fragment {
         };
         productsRecycler.addOnScrollListener(endlessRecyclerScrollListener);
 
-        categoryRecyclerAdapter = new CategoryRecyclerAdapter(getActivity(), new CategoryRecyclerInterface() {
-            @Override
-            public void onProductSelected(View caller, Product product) {
-                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-                    setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
-                }
-                ((MainActivity) getActivity()).onProductSelected(product.getId());
-            }
-        });
-//        productAdapter.setLastPosition(lastScrollAnimationPosition);
         productsRecycler.setAdapter(categoryRecyclerAdapter);
         if (recyclerState != null)
             productsRecyclerLayoutManager.onRestoreInstanceState(recyclerState);
@@ -301,6 +292,18 @@ public class CategoryFragment extends Fragment {
                     switchLayoutManager.setImageResource(R.drawable.grid_off);
                     animateRecyclerLayoutChange(1);
                 }
+            }
+        });
+    }
+
+    private void prepareRecyclerAdapter() {
+        categoryRecyclerAdapter = new CategoryRecyclerAdapter(getActivity(), new CategoryRecyclerInterface() {
+            @Override
+            public void onProductSelected(View caller, Product product) {
+                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                    setReenterTransition(TransitionInflater.from(getActivity()).inflateTransition(android.R.transition.fade));
+                }
+                ((MainActivity) getActivity()).onProductSelected(product.getId());
             }
         });
     }
@@ -349,11 +352,8 @@ public class CategoryFragment extends Fragment {
         SortSpinnerAdapter sortSpinnerAdapter = new SortSpinnerAdapter(getActivity());
         sortSpinner.setAdapter(sortSpinnerAdapter);
         sortSpinner.setOnItemSelectedListener(null);
-        if (lastSortSpinnerPosition >= 0 && lastSortSpinnerPosition < sortSpinnerAdapter.getCount()) {
-            sortSpinner.setSelection(lastSortSpinnerPosition, false);
-        }
         sortSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
+            private int lastSortSpinnerPosition = -1;
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

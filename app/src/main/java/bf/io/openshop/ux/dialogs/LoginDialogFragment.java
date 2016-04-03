@@ -179,16 +179,6 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         EditText registrationPassword = loginRegistrationPasswordWrapper.getEditText();
         if (registrationPassword != null) {
             registrationPassword.setOnTouchListener(new OnTouchPasswordListener(registrationPassword));
-            registrationPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    if (actionId == EditorInfo.IME_ACTION_SEND || actionId == 123) {
-                        invokeRegisterNewUser();
-                        return true;
-                    }
-                    return false;
-                }
-            });
         }
 
 

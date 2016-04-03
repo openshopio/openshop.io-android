@@ -22,7 +22,6 @@ import bf.io.openshop.entities.drawerMenu.DrawerItemCategory;
 import bf.io.openshop.entities.drawerMenu.DrawerItemPage;
 import bf.io.openshop.interfaces.DrawerRecyclerInterface;
 import bf.io.openshop.listeners.OnSingleClickListener;
-import timber.log.Timber;
 
 /**
  * Adapter handling list of drawer items.
@@ -71,9 +70,6 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (holder instanceof ViewHolderItemCategory) {
             ViewHolderItemCategory viewHolderItemCategory = (ViewHolderItemCategory) holder;
 
-            // Here you apply the animation when the view is bound
-            setAnimation(viewHolderItemCategory.layout);
-
             DrawerItemCategory drawerItemCategory = getDrawerItem(position);
             viewHolderItemCategory.bindContent(drawerItemCategory);
             viewHolderItemCategory.itemText.setText(drawerItemCategory.getName());
@@ -94,8 +90,6 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         } else if (holder instanceof ViewHolderItemPage) {
             ViewHolderItemPage viewHolderItemPage = (ViewHolderItemPage) holder;
 
-            // Here you apply the animation when the view is bound
-            setAnimation(viewHolderItemPage.layout);
             DrawerItemPage drawerItemPage = getPageItem(position);
             viewHolderItemPage.bindContent(drawerItemPage);
             viewHolderItemPage.itemText.setText(drawerItemPage.getName());
@@ -111,6 +105,27 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
+    @Override
+    public void onViewDetachedFromWindow(RecyclerView.ViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        // Clear the animation when the view is detached. Prevent bugs during fast scroll.
+        if (holder instanceof ViewHolderItemCategory) {
+            ((ViewHolderItemCategory) holder).layout.clearAnimation();
+        } else if (holder instanceof ViewHolderItemPage) {
+            ((ViewHolderItemPage) holder).layout.clearAnimation();
+        }
+    }
+
+    @Override
+    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        // Apply the animation when the view is attached
+        if (holder instanceof ViewHolderItemCategory) {
+            setAnimation(((ViewHolderItemCategory) holder).layout);
+        } else if (holder instanceof ViewHolderItemPage) {
+            setAnimation(((ViewHolderItemPage) holder).layout);
+        }
+    }
 
     /**
      * Here is the key method to apply the animation
@@ -135,7 +150,6 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         else
             return TYPE_ITEM_PAGE;
     }
-
 
     private DrawerItemCategory getDrawerItem(int position) {
         return drawerItemCategoryList.get(position - 1);

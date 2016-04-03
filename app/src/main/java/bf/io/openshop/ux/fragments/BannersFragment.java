@@ -50,6 +50,11 @@ public class BannersFragment extends Fragment {
     private Metadata bannersMetadata;
 
     /**
+     * Indicates if user data should be loaded from server or from memory.
+     */
+    private boolean mAlreadyLoaded = false;
+
+    /**
      * Holds reference for empty view. Show to user when no data loaded.
      */
     private View emptyContent;
@@ -63,30 +68,43 @@ public class BannersFragment extends Fragment {
 
         progressDialog = Utils.generateProgressDialog(getActivity(), false);
 
-        // Prepare views and listeners
         prepareEmptyContent(view);
-        prepareContentViews(view);
+        // Don't reload data when return from backstack
+        if (savedInstanceState == null && !mAlreadyLoaded) {
+            Timber.d("Reloading banners.");
+            mAlreadyLoaded = true;
 
-        loadBanners(null);
+            // Prepare views and listeners
+            prepareContentViews(view, true);
+            loadBanners(null);
+        } else {
+            Timber.d("Banners already loaded.");
+            prepareContentViews(view, false);
+            // Already loaded
+        }
+
         return view;
     }
 
     /**
      * Prepares views and listeners associated with content.
      *
-     * @param view fragment root view.
+     * @param view       fragment root view.
+     * @param freshStart indicates when everything should be recreated.
      */
-    private void prepareContentViews(View view) {
+    private void prepareContentViews(View view, boolean freshStart) {
         bannersRecycler = (RecyclerView) view.findViewById(R.id.banners_recycler);
-        bannersRecyclerAdapter = new BannersRecyclerAdapter(getActivity(), new BannersRecyclerInterface() {
-            @Override
-            public void onBannerSelected(Banner banner) {
-                Activity activity = getActivity();
-                if (activity instanceof MainActivity) {
-                    ((MainActivity) activity).onBannerSelected(banner);
+        if (freshStart) {
+            bannersRecyclerAdapter = new BannersRecyclerAdapter(getActivity(), new BannersRecyclerInterface() {
+                @Override
+                public void onBannerSelected(Banner banner) {
+                    Activity activity = getActivity();
+                    if (activity instanceof MainActivity) {
+                        ((MainActivity) activity).onBannerSelected(banner);
+                    }
                 }
-            }
-        });
+            });
+        }
         LinearLayoutManager layoutManager = new LinearLayoutManager(bannersRecycler.getContext());
         bannersRecycler.setLayoutManager(layoutManager);
         bannersRecycler.setItemAnimator(new DefaultItemAnimator());

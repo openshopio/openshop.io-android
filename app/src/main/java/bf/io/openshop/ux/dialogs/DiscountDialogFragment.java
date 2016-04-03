@@ -65,7 +65,20 @@ public class DiscountDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        Dialog dialog = new Dialog(getActivity(), getTheme()) {
+            @Override
+            public void dismiss() {
+                // Remove soft keyboard
+                if (getActivity() != null && getView() != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+                }
+
+                requestListener = null;
+
+                super.dismiss();
+            }
+        };
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.getWindow().setWindowAnimations(R.style.dialogFragmentAnimation);
         dialog.setCanceledOnTouchOutside(false);
@@ -84,12 +97,6 @@ public class DiscountDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (isRequiredFieldsOk()) {
-                    // Remove soft keyboard
-                    if (getView() != null) {
-                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
-                    }
-
                     sendDiscountCode(discountCodeInput.getEditText());
                 }
             }
@@ -172,13 +179,6 @@ public class DiscountDialogFragment extends DialogFragment {
             discountCode = true;
         }
         return discountCode;
-    }
-
-    @Override
-    public void onCancel(DialogInterface dialog) {
-        super.onCancel(dialog);
-        Timber.e("OnCancel called");
-        requestListener = null;
     }
 
     @Override

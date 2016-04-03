@@ -68,7 +68,6 @@ public class ProductColor {
         ProductColor that = (ProductColor) o;
 
         if (id != that.id) return false;
-        if (remoteId != that.remoteId) return false;
         if (value != null ? !value.equals(that.value) : that.value != null) return false;
         if (code != null ? !code.equals(that.code) : that.code != null) return false;
         return !(img != null ? !img.equals(that.img) : that.img != null);

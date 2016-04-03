@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -37,23 +38,38 @@ import bf.io.openshop.entities.product.ProductVariant;
 import bf.io.openshop.interfaces.RequestListener;
 import bf.io.openshop.utils.JsonUtils;
 import bf.io.openshop.utils.MsgUtils;
-import bf.io.openshop.ux.adapters.ColorTextSpinnerAdapter;
+import bf.io.openshop.ux.adapters.CartColorTextSpinnerAdapter;
+import bf.io.openshop.ux.adapters.CartSizeSpinnerAdapter;
 import bf.io.openshop.ux.adapters.QuantitySpinnerAdapter;
-import bf.io.openshop.ux.adapters.SizeVariantSpinnerAdapter;
 import timber.log.Timber;
 
-
+/**
+ * Dialog handles update items in the shopping cart.
+ */
 public class UpdateCartItemDialogFragment extends DialogFragment {
-    
+
+    /**
+     * Defined max product quantity.
+     */
     private static final int QUANTITY_MAX = 15;
+
     private CartProductItem cartProductItem;
+
     private RequestListener requestListener;
+
     private View dialogProgress;
     private View dialogContent;
     private Spinner itemColorsSpinner;
     private Spinner itemSizesSpinner;
     private Spinner quantitySpinner;
 
+    /**
+     * Creates dialog which handles update items in the shopping cart
+     *
+     * @param cartProductItem item in the cart, which should be updated.
+     * @param requestListener listener receiving update request results.
+     * @return new instance of dialog.
+     */
     public static UpdateCartItemDialogFragment newInstance(CartProductItem cartProductItem, RequestListener requestListener) {
         if (cartProductItem == null) {
             Timber.e(new RuntimeException(), "Created UpdateCartItemDialogFragment with null parameters.");
@@ -98,13 +114,9 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
                 if (quantitySpinner != null && itemSizesSpinner != null) {
                     ProductVariant productVariant = (ProductVariant) itemSizesSpinner.getSelectedItem();
                     ProductQuantity productQuantity = (ProductQuantity) quantitySpinner.getSelectedItem();
-                    Timber.e("Selected: " + productVariant + ". Quantity: " + productQuantity);
+                    Timber.d("Selected: " + productVariant + ". Quantity: " + productQuantity);
                     if (productVariant != null && productVariant.getSize() != null && productQuantity != null) {
-                        updateProductInCart(cartProductItem.getId(),
-                                productVariant.getId(), productQuantity.getQuantity());
-//                        if (updateCartItemListener != null)
-//                            updateCartItemListener.updateProductInCart(cartProductItem.getId(),
-//                                    productVariant.getId(), productQuantity.getQuantity());
+                        updateProductInCart(cartProductItem.getId(), productVariant.getId(), productQuantity.getQuantity());
                     } else {
                         Timber.e(new RuntimeException(), "Cannot obtain info about edited cart item.");
                         MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Internal_error_reload_cart_please), MsgUtils.ToastLength.SHORT);
@@ -127,8 +139,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
         });
 
         // Set item quantity
-        QuantitySpinnerAdapter adapterQuantity = new QuantitySpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, getQuantities());
-        adapterQuantity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        QuantitySpinnerAdapter adapterQuantity = new QuantitySpinnerAdapter(getActivity(), getQuantities());
         quantitySpinner = (Spinner) view.findViewById(R.id.dialog_update_cart_item_quantity_spin);
         quantitySpinner.setAdapter(adapterQuantity);
 
@@ -172,33 +183,23 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
 
 
     private void setSpinners(final Product product) {
-        if (product != null) {
-            ProductColor actualItemColor = cartProductItem.getVariant().getColor();
-
-            List<ProductColor> colorsList = new ArrayList<>();
-            List<ProductVariant> variantSizeArrayList = new ArrayList<>();
+        if (product != null && product.getVariants() != null && product.getVariants().size() > 0) {
+            List<ProductColor> productColors = new ArrayList<>();
 
             for (ProductVariant pv : product.getVariants()) {
                 ProductColor pac = pv.getColor();
-                // Fill available colors colors
-                if (!colorsList.contains(pac)) {
-                    colorsList.add(pac);
-                }
-                // Fill available sizes
-                if (pv.getColor().equalsColors(actualItemColor)) {
-                    variantSizeArrayList.add(pv);
+                if (!productColors.contains(pac)) {
+                    productColors.add(pac);
                 }
             }
 
-            if (colorsList.isEmpty() || colorsList.size() == 1) {
-                itemColorsSpinner.setVisibility(View.GONE);
-            } else {
+            if (productColors.size() > 1) {
                 itemColorsSpinner.setVisibility(View.VISIBLE);
-                ColorTextSpinnerAdapter adapterColor = new ColorTextSpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, colorsList);
-                adapterColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                CartColorTextSpinnerAdapter adapterColor = new CartColorTextSpinnerAdapter(getActivity(), productColors);
                 itemColorsSpinner.setAdapter(adapterColor);
+                ProductColor actualItemColor = cartProductItem.getVariant().getColor();
                 if (actualItemColor != null) {
-                    int index = colorsList.indexOf(actualItemColor);
+                    int index = productColors.indexOf(actualItemColor);
                     Timber.d("SetSpinners selectedColor: " + actualItemColor.toString());
                     if (index == -1) {
                         itemColorsSpinner.setSelection(0);
@@ -207,30 +208,74 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
                         itemColorsSpinner.setSelection(index);
                     }
                 }
+
+                itemColorsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        ProductColor productColor = (ProductColor) parent.getItemAtPosition(position);
+                        if (productColor != null) {
+                            Timber.d("ColorPicker selected color: " + productColor.toString());
+                            updateSizeSpinner(product, productColor);
+                        } else {
+                            Timber.e("Retrieved null color from spinner.");
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+                        Timber.d("Nothing selected in product colors spinner.");
+                    }
+                });
+            } else {
+                itemColorsSpinner.setVisibility(View.GONE);
+                updateSizeSpinner(product, product.getVariants().get(0).getColor());
             }
 
-            SizeVariantSpinnerAdapter adapterSize = new SizeVariantSpinnerAdapter(getActivity(), variantSizeArrayList);
-            adapterSize.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            int selectedPosition = cartProductItem.getQuantity() - 1;
+            if (selectedPosition < 0) selectedPosition = 0;
+            if (selectedPosition > (quantitySpinner.getCount() - 1))
+                Timber.e(new RuntimeException(), "More item quantity that can be. Quantity:" + (selectedPosition + 1) + ", max:" + quantitySpinner.getCount());
+            else
+                quantitySpinner.setSelection(selectedPosition);
+        } else {
+            Timber.e("Setting spinners for null product variants.");
+            MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
+        }
+    }
+
+    /**
+     * Update size values in size adapter.
+     *
+     * @param product      updated product.
+     * @param productColor actually selected color.
+     */
+    private void updateSizeSpinner(Product product, ProductColor productColor) {
+        if (product != null) {
+            ArrayList<ProductVariant> variantSizeArrayList = new ArrayList<>();
+
+            for (ProductVariant pv : product.getVariants()) {
+                if (pv.getColor().equals(productColor)) {
+                    variantSizeArrayList.add(pv);
+                }
+            }
+
+            // Show sizes
+            CartSizeSpinnerAdapter adapterSize = new CartSizeSpinnerAdapter(getActivity(), variantSizeArrayList);
             itemSizesSpinner.setAdapter(adapterSize);
             // Select actual size
             if (variantSizeArrayList.size() > 0) {
                 int sizeSelection = 0;
                 for (int i = 0; i < variantSizeArrayList.size(); i++) {
-                    Timber.e("Compare list: " + variantSizeArrayList.get(i).getId() + " == " + cartProductItem.getVariant().getId() + " as actual");
+//                    Timber.d("Compare list: " + variantSizeArrayList.get(i).getId() + " == " + cartProductItem.getVariant().getId() + " as actual");
                     if (variantSizeArrayList.get(i).getId() == cartProductItem.getVariant().getId()) {
                         sizeSelection = i;
                     }
                 }
                 itemSizesSpinner.setSelection(sizeSelection);
             }
+        } else {
+            Timber.e("UpdateImagesAndSizeSpinner with null product.");
         }
-
-        int selectedPosition = cartProductItem.getQuantity() - 1;
-        if (selectedPosition < 0) selectedPosition = 0;
-        if (selectedPosition > (quantitySpinner.getCount() - 1))
-            Timber.e(new RuntimeException(), "More item quantity that can be. Quantity:" + (selectedPosition + 1) + ", max:" + quantitySpinner.getCount());
-        else
-            quantitySpinner.setSelection(selectedPosition);
     }
 
     private void updateProductInCart(long productCartId, long newVariantId, int newQuantity) {

@@ -163,7 +163,6 @@ public class DrawerFragment extends Fragment {
             }
         });
         drawerRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        drawerRecycler.setItemAnimator(new DefaultItemAnimator());
         drawerRecycler.setHasFixedSize(true);
         drawerRecycler.setAdapter(drawerRecyclerAdapter);
 
