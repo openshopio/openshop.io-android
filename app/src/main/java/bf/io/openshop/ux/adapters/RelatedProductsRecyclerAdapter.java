@@ -79,7 +79,6 @@ public class RelatedProductsRecyclerAdapter extends RecyclerView.Adapter<Related
                 holder.productPrice.setTextColor(ContextCompat.getColor(context, R.color.textSecondary));
                 holder.productDiscount.setText(holder.product.getDiscountPriceFormatted());
             }
-            holder.productPrice.setText(product.getDiscountPriceFormatted());
 
             Picasso.with(context)
                     .load(product.getMainImage())

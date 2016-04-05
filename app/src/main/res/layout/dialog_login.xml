@@ -1,462 +1,457 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    android:id="@+id/container"
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
+    android:layout_width="match_parent"
+    android:animateLayoutChanges="true"
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:contentDescription="@string/content_description_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_background"/>
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="@string/content_description_background"
-            android:scaleType="centerCrop"
-            android:src="@drawable/login_background"/>
+    <!-- Login welcome form -->
+    <LinearLayout
+        android:id="@+id/login_base_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@color/black_transparent_70percent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:paddingLeft="@dimen/base_margin_horizontal"
+        android:paddingRight="@dimen/base_margin_horizontal"
+        android:paddingTop="10dp"
+        android:visibility="visible"
+        tools:visibility="gone">
 
-        <!-- Login welcome form -->
-        <LinearLayout
-            android:id="@+id/login_base_form"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/login_form_text"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:background="@color/black_transparent_70percent"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="15dp"
+            android:padding="@dimen/base_margin"
+            android:text="@string/Log_in_to_shop_via"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="18sp"
+            android:textStyle="normal"/>
+
+        <Button
+            android:id="@+id/login_form_email_btn"
+            style="@style/buttonPrimaryStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/email"
+            android:drawableStart="@drawable/email"
+            android:paddingEnd="32dp"
             android:paddingLeft="@dimen/base_margin_horizontal"
-            android:paddingRight="@dimen/base_margin_horizontal"
-            android:paddingTop="10dp"
-            android:visibility="visible"
-            tools:visibility="gone">
+            android:paddingRight="32dp"
+            android:paddingStart="@dimen/base_margin_horizontal"
+            android:text="@string/E_MAIL"
+            />
+
+        <Button
+            android:id="@+id/login_form_facebook"
+            style="@style/buttonPrimaryStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_vertical_half"
+            android:background="@drawable/button_facebook_style"
+            android:drawableLeft="@drawable/facebook_icon"
+            android:drawableStart="@drawable/facebook_icon"
+            android:paddingEnd="32dp"
+            android:paddingLeft="@dimen/base_margin_horizontal"
+            android:paddingRight="32dp"
+            android:paddingStart="@dimen/base_margin_horizontal"
+            android:text="@string/FACEBOOK"
+            />
+
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_margin_vertical_half"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/login_form_text"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="@dimen/base_margin"
-                android:text="@string/Log_in_to_shop_via"
-                android:textColor="@color/textIconColorPrimary"
-                android:textSize="18sp"
-                android:textStyle="normal"/>
-
-            <Button
-                android:id="@+id/login_form_email_btn"
-                style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/email"
-                android:drawableStart="@drawable/email"
-                android:paddingEnd="32dp"
-                android:paddingLeft="@dimen/base_margin_horizontal"
-                android:paddingRight="32dp"
-                android:paddingStart="@dimen/base_margin_horizontal"
-                android:text="@string/E_MAIL"
-                />
-
-            <Button
-                android:id="@+id/login_form_facebook"
-                style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_margin_vertical_half"
-                android:background="@drawable/button_facebook_style"
-                android:drawableLeft="@drawable/facebook_icon"
-                android:drawableStart="@drawable/facebook_icon"
-                android:paddingEnd="32dp"
-                android:paddingLeft="@dimen/base_margin_horizontal"
-                android:paddingRight="32dp"
-                android:paddingStart="@dimen/base_margin_horizontal"
-                android:text="@string/FACEBOOK"
-                />
-
-            <RelativeLayout
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/base_margin_vertical_half"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/login_form_registration_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:drawableEnd="@drawable/arrow_right_accent"
-                    android:drawablePadding="4dp"
-                    android:drawableRight="@drawable/arrow_right_accent"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp"
-                    android:text="@string/Dont_have_an_account"
-                    android:textColor="@color/textIconColorPrimary"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/login_form_skip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:drawableEnd="@drawable/arrow_right_accent"
-                    android:drawablePadding="4dp"
-                    android:drawableRight="@drawable/arrow_right_accent"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="center"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp"
-                    android:text="@string/Skip"
-                    android:textColor="@color/textIconColorPrimary"
-                    android:textSize="16sp"/>
-            </RelativeLayout>
-        </LinearLayout>
-        <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
-
-        <!-- Registration form-->
-        <LinearLayout
-            android:id="@+id/login_registration_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:background="@color/black_transparent_70percent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="28dp"
-            android:paddingLeft="@dimen/base_margin_horizontal"
-            android:paddingRight="@dimen/base_margin_horizontal"
-            android:paddingTop="10dp"
-            android:visibility="gone"
-            tools:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/login_registration_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingBottom="@dimen/base_margin_vertical"
-                    android:paddingTop="@dimen/base_margin_vertical"
-                    android:text="@string/Dont_have_an_account"
-                    android:textColor="@color/textIconColorPrimary"
-                    android:textSize="18sp"/>
-
-                <ImageButton
-                    android:id="@+id/login_registration_close_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/Cancel"
-                    android:padding="5dp"
-                    android:src="@drawable/close"/>
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/login_registration_email_wrapper"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textColorHint="@color/colorPrimaryLight">
-
-                <AutoCompleteTextView
-                    android:id="@+id/login_registration_email_text_auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Email"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:nextFocusDown="@+id/login_registration_password"
-                    android:nextFocusForward="@+id/login_registration_password"
-                    android:nextFocusRight="@+id/login_registration_password"
-                    android:paddingEnd="@dimen/base_margin_horizontal_half"
-                    android:paddingLeft="@dimen/base_margin_horizontal"
-                    android:paddingRight="@dimen/base_margin_horizontal_half"
-                    android:paddingStart="@dimen/base_margin_horizontal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/login_registration_password_wrapper"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="2dp"
-                android:textColorHint="@color/colorPrimaryLight">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@android:drawable/ic_menu_view"
-                    android:drawableRight="@android:drawable/ic_menu_view"
-                    android:hint="@string/prompt_password"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:paddingEnd="@dimen/base_margin_horizontal_half"
-                    android:paddingLeft="@dimen/base_margin_horizontal"
-                    android:paddingRight="@dimen/base_margin_horizontal_half"
-                    android:paddingStart="@dimen/base_margin_horizontal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <!--android:imeActionId="123"-->
-            <!--android:imeActionLabel="@string/action_sign_up"-->
-            <!--android:imeOptions="actionSend"-->
-
-            <RadioGroup
-                android:id="@+id/login_registration_sex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/login_registration_sex_man"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginRight="24dp"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp"
-                    android:text="@string/Male"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"/>
-
-                <RadioButton
-                    android:id="@+id/login_registration_sex_woman"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:fontFamily="sans-serif-light"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="15dp"
-                    android:text="@string/Female"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"/>
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/login_registration_confirm"
-                style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="@string/Register"/>
-        </LinearLayout>
-        <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
-
-        <!-- Login with email form-->
-        <LinearLayout
-            android:id="@+id/login_email_form"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:background="@color/black_transparent_70percent"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="28dp"
-            android:paddingLeft="@dimen/base_margin_horizontal"
-            android:paddingRight="@dimen/base_margin_horizontal"
-            android:paddingTop="10dp"
-            android:visibility="gone"
-            tools:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/login_email_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingBottom="@dimen/base_margin_vertical"
-                    android:paddingTop="@dimen/base_margin_vertical"
-                    android:text="@string/Log_in_to_shop_via_email"
-                    android:textColor="@color/textIconColorPrimary"
-                    android:textSize="18sp"/>
-
-                <ImageButton
-                    android:id="@+id/login_email_close_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/Cancel"
-                    android:padding="5dp"
-                    android:src="@drawable/close"/>
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/login_email_email_wrapper"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textColorHint="@color/colorPrimaryLight">
-
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Email"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:nextFocusDown="@+id/login_registration_password"
-                    android:nextFocusForward="@+id/login_registration_password"
-                    android:nextFocusRight="@+id/login_registration_password"
-                    android:paddingEnd="@dimen/base_margin_horizontal_half"
-                    android:paddingLeft="@dimen/base_margin_horizontal"
-                    android:paddingRight="@dimen/base_margin_horizontal_half"
-                    android:paddingStart="@dimen/base_margin_horizontal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/login_email_password_wrapper"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="2dp"
-                android:textColorHint="@color/colorPrimaryLight">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@android:drawable/ic_menu_view"
-                    android:drawableRight="@android:drawable/ic_menu_view"
-                    android:hint="@string/prompt_password"
-                    android:imeActionId="124"
-                    android:imeActionLabel="@string/action_log_in"
-                    android:imeOptions="actionSend"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:paddingEnd="@dimen/base_margin_horizontal_half"
-                    android:paddingLeft="@dimen/base_margin_horizontal"
-                    android:paddingRight="@dimen/base_margin_horizontal_half"
-                    android:paddingStart="@dimen/base_margin_horizontal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:id="@+id/login_email_forgotten_password"
+                android:id="@+id/login_form_registration_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:drawableEnd="@drawable/arrow_right_accent"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/arrow_right_accent"
                 android:fontFamily="sans-serif-light"
-                android:padding="16dp"
-                android:text="@string/Forgot_your_password"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:text="@string/Dont_have_an_account"
                 android:textColor="@color/textIconColorPrimary"
                 android:textSize="16sp"/>
 
-            <Button
-                android:id="@+id/login_email_confirm"
-                style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
+            <TextView
+                android:id="@+id/login_form_skip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="4dp"
-                android:text="@string/Log_me_in"/>
-        </LinearLayout>
-        <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:drawableEnd="@drawable/arrow_right_accent"
+                android:drawablePadding="4dp"
+                android:drawableRight="@drawable/arrow_right_accent"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:paddingBottom="12dp"
+                android:paddingTop="12dp"
+                android:text="@string/Skip"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 
-        <!-- Forgotten password form form-->
+    <!-- Registration form-->
+    <LinearLayout
+        android:id="@+id/login_registration_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@color/black_transparent_70percent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="28dp"
+        android:paddingLeft="@dimen/base_margin_horizontal"
+        android:paddingRight="@dimen/base_margin_horizontal"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        tools:visibility="gone">
+
         <LinearLayout
-            android:id="@+id/login_email_forgotten_form"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/login_registration_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="@dimen/base_margin_vertical"
+                android:paddingTop="@dimen/base_margin_vertical"
+                android:text="@string/Dont_have_an_account"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"/>
+
+            <ImageButton
+                android:id="@+id/login_registration_close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/Cancel"
+                android:padding="5dp"
+                android:src="@drawable/close"/>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_registration_email_wrapper"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColorHint="@color/colorPrimaryLight">
+
+            <AutoCompleteTextView
+                android:id="@+id/login_registration_email_text_auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:nextFocusDown="@+id/login_registration_password"
+                android:nextFocusForward="@+id/login_registration_password"
+                android:nextFocusRight="@+id/login_registration_password"
+                android:paddingEnd="@dimen/base_margin_horizontal_half"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal_half"
+                android:paddingStart="@dimen/base_margin_horizontal"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_registration_password_wrapper"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:textColorHint="@color/colorPrimaryLight">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@android:drawable/ic_menu_view"
+                android:drawableRight="@android:drawable/ic_menu_view"
+                android:hint="@string/prompt_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingEnd="@dimen/base_margin_horizontal_half"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal_half"
+                android:paddingStart="@dimen/base_margin_horizontal"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!--android:imeActionId="123"-->
+        <!--android:imeActionLabel="@string/action_sign_up"-->
+        <!--android:imeOptions="actionSend"-->
+
+        <RadioGroup
+            android:id="@+id/login_registration_sex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
-            android:background="@color/black_transparent_70percent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="28dp"
-            android:paddingLeft="@dimen/base_margin_horizontal"
-            android:paddingRight="@dimen/base_margin_horizontal"
-            android:paddingTop="10dp"
-            android:visibility="gone"
-            tools:visibility="visible">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="300dp"
+            <RadioButton
+                android:id="@+id/login_registration_sex_man"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/Male"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
 
-                <TextView
-                    android:id="@+id/login_email_forgotten_text"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingBottom="@dimen/base_margin_vertical"
-                    android:paddingTop="@dimen/base_margin_vertical"
-                    android:text="@string/Forgot_your_password"
-                    android:textColor="@color/textIconColorPrimary"
-                    android:textSize="18sp"/>
-
-                <ImageButton
-                    android:id="@+id/login_email_forgotten_back_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/Cancel"
-                    android:padding="5dp"
-                    android:src="@drawable/close"/>
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/login_email_forgotten_email_wrapper"
-                android:layout_width="300dp"
+            <RadioButton
+                android:id="@+id/login_registration_sex_woman"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textColorHint="@color/colorPrimaryLight">
+                android:checked="true"
+                android:fontFamily="sans-serif-light"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="@string/Female"
+                android:textColor="@color/white"
+                android:textSize="18sp"/>
+        </RadioGroup>
 
-                <AutoCompleteTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/Email_for_recovery"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:nextFocusDown="@+id/login_registration_password"
-                    android:nextFocusForward="@+id/login_registration_password"
-                    android:nextFocusRight="@+id/login_registration_password"
-                    android:paddingEnd="@dimen/base_margin_horizontal_half"
-                    android:paddingLeft="@dimen/base_margin_horizontal"
-                    android:paddingRight="@dimen/base_margin_horizontal_half"
-                    android:paddingStart="@dimen/base_margin_horizontal"
-                    android:singleLine="true"/>
-            </android.support.design.widget.TextInputLayout>
+        <Button
+            android:id="@+id/login_registration_confirm"
+            style="@style/buttonPrimaryStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/Register"/>
+    </LinearLayout>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 
-            <Button
-                android:id="@+id/login_email_forgotten_confirm"
-                style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
+    <!-- Login with email form-->
+    <LinearLayout
+        android:id="@+id/login_email_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@color/black_transparent_70percent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="28dp"
+        android:paddingLeft="@dimen/base_margin_horizontal"
+        android:paddingRight="@dimen/base_margin_horizontal"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/login_email_text"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="12dp"
-                android:text="@string/Reset"/>
+                android:layout_weight="1"
+                android:paddingBottom="@dimen/base_margin_vertical"
+                android:paddingTop="@dimen/base_margin_vertical"
+                android:text="@string/Log_in_to_shop_via_email"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"/>
+
+            <ImageButton
+                android:id="@+id/login_email_close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/Cancel"
+                android:padding="5dp"
+                android:src="@drawable/close"/>
         </LinearLayout>
-        <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
-    </RelativeLayout>
-</android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_email_email_wrapper"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColorHint="@color/colorPrimaryLight">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:nextFocusDown="@+id/login_registration_password"
+                android:nextFocusForward="@+id/login_registration_password"
+                android:nextFocusRight="@+id/login_registration_password"
+                android:paddingEnd="@dimen/base_margin_horizontal_half"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal_half"
+                android:paddingStart="@dimen/base_margin_horizontal"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_email_password_wrapper"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:textColorHint="@color/colorPrimaryLight">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@android:drawable/ic_menu_view"
+                android:drawableRight="@android:drawable/ic_menu_view"
+                android:hint="@string/prompt_password"
+                android:imeActionId="124"
+                android:imeActionLabel="@string/action_log_in"
+                android:imeOptions="actionSend"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:paddingEnd="@dimen/base_margin_horizontal_half"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal_half"
+                android:paddingStart="@dimen/base_margin_horizontal"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/login_email_forgotten_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif-light"
+            android:padding="16dp"
+            android:text="@string/Forgot_your_password"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="16sp"/>
+
+        <Button
+            android:id="@+id/login_email_confirm"
+            style="@style/buttonPrimaryStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:text="@string/Log_me_in"/>
+    </LinearLayout>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+
+    <!-- Forgotten password form form-->
+    <LinearLayout
+        android:id="@+id/login_email_forgotten_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:background="@color/black_transparent_70percent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="28dp"
+        android:paddingLeft="@dimen/base_margin_horizontal"
+        android:paddingRight="@dimen/base_margin_horizontal"
+        android:paddingTop="10dp"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/login_email_forgotten_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="@dimen/base_margin_vertical"
+                android:paddingTop="@dimen/base_margin_vertical"
+                android:text="@string/Forgot_your_password"
+                android:textColor="@color/textIconColorPrimary"
+                android:textSize="18sp"/>
+
+            <ImageButton
+                android:id="@+id/login_email_forgotten_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/Cancel"
+                android:padding="5dp"
+                android:src="@drawable/close"/>
+        </LinearLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_email_forgotten_email_wrapper"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColorHint="@color/colorPrimaryLight">
+
+            <AutoCompleteTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Email_for_recovery"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:nextFocusDown="@+id/login_registration_password"
+                android:nextFocusForward="@+id/login_registration_password"
+                android:nextFocusRight="@+id/login_registration_password"
+                android:paddingEnd="@dimen/base_margin_horizontal_half"
+                android:paddingLeft="@dimen/base_margin_horizontal"
+                android:paddingRight="@dimen/base_margin_horizontal_half"
+                android:paddingStart="@dimen/base_margin_horizontal"
+                android:singleLine="true"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/login_email_forgotten_confirm"
+            style="@style/buttonPrimaryStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:text="@string/Reset"/>
+    </LinearLayout>
+    <!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+</RelativeLayout>

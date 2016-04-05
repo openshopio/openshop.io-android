@@ -26,7 +26,7 @@ import timber.log.Timber;
 /**
  * Adapter handling list of product items.
  */
-public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecyclerAdapter.ViewHolder> {
+public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecyclerAdapter.ViewHolder> {
 
     private final Context context;
     private final CategoryRecyclerInterface categoryRecyclerInterface;
@@ -41,18 +41,11 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
      * @param context                   activity context.
      * @param categoryRecyclerInterface listener indicating events that occurred.
      */
-    public CategoryRecyclerAdapter(Context context, CategoryRecyclerInterface categoryRecyclerInterface) {
+    public ProductsRecyclerAdapter(Context context, CategoryRecyclerInterface categoryRecyclerInterface) {
         this.context = context;
         this.categoryRecyclerInterface = categoryRecyclerInterface;
 
-        DisplayMetrics dm = context.getResources().getDisplayMetrics();
-        int densityDpi = dm.densityDpi;
-        // Load high resolution images only on large screen devices with wifi connection.
-        if (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE)
-                && densityDpi >= DisplayMetrics.DENSITY_HIGH && MyApplication.getInstance().isWiFiConnection()) {
-            Timber.d("Large screen detected. Load big images.");
-            loadHighRes = true;
-        }
+        defineImagesQuality(false);
     }
 
     public Product getItem(int position) {
@@ -72,7 +65,7 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
     // Create new views (invoked by the layout manager)
     @Override
-    public CategoryRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProductsRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (layoutInflater == null)
             layoutInflater = LayoutInflater.from(parent.getContext());
 
@@ -87,7 +80,6 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
         holder.bindContent(product);
         // - replace the contents of the view with that element
         holder.productNameTV.setText(holder.product.getName());
-
 
         if (loadHighRes && product.getMainImageHighRes() != null) {
             Picasso.with(context).load(product.getMainImageHighRes())
@@ -124,6 +116,27 @@ public class CategoryRecyclerAdapter extends RecyclerView.Adapter<CategoryRecycl
 
     public void clear() {
         products.clear();
+    }
+
+    /**
+     * Define required image quality.
+     *
+     * @param highResolution true for better quality.
+     */
+    public void defineImagesQuality(boolean highResolution) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        int densityDpi = dm.densityDpi;
+        if (highResolution) {
+            // Load high resolution images on bigger screens.
+            loadHighRes = (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL)
+                    && densityDpi >= DisplayMetrics.DENSITY_XHIGH);
+        } else {
+            // Event if not wanted, load high resolution image on big screens and wifi connection
+            loadHighRes = (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE)
+                    && densityDpi >= DisplayMetrics.DENSITY_HIGH && MyApplication.getInstance().isWiFiConnection());
+        }
+        Timber.d("Image high quality selected: " + loadHighRes);
+        notifyDataSetChanged();
     }
 
 

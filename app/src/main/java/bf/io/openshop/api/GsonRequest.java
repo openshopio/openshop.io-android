@@ -13,7 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
@@ -135,7 +134,7 @@ public class GsonRequest<T> extends Request<T> {
                 Timber.d(GsonRequest.class.getSimpleName() + " URL:" + requestUrl + ". ResponseCode:" + response.statusCode);
 
             // Parse response and return obtained object
-            String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            String json = new String(response.data, PROTOCOL_CHARSET);
             T result = Utils.getGsonParser().fromJson(json, clazz);
             if (result == null) return Response.error(new ParseError(new NullPointerException()));
             else return Response.success(result, HttpHeaderParser.parseCacheHeaders(response));

@@ -92,8 +92,6 @@ public class ColorSpinnerAdapter extends ArrayAdapter<ProductColor> {
         if (color != null) {
             holder.colorText.setText(color.getValue());
 
-            // TODO otestovat a pridat barvy
-            Timber.e("Color: " + color.toString());
             if (color.getId() == -5) {
                 holder.colorStroke.setVisibility(View.INVISIBLE);
             } else {

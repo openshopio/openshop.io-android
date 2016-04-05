@@ -23,13 +23,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.List;
-
 import bf.io.openshop.R;
 import bf.io.openshop.entities.delivery.Branch;
 import bf.io.openshop.entities.delivery.OpeningHours;
 import bf.io.openshop.entities.delivery.Shipping;
-import bf.io.openshop.entities.delivery.Transport;
 import bf.io.openshop.listeners.OnSingleClickListener;
 import timber.log.Timber;
 
@@ -130,7 +127,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
                 String timeText = "";
                 for (int i = 0; i < branch.getOpeningHoursList().size(); i++) {
                     OpeningHours openingHours = branch.getOpeningHoursList().get(i);
-                    timeText += openingHours.getDay() + openingHours.getOpening();
+                    timeText += openingHours.getDay() + " " + openingHours.getOpening();
                     if (i != branch.getOpeningHoursList().size() - 1) {
                         timeText += "\n";
                     }

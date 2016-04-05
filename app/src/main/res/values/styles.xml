@@ -21,6 +21,7 @@
 
     <style name="ProgressTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/transparent</item>
     </style>
 
     <style name="button_action_style">

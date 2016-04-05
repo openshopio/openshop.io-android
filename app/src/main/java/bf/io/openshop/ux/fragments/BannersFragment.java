@@ -69,8 +69,8 @@ public class BannersFragment extends Fragment {
         progressDialog = Utils.generateProgressDialog(getActivity(), false);
 
         prepareEmptyContent(view);
-        // Don't reload data when return from backstack
-        if (savedInstanceState == null && !mAlreadyLoaded) {
+        // Don't reload data when return from backStack. Reload if a new instance was created or data was empty.
+        if ((savedInstanceState == null && !mAlreadyLoaded) || bannersRecyclerAdapter == null || bannersRecyclerAdapter.isEmpty()) {
             Timber.d("Reloading banners.");
             mAlreadyLoaded = true;
 

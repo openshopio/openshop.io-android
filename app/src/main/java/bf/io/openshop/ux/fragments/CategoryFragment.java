@@ -2,7 +2,6 @@ package bf.io.openshop.ux.fragments;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.Fragment;
@@ -52,7 +51,7 @@ import bf.io.openshop.utils.EndlessRecyclerScrollListener;
 import bf.io.openshop.utils.MsgUtils;
 import bf.io.openshop.utils.RecyclerMarginDecorator;
 import bf.io.openshop.ux.MainActivity;
-import bf.io.openshop.ux.adapters.CategoryRecyclerAdapter;
+import bf.io.openshop.ux.adapters.ProductsRecyclerAdapter;
 import bf.io.openshop.ux.adapters.SortSpinnerAdapter;
 import bf.io.openshop.ux.dialogs.FilterDialogFragment;
 import timber.log.Timber;
@@ -95,7 +94,7 @@ public class CategoryFragment extends Fragment {
     private TextView emptyContentView;
     private RecyclerView productsRecycler;
     private GridLayoutManager productsRecyclerLayoutManager;
-    private CategoryRecyclerAdapter categoryRecyclerAdapter;
+    private ProductsRecyclerAdapter productsRecyclerAdapter;
     private EndlessRecyclerScrollListener endlessRecyclerScrollListener;
 
     // Filters parameters
@@ -106,7 +105,6 @@ public class CategoryFragment extends Fragment {
     // Properties used to restore previous state
     private int toolbarOffset = -1;
     private boolean isList = false;
-    private Parcelable recyclerState;
 
 
     public static CategoryFragment newInstance(long categoryId, String name, String type, String searchQuery) {
@@ -219,7 +217,7 @@ public class CategoryFragment extends Fragment {
             }
 
             // Opened first time (not form backstack)
-            if (categoryRecyclerAdapter == null || categoryRecyclerAdapter.getItemCount() == 0) {
+            if (productsRecyclerAdapter == null || productsRecyclerAdapter.getItemCount() == 0) {
                 prepareRecyclerAdapter();
                 prepareProductRecycler(view);
                 prepareSortSpinner();
@@ -275,10 +273,7 @@ public class CategoryFragment extends Fragment {
             }
         };
         productsRecycler.addOnScrollListener(endlessRecyclerScrollListener);
-
-        productsRecycler.setAdapter(categoryRecyclerAdapter);
-        if (recyclerState != null)
-            productsRecyclerLayoutManager.onRestoreInstanceState(recyclerState);
+        productsRecycler.setAdapter(productsRecyclerAdapter);
 
         switchLayoutManager.setOnClickListener(new OnSingleClickListener() {
             @Override
@@ -286,10 +281,12 @@ public class CategoryFragment extends Fragment {
                 if (isList) {
                     isList = false;
                     switchLayoutManager.setImageResource(R.drawable.grid_on);
+                    productsRecyclerAdapter.defineImagesQuality(false);
                     animateRecyclerLayoutChange(2);
                 } else {
                     isList = true;
                     switchLayoutManager.setImageResource(R.drawable.grid_off);
+                    productsRecyclerAdapter.defineImagesQuality(true);
                     animateRecyclerLayoutChange(1);
                 }
             }
@@ -297,7 +294,7 @@ public class CategoryFragment extends Fragment {
     }
 
     private void prepareRecyclerAdapter() {
-        categoryRecyclerAdapter = new CategoryRecyclerAdapter(getActivity(), new CategoryRecyclerInterface() {
+        productsRecyclerAdapter = new ProductsRecyclerAdapter(getActivity(), new CategoryRecyclerInterface() {
             @Override
             public void onProductSelected(View caller, Product product) {
                 if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
@@ -389,7 +386,7 @@ public class CategoryFragment extends Fragment {
         loadMoreProgress.setVisibility(View.VISIBLE);
         if (url == null) {
             if (endlessRecyclerScrollListener != null) endlessRecyclerScrollListener.clean();
-            categoryRecyclerAdapter.clear();
+            productsRecyclerAdapter.clear();
             url = String.format(EndPoints.PRODUCTS, SettingsMy.getActualNonNullShop(getActivity()).getId());
 
             // Build request url
@@ -424,7 +421,7 @@ public class CategoryFragment extends Fragment {
                     public void onResponse(@NonNull ProductListResponse response) {
                         firstTimeSort = false;
 //                        Timber.d("response:" + response.toString());
-                        categoryRecyclerAdapter.addProducts(response.getProducts());
+                        productsRecyclerAdapter.addProducts(response.getProducts());
                         productsMetadata = response.getMetadata();
                         if (filters == null) filters = productsMetadata.getFilters();
                         checkEmptyContent();
@@ -444,7 +441,7 @@ public class CategoryFragment extends Fragment {
     }
 
     private void checkEmptyContent() {
-        if (categoryRecyclerAdapter != null && categoryRecyclerAdapter.getItemCount() > 0) {
+        if (productsRecyclerAdapter != null && productsRecyclerAdapter.getItemCount() > 0) {
             emptyContentView.setVisibility(View.INVISIBLE);
             productsRecycler.setVisibility(View.VISIBLE);
         } else {

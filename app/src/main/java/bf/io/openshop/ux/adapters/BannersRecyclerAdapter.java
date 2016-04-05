@@ -85,6 +85,15 @@ public class BannersRecyclerAdapter extends RecyclerView.Adapter<BannersRecycler
         banners.clear();
     }
 
+    /**
+     * Check if some banners exist.
+     *
+     * @return true if content is empty.
+     */
+    public boolean isEmpty() {
+        return banners == null || banners.size() == 0;
+    }
+
     // Provide a reference to the views for each data item
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView bannerImage;
