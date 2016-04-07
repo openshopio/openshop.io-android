@@ -183,7 +183,7 @@ public class CategoryFragment extends Fragment {
                 @Override
                 public void onSingleClick(View view) {
                     if (filters == null) {
-                        MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.filter_unavailable), MsgUtils.ToastLength.SHORT);
+                        MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Filter_unavailable), MsgUtils.ToastLength.SHORT);
                     } else {
                         FilterDialogFragment filterDialogFragment = FilterDialogFragment.newInstance(filters, new FilterDialogInterface() {
                             @Override

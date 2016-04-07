@@ -192,7 +192,7 @@ public class DrawerFragment extends Fragment {
     public void setUp(DrawerLayout drawerLayout, final Toolbar toolbar, FragmentDrawerListener eventsListener) {
         mDrawerLayout = drawerLayout;
         this.drawerListener = eventsListener;
-        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(getActivity(), drawerLayout, toolbar, R.string.content_description_open_navigation_drawer, R.string.content_description_close_navigation_drawer) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);

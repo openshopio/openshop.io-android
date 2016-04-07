@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/Shipping_info"
+            android:contentDescription="@string/content_description_shipping_info"
             android:padding="10dp"
             android:src="@drawable/branch_detail"/>
     </LinearLayout>

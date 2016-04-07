@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin_vertical"
-                android:text="@string/Address"
+                android:text="@string/Address_colon"
                 android:textColor="@color/textSecondary"
                 android:textSize="12sp"/>
 

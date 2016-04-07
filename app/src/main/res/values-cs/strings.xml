@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OpenShop.io</string>
+
+    <!-- General strings-->
+    <string name="No_network_connection">Internetové připojení není dostupné.</string>
+    <string name="Internal_error">Interní chyba, prosím zkuste to později.</string>
+    <string name="Loading">Načítám …</string>
+    <string name="Retry">Obnovit</string>
+    <string name="Ok">OK</string>
+    <string name="Cancel">Zrušit</string>
+    <string name="Close">Zavřít</string>
+    <string name="Clear">Vymazat</string>
+    <string name="Undo">Vrátit</string>
+    <string name="Required_field">Požadované pole</string>
+    <string name="The_entries_must_match">Pole se musí shodovat</string>
+    <string name="Content_is_empty">Obsah je prázdný.</string>
+
+    <!-- Strings related to splash screen -->
+    <string name="Select_shop">Vyberte obchod</string>
+    <string name="Select_the_country_where_you_want_to_shop">Vyberte zemi ve které \n chcete nakupovat </string>
+    <string name="Continue">Pokračovat</string>
+
+    <!-- Main activity related -->
+    <string name="Another_click_for_leaving_app">Opakovaným kliknutím opustíte aplikaci.</string>
+    <string name="All_categories">Všechny kategorie</string>
+    <string name="menu_action_search">Hledat</string>
+    <string name="Type_your_wish">Sem napište přání</string>
+    <string name="menu_action_cart">Nákupní košík</string>
+    <string name="menu_action_wishlist">Seznam přání</string>
+
+
+    <!-- Products related strings -->
+    <string name="Just_arrived">Právě dorazilo</string>
+    <string name="No_banners">Žádné bannery</string>
+    <string name="Show_offers">Zobrazit nabídky</string>
+    <string name="FILTER">FILTR</string>
+    <string name="Apply">Použít</string>
+    <string name="Restart">Restart</string>
+    <string name="Filter_unavailable">Filtr je nedostupný</string>
+    <string name="Products_not_found">Produkty nebyly nalezeny.</string>
+    <string name="Product_not_found">Produkt nebyl nalezen.</string>
+    <string name="ADD_TO_CART">PŘIDAT DO KOŠÍKU</string>
+    <string name="SEND_TO_A_FRIEND">POSLAT KAMARÁDCE</string>
+    <string name="RECOMMENDED">DOPORUČENÉ</string>
+    <string name="Select_size">Vyberte velikost</string>
+    <string name="Size">Velikost</string>
+    <string name="Product">Produkt</string>
+    <string name="Price">Cena</string>
+    <string name="Color">Barva</string>
+    <string name="Brand">Značka</string>
+    <string name="All">Vše</string>
+
+    <!-- Products sort options -->
+    <string name="Recommended">Doporučené</string>
+    <string name="Whats_new">Co je nového</string>
+    <string name="Highest_price">Nejvyšší cena</string>
+    <string name="Lowest_price">Nejnižší cena</string>
+
+
+    <!-- User related strings -->
+    <string name="Unknown_user">Neznámý uživatel</string>
+    <string name="Profile">Profil</string>
+    <string name="Name_colon">Jméno:</string>
+    <string name="Address_colon">Adresa:</string>
+    <string name="Email_colon">Email:</string>
+    <string name="Phone_colon">Telefon:</string>
+
+    <string name="Account">Účet</string>
+    <string name="Email">Email</string>
+    <string name="Phone">Telefon</string>
+    <string name="Street">Ulice</string>
+    <string name="House_code">Číslo domu</string>
+    <string name="City">Město</string>
+    <string name="ZIP">PSČ</string>
+
+    <string name="Changing_the_password">Změna hesla</string>
+    <string name="Password">Heslo</string>
+    <string name="New_password">Nové heslo</string>
+    <string name="Password_again">Nové heslo znovu</string>
+    <string name="Change_password">Změnit heslo</string>
+    <string name="Save">Uložit</string>
+
+    <string name="My_orders">Objednávky</string>
+    <string name="Branches">Pobočky</string>
+    <string name="Settings">Nastavení</string>
+
+
+    <!-- Login related strings-->
+    <string name="Log_in">Přihlásit</string>
+    <string name="Log_out">Odhlásit</string>
+    <string name="Log_in_to_shop_via">Přhlásit se prostřednictvím</string>
+    <string name="Log_in_to_shop_via_email">Přhlásit se emailem</string>
+    <string name="Dont_have_an_account">Nemáte účet?</string>
+    <string name="Skip">Přeskočit</string>
+    <string name="Forgot_your_password">Zapomněli jste heslo?</string>
+    <string name="Email_for_recovery">Email pro obnovu hesla</string>
+    <string name="Reset">Obnovit</string>
+    <string name="Log_me_in">Přihlásit se</string>
+    <string name="E_MAIL">E-MAIL</string>
+    <string name="FACEBOOK">FACEBOOK</string>
+    <string name="Register">Vytvořit účet</string>
+    <string name="Male">Muž</string>
+    <string name="Female">Žena</string>
+    <string name="Check_your_email_we_sent_you_an_confirmation_email">Zkontrolujte si email. Poslali jsme Vám potvrzovací email pro změnu hesla.</string>
+    <string name="Facebook_login_failed">Facebookové přihlášení selhalo.</string>
+    <string name="Receiving_facebook_profile_failed">Získání facebookového profilu selhalo.</string>
+    <string name="Oops_login_expired">Oops! Přihlášení expirovalo.</string>
+    <string name="Your_session_has_expired_Please_log_in_again">Vaše přihlášení expirovalo. Prosím přihlašte se znovu.</string>
+
+
+    <!-- Cart and order related strings -->
+    <string name="Shopping_cart">Nákupní košík</string>
+    <string name="Your_cart_is_empty">Váš košík je prázdný</string>
+    <string name="START_SHOPPING">ZAČÍT NAKUPOVAT</string>
+    <string name="SHIPPING_AND_PAYMENT">DOPRAVA a PLATBA</string>
+    <string name="Please_select_a_size">Prosím vyberte velikost.</string>
+    <string name="added_to_cart">přidán do košíku.</string>
+    <string name="Go_to_cart">Do košíku</string>
+    <string name="Delete">Smazat</string>
+    <string name="Edit">Upravit</string>
+    <string name="Update_item">Aktualizovat položku:</string>
+    <string name="The_item_has_been_successfully_removed">Položka byla úspěšně odstraněna.</string>
+    <string name="Discount_code">Slevový kód</string>
+    <string name="Do_you_have_a_discount_code">Máte slevový kód?</string>
+    <string name="Enter_the_discount_code">Vepiště Váš slevový kód.</string>
+    <string name="Internal_error_reload_cart_please">Interní chyba. Prosím znovu načtěte košík.</string>
+
+    <!-- Order related strings-->
+    <string name="Order">Objednávka</string>
+    <string name="Order_colon">Objednávka:</string>
+    <string name="Date_created">Datum vytvoření</string>
+    <string name="Date_created_colon">Datum vytvoření:</string>
+    <string name="Total_price">Celková cena</string>
+    <string name="Order_summary">Přehled objednávky</string>
+    <string name="Order_history">Historie objednávek</string>
+    <string name="Your_orders_history_is_empty">Vaše historie objednávek je prázdná.</string>
+    <string name="Order_details">Detail objednávky</string>
+    <string name="Shipping">Doprava</string>
+    <string name="Payment">Platba</string>
+    <string name="Shipping_method">Typ dopravy</string>
+    <string name="Choose_shipping_method">Vyberte typ dopravy</string>
+    <string name="Choose_payment_method">Vyberte typ platby</string>
+    <string name="Shipping_details">Detail dopravy</string>
+    <string name="Note">Poznámka</string>
+    <string name="Click_on_Order_to_allow_our_Terms_and_Conditions">Kliknutím na "Dokončit objednávku" souhlasíte s našimi <![CDATA[<b><font color=#ee1f65>Obchodnímy podmínkamy</b>]]></string>
+    <string name="Finish_order">Dokončit objednávku</string>
+    <string name="Shipping_is_empty">Typ dopravy není vyplněný</string>
+    <string name="Personal_pickup">Osobní převzetí</string>
+    <string name="Shipping_type_colon">Typ dopravy:</string>
+    <string name="Shipping_price_colon">Cena dopravy:</string>
+    <string name="free">zdarma</string>
+    <string name="Summary">Shrnutí</string>
+    <string name="Total_colon">Celkem:</string>
+
+
+    <!-- Wishlist related -->
+    <string name="Your_wishlist_is_empty">Váš seznam přání je prázdný.</string>
+    <string name="Wishlist">Seznam přání</string>
+    <string name="Product_deleted_from_wishlist">Produkt byl odstraněn ze seznamu přání.</string>
+    <string name="Product_added_to_wishlist">Produkt byl přidán do seznamu přání.</string>
+    <string name="Go_to_wishlist">Do seznamu přání</string>
+
+
+    <!-- Others -->
+    <string name="Select">Vybrat</string>
+    <string name="Open_source_libraries">Open source knihovny</string>
+    <string name="License_details_for_open_source_software">Podrobné informace o licencích použitého open source softwaru</string>
+    <string name="App_needs_to_be_restarted">Aplikace musí být restartována.</string>
+    <string name="including_VAT">s DPH</string>
+    <string name="Thank_you_for_your_order">Děkujeme za Vaši objednávku.</string>
+    <string name="Wait_for_sms_or_email_order_confirmation">Vyčkejte prosím na &lt;b>SMS&lt;/b> nebo &lt;b>email&lt;/b>, který potvrdí vaši objednávku.</string>
+    <string name="This_is_a_sample_app">This is a sample app</string>
+    <string name="Link_is_invalid">Link je neplatný</string>
+    <string name="Min">Min</string>
+    <string name="Max">Max</string>
+
+
+    <!-- Format strings -->
+    <string name="format_space_prefix"> %1$s</string>
+    <string name="format_comma_prefix">, %1$s</string>
+    <string name="format_string_division">%1$s / %2$s</string>
+    <string name="format_quantity">%1$d ks</string>
+    <string name="format_string_quantity">%1$s %2$dx</string>
+    <string name="format_plus">+ %1$s</string>
+    <string name="format_number">%1$d</string>
+    <string name="format_price_range">%1$d %2$s - %3$d %4$s</string>
+    <string name="format_price_discount_percents">-%1$d %%</string>
+
+    <!-- Content description strings -->
+    <string name="content_description_open_navigation_drawer">Otevřít navigační menu</string>
+    <string name="content_description_close_navigation_drawer">Zavřít navigační menu</string>
+    <string name="content_description_submenu">Vyvolá dílčí menu</string>
+    <string name="content_description_move_right">Posunout doprava</string>
+    <string name="content_description_move_left">Posunout doleva</string>
+    <string name="content_description_background">Pozadí</string>
+    <string name="content_description_back_arrow">Vrátit se zpět</string>
+    <string name="content_description_intro_screen">Úvodní obrazovka</string>
+    <string name="content_description_product_image">Obrázek produktu</string>
+    <string name="content_description_shipping_info">Informace o dopravě</string>
+</resources>

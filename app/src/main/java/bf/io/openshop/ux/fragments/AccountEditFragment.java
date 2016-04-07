@@ -271,7 +271,7 @@ public class AccountEditFragment extends Fragment {
                 loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
             }
         } else {
-            MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_REQUIRED_FIELDS, null, MsgUtils.ToastLength.SHORT);
+            Timber.d("Missing required fields.");
         }
     }
 

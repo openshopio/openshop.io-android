@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/order_create_success_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -16,7 +17,7 @@
         android:padding="10dp"
         android:text="@string/Thank_you_for_your_order"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/black"
+        android:textColor="@color/textPrimary"
         android:textSize="20sp"/>
 
     <TextView
@@ -26,9 +27,10 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="7dp"
         android:gravity="center"
+        android:autoLink="web"
         android:padding="14dp"
+        android:textColor="@color/textSecondary"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/colorAccent"
         android:textSize="16sp"
         tools:text="@string/Wait_for_sms_or_email_order_confirmation"/>
 

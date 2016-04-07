@@ -21,7 +21,6 @@ public class MsgUtils {
     public static final int TOAST_TYPE_MESSAGE = 1;
     public static final int TOAST_TYPE_INTERNAL_ERROR = 2;
     public static final int TOAST_TYPE_NO_NETWORK = 3;
-    public static final int TOAST_TYPE_REQUIRED_FIELDS = 4;
     public static final int TOAST_TYPE_NO_SIZE_SELECTED = 5;
 
     public static void logErrorMessage(VolleyError error) {
@@ -109,9 +108,6 @@ public class MsgUtils {
                 break;
             case TOAST_TYPE_NO_NETWORK:
                 str = activity.getString(R.string.No_network_connection);
-                break;
-            case TOAST_TYPE_REQUIRED_FIELDS:
-                str = activity.getString(R.string.Missing_some_required_fields);
                 break;
             case TOAST_TYPE_NO_SIZE_SELECTED:
                 str = activity.getString(R.string.Please_select_a_size);

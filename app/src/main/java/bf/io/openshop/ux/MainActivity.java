@@ -748,7 +748,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                 super.onBackPressed();
             else {
                 // BackStack is empty. For closing the app user have to tap the back button two times in two seconds.
-                MsgUtils.showToast(this, MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.another_click_for_leaving_app), MsgUtils.ToastLength.SHORT);
+                MsgUtils.showToast(this, MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Another_click_for_leaving_app), MsgUtils.ToastLength.SHORT);
                 isAppReadyToFinish = true;
                 new Handler().postDelayed(new Runnable() {
                     @Override

@@ -92,6 +92,7 @@ public class OrderCreateFragment extends Fragment {
     private TextView selectedShippingPriceTv;
     private TextView selectedPaymentNameTv;
     private TextView selectedPaymentPriceTv;
+    private GsonRequest<Order> postOrderRequest;
 
 
     @Override
@@ -438,7 +439,7 @@ public class OrderCreateFragment extends Fragment {
             String url = String.format(EndPoints.ORDERS, SettingsMy.getActualNonNullShop(getActivity()).getId());
 
             progressDialog.show();
-            GsonRequest<Order> postOrderRequest = new GsonRequest<>(Request.Method.POST, url, jo.toString(), Order.class, new Response.Listener<Order>() {
+            postOrderRequest = new GsonRequest<>(Request.Method.POST, url, jo.toString(), Order.class, new Response.Listener<Order>() {
                 @Override
                 public void onResponse(Order order) {
                     Timber.d("response:" + order.toString());
@@ -449,16 +450,22 @@ public class OrderCreateFragment extends Fragment {
                     updateUserData(user, order);
                     MainActivity.updateCartCountNotification();
 
-                    DialogFragment thankYouDF = new OrderCreateSuccessDialogFragment();
+                    DialogFragment thankYouDF = OrderCreateSuccessDialogFragment.newInstance(false);
                     thankYouDF.show(getFragmentManager(), OrderCreateSuccessDialogFragment.class.getSimpleName());
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.cancel();
+                    // Return 501 for sample application.
+                    if (postOrderRequest != null && postOrderRequest.getStatusCode() == 501) {
+                        DialogFragment thankYouDF = OrderCreateSuccessDialogFragment.newInstance(true);
+                        thankYouDF.show(getFragmentManager(), OrderCreateSuccessDialogFragment.class.getSimpleName());
+                    } else {
+                        MsgUtils.logAndShowErrorMessage(getActivity(), error);
+                    }
                 }
             }, getFragmentManager(), user.getAccessToken());
-
             postOrderRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             postOrderRequest.setShouldCache(false);
             MyApplication.getInstance().addToRequestQueue(postOrderRequest, CONST.order_create_requests_tag);

@@ -219,7 +219,7 @@
                         android:id="@+id/account_edit_password_current"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/Current_password"
+                        android:hint="@string/Password"
                         android:inputType="textPassword"
                         android:textColor="@color/textPrimary"/>
                 </android.support.design.widget.TextInputLayout>

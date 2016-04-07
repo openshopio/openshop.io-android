@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:adjustViewBounds="true"
-        android:contentDescription="@string/Product_image"
+        android:contentDescription="@string/content_description_product_image"
         android:scaleType="fitCenter"/>
 
     <RelativeLayout

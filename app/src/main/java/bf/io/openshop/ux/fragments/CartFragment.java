@@ -143,7 +143,7 @@ public class CartFragment extends Fragment {
                                 setCartVisibility(true);
                                 cartRecyclerAdapter.refreshItems(cart);
 
-                                cartItemCountTv.setText(getString(R.string.format_item_quantity, cart.getProductCount()));
+                                cartItemCountTv.setText(getString(R.string.format_quantity, cart.getProductCount()));
                                 cartTotalPriceTv.setText(cart.getTotalPriceFormatted());
                             }
                         }

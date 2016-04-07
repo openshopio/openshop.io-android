@@ -87,7 +87,7 @@
                     android:background="?attr/selectableItemBackground"
                     android:paddingBottom="5dp"
                     android:paddingTop="8dp"
-                    android:text="@string/do_you_have_a_discount_code"
+                    android:text="@string/Do_you_have_a_discount_code"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"/>
 
