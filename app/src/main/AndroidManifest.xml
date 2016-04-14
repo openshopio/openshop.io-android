@@ -26,7 +26,6 @@
         android:largeHeap="true"
         android:supportsRtl="false"
         android:theme="@style/MaterialTheme">
-        <!-- TODO android:largeHeap="true" really need it? If false, then problems on older phones, because of large size images.-->
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

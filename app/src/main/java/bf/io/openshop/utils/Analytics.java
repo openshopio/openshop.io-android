@@ -47,14 +47,17 @@ public class Analytics {
             deleteAppTrackers();
         } else {
             if (!mTrackers.containsKey(TRACKER_APP) && analytics != null) {
-                Timber.d("Set new app tracker with id: " + shop.getGoogleUa());
-                // App tracker determined by shop
-                // TODO googleUA je ted spatne, potrebujeme nahodit nove.
-//                Tracker appTracker = analytics.newTracker(shop.getGoogleUa());
-//                appTracker.enableAutoActivityTracking(true);
-//                appTracker.enableExceptionReporting(false);
-//                appTracker.enableAdvertisingIdCollection(true);
-//                mTrackers.put(TRACKER_APP, appTracker);
+                if (shop.getGoogleUa() != null && !shop.getGoogleUa().isEmpty()) {
+                    Timber.d("Set new app tracker with id: " + shop.getGoogleUa());
+                    // App tracker determined by shop
+                    Tracker appTracker = analytics.newTracker(shop.getGoogleUa());
+                    appTracker.enableAutoActivityTracking(true);
+                    appTracker.enableExceptionReporting(false);
+                    appTracker.enableAdvertisingIdCollection(true);
+                    mTrackers.put(TRACKER_APP, appTracker);
+                } else {
+                    Timber.e(new RuntimeException(), "Creating GA app tracker with empty Google UA");
+                }
             } else {
                 Timber.e("Trackers for this app already exist.");
             }
@@ -73,7 +76,6 @@ public class Analytics {
             sendCampaignInfo();
         }
 
-        // TODO allow Facebook logger, if desired.
         facebookLogger = AppEventsLogger.newLogger(MyApplication.getInstance());
     }
 
