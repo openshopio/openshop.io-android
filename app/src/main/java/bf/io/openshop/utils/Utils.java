@@ -35,7 +35,7 @@ public class Utils {
     /**
      * Add specific parsing to gson
      *
-     * @return
+     * @return new instance of {@link Gson}
      */
     public static Gson getGsonParser() {
         if (gson == null) {
@@ -81,6 +81,12 @@ public class Utils {
         return true;
     }
 
+    /**
+     * Method converts iso date string to better readable form.
+     *
+     * @param isoDate input iso date. Example: "2016-04-13 13:21:04".
+     * @return processed date string.
+     */
     public static String parseDate(String isoDate) {
         try {
             String[] parts = isoDate.split("-");
@@ -90,7 +96,8 @@ public class Utils {
 
             String dayTemp = parts[2];
             String[] parts2 = dayTemp.split(" ");
-            String day = parts2[0];
+            String day = parts2[0].trim();
+            if (day.length() > 2) throw new RuntimeException("String with day number unexpected length.");
 
             return day + "." + month + "." + year;
         } catch (Exception e) {
@@ -130,6 +137,12 @@ public class Utils {
         return dp;
     }
 
+    private static float getPixelScaleFactor(Context context) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        return (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT);
+    }
+
+
     public static Bitmap drawableToBitmap(Drawable drawable) {
         if (drawable instanceof BitmapDrawable)
             return ((BitmapDrawable) drawable).getBitmap();
@@ -149,13 +162,21 @@ public class Utils {
         return bitmap;
     }
 
-    private static float getPixelScaleFactor(Context context) {
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT);
-    }
-
+    /**
+     * Method calculates the percentage discounts.
+     *
+     * @param context       simple context.
+     * @param price         Base product price.
+     * @param discountPrice Product price after discount.
+     * @return percentage discount with percent symbol.
+     */
     public static String calculateDiscountPercent(Context context, double price, double discountPrice) {
-        int percent = (int) (100 - ((discountPrice / price) * 100));
+        int percent;
+        if(discountPrice >= price){
+            percent = 0;
+        } else {
+            percent = (int) Math.round(100 - ((discountPrice / price) * 100));
+        }
         return String.format(context.getString(R.string.format_price_discount_percents), percent);
     }
 

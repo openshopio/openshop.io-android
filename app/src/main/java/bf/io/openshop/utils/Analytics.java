@@ -42,7 +42,6 @@ public class Analytics {
         GoogleAnalytics analytics = GoogleAnalytics.getInstance(context);
         // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
 
-        // TODO also want and shop specific tracker? Try this:
         if (shop == null) {
             deleteAppTrackers();
         } else {
@@ -106,15 +105,16 @@ public class Analytics {
     }
 
     private static void sendEventToAppTrackers(Map<String, String> event) {
-        Timber.d("Send event to GA: " + event.toString());
         if (mTrackers == null || mTrackers.isEmpty()) {
             Timber.e(new RuntimeException(), "SendEventToAppTrackers, ERROR empty app trackers set");
         } else {
             Set<String> keys = mTrackers.keySet();
             if (keys.contains(TRACKER_GLOBAL)) {
+                Timber.d("Send event to GA global: " + event.toString());
                 mTrackers.get(TRACKER_GLOBAL).send(event);
             }
             if (keys.contains(TRACKER_APP)) {
+                Timber.d("Send event to GA app: " + event.toString());
                 mTrackers.get(TRACKER_APP).send(event);
             }
         }
