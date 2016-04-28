@@ -17,10 +17,14 @@ android {
 
     signingConfigs {
         release {
-            storeFile file(KEYSTORE_PATH)
-            storePassword KEYSTORE_PASSWORD
-            keyAlias KEYSTORE_ALIAS
-            keyPassword KEY_PASSWORD
+            try {
+                storeFile file("openshopKeystore.jks")
+                storePassword KEYSTORE_PASSWORD
+                keyAlias KEYSTORE_ALIAS
+                keyPassword KEY_PASSWORD
+            } catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD, KEYSTORE_ALIAS and KEY_PASSWORD in gradle.properties.")
+            }
         }
     }
 
@@ -28,6 +32,7 @@ android {
         debug {
             minifyEnabled false
             debuggable true
+            versionNameSuffix '-DEBUG'
         }
 
         release {
