@@ -49,7 +49,7 @@ import timber.log.Timber;
  */
 public class DrawerFragment extends Fragment {
 
-    public static final int BANNERS_ID = -123;
+    private static final int BANNERS_ID = -123;
 
     private ProgressBar drawerProgress;
 
@@ -81,6 +81,7 @@ public class DrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_drawer, container, false);
 

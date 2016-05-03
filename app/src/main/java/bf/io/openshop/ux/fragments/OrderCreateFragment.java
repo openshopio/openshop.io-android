@@ -97,7 +97,7 @@ public class OrderCreateFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Order_summary));
 
         View view = inflater.inflate(R.layout.fragment_order_create, container, false);
@@ -343,7 +343,7 @@ public class OrderCreateFragment extends Fragment {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (progressDialog != null) progressDialog.cancel();
-                    Timber.e("Get request cart error: " + error.getMessage());
+                    Timber.e("Get request cart error: %s", error.getMessage());
                     MsgUtils.logAndShowErrorMessage(getActivity(), error);
                     if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
                 }
@@ -402,7 +402,7 @@ public class OrderCreateFragment extends Fragment {
                     new Response.Listener<DeliveryRequest>() {
                         @Override
                         public void onResponse(@NonNull DeliveryRequest deliveryResp) {
-                            Timber.d("GetDelivery:" + deliveryResp.toString());
+                            Timber.d("GetDelivery: %s", deliveryResp.toString());
                             delivery = deliveryResp.getDelivery();
                             deliveryProgressBar.setVisibility(View.GONE);
                             deliveryShippingLayout.setVisibility(View.VISIBLE);
@@ -410,7 +410,7 @@ public class OrderCreateFragment extends Fragment {
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Timber.e("Get request cart error: " + error.getMessage());
+                    Timber.e("Get request cart error: %s", error.getMessage());
                     MsgUtils.logAndShowErrorMessage(getActivity(), error);
 
                     deliveryProgressBar.setVisibility(View.GONE);
@@ -435,14 +435,14 @@ public class OrderCreateFragment extends Fragment {
                 return;
             }
 
-            Timber.d("Post order jo: " + jo.toString());
+            Timber.d("Post order jo: %s", jo.toString());
             String url = String.format(EndPoints.ORDERS, SettingsMy.getActualNonNullShop(getActivity()).getId());
 
             progressDialog.show();
             postOrderRequest = new GsonRequest<>(Request.Method.POST, url, jo.toString(), Order.class, new Response.Listener<Order>() {
                 @Override
                 public void onResponse(Order order) {
-                    Timber.d("response:" + order.toString());
+                    Timber.d("response: %s", order.toString());
                     progressDialog.cancel();
 
                     Analytics.logOrderCreatedEvent(cart, order.getRemoteId(), orderTotalPrice, selectedShipping);

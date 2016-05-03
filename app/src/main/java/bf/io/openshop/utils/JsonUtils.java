@@ -76,7 +76,7 @@ public class JsonUtils {
             jo.put(TAG_REGION, order.getRegion().getId());
         }
 
-        Timber.d("JSONParser postOrder: " + jo.toString());
+        Timber.d("JSONParser postOrder: %s", jo.toString());
         return jo;
     }
 

@@ -66,7 +66,7 @@ public class AccountEditFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " - OnCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Account));
 
         View view = inflater.inflate(R.layout.fragment_account_edit, container, false);
@@ -112,7 +112,7 @@ public class AccountEditFragment extends Fragment {
         User activeUser = SettingsMy.getActiveUser();
         if (activeUser != null) {
             refreshScreen(activeUser);
-            Timber.d("user: " + activeUser.toString());
+            Timber.d("user: %s", activeUser.toString());
         } else {
             Timber.e(new RuntimeException(), "No active user. Shouldn't happen.");
         }
@@ -301,7 +301,7 @@ public class AccountEditFragment extends Fragment {
                 JsonRequest req = new JsonRequest(Request.Method.PUT, url, jo, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Timber.d("Change password successful: " + response.toString());
+                        Timber.d("Change password successful: %s", response.toString());
                         MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Ok), MsgUtils.ToastLength.SHORT);
                         if (progressDialog != null) progressDialog.cancel();
                         getFragmentManager().popBackStackImmediate();

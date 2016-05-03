@@ -61,7 +61,7 @@ public class BannersFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " - OnCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Just_arrived));
 
         View view = inflater.inflate(R.layout.fragment_banners, container, false);
@@ -160,7 +160,7 @@ public class BannersFragment extends Fragment {
                 new Response.Listener<BannersResponse>() {
                     @Override
                     public void onResponse(@NonNull BannersResponse response) {
-                        Timber.d("response:" + response.toString());
+                        Timber.d("response: %s", response.toString());
                         bannersMetadata = response.getMetadata();
                         bannersRecyclerAdapter.addBanners(response.getRecords());
 

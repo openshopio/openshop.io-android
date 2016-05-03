@@ -1,7 +1,6 @@
 package bf.io.openshop.ux.dialogs;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -22,13 +21,10 @@ import bf.io.openshop.entities.filtr.FilterTypeSelect;
 import bf.io.openshop.entities.filtr.Filters;
 import bf.io.openshop.interfaces.FilterDialogInterface;
 import bf.io.openshop.utils.RecyclerMarginDecorator;
-import bf.io.openshop.utils.Utils;
 import bf.io.openshop.ux.adapters.FilterRecyclerAdapter;
 import timber.log.Timber;
 
 public class FilterDialogFragment extends DialogFragment {
-
-    private ProgressDialog progressDialog;
 
     private Filters filterData;
     private FilterDialogInterface filterDialogInterface;
@@ -49,7 +45,6 @@ public class FilterDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.dialogFullscreen);
-        progressDialog = Utils.generateProgressDialog(getActivity(), false);
     }
 
     @Override
@@ -67,7 +62,7 @@ public class FilterDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d("filterDialogFragment - onCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_filters, container, false);
 
         prepareFilterRecycler(view);
@@ -116,7 +111,7 @@ public class FilterDialogFragment extends DialogFragment {
         filterRecycler.setAdapter(filterRecyclerAdapter);
     }
 
-    public String buildFilterUrl() {
+    private String buildFilterUrl() {
         String filterUrl = "";
 
         for (FilterType filterType : filterData.getFilters()) {
@@ -140,7 +135,7 @@ public class FilterDialogFragment extends DialogFragment {
             }
         }
 
-        Timber.d("BuildFilterUrl - " + filterUrl);
+        Timber.d("BuildFilterUrl - %s", filterUrl);
         return filterUrl;
     }
 }

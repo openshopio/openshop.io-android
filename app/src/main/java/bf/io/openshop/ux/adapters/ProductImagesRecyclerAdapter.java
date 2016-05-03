@@ -1,7 +1,6 @@
 package bf.io.openshop.ux.adapters;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import java.util.List;
 
 import bf.io.openshop.R;
 import bf.io.openshop.interfaces.ProductImagesRecyclerInterface;
-import timber.log.Timber;
 
 /**
  * Adapter handling list of product images.
@@ -108,8 +106,6 @@ public class ProductImagesRecyclerAdapter extends RecyclerView.Adapter<ProductIm
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView productImage;
         int position;
-        View aa;
-
 
         public ViewHolder(View v, final ProductImagesRecyclerInterface productImagesRecyclerInterface) {
             super(v);

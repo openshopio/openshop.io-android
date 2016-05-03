@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textSecondary"
         android:textSize="14sp"
-        tools:text="@string/Size"/>
+        tools:text="Size"/>
 
     <Spinner
         android:id="@+id/list_item_filter_select_spinner"

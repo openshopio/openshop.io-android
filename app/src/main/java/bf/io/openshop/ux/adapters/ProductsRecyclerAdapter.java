@@ -48,7 +48,7 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
         defineImagesQuality(false);
     }
 
-    public Product getItem(int position) {
+    private Product getItem(int position) {
         return products.get(position);
     }
 
@@ -135,7 +135,7 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
             loadHighRes = (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE)
                     && densityDpi >= DisplayMetrics.DENSITY_HIGH && MyApplication.getInstance().isWiFiConnection());
         }
-        Timber.d("Image high quality selected: " + loadHighRes);
+        Timber.d("Image high quality selected: %s", loadHighRes);
         notifyDataSetChanged();
     }
 

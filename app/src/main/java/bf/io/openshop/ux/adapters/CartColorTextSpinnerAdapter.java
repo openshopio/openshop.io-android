@@ -20,8 +20,7 @@ public class CartColorTextSpinnerAdapter extends ArrayAdapter<ProductColor> {
     private static final int layoutID = R.layout.spinner_item_simple_text;
     private final LayoutInflater layoutInflater;
 
-    public Context context;
-    public List<ProductColor> colors;
+    private List<ProductColor> colors;
 
     /**
      * Creates an adapter for color selection. Color is represented only by text.
@@ -31,7 +30,6 @@ public class CartColorTextSpinnerAdapter extends ArrayAdapter<ProductColor> {
      */
     public CartColorTextSpinnerAdapter(Context context, List<ProductColor> colors) {
         super(context, layoutID, colors);
-        this.context = context;
         this.colors = colors;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

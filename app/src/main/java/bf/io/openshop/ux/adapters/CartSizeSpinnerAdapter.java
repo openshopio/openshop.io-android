@@ -21,8 +21,7 @@ public class CartSizeSpinnerAdapter extends ArrayAdapter<ProductVariant> {
     private static final int layoutID = R.layout.spinner_item_simple_text;
     private final LayoutInflater layoutInflater;
 
-    public Context context;
-    public List<ProductVariant> sizes;
+    private List<ProductVariant> sizes;
 
     /**
      * Creates an adapter for size selection.
@@ -32,7 +31,6 @@ public class CartSizeSpinnerAdapter extends ArrayAdapter<ProductVariant> {
      */
     public CartSizeSpinnerAdapter(Context context, List<ProductVariant> sizes) {
         super(context, layoutID, sizes);
-        this.context = context;
         this.sizes = sizes;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -75,7 +73,7 @@ public class CartSizeSpinnerAdapter extends ArrayAdapter<ProductVariant> {
         if (getItem(position) != null && getItem(position).getSize() != null) {
             holder.text.setText(getItem(position).getSize().getValue());
         } else {
-            Timber.e("Received null productSize in " + this.getClass().getSimpleName());
+            Timber.e("Received null productSize in %s", this.getClass().getSimpleName());
         }
 
         return v;

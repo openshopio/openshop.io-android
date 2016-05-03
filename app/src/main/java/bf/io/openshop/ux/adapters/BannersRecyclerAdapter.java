@@ -26,7 +26,7 @@ public class BannersRecyclerAdapter extends RecyclerView.Adapter<BannersRecycler
 
     private final BannersRecyclerInterface bannersRecyclerInterface;
     private final Context context;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
     private List<Banner> banners = new ArrayList<>();
 
     /**

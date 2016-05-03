@@ -172,7 +172,7 @@ public class Utils {
      */
     public static String calculateDiscountPercent(Context context, double price, double discountPrice) {
         int percent;
-        if(discountPrice >= price){
+        if (discountPrice >= price) {
             percent = 0;
         } else {
             percent = (int) Math.round(100 - ((discountPrice / price) * 100));
@@ -223,11 +223,11 @@ public class Utils {
             if (text == null || text.isEmpty()) {
                 textInputLayout.setErrorEnabled(true);
                 textInputLayout.setError(errorValue);
-                Timber.d("Input field: " + textInputLayout.getHint() + " missing text.");
+                Timber.d("Input field %s missing text.", textInputLayout.getHint());
                 return false;
             } else {
                 textInputLayout.setErrorEnabled(false);
-                Timber.d("Input field: " + textInputLayout.getHint() + " OK.");
+                Timber.d("Input field: %s OK.", textInputLayout.getHint());
                 return true;
             }
         } else {
@@ -259,7 +259,7 @@ public class Utils {
             } catch (ActivityNotFoundException e) {
                 if (activity != null && !activity.isFinishing()) {
                     MsgUtils.showToast(activity, MsgUtils.TOAST_TYPE_MESSAGE, activity.getString(R.string.Link_is_invalid), MsgUtils.ToastLength.SHORT);
-                    Timber.e(e, "Invoked invalid web link: " + uri);
+                    Timber.e(e, "Invoked invalid web link: %s", uri);
                 }
             }
         }

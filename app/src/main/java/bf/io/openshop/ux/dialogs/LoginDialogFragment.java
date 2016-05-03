@@ -126,7 +126,8 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
                 @Override
                 public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                     if (BuildConfig.DEBUG)
-                        Timber.d("onKey:" + keyCode + " (Back=" + KeyEvent.KEYCODE_BACK + "). Event:" + event.getAction() + " (Down:" + KeyEvent.ACTION_DOWN + ", Up:" + KeyEvent.ACTION_UP + ")");
+                        Timber.d("onKey: %d (Back=%d). Event:%d (Down:%d, Up:%d)", keyCode, KeyEvent.KEYCODE_BACK, event.getAction(),
+                                KeyEvent.ACTION_DOWN, KeyEvent.ACTION_UP);
                     if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
                         switch (actualFormState) {
                             case REGISTRATION:
@@ -156,7 +157,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " - onCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_login, container, false);
         callbackManager = CallbackManager.Factory.create();
 
@@ -212,7 +213,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         String[] addresses = new String[accounts.length];
         for (int i = 0; i < accounts.length; i++) {
             addresses[i] = accounts[i].name;
-            Timber.e("Sets autocompleteEmails: " + accounts[i].name);
+            Timber.e("Sets autocompleteEmails: %s", accounts[i].name);
         }
 
         ArrayAdapter<String> emails = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, addresses);
@@ -355,19 +356,19 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         try {
             jo.put(JsonUtils.TAG_EMAIL, editTextEmail.getText().toString().trim());
             jo.put(JsonUtils.TAG_PASSWORD, editTextPassword.getText().toString().trim());
-            jo.put(JsonUtils.TAG_GENDER, loginRegistrationGenderWoman.isSelected() ? "female" : "male");
+            jo.put(JsonUtils.TAG_GENDER, loginRegistrationGenderWoman.isChecked() ? "female" : "male");
         } catch (JSONException e) {
             Timber.e(e, "Parse new user registration exception");
             MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
             return;
         }
-        if (BuildConfig.DEBUG) Timber.d("Register new user: " + jo.toString());
+        if (BuildConfig.DEBUG) Timber.d("Register new user: %s", jo.toString());
 
         GsonRequest<User> registerNewUser = new GsonRequest<>(Request.Method.POST, url, jo.toString(), User.class,
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response:" + response.toString());
+                        Timber.d("response: %s", response.toString());
                         handleUserLogin(response);
                     }
                 }, new Response.ErrorListener() {
@@ -403,13 +404,13 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
             return;
         }
-        if (BuildConfig.DEBUG) Timber.d("Login user: " + jo.toString());
+        if (BuildConfig.DEBUG) Timber.d("Login user: %s", jo.toString());
 
         GsonRequest<User> userLoginEmailRequest = new GsonRequest<>(Request.Method.POST, url, jo.toString(), User.class,
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response:" + response.toString());
+                        Timber.d("response: %s", response.toString());
                         handleUserLogin(response);
                     }
                 }, new Response.ErrorListener() {
@@ -424,7 +425,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         MyApplication.getInstance().addToRequestQueue(userLoginEmailRequest, CONST.login_dialog_requests_tag);
     }
 
-    public void handleUserLogin(User user) {
+    private void handleUserLogin(User user) {
         if (progressDialog != null) progressDialog.cancel();
         SettingsMy.setActiveUser(user);
 
@@ -467,13 +468,13 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
             return;
         }
-        if (BuildConfig.DEBUG) Timber.d("Reset password email: " + jo.toString());
+        if (BuildConfig.DEBUG) Timber.d("Reset password email: %s", jo.toString());
 
         JsonRequest req = new JsonRequest(Request.Method.POST, url,
                 jo, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Timber.d("Reset password on url success. Response:" + response.toString());
+                Timber.d("Reset password on url success. Response: %s", response.toString());
                 progressDialog.cancel();
                 MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Check_your_email_we_sent_you_an_confirmation_email), MsgUtils.ToastLength.LONG);
                 setVisibilityOfEmailForgottenForm(false);
@@ -602,7 +603,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             Timber.e("Fb login succeed with null loginResult.");
             handleNonFatalError(getString(R.string.Facebook_login_failed), true);
         } else {
-            Timber.d("Result:" + loginResult.toString());
+            Timber.d("Result: %s", loginResult.toString());
             GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(),
                     new GraphRequest.GraphJSONObjectCallback() {
                         @Override
@@ -612,7 +613,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
                             } else {
                                 Timber.e("Error on receiving user profile information.");
                                 if (response != null && response.getError() != null) {
-                                    Timber.e(new RuntimeException(), "Error:" + response.getError().toString());
+                                    Timber.e(new RuntimeException(), "Error: %s", response.getError().toString());
                                 }
                                 handleNonFatalError(getString(R.string.Receiving_facebook_profile_failed), true);
                             }
@@ -649,7 +650,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     /**
      * Volley request that sends FB_ID and FB_ACCESS_TOKEN to API
      */
-    public void verifyUserOnApi(JSONObject userProfileObject, AccessToken fbAccessToken) {
+    private void verifyUserOnApi(JSONObject userProfileObject, AccessToken fbAccessToken) {
         String url = String.format(EndPoints.USER_LOGIN_FACEBOOK, SettingsMy.getActualNonNullShop(getActivity()).getId());
         JSONObject jo = new JSONObject();
         try {
@@ -666,7 +667,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response:" + response.toString());
+                        Timber.d("response: %s", response.toString());
                         handleUserLogin(response);
                     }
                 }, new Response.ErrorListener() {

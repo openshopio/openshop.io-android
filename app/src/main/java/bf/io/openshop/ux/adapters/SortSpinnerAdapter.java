@@ -15,7 +15,7 @@ import bf.io.openshop.entities.SortItem;
  */
 public class SortSpinnerAdapter extends ArrayAdapter<SortItem> {
 
-    public List<SortItem> sortItemList = new ArrayList<>();
+    private List<SortItem> sortItemList = new ArrayList<>();
 
     /**
      * Creates an adapter for sort type selection.

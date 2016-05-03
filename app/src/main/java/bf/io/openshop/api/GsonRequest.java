@@ -39,7 +39,7 @@ public class GsonRequest<T> extends Request<T> {
     /**
      * Default charset for JSON request.
      */
-    protected static final String PROTOCOL_CHARSET = "utf-8";
+    private static final String PROTOCOL_CHARSET = "utf-8";
 
     /**
      * Class of object which is serializable from request.
@@ -131,7 +131,7 @@ public class GsonRequest<T> extends Request<T> {
         try {
             requestStatusCode = response.statusCode;
             if (BuildConfig.DEBUG)
-                Timber.d(GsonRequest.class.getSimpleName() + " URL:" + requestUrl + ". ResponseCode:" + response.statusCode);
+                Timber.d("%s URL: %s. ResponseCode: %d", this.getClass().getSimpleName(), requestUrl, response.statusCode);
 
             // Parse response and return obtained object
             String json = new String(response.data, PROTOCOL_CHARSET);
@@ -153,7 +153,7 @@ public class GsonRequest<T> extends Request<T> {
             // Save request status code
             requestStatusCode = volleyError.networkResponse.statusCode;
             if (BuildConfig.DEBUG)
-                Timber.e(GsonRequest.class.getSimpleName() + " URL:" + requestUrl + ". ERROR:" + new String(volleyError.networkResponse.data));
+                Timber.e("%s URL: %s. ERROR: %s", this.getClass().getSimpleName(), requestUrl, new String(volleyError.networkResponse.data));
 
             // If AccessToken expired. Logout user and redirect to home page.
             if (getStatusCode() == HttpURLConnection.HTTP_FORBIDDEN) {

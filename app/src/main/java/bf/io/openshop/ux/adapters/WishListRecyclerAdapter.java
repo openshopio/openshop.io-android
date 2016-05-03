@@ -42,7 +42,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
         this.wishlistInterface = wishlistInterface;
     }
 
-    public WishlistItem getItem(int position) {
+    private WishlistItem getItem(int position) {
         return wishlistItems.get(position);
     }
 
@@ -61,7 +61,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
         return new ViewHolder(v, new ViewHolder.ViewHolderClickListener() {
             @Override
             public void onProductSelected(final View caller, final WishlistItem wishlistItem) {
-                Timber.d("Product click: " + wishlistItem.getVariant().getName());
+                Timber.d("Product click: %s", wishlistItem.getVariant().getName());
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

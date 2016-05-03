@@ -21,7 +21,7 @@ public class LoginExpiredDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Timber.d(LoginExpiredDialogFragment.class.getSimpleName() + " onCreateDialog");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.myAlertDialogStyle);
         builder.setTitle(R.string.Oops_login_expired);

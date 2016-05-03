@@ -32,7 +32,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private final List<CartDiscountItem> cartDiscountItems = new ArrayList<>();
     private final CartRecyclerInterface cartRecyclerInterface;
     private final Context context;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
 
     /**
      * Creates an adapter that handles a list of cart items.
@@ -111,7 +111,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolderDiscount.cartDiscountName.setText(cartDiscountItem.getDiscount().getName());
             viewHolderDiscount.cartDiscountValue.setText(cartDiscountItem.getDiscount().getValueFormatted());
         } else {
-            Timber.e(new RuntimeException(), "Unknown ViewHolder in class: " + CartRecyclerAdapter.class.getSimpleName());
+            Timber.e(new RuntimeException(), "Unknown ViewHolder in class: %s", this.getClass().getSimpleName());
         }
     }
 

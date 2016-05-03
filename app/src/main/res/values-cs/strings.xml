@@ -43,11 +43,7 @@
     <string name="SEND_TO_A_FRIEND">POSLAT KAMARÁDCE</string>
     <string name="RECOMMENDED">DOPORUČENÉ</string>
     <string name="Select_size">Vyberte velikost</string>
-    <string name="Size">Velikost</string>
     <string name="Product">Produkt</string>
-    <string name="Price">Cena</string>
-    <string name="Color">Barva</string>
-    <string name="Brand">Značka</string>
     <string name="All">Vše</string>
 
     <!-- Products sort options -->

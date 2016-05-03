@@ -87,7 +87,7 @@ public class RelatedProductsRecyclerAdapter extends RecyclerView.Adapter<Related
                     .error(R.drawable.placeholder_error)
                     .into(holder.productImage);
         } else {
-            Timber.e(RelatedProductsRecyclerAdapter.class.getSimpleName() + " tried setting null product!");
+            Timber.e("%s tried setting null product!", this.getClass().getSimpleName());
         }
     }
 

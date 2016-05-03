@@ -21,7 +21,7 @@ import timber.log.Timber;
 public class OrdersHistoryRecyclerAdapter extends RecyclerView.Adapter<OrdersHistoryRecyclerAdapter.ViewHolder> {
 
     private final OrdersRecyclerInterface ordersRecyclerInterface;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
     private List<Order> orders = new ArrayList<>();
 
     /**

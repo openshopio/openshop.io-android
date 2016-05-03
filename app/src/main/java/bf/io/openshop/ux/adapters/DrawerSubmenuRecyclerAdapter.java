@@ -21,7 +21,7 @@ import bf.io.openshop.interfaces.DrawerSubmenuRecyclerInterface;
 public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final DrawerSubmenuRecyclerInterface drawerSubmenuRecyclerInterface;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
     private List<DrawerItemCategory> drawerItemCategoryList = new ArrayList<>();
 
     /**

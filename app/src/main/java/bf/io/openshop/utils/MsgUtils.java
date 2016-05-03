@@ -57,7 +57,7 @@ public class MsgUtils {
                 sb.append("\n");
             }
             String result = sb.toString();
-            Timber.e("Error message:" + result);
+            Timber.e("Error message: %s", result);
             if (activity != null)
                 MsgUtils.showToast(activity, TOAST_TYPE_MESSAGE, result, ToastLength.LONG);
         } catch (Exception e) {

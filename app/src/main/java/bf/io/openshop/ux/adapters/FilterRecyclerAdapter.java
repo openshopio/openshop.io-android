@@ -33,7 +33,7 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     /**
      * ID used for simulate default value
      */
-    public static final long DEFAULT_ID = -131;
+    private static final long DEFAULT_ID = -131;
 
     private static final int TYPE_ITEM_COLOR = 0;
     private static final int TYPE_ITEM_SELECT = 1;
@@ -42,7 +42,7 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private final List<FilterType> filterTypeList = new ArrayList<>();
 
     private final Context context;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
 
     /**
      * Creates an adapter that handles a list of filter items.
@@ -151,7 +151,7 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             });
 
         } else {
-            Timber.e(new RuntimeException(), "Unknown ViewHolder in class: " + CartRecyclerAdapter.class.getSimpleName());
+            Timber.e(new RuntimeException(), "Unknown ViewHolder in class: %s", this.getClass().getSimpleName());
         }
     }
 

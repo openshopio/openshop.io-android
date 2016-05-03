@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BannersResponse {
 
-    Metadata metadata;
+    private Metadata metadata;
     private List<Banner> records;
 
     public BannersResponse() {

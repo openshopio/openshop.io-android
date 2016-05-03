@@ -26,7 +26,7 @@ import timber.log.Timber;
 
 public class MyGcmListenerService extends GcmListenerService {
 
-    public static final int NOTIFICATION_ID = 6342806;
+    private static final int NOTIFICATION_ID = 6342806;
 
     private static final String TAG = "GcmListener";
 
@@ -40,9 +40,9 @@ public class MyGcmListenerService extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
         String message = data.getString("message");
-        Timber.d("From: " + from);
-        Timber.d("Message: " + message);
-        Timber.d("Bundle:" + data.toString());
+        Timber.d("From: %s", from);
+        Timber.d("Message: %s", message);
+        Timber.d("Bundle: %s", data.toString());
 
         // Topics not implemented.
 //        if (from.startsWith("/topics/")) {
@@ -154,7 +154,7 @@ public class MyGcmListenerService extends GcmListenerService {
      * @param stringURL server path to image.
      * @return image or null if error occurred.
      */
-    public Bitmap getBitmapFromURL(String stringURL) {
+    private Bitmap getBitmapFromURL(String stringURL) {
         try {
             URL url = new URL(stringURL);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();

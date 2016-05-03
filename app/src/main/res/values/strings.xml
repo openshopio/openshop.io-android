@@ -46,11 +46,7 @@
     <string name="SEND_TO_A_FRIEND">SEND TO A FRIEND</string>
     <string name="RECOMMENDED">RECOMMENDED</string>
     <string name="Select_size">Select size</string>
-    <string name="Size">Size</string>
     <string name="Product">Product</string>
-    <string name="Price">Price</string>
-    <string name="Color">Color</string>
-    <string name="Brand">Brand</string>
     <string name="All">All</string>
 
     <!-- Products sort options -->

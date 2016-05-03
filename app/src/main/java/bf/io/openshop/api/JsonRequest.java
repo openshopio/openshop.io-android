@@ -94,7 +94,7 @@ public class JsonRequest extends JsonObjectRequest {
         try {
             requestStatusCode = response.statusCode;
             if (BuildConfig.DEBUG)
-                Timber.d(JsonRequest.class.getSimpleName() + " URL:" + requestUrl + ". ResponseCode:" + response.statusCode);
+                Timber.d("%s URL: %s. ResponseCode: %d", this.getClass().getSimpleName(), requestUrl, response.statusCode);
         } catch (Exception e) {
             return Response.error(new ParseError(e));
         }
@@ -107,7 +107,7 @@ public class JsonRequest extends JsonObjectRequest {
             // Save request status code
             requestStatusCode = volleyError.networkResponse.statusCode;
             if (BuildConfig.DEBUG)
-                Timber.e(JsonRequest.class.getSimpleName() + " URL:" + requestUrl + ". ERROR:" + new String(volleyError.networkResponse.data));
+                Timber.e("%s URL: %s. ERROR: %s", this.getClass().getSimpleName(), requestUrl, new String(volleyError.networkResponse.data));
 
             // If AccessToken expired. Logout user and redirect to home page.
             if (getStatusCode() == HttpURLConnection.HTTP_FORBIDDEN) {

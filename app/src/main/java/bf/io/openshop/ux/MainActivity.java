@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         super.onCreate(savedInstanceState);
         mInstance = this;
 
-        Timber.d(MainActivity.class.getSimpleName() + " onCreate");
+        Timber.d("%s onCreate", MainActivity.class.getSimpleName());
 
         // Set app specific language localization by selected shop.
         String lang = SettingsMy.getActualNonNullShop(this).getLanguage();
@@ -188,11 +188,11 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         setContentView(R.layout.activity_main);
 
-        if (BuildConfig.DEBUG) {
-            // Only debug properties, used for checking image memory management.
+//        if (BuildConfig.DEBUG) {
+//            // Only debug properties, used for checking image memory management.
 //            Picasso.with(this).setIndicatorsEnabled(true);
 //            Picasso.with(this).setLoggingEnabled(true);
-        }
+//        }
 
         // Initialize trackers and fbLogger
         Analytics.prepareTrackersAndFbLogger(SettingsMy.getActualNonNullShop(this), getApplicationContext());
@@ -233,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (this.getIntent() != null && this.getIntent().getExtras() != null) {
             String target = this.getIntent().getExtras().getString(CONST.BUNDLE_PASS_TARGET, "");
             String title = this.getIntent().getExtras().getString(CONST.BUNDLE_PASS_TITLE, "");
-            Timber.d("Start notification with banner target: " + target);
+            Timber.d("Start notification with banner target: %s", target);
 
             Banner banner = new Banner();
             banner.setTarget(target);
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                     JsonRequest req = new JsonRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Timber.d("getCartCount: " + response.toString());
+                            Timber.d("getCartCount: %s", response.toString());
                             try {
                                 showNotifyCount(response.getInt(JsonUtils.TAG_PRODUCT_COUNT));
                             } catch (Exception e) {
@@ -327,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                     GsonRequest<CartInfo> req = new GsonRequest<>(Request.Method.GET, url, null, CartInfo.class, new Response.Listener<CartInfo>() {
                         @Override
                         public void onResponse(CartInfo response) {
-                            Timber.d("getCartCount: " + response.toString());
+                            Timber.d("getCartCount: %s", response.toString());
                             showNotifyCount(response.getProductCount());
                         }
                     }, new Response.ErrorListener() {
@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
      */
     private void showNotifyCount(int newCartCount) {
         cartCountNotificationValue = newCartCount;
-        Timber.d("Update cart count notification: " + cartCountNotificationValue);
+        Timber.d("Update cart count notification: %d", cartCountNotificationValue);
         if (cartCountView != null) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -382,7 +382,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
             public boolean onQueryTextChange(String newText) {
-                Timber.d("Search query text changed to: " + newText);
+                Timber.d("Search query text changed to: %s", newText);
                 showSearchSuggestions(newText, searchView);
                 return false;
             }
@@ -425,7 +425,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
      */
     private void showSearchSuggestions(String query, SearchView searchView) {
         if (searchSuggestionsAdapter != null && searchSuggestionsList != null) {
-            Timber.d("Populate search adapter - mySuggestions.size(): " + searchSuggestionsList.size());
+            Timber.d("Populate search adapter - mySuggestions.size(): %d", searchSuggestionsList.size());
             final MatrixCursor c = new MatrixCursor(new String[]{BaseColumns._ID, "categories"});
             for (int i = 0; i < searchSuggestionsList.size(); i++) {
                 if (searchSuggestionsList.get(i) != null && searchSuggestionsList.get(i).toLowerCase().startsWith(query.toLowerCase()))
@@ -524,7 +524,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (manager.getBackStackEntryCount() > 0) {
             if (BuildConfig.DEBUG) {
                 for (int i = 0; i < manager.getBackStackEntryCount(); i++) {
-                    Timber.d("BackStack content_" + i + "= id:" + manager.getBackStackEntryAt(i).getId() + ", name:" + manager.getBackStackEntryAt(i).getName());
+                    Timber.d("BackStack content_%d= id: %d, name: %s", i, manager.getBackStackEntryAt(i).getId(), manager.getBackStackEntryAt(i).getName());
                 }
             }
             FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
@@ -542,7 +542,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
      */
     private void onSearchSubmitted(String searchQuery) {
         clearBackStack();
-        Timber.d("Called onSearchSubmitted with text: " + searchQuery);
+        Timber.d("Called onSearchSubmitted with text: %s", searchQuery);
         Fragment fragment = CategoryFragment.newInstance(searchQuery);
         replaceFragment(fragment, CategoryFragment.class.getSimpleName());
     }
@@ -597,12 +597,12 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
     public void onBannerSelected(Banner banner) {
         if (banner != null) {
             String target = banner.getTarget();
-            Timber.d("Open banner with target: " + target);
+            Timber.d("Open banner with target: %s", target);
             String[] targetParams = target.split(":");
             if (targetParams.length >= 2) {
                 switch (targetParams[0]) {
                     case "list": {
-                        Fragment fragment = CategoryFragment.newInstance(Long.parseLong(targetParams[1]), banner.getName(), null, null);
+                        Fragment fragment = CategoryFragment.newInstance(Long.parseLong(targetParams[1]), banner.getName(), null);
                         replaceFragment(fragment, CategoryFragment.class.getSimpleName() + " - banner");
                         break;
                     }

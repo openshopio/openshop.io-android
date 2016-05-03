@@ -63,7 +63,7 @@ public class CartFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Shopping_cart));
 
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
@@ -152,7 +152,7 @@ public class CartFragment extends Fragment {
                 public void onErrorResponse(VolleyError error) {
                     if (progressDialog != null) progressDialog.cancel();
                     setCartVisibility(false);
-                    Timber.e("Get request cart error: " + error.getMessage());
+                    Timber.e("Get request cart error: %s", error.getMessage());
                     MsgUtils.logAndShowErrorMessage(getActivity(), error);
                 }
             }, getFragmentManager(), user.getAccessToken());
@@ -240,7 +240,7 @@ public class CartFragment extends Fragment {
                     JsonRequest req = new JsonRequest(Request.Method.DELETE, url, null, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Timber.d("Delete item from cart: " + response.toString());
+                            Timber.d("Delete item from cart: %s", response.toString());
                             getCartContent();
                             MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE,
                                     getString(R.string.The_item_has_been_successfully_removed), MsgUtils.ToastLength.LONG);

@@ -23,7 +23,7 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM_ORDER = 1;
 
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
     private Context context;
     private Order order;
 

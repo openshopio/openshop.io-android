@@ -62,15 +62,15 @@ import timber.log.Timber;
  */
 public class CategoryFragment extends Fragment {
 
-    public static final String TYPE = "type";
-    public static final String CATEGORY_NAME = "categoryName";
-    public static final String CATEGORY_ID = "categoryId";
-    public static final String SEARCH_QUERY = "search_query";
+    private static final String TYPE = "type";
+    private static final String CATEGORY_NAME = "categoryName";
+    private static final String CATEGORY_ID = "categoryId";
+    private static final String SEARCH_QUERY = "search_query";
 
     /**
      * Prevent the sort selection callback during initialization.
      */
-    boolean firstTimeSort = true;
+    private boolean firstTimeSort = true;
 
     private View loadMoreProgress;
 
@@ -107,22 +107,35 @@ public class CategoryFragment extends Fragment {
     private boolean isList = false;
 
 
-    public static CategoryFragment newInstance(long categoryId, String name, String type, String searchQuery) {
+    /**
+     * Show product list defined by parameters.
+     *
+     * @param categoryId id of product category.
+     * @param name       name of product list.
+     * @param type       type of product list.
+     * @return new fragment instance.
+     */
+    public static CategoryFragment newInstance(long categoryId, String name, String type) {
         Bundle args = new Bundle();
         args.putLong(CATEGORY_ID, categoryId);
         args.putString(CATEGORY_NAME, name);
         args.putString(TYPE, type);
-        args.putString(SEARCH_QUERY, searchQuery);
+        args.putString(SEARCH_QUERY, null);
 
         CategoryFragment fragment = new CategoryFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
-
+    /**
+     * Show product list populated from drawer menu.
+     *
+     * @param drawerItemCategory corresponding drawer menu item.
+     * @return new fragment instance.
+     */
     public static CategoryFragment newInstance(DrawerItemCategory drawerItemCategory) {
         if (drawerItemCategory != null)
-            return newInstance(drawerItemCategory.getOriginalId(), drawerItemCategory.getName(), drawerItemCategory.getType(), null);
+            return newInstance(drawerItemCategory.getOriginalId(), drawerItemCategory.getName(), drawerItemCategory.getType());
         else {
             Timber.e(new RuntimeException(), "Creating category with null arguments");
             return null;
@@ -130,10 +143,10 @@ public class CategoryFragment extends Fragment {
     }
 
     /**
-     * Show fragment filled with search results
+     * Show product list based on search results.
      *
-     * @param searchQuery
-     * @return
+     * @param searchQuery word for searching.
+     * @return new fragment instance.
      */
     public static CategoryFragment newInstance(String searchQuery) {
         Bundle args = new Bundle();
@@ -146,7 +159,7 @@ public class CategoryFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d("CategoryFragment OnCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
         this.emptyContentView = (TextView) view.findViewById(R.id.category_products_empty);
@@ -167,7 +180,7 @@ public class CategoryFragment extends Fragment {
                 categoryName = searchQuery;
             }
 
-            Timber.d("Category type: " + categoryType + ". CategoryId: " + categoryId + ". FilterUrl: " + filterParameters);
+            Timber.d("Category type: %s. CategoryId: %d. FilterUrl: %s.", categoryType, categoryId, filterParameters);
 
             AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.category_appbar_layout);
             if (toolbarOffset != -1) appBarLayout.offsetTopAndBottom(toolbarOffset);
@@ -358,7 +371,7 @@ public class CategoryFragment extends Fragment {
                     firstTimeSort = false;
                     return;
                 }
-                Timber.d("Selected pos: " + position);
+                Timber.d("Selected pos: %d", position);
 
                 if (position != lastSortSpinnerPosition) {
                     Timber.d("OnItemSelected change");
@@ -398,7 +411,7 @@ public class CategoryFragment extends Fragment {
                     Timber.e(e, "Unsupported encoding exception");
                     newSearchQueryString = URLEncoder.encode(searchQuery);
                 }
-                Timber.d("GetFirstProductsInCategory isSearch: " + searchQuery);
+                Timber.d("GetFirstProductsInCategory isSearch: %s", searchQuery);
                 url += "?search=" + newSearchQueryString;
             } else {
                 url += "?" + categoryType + "=" + categoryId;

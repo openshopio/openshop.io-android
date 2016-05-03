@@ -2,7 +2,6 @@ package bf.io.openshop.ux.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,7 +39,7 @@ import timber.log.Timber;
  */
 public class DiscountDialogFragment extends DialogFragment {
 
-    public RequestListener requestListener;
+    private RequestListener requestListener;
     private TextInputLayout discountCodeInput;
     private View progressLayout;
 
@@ -87,7 +86,7 @@ public class DiscountDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(DiscountDialogFragment.class.getSimpleName() + " onCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_discount_fragment, container, false);
 
         progressLayout = view.findViewById(R.id.discount_code_progress);
@@ -125,13 +124,13 @@ public class DiscountDialogFragment extends DialogFragment {
                 MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
                 return;
             }
-            Timber.d("Sending discount code: " + jo.toString());
+            Timber.d("Sending discount code: %s", jo.toString());
 
             progressLayout.setVisibility(View.VISIBLE);
             final JsonRequest req = new JsonRequest(Request.Method.POST, url, jo, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Timber.d("Update item in cart: " + response.toString());
+                    Timber.d("Update item in cart: %s", response.toString());
                     MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_MESSAGE, getString(R.string.Ok), MsgUtils.ToastLength.SHORT);
                     if (requestListener != null) requestListener.requestSuccess(0);
 
@@ -167,7 +166,7 @@ public class DiscountDialogFragment extends DialogFragment {
      *
      * @return true if ok.
      */
-    public boolean isRequiredFieldsOk() {
+    private boolean isRequiredFieldsOk() {
         boolean discountCode = false;
 
         if (discountCodeInput.getEditText() == null || discountCodeInput.getEditText().getText().toString().equalsIgnoreCase("")) {

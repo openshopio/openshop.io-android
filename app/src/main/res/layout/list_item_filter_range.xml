@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/textSecondary"
         android:textSize="14sp"
-        tools:text="@string/Price"/>
+        tools:text="Price"/>
 
     <LinearLayout
         android:id="@+id/list_item_filter_range_bar_layout"

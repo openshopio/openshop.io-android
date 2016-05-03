@@ -13,6 +13,7 @@ import bf.io.openshop.SettingsMy;
 import bf.io.openshop.entities.Shop;
 import bf.io.openshop.utils.Analytics;
 import bf.io.openshop.ux.RestartAppActivity;
+import timber.log.Timber;
 
 public class RestartDialogFragment extends DialogFragment {
 
@@ -27,6 +28,7 @@ public class RestartDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.alertDialogNoTitle);
         builder.setTitle(R.string.Restart);
         builder.setMessage(R.string.App_needs_to_be_restarted);

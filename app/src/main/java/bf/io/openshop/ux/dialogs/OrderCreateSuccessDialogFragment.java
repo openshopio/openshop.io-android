@@ -7,14 +7,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import bf.io.openshop.R;
-import bf.io.openshop.utils.Utils;
 import bf.io.openshop.ux.MainActivity;
+import timber.log.Timber;
 
 
 /**
@@ -36,6 +35,7 @@ public class OrderCreateSuccessDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Timber.d("%s - OnCreateDialog", this.getClass().getSimpleName());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.alertDialogNoTitle);
 
