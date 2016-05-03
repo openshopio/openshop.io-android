@@ -3,6 +3,7 @@ package bf.io.openshop;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.support.design.widget.TextInputLayout;
 
 import com.google.gson.Gson;
 
@@ -15,6 +16,7 @@ import bf.io.openshop.utils.Utils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 /**

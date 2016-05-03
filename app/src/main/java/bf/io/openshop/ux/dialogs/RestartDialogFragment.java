@@ -27,7 +27,7 @@ public class RestartDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.alertDialogNoTitle);
         builder.setTitle(R.string.Restart);
         builder.setMessage(R.string.App_needs_to_be_restarted);
 

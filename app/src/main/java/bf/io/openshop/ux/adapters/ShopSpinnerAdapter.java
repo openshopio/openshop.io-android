@@ -23,20 +23,22 @@ import bf.io.openshop.entities.Shop;
  */
 public class ShopSpinnerAdapter extends ArrayAdapter<Shop> {
     private static final int layoutID = R.layout.list_item_shops;
-
+    private final boolean viewTextWhite;
     private LayoutInflater layoutInflater;
     private List<Shop> shops;
 
     /**
      * Creates an adapter for shop selection.
      *
-     * @param activity activity context.
-     * @param shops    list of items.
+     * @param activity      activity context.
+     * @param shops         list of items.
+     * @param viewTextWhite true if text should be white.
      */
-    public ShopSpinnerAdapter(Activity activity, List<Shop> shops) {
+    public ShopSpinnerAdapter(Activity activity, List<Shop> shops, boolean viewTextWhite) {
         super(activity, layoutID, shops);
         this.layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.shops = shops;
+        this.viewTextWhite = viewTextWhite;
     }
 
     public int getCount() {
@@ -78,7 +80,7 @@ public class ShopSpinnerAdapter extends ArrayAdapter<Shop> {
 
         Shop shop = shops.get(position);
 
-        if (dropdown) {
+        if (dropdown || !viewTextWhite) {
             holder.shopLanguageName.setTextColor(ContextCompat.getColor(getContext(), R.color.textPrimary));
         } else {
             holder.shopLanguageName.setTextColor(ContextCompat.getColor(getContext(), R.color.textIconColorPrimary));

@@ -101,8 +101,7 @@ public class SettingsFragment extends Fragment {
      * @param shops list of shops received from server.
      */
     private void setSpinShops(List<Shop> shops) {
-        ShopSpinnerAdapter adapterLanguage = new ShopSpinnerAdapter(getActivity(), shops);
-        adapterLanguage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ShopSpinnerAdapter adapterLanguage = new ShopSpinnerAdapter(getActivity(), shops, false);
         spinShopSelection.setAdapter(adapterLanguage);
 
         int position = 0;

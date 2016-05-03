@@ -362,14 +362,15 @@ public class DrawerFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
+        // Cancellation during onPause is needed because of app restarting during changing shop.
         MyApplication.getInstance().cancelPendingRequests(CONST.drawer_requests_tag);
         if (drawerLoading) {
             if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
             if (drawerRetryBtn != null) drawerRetryBtn.setVisibility(View.VISIBLE);
             drawerLoading = false;
         }
-        super.onStop();
+        super.onPause();
     }
 
     @Override

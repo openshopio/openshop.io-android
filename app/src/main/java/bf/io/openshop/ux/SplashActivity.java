@@ -356,7 +356,7 @@ public class SplashActivity extends AppCompatActivity {
             defaultEmptyValue.setName(getString(R.string.Select_shop));
             shopList.add(0, defaultEmptyValue);
 
-            ShopSpinnerAdapter shopSpinnerAdapter = new ShopSpinnerAdapter(this, shopList);
+            ShopSpinnerAdapter shopSpinnerAdapter = new ShopSpinnerAdapter(this, shopList, true);
             shopSelectionSpinner.setAdapter(shopSpinnerAdapter);
             shopSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

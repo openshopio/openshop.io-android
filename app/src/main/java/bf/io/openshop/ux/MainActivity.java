@@ -781,10 +781,4 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         // GCM registration
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
     }
-
-    @Override
-    protected void onDestroy() {
-        mInstance = null;
-        super.onDestroy();
-    }
 }
