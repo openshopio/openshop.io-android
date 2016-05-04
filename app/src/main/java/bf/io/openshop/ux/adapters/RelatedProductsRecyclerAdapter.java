@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -18,6 +17,7 @@ import java.util.List;
 import bf.io.openshop.R;
 import bf.io.openshop.entities.product.Product;
 import bf.io.openshop.interfaces.RelatedProductsRecyclerInterface;
+import bf.io.openshop.views.ResizableImageViewHeight;
 import timber.log.Timber;
 
 /**
@@ -87,7 +87,7 @@ public class RelatedProductsRecyclerAdapter extends RecyclerView.Adapter<Related
                     .error(R.drawable.placeholder_error)
                     .into(holder.productImage);
         } else {
-            Timber.e(RelatedProductsRecyclerAdapter.class.getSimpleName() + " tried setting null product!");
+            Timber.e("%s tried setting null product!", this.getClass().getSimpleName());
         }
     }
 
@@ -127,7 +127,7 @@ public class RelatedProductsRecyclerAdapter extends RecyclerView.Adapter<Related
         int position;
         Product product;
 
-        ImageView productImage;
+        ResizableImageViewHeight productImage;
         TextView productName;
         TextView productPrice;
         TextView productDiscount;
@@ -135,7 +135,7 @@ public class RelatedProductsRecyclerAdapter extends RecyclerView.Adapter<Related
 
         public ViewHolder(View v, final RelatedProductsRecyclerInterface relatedProductsRecyclerInterface) {
             super(v);
-            productImage = (ImageView) v.findViewById(R.id.list_item_recommended_products_image);
+            productImage = (ResizableImageViewHeight) v.findViewById(R.id.list_item_recommended_products_image);
             productName = (TextView) v.findViewById(R.id.list_item_recommended_products_name);
             productPrice = (TextView) v.findViewById(R.id.list_item_recommended_products_price);
             productDiscount = (TextView) v.findViewById(R.id.list_item_recommended_products_discount);

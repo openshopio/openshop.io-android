@@ -21,7 +21,7 @@ public class SizeVariantSpinnerAdapter extends ArrayAdapter<ProductVariant> {
     private static final int layoutID = R.layout.spinner_item_product_size;
     private final LayoutInflater layoutInflater;
 
-    public List<ProductVariant> productSizeList;
+    private List<ProductVariant> productSizeList;
 
     /**
      * Creates an adapter for available product sizes selection.
@@ -65,7 +65,7 @@ public class SizeVariantSpinnerAdapter extends ArrayAdapter<ProductVariant> {
             this.productSizeList.addAll(sizes);
             notifyDataSetChanged();
         } else {
-            Timber.e("Trying set null size list in " + this.getClass().getSimpleName());
+            Timber.e("Trying set null size list in %s", this.getClass().getSimpleName());
         }
     }
 
@@ -96,7 +96,7 @@ public class SizeVariantSpinnerAdapter extends ArrayAdapter<ProductVariant> {
         if (productSizeList.get(position) != null && productSizeList.get(position).getSize() != null) {
             holder.sizeText.setText(productSizeList.get(position).getSize().getValue());
         } else {
-            Timber.e("Received null productSize in " + this.getClass().getSimpleName());
+            Timber.e("Received null productSize in %s", this.getClass().getSimpleName());
         }
         return v;
     }

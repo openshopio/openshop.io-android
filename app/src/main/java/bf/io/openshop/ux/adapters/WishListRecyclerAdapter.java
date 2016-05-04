@@ -19,6 +19,7 @@ import java.util.List;
 import bf.io.openshop.R;
 import bf.io.openshop.entities.wishlist.WishlistItem;
 import bf.io.openshop.interfaces.WishlistInterface;
+import bf.io.openshop.views.ResizableImageView;
 import timber.log.Timber;
 
 /**
@@ -42,7 +43,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
         this.wishlistInterface = wishlistInterface;
     }
 
-    public WishlistItem getItem(int position) {
+    private WishlistItem getItem(int position) {
         return wishlistItems.get(position);
     }
 
@@ -61,7 +62,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
         return new ViewHolder(v, new ViewHolder.ViewHolderClickListener() {
             @Override
             public void onProductSelected(final View caller, final WishlistItem wishlistItem) {
-                Timber.d("Product click: " + wishlistItem.getVariant().getName());
+                Timber.d("Product click: %s", wishlistItem.getVariant().getName());
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -155,7 +156,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView ivThumb;
+        public ResizableImageView ivThumb;
         public ImageView wishList;
         public TextView tvProductName;
         public TextView tvProductPrice;
@@ -170,7 +171,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
             tvProductName = (TextView) v.findViewById(R.id.list_item_wishlist_name);
             tvProductPrice = (TextView) v.findViewById(R.id.list_item_wishlist_price);
             tvProductPriceDiscount = (TextView) v.findViewById(R.id.list_item_wishlist_discount);
-            ivThumb = (ImageView) v.findViewById(R.id.list_item_wishlist_image);
+            ivThumb = (ResizableImageView) v.findViewById(R.id.list_item_wishlist_image);
             wishList = (ImageView) v.findViewById(R.id.list_item_wishlist_button);
             wishList.setOnClickListener(new View.OnClickListener() {
                 @Override

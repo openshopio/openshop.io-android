@@ -19,7 +19,6 @@ import bf.io.openshop.entities.delivery.Branch;
  */
 public class BranchesAdapter extends BaseAdapter {
 
-    public Context context;
     private List<Branch> branches = new ArrayList<>();
     private LayoutInflater layoutInflater;
 
@@ -30,7 +29,6 @@ public class BranchesAdapter extends BaseAdapter {
      * @param branches list of items.
      */
     public BranchesAdapter(Context context, List<Branch> branches) {
-        this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.branches = branches;
     }

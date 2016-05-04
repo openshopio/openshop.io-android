@@ -9,7 +9,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -21,6 +20,7 @@ import bf.io.openshop.MyApplication;
 import bf.io.openshop.R;
 import bf.io.openshop.entities.product.Product;
 import bf.io.openshop.interfaces.CategoryRecyclerInterface;
+import bf.io.openshop.views.ResizableImageView;
 import timber.log.Timber;
 
 /**
@@ -48,7 +48,7 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
         defineImagesQuality(false);
     }
 
-    public Product getItem(int position) {
+    private Product getItem(int position) {
         return products.get(position);
     }
 
@@ -119,30 +119,34 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
     }
 
     /**
-     * Define required image quality.
+     * Define required image quality. On really big screens is higher quality always requested.
      *
      * @param highResolution true for better quality.
      */
     public void defineImagesQuality(boolean highResolution) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         int densityDpi = dm.densityDpi;
-        if (highResolution) {
-            // Load high resolution images on bigger screens.
+        // On big screens and wifi connection load high res images always
+        if (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE)
+                && MyApplication.getInstance().isWiFiConnection()) {
+            loadHighRes = true;
+        } else if (highResolution) {
+            // Load high resolution images only on better screens.
             loadHighRes = (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL)
                     && densityDpi >= DisplayMetrics.DENSITY_XHIGH);
         } else {
-            // Event if not wanted, load high resolution image on big screens and wifi connection
-            loadHighRes = (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_XLARGE)
-                    && densityDpi >= DisplayMetrics.DENSITY_HIGH && MyApplication.getInstance().isWiFiConnection());
+            // otherwise
+            loadHighRes = false;
         }
-        Timber.d("Image high quality selected: " + loadHighRes);
+
+        Timber.d("Image high quality selected: %s", loadHighRes);
         notifyDataSetChanged();
     }
 
 
     // Provide a reference to the views for each data item
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView productImage;
+        public ResizableImageView productImage;
         public TextView productNameTV;
         public TextView productPriceTV;
         public TextView productPriceDiscountTV;
@@ -153,7 +157,7 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
             productNameTV = (TextView) v.findViewById(R.id.product_item_name);
             productPriceTV = (TextView) v.findViewById(R.id.product_item_price);
             productPriceDiscountTV = (TextView) v.findViewById(R.id.product_item_discount);
-            productImage = (ImageView) v.findViewById(R.id.product_item_image);
+            productImage = (ResizableImageView) v.findViewById(R.id.product_item_image);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

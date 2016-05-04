@@ -148,7 +148,7 @@ public class LoopViewPager extends ViewPager {
 
             mPreviousOffset = positionOffset;
             if (mOuterPageChangeListener != null) {
-                if (realPosition != mAdapter.getRealCount() - 1) {
+                if (mAdapter != null && realPosition != mAdapter.getRealCount() - 1) {
                     mOuterPageChangeListener.onPageScrolled(realPosition,
                             positionOffset, positionOffsetPixels);
                 } else {

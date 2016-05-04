@@ -63,7 +63,7 @@ public class OrdersHistoryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Order_history));
 
         View view = inflater.inflate(R.layout.fragment_orders_history, container, false);

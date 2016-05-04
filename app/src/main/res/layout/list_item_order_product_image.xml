@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
+        <bf.io.openshop.views.ResizableImageView
             android:id="@+id/list_item_product_images_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -35,7 +35,7 @@ import timber.log.Timber;
  */
 public class MapDialogFragment extends DialogFragment implements OnMapReadyCallback {
 
-    public ShippingDialogFragment shippingDialogFragment;
+    private ShippingDialogFragment shippingDialogFragment;
     private SupportMapFragment supportMapFragment;
     private Branch branch;
     private Shipping shipping;
@@ -83,6 +83,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_map, container, false);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.add(R.id.map_frame, supportMapFragment).commit();

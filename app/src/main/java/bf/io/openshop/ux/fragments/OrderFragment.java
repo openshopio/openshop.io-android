@@ -34,7 +34,7 @@ import timber.log.Timber;
  */
 public class OrderFragment extends Fragment {
 
-    public static final String ORDER_ID = "order_id";
+    private static final String ORDER_ID = "order_id";
 
     private ProgressDialog progressDialog;
 
@@ -56,7 +56,7 @@ public class OrderFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_order, container, false);
 
         progressDialog = Utils.generateProgressDialog(getActivity(), false);

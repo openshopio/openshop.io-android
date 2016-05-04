@@ -1,12 +1,10 @@
 package bf.io.openshop.ux.adapters;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
@@ -15,7 +13,7 @@ import java.util.List;
 
 import bf.io.openshop.R;
 import bf.io.openshop.interfaces.ProductImagesRecyclerInterface;
-import timber.log.Timber;
+import bf.io.openshop.views.ResizableImageViewHeight;
 
 /**
  * Adapter handling list of product images.
@@ -106,14 +104,12 @@ public class ProductImagesRecyclerAdapter extends RecyclerView.Adapter<ProductIm
 
     // Provide a reference to the views for each data item
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView productImage;
+        ResizableImageViewHeight productImage;
         int position;
-        View aa;
-
 
         public ViewHolder(View v, final ProductImagesRecyclerInterface productImagesRecyclerInterface) {
             super(v);
-            productImage = (ImageView) v.findViewById(R.id.list_item_product_images_view);
+            productImage = (ResizableImageViewHeight) v.findViewById(R.id.list_item_product_images_view);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override

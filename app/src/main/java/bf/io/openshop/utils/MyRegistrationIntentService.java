@@ -53,7 +53,7 @@ public class MyRegistrationIntentService extends IntentService {
             String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
             // [END get_token]
-            Timber.d("GCM token obtained: " + token);
+            Timber.d("GCM token obtained: %s", token);
 
             // Send token to third party only if not already registered.
             if (!SettingsMy.getTokenSentToServer()) {
@@ -69,7 +69,7 @@ public class MyRegistrationIntentService extends IntentService {
             }
             // [END register_for_gcm]
         } catch (Exception e) {
-            Timber.e("Failed to complete token refresh", e);
+            Timber.e(e, "Failed to complete token refresh");
             // If an exception happens while fetching the new token or updating our registration data
             // on a third-party server, this ensures that we'll attempt the update at a later time.
             SettingsMy.setTokenSentToServer(false);
@@ -101,7 +101,7 @@ public class MyRegistrationIntentService extends IntentService {
                         sb.append("\n");
                     }
                     String result = sb.toString();
-                    Timber.e("Error message:" + result);
+                    Timber.e("Error message: %s", result);
                 } catch (Exception e) {
                     Timber.e(e, "GCM error response parsing failed");
                 }
@@ -139,7 +139,7 @@ public class MyRegistrationIntentService extends IntentService {
         try {
             // Called only on success. If request contains error, timeout will be called.
             JSONObject response = future.get(30, TimeUnit.SECONDS);
-            Timber.d("GCM registration success: " + response.toString());
+            Timber.d("GCM registration success: %s", response.toString());
             return true;
         } catch (InterruptedException e) {
             Timber.e(e, "Register device api call interrupted.");

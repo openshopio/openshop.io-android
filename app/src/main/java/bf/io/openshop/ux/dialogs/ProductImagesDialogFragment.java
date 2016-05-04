@@ -54,7 +54,7 @@ public class ProductImagesDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " - onCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_product_detail_images, container, false);
 
         imagesPager = (ViewPager) view.findViewById(R.id.dialog_product_detail_images_pager);

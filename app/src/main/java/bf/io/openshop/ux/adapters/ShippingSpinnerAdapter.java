@@ -2,7 +2,6 @@ package bf.io.openshop.ux.adapters;
 
 import android.content.Context;
 import android.os.SystemClock;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -30,8 +29,8 @@ public class ShippingSpinnerAdapter extends BaseAdapter {
 
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_SEPARATOR = 1;
-    public Context context;
-    public ShippingDialogFragment fragment;
+    private Context context;
+    private ShippingDialogFragment fragment;
     private List<Shipping> shippingList = new ArrayList<>();
     private TreeSet<Integer> sectionHeader = new TreeSet<>();
     private LayoutInflater layoutInflater;

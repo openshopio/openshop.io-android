@@ -19,6 +19,7 @@ import bf.io.openshop.entities.cart.CartDiscountItem;
 import bf.io.openshop.entities.cart.CartProductItem;
 import bf.io.openshop.interfaces.CartRecyclerInterface;
 import bf.io.openshop.listeners.OnSingleClickListener;
+import bf.io.openshop.views.ResizableImageView;
 import timber.log.Timber;
 
 /**
@@ -32,7 +33,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private final List<CartDiscountItem> cartDiscountItems = new ArrayList<>();
     private final CartRecyclerInterface cartRecyclerInterface;
     private final Context context;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
 
     /**
      * Creates an adapter that handles a list of cart items.
@@ -111,7 +112,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolderDiscount.cartDiscountName.setText(cartDiscountItem.getDiscount().getName());
             viewHolderDiscount.cartDiscountValue.setText(cartDiscountItem.getDiscount().getValueFormatted());
         } else {
-            Timber.e(new RuntimeException(), "Unknown ViewHolder in class: " + CartRecyclerAdapter.class.getSimpleName());
+            Timber.e(new RuntimeException(), "Unknown ViewHolder in class: %s", this.getClass().getSimpleName());
         }
     }
 
@@ -162,7 +163,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     // Provide a reference to the views for each data item
     public static class ViewHolderProduct extends RecyclerView.ViewHolder {
 
-        ImageView cartProductImage;
+        ResizableImageView cartProductImage;
         TextView cartProductQuantity;
         TextView cartProductName;
         TextView cartProductPrice;
@@ -171,7 +172,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public ViewHolderProduct(View itemView, final CartRecyclerInterface cartRecyclerInterface) {
             super(itemView);
-            cartProductImage = (ImageView) itemView.findViewById(R.id.cart_product_image);
+            cartProductImage = (ResizableImageView) itemView.findViewById(R.id.cart_product_image);
             cartProductQuantity = (TextView) itemView.findViewById(R.id.cart_product_quantity);
             cartProductName = (TextView) itemView.findViewById(R.id.cart_product_name);
             cartProductPrice = (TextView) itemView.findViewById(R.id.cart_product_price);

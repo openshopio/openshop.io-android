@@ -21,8 +21,7 @@ public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
     private static final int layoutID = R.layout.spinner_item_simple_text;
     private final LayoutInflater layoutInflater;
 
-    public Context context;
-    public List<ProductQuantity> quantities;
+    private List<ProductQuantity> quantities;
 
     /**
      * Creates an adapter for quantity selection.
@@ -32,7 +31,6 @@ public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
      */
     public QuantitySpinnerAdapter(Context context, List<ProductQuantity> quantities) {
         super(context, layoutID, quantities);
-        this.context = context;
         this.quantities = quantities;
         this.layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -75,7 +73,7 @@ public class QuantitySpinnerAdapter extends ArrayAdapter<ProductQuantity> {
         if (getItem(position) != null) {
             holder.text.setText(getItem(position).getValue());
         } else {
-            Timber.e("Received null value in " + this.getClass().getSimpleName());
+            Timber.e("Received null value in %s", this.getClass().getSimpleName());
         }
 
         return v;

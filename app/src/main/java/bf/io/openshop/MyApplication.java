@@ -55,6 +55,7 @@ public class MyApplication extends Application {
         DisplayMetrics dm = res.getDisplayMetrics();
         android.content.res.Configuration conf = res.getConfiguration();
         conf.locale = new Locale(lang);
+        Timber.d("Setting language: %s", lang);
         res.updateConfiguration(conf, dm);
     }
 

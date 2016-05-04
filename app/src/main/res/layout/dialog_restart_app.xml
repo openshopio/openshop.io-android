@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/base_margin">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Restart"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textPrimary"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/base_margin_vertical_half"
+        android:text="@string/App_needs_to_be_restarted"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textSecondary"
+        android:textSize="16sp"/>
+
+    <LinearLayout
+        style="?android:attr/buttonBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/dialog_restart_app_cancel"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_secondary_action_ripple"
+            android:gravity="center"
+            android:minHeight="1dp"
+            android:minWidth="1dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/Cancel"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/dialog_restart_app_ok"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_primary_action_ripple"
+            android:gravity="center"
+            android:minHeight="1dp"
+            android:minWidth="1dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:text="@string/Ok"
+            android:textColor="@color/textIconColorPrimary"
+            android:textSize="18sp"/>
+    </LinearLayout>
+</LinearLayout>

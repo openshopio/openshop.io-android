@@ -32,7 +32,7 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     private static final int TYPE_ITEM_PAGE = 2;
 
     private final DrawerRecyclerInterface drawerRecyclerInterface;
-    LayoutInflater layoutInflater;
+    private LayoutInflater layoutInflater;
     private Context context;
     private List<DrawerItemCategory> drawerItemCategoryList = new ArrayList<>();
     private List<DrawerItemPage> drawerItemPageList = new ArrayList<>();

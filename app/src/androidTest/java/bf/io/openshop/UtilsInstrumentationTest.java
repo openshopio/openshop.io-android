@@ -2,24 +2,31 @@ package bf.io.openshop;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-
-import org.junit.Test;
-
-import bf.io.openshop.utils.Utils;
 
 /**
  * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest() {
+public class UtilsInstrumentationTest extends ApplicationTestCase<Application> {
+    public UtilsInstrumentationTest() {
         super(Application.class);
     }
+
+//    @Mock
+//    TextInputLayout testedInputLayout;
+//
+//    @Test
+//    public void testInputLayoutOperations(){
+//
+//        String errorMsg = "Failed";
+//        boolean result = Utils.checkTextInputLayoutValueRequirement(testedInputLayout, errorMsg);
+//        assertEquals(result, false);
+//        assertTrue(errorMsg.equals(testedInputLayout.getError()));
+//        assertTrue(testedInputLayout.isErrorEnabled());
+//    }
+
 }
 
-    // TODO test url spans
+// TODO test url spans
 //    @Test
 //    public void safeUrlSpanLinks() {
 //        Spanned inputSpannable = Html.fromHtml("<p><em><strong>\"Lorem ipsum ipsum dolor </strong> </em><span> Lorem ipsum dolor sit amet. </span>" +
@@ -37,3 +44,4 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 //        SpannableString result = Utils.safeURLSpanLinks(inputSpannable, mMockActivity);
 //        result.
 //    }
+

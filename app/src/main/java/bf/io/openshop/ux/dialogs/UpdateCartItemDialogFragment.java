@@ -98,6 +98,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_update_cart_item, container, false);
 
         dialogProgress = view.findViewById(R.id.dialog_update_cart_item_progress);
@@ -114,7 +115,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
                 if (quantitySpinner != null && itemSizesSpinner != null) {
                     ProductVariant productVariant = (ProductVariant) itemSizesSpinner.getSelectedItem();
                     ProductQuantity productQuantity = (ProductQuantity) quantitySpinner.getSelectedItem();
-                    Timber.d("Selected: " + productVariant + ". Quantity: " + productQuantity);
+                    Timber.d("Selected: %s. Quantity: %s", productVariant, productQuantity);
                     if (productVariant != null && productVariant.getSize() != null && productQuantity != null) {
                         updateProductInCart(cartProductItem.getId(), productVariant.getId(), productQuantity.getQuantity());
                     } else {
@@ -200,7 +201,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
                 ProductColor actualItemColor = cartProductItem.getVariant().getColor();
                 if (actualItemColor != null) {
                     int index = productColors.indexOf(actualItemColor);
-                    Timber.d("SetSpinners selectedColor: " + actualItemColor.toString());
+                    Timber.d("SetSpinners selectedColor: %s", actualItemColor.toString());
                     if (index == -1) {
                         itemColorsSpinner.setSelection(0);
                         Timber.e(new NullPointerException(), "Actual item color didn't match server received item colors");
@@ -214,7 +215,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         ProductColor productColor = (ProductColor) parent.getItemAtPosition(position);
                         if (productColor != null) {
-                            Timber.d("ColorPicker selected color: " + productColor.toString());
+                            Timber.d("ColorPicker selected color: %s", productColor.toString());
                             updateSizeSpinner(product, productColor);
                         } else {
                             Timber.e("Retrieved null color from spinner.");
@@ -234,7 +235,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
             int selectedPosition = cartProductItem.getQuantity() - 1;
             if (selectedPosition < 0) selectedPosition = 0;
             if (selectedPosition > (quantitySpinner.getCount() - 1))
-                Timber.e(new RuntimeException(), "More item quantity that can be. Quantity:" + (selectedPosition + 1) + ", max:" + quantitySpinner.getCount());
+                Timber.e(new RuntimeException(), "More item quantity that can be. Quantity: %d, max: %d", (selectedPosition + 1), quantitySpinner.getCount());
             else
                 quantitySpinner.setSelection(selectedPosition);
         } else {
@@ -290,7 +291,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
                 MsgUtils.showToast(getActivity(), MsgUtils.TOAST_TYPE_INTERNAL_ERROR, null, MsgUtils.ToastLength.SHORT);
                 return;
             }
-            Timber.d("update product: " + jo.toString());
+            Timber.d("update product: %s", jo.toString());
 
             String url = String.format(EndPoints.CART_ITEM, SettingsMy.getActualNonNullShop(getActivity()).getId(), productCartId);
 
@@ -298,7 +299,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
             JsonRequest req = new JsonRequest(Request.Method.PUT, url, jo, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Timber.d("Update item in cart: " + response.toString());
+                    Timber.d("Update item in cart: %s", response.toString());
                     if (requestListener != null) requestListener.requestSuccess(0);
                     setProgressActive(false);
                     dismiss();

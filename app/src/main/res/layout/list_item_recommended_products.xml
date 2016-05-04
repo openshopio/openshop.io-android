@@ -8,7 +8,7 @@
               android:orientation="vertical"
               android:paddingBottom="8dp">
 
-    <ImageView
+    <bf.io.openshop.views.ResizableImageViewHeight
         android:id="@+id/list_item_recommended_products_image"
         android:layout_width="wrap_content"
         android:layout_height="0dp"

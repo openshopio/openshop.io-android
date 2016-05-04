@@ -79,7 +79,7 @@ import timber.log.Timber;
  */
 public class ProductFragment extends Fragment {
 
-    public static final String PRODUCT_ID = "product_id";
+    private static final String PRODUCT_ID = "product_id";
 
     private ProgressBar progressView;
 
@@ -149,7 +149,7 @@ public class ProductFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Product));
 
         View view = inflater.inflate(R.layout.fragment_product, container, false);
@@ -194,7 +194,7 @@ public class ProductFragment extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ProductVariant selectedVariantSize = sizeVariantSpinnerAdapter.getItem(position);
                 if (selectedVariantSize != null && selectedVariantSize.getSize() != null) {
-                    Timber.d("selectedVariant: " + selectedVariantSize.getId() + ", selectedSize" + selectedVariantSize.getSize().getValue());
+                    Timber.d("selectedVariant: %d, selectedSize: %s", selectedVariantSize.getId(), selectedVariantSize.getSize().getValue());
                     if (selectedVariantSize.getId() == CONST.DEFAULT_EMPTY_ID && selectedVariantSize.getSize().getId() != CONST.DEFAULT_EMPTY_ID) {
                         selectedProductVariant = null;
                     } else {
@@ -284,7 +284,7 @@ public class ProductFragment extends Fragment {
                 if (imagesDialog != null)
                     imagesDialog.show(getFragmentManager(), ProductImagesDialogFragment.class.getSimpleName());
                 else {
-                    Timber.e(ProductImagesDialogFragment.class.getSimpleName() + "Called with empty image list");
+                    Timber.e("%s Called with empty image list", ProductImagesDialogFragment.class.getSimpleName());
                 }
             }
         });
@@ -524,7 +524,7 @@ public class ProductFragment extends Fragment {
                 });
             }
         } else {
-            Timber.e("Missing is_in_wishlist data." + response);
+            Timber.e("Missing is_in_wishlist data: %s", response);
         }
     }
 
@@ -585,7 +585,7 @@ public class ProductFragment extends Fragment {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         ProductColor productColor = (ProductColor) parent.getItemAtPosition(position);
                         if (productColor != null) {
-                            Timber.d("ColorPicker selected color: " + productColor.toString());
+                            Timber.d("ColorPicker selected color: %s", productColor.toString());
                             updateImagesAndSizeSpinner(productColor);
                         } else {
                             Timber.e("Retrieved null color from spinner.");
@@ -619,7 +619,7 @@ public class ProductFragment extends Fragment {
                         for (String s : pv.getImages()) {
                             if (!(productImagesUrls.contains(s))) {
                                 productImagesUrls.add(s);
-                                Timber.d("getAvailableSizesForColor image: " + s);
+                                Timber.d("getAvailableSizesForColor image: %s", s);
                             }
                         }
                     } else {
@@ -651,7 +651,7 @@ public class ProductFragment extends Fragment {
 
     private void addRecommendedProducts(ArrayList<Product> related) {
         if (related != null && related.size() > 0) {
-            Timber.d("AddRecommendedProducts size : " + related.size());
+            Timber.d("AddRecommendedProducts size : %d", related.size());
             for (Product product : related) {
                 relatedProductsAdapter.addLast(product);
             }
@@ -686,7 +686,7 @@ public class ProductFragment extends Fragment {
             JsonRequest addToCart = new JsonRequest(Request.Method.POST, url, jo, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    if (BuildConfig.DEBUG) Timber.d("AddToCartResponse: " + response);
+                    if (BuildConfig.DEBUG) Timber.d("AddToCartResponse: %s", response);
                     if (addToCartImage != null) addToCartImage.setVisibility(View.VISIBLE);
                     if (addToCartProgress != null)
                         addToCartProgress.setVisibility(View.INVISIBLE);

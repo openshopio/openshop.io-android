@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 
 import bf.io.openshop.entities.Shop;
@@ -22,15 +20,11 @@ public class SettingsMy {
     public static final String PREF_ACTUAL_SHOP = "pref_actual_shop";
     public static final String PREF_ACTIVE_USER = "pref_active_user";
     public static final String PREF_USER_EMAIL = "pref_user_email";
-    public static final String PREF_VERSION_CODE = "version_code";
-    public static final String SHOW_HINT = "show_hint";
 
     public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";
     public static final String REGISTRATION_COMPLETE = "registrationComplete";
 
     private static final String TAG = SettingsMy.class.getSimpleName();
-    private static final String PROPERTY_REG_ID = "registration_id";
-    private static final String PROPERTY_APP_VERSION = "appVersion";
     private static Shop actualShop;
     private static User activeUser;
     private static SharedPreferences sharedPref;
@@ -42,17 +36,17 @@ public class SettingsMy {
      */
     public static Shop getActualShop() {
         if (actualShop != null) {
-            Timber.d(TAG + " - Returned actual shop");
+            Timber.d("%s - Returned actual shop", TAG);
             return actualShop;
         } else {
             SharedPreferences prefs = getSettings();
             String json = prefs.getString(PREF_ACTUAL_SHOP, "");
             if (json.isEmpty() || "null".equals(json)) {
-                Timber.e(TAG + " - Returned null shop");
+                Timber.e("%s - Returned null shop", TAG);
                 return null;
             } else {
                 actualShop = Utils.getGsonParser().fromJson(json, Shop.class);
-                Timber.d(TAG + " - Returned shop from memory:" + actualShop.toString());
+                Timber.d("%s - Returned shop from memory: %s", TAG, actualShop.toString());
                 return actualShop;
             }
         }
@@ -65,9 +59,9 @@ public class SettingsMy {
      */
     public static void setActualShop(Shop actualShop) {
         if (actualShop != null)
-            Timber.d(TAG + " - Set selected shop: " + actualShop.toString());
+            Timber.d("%s - Set selected shop: %s", TAG, actualShop.toString());
         else
-            Timber.d(TAG + " - Disable selected shop");
+            Timber.d("%s - Disable selected shop", TAG);
         SettingsMy.actualShop = actualShop;
 
         String json = Utils.getGsonParser().toJson(SettingsMy.actualShop);
@@ -109,17 +103,17 @@ public class SettingsMy {
      */
     public static User getActiveUser() {
         if (activeUser != null) {
-            Timber.d(TAG + " - Returned active user");
+            Timber.d("%s - Returned active user", TAG);
             return activeUser;
         } else {
             SharedPreferences prefs = getSettings();
             String json = prefs.getString(PREF_ACTIVE_USER, "");
             if (json.isEmpty() || "null".equals(json)) {
-                Timber.d(TAG + " - Returned null");
+                Timber.d("%s - Returned null", TAG);
                 return null;
             } else {
                 activeUser = Utils.getGsonParser().fromJson(json, User.class);
-                Timber.d(TAG + " - Returned active user from memory:" + activeUser.toString());
+                Timber.d("%s - Returned active user from memory: %s", TAG, activeUser.toString());
                 return activeUser;
             }
         }
@@ -132,9 +126,9 @@ public class SettingsMy {
      */
     public static void setActiveUser(User user) {
         if (user != null)
-            Timber.d(TAG + " - Set active user with name: " + user.toString());
+            Timber.d("%s - Set active user with name: %s", TAG, user.toString());
         else
-            Timber.d(TAG + " - Deleting active user");
+            Timber.d("%s - Deleting active user", TAG);
         SettingsMy.activeUser = user;
 
         String json = Utils.getGsonParser().toJson(SettingsMy.activeUser);
@@ -151,7 +145,7 @@ public class SettingsMy {
     public static String getUserEmailHint() {
         SharedPreferences prefs = getSettings();
         String userEmail = prefs.getString(PREF_USER_EMAIL, "");
-        Timber.d(TAG + " - Obtained user email:" + userEmail);
+        Timber.d("%s - Obtained user email: %s", TAG, userEmail);
         return userEmail;
     }
 
@@ -162,7 +156,7 @@ public class SettingsMy {
      * @param userEmail email of last logged user.
      */
     public static void setUserEmailHint(String userEmail) {
-        Timber.d(TAG + " - Set user email: " + userEmail);
+        Timber.d("%s - Set user email: %s", TAG, userEmail);
         putParam(PREF_USER_EMAIL, userEmail);
     }
 
@@ -174,7 +168,7 @@ public class SettingsMy {
     public static Boolean getTokenSentToServer() {
         SharedPreferences prefs = getSettings();
         boolean tokenSent = prefs.getBoolean(SENT_TOKEN_TO_SERVER, false);
-        Timber.d(TAG + " - Obtained token sent to server:" + tokenSent);
+        Timber.d("%s - Obtained token sent to server: %s", TAG, tokenSent);
         return tokenSent;
     }
 
@@ -185,14 +179,6 @@ public class SettingsMy {
      */
     public static void setTokenSentToServer(boolean tokenSent) {
         putParam(SENT_TOKEN_TO_SERVER, tokenSent);
-    }
-
-    public static boolean isHintRequired() {
-        return getSettings().getBoolean(SHOW_HINT, true);
-    }
-
-    public static void setHintRequired(boolean hintShowed) {
-        putParam(SHOW_HINT, hintShowed);
     }
 
     /**
@@ -218,36 +204,4 @@ public class SettingsMy {
         editor.putBoolean(key, value);
         return editor.commit();
     }
-
-    private static boolean putParam(String key, long value) {
-        SharedPreferences.Editor editor = getSettings().edit();
-        editor.putLong(key, value);
-        return editor.commit();
-    }
-
-    private static boolean putParam(String key, int value) {
-        SharedPreferences.Editor editor = getSettings().edit();
-        editor.putInt(key, value);
-        return editor.commit();
-    }
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////// GcmUtils //////////////////////////////////////////////////////////////////////////
-
-
-    /**
-     * @return Application's version code from the {@code PackageManager}.
-     */
-    private static int getAppVersion(Context context) {
-        try {
-            PackageInfo packageInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
-            return packageInfo.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            // should never happen
-            throw new RuntimeException("Could not get package name: " + e);
-        }
-    }
-    ///////////////////////// END of GcmUtils //////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -36,7 +36,7 @@ public class PageFragment extends Fragment {
     /**
      * Name for input argument.
      */
-    public static final String PAGE_ID = "page_id";
+    private static final String PAGE_ID = "page_id";
 
     private static final long TERMS_AND_CONDITIONS = -131;
 
@@ -84,7 +84,7 @@ public class PageFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_page, container, false);
 
         MainActivity.setActionBarTitle(getString(R.string.app_name));

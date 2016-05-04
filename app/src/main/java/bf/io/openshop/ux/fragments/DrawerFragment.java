@@ -49,7 +49,7 @@ import timber.log.Timber;
  */
 public class DrawerFragment extends Fragment {
 
-    public static final int BANNERS_ID = -123;
+    private static final int BANNERS_ID = -123;
 
     private ProgressBar drawerProgress;
 
@@ -81,6 +81,7 @@ public class DrawerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_drawer, container, false);
 
@@ -362,14 +363,15 @@ public class DrawerFragment extends Fragment {
     }
 
     @Override
-    public void onStop() {
+    public void onPause() {
+        // Cancellation during onPause is needed because of app restarting during changing shop.
         MyApplication.getInstance().cancelPendingRequests(CONST.drawer_requests_tag);
         if (drawerLoading) {
             if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
             if (drawerRetryBtn != null) drawerRetryBtn.setVisibility(View.VISIBLE);
             drawerLoading = false;
         }
-        super.onStop();
+        super.onPause();
     }
 
     @Override

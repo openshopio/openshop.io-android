@@ -26,7 +26,7 @@ public class Analytics {
 
     private static final String TRACKER_GLOBAL = "Global";
     private static final String TRACKER_APP = "App";
-    public static HashMap<String, Tracker> mTrackers = new HashMap<>();
+    private static HashMap<String, Tracker> mTrackers = new HashMap<>();
 
     private static AppEventsLogger facebookLogger;
     private static String campaignUri;
@@ -47,7 +47,7 @@ public class Analytics {
         } else {
             if (!mTrackers.containsKey(TRACKER_APP) && analytics != null) {
                 if (shop.getGoogleUa() != null && !shop.getGoogleUa().isEmpty()) {
-                    Timber.d("Set new app tracker with id: " + shop.getGoogleUa());
+                    Timber.d("Set new app tracker with id: %s", shop.getGoogleUa());
                     // App tracker determined by shop
                     Tracker appTracker = analytics.newTracker(shop.getGoogleUa());
                     appTracker.enableAutoActivityTracking(true);
@@ -110,11 +110,11 @@ public class Analytics {
         } else {
             Set<String> keys = mTrackers.keySet();
             if (keys.contains(TRACKER_GLOBAL)) {
-                Timber.d("Send event to GA global: " + event.toString());
+                Timber.d("Send event to GA global: %s", event.toString());
                 mTrackers.get(TRACKER_GLOBAL).send(event);
             }
             if (keys.contains(TRACKER_APP)) {
-                Timber.d("Send event to GA app: " + event.toString());
+                Timber.d("Send event to GA app: %s", event.toString());
                 mTrackers.get(TRACKER_APP).send(event);
             }
         }
@@ -129,7 +129,7 @@ public class Analytics {
      * @param campaignUriString UTM string.
      */
     public static synchronized void setCampaignUriString(String campaignUriString) {
-        Timber.d("Set campaign uri:" + campaignUriString);
+        Timber.d("Set campaign uri: %s", campaignUriString);
         campaignUri = campaignUriString;
         if (mTrackers != null && !mTrackers.isEmpty()) {
             sendCampaignInfo();
@@ -152,7 +152,7 @@ public class Analytics {
                                 .setCampaignParamsFromUrl(campaignUri)
                                 .build();
 
-                        Timber.e("Send campaign: " + hit.toString());
+                        Timber.e("Send campaign: %s", hit.toString());
                         // Campaign data sent with this hit.
                         t.send(hit);
                     }

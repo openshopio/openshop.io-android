@@ -60,7 +60,7 @@ public class AccountFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " - OnCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Profile));
 
         View view = inflater.inflate(R.layout.fragment_account, container, false);
@@ -137,7 +137,7 @@ public class AccountFragment extends Fragment {
 
         User user = SettingsMy.getActiveUser();
         if (user != null) {
-            Timber.d("user: " + user.toString());
+            Timber.d("user: %s", user.toString());
             // Sync user data if fragment created (not reuse from backstack)
             if (savedInstanceState == null && !mAlreadyLoaded) {
                 mAlreadyLoaded = true;
@@ -159,7 +159,7 @@ public class AccountFragment extends Fragment {
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response:" + response.toString());
+                        Timber.d("response: %s", response.toString());
                         SettingsMy.setActiveUser(response);
                         refreshScreen(SettingsMy.getActiveUser());
                         if (pDialog != null) pDialog.cancel();

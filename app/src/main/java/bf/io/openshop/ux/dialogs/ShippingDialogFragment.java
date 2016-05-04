@@ -107,7 +107,7 @@ public class ShippingDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(ShippingDialogFragment.class.getSimpleName() + " onCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.shipping_delivery, container, false);
 
         shippingList = (ListView) view.findViewById(R.id.shipping_dialog_list);
@@ -163,7 +163,7 @@ public class ShippingDialogFragment extends DialogFragment {
     public void onShippingSelected(Shipping selectedShipping) {
         if (shippingDialogInterface != null)
             shippingDialogInterface.onShippingSelected(selectedShipping);
-        Timber.e("Shipping click: " + selectedShipping.toString());
+        Timber.d("Shipping click: %s", selectedShipping.toString());
         dismiss();
     }
 
@@ -174,7 +174,7 @@ public class ShippingDialogFragment extends DialogFragment {
                 new Response.Listener<BranchesRequest>() {
                     @Override
                     public void onResponse(@NonNull BranchesRequest response) {
-                        Timber.d("GetBranches response: " + response.toString());
+                        Timber.d("GetBranches response: %s", response.toString());
                         setContentVisible(true);
 
                         if (response.getBranches() != null && response.getBranches().size() >= 0) {
@@ -209,7 +209,7 @@ public class ShippingDialogFragment extends DialogFragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Timber.e("Get branches error: " + error.getMessage());
+                Timber.e("Get branches error: %s", error.getMessage());
                 setContentVisible(true);
                 MsgUtils.logAndShowErrorMessage(getActivity(), error);
             }

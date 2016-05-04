@@ -92,7 +92,7 @@ public class WishlistFragment extends Fragment {
             JsonRequest req = new JsonRequest(Request.Method.POST, url, jo, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Timber.d("AddToWishlist response" + response.toString());
+                    Timber.d("AddToWishlist response: %s", response.toString());
                     try {
                         final long responseId = response.getLong(JsonUtils.TAG_ID);
                         new Handler().postDelayed(new Runnable() {
@@ -102,7 +102,7 @@ public class WishlistFragment extends Fragment {
                             }
                         }, 500);
                     } catch (Exception e) {
-                        Timber.e(e, "Parsing addToWishList response failed. Response: " + response);
+                        Timber.e(e, "Parsing addToWishList response failed. Response: %s", response);
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -148,7 +148,7 @@ public class WishlistFragment extends Fragment {
             JsonRequest req = new JsonRequest(Request.Method.DELETE, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-                    Timber.d("RemoveFromWishlist response" + response.toString());
+                    Timber.d("RemoveFromWishlist response: %s", response.toString());
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -179,7 +179,7 @@ public class WishlistFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         MainActivity.setActionBarTitle(getString(R.string.Wishlist));
 
         View view = inflater.inflate(R.layout.fragment_wishlist, container, false);

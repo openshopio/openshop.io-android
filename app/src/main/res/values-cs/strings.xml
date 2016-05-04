@@ -43,11 +43,7 @@
     <string name="SEND_TO_A_FRIEND">POSLAT KAMARÁDCE</string>
     <string name="RECOMMENDED">DOPORUČENÉ</string>
     <string name="Select_size">Vyberte velikost</string>
-    <string name="Size">Velikost</string>
     <string name="Product">Produkt</string>
-    <string name="Price">Cena</string>
-    <string name="Color">Barva</string>
-    <string name="Brand">Značka</string>
     <string name="All">Vše</string>
 
     <!-- Products sort options -->
@@ -165,12 +161,12 @@
     <string name="Select">Vybrat</string>
     <string name="Open_source_libraries">Open source knihovny</string>
     <string name="License_details_for_open_source_software">Podrobné informace o licencích použitého open source softwaru</string>
-    <string name="App_needs_to_be_restarted">Aplikace musí být restartována.</string>
+    <string name="App_needs_to_be_restarted">Pro změnu obchodu je nutné restartovat aplikaci.</string>
     <string name="including_VAT">s DPH</string>
     <string name="Thank_you_for_your_order">Děkujeme za Vaši objednávku.</string>
     <string name="Wait_for_sms_or_email_order_confirmation">Vyčkejte prosím na &lt;b>SMS&lt;/b> nebo &lt;b>email&lt;/b>, který potvrdí vaši objednávku.</string>
-    <string name="This_is_a_sample_app">This is a sample app</string>
-    <string name="Sample_app_description">Děkujeme za Váš čas. Pro více informací o tomto projektu navštivte: <a href="http://openshop.io/">Openshop.io</a>.</string>
+    <string name="This_is_a_sample_app">Toto je ukázková aplikace.</string>
+    <string name="Sample_app_description">Objednávka není skutečná. Děkujeme za Váš čas. Pro více informací o tomto projektu navštivte: <a href="http://openshop.io/">Openshop.io</a>.</string>
     <string name="Link_is_invalid">Link je neplatný</string>
     <string name="Min">Min</string>
     <string name="Max">Max</string>

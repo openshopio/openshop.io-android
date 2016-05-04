@@ -27,7 +27,7 @@ public class ColorSpinnerAdapter extends ArrayAdapter<ProductColor> {
     private static final int layoutID = R.layout.spinner_item_product_color;
     private final LayoutInflater layoutInflater;
 
-    public List<ProductColor> productColorList;
+    private List<ProductColor> productColorList;
 
     /**
      * Creates an adapter for color selection.
@@ -57,7 +57,7 @@ public class ColorSpinnerAdapter extends ArrayAdapter<ProductColor> {
             this.productColorList.addAll(productColors);
             notifyDataSetChanged();
         } else {
-            Timber.e("Trying set null color list in " + this.getClass().getSimpleName());
+            Timber.e("Trying set null color list in %s", this.getClass().getSimpleName());
         }
     }
 
@@ -112,7 +112,7 @@ public class ColorSpinnerAdapter extends ArrayAdapter<ProductColor> {
                 }
             }
         } else {
-            Timber.e("Received null productColor in " + this.getClass().getSimpleName());
+            Timber.e("Received null productColor in %s", this.getClass().getSimpleName());
         }
         return v;
     }

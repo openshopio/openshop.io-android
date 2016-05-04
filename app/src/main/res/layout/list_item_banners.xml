@@ -7,18 +7,17 @@
     android:paddingBottom="@dimen/base_margin_vertical">
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground" >
 
-        <ImageView
+        <!-- Needed custom implementation of resizing for support older devices. -->
+        <bf.io.openshop.views.ResizableImageView
             android:id="@+id/banner_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
             android:minHeight="20dp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitCenter"/>
     </FrameLayout>
-
 
 </RelativeLayout>

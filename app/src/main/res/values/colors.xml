@@ -13,7 +13,6 @@
     <color name="textBlack">#000000</color>
     <color name="textPrimary">#212121</color>
     <color name="textSecondary">#727272</color>
-    <color name="divider">#B6B6B6</color>
 
     <color name="colorAccentLight">#F8BBD0</color>
     <color name="colorAccent">#ee1f65</color>
@@ -24,7 +23,6 @@
 
     <color name="transparent">#00000000</color>
     <color name="semi_transparent">#bd000000</color>
-    <color name="black_transparent_75percent">#BF000000</color>
     <color name="black_transparent_70percent">#B3000000</color>
     <color name="semi_light_transparent">#5a000000</color>
     <color name="semi_lighter_transparent">#2d000000</color>
@@ -37,5 +35,4 @@
     <color name="grey">#d7666666</color>
 
     <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
 </resources>

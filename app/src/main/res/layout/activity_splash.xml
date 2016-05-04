@@ -52,7 +52,7 @@
             <Button
                 android:id="@+id/splash_re_run_btn"
                 style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/base_margin_vertical"
                 android:text="@string/Retry"/>
@@ -85,7 +85,7 @@
 
             <Spinner
                 android:id="@+id/splash_shop_selection_spinner"
-                android:layout_width="300dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/base_margin_vertical"
                 android:layout_marginTop="@dimen/base_margin_vertical_half"
@@ -96,7 +96,7 @@
             <Button
                 android:id="@+id/splash_continue_to_shop_btn"
                 style="@style/buttonPrimaryStyle"
-                android:layout_width="300dp"
+                android:layout_width="290dp"
                 android:layout_height="wrap_content"
                 android:text="@string/Continue"
                 android:visibility="invisible"

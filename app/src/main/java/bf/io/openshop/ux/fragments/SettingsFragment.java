@@ -48,7 +48,7 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(this.getClass().getSimpleName() + " onCreateView");
+        Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
 
         MainActivity.setActionBarTitle(getString(R.string.Settings));
@@ -79,7 +79,7 @@ public class SettingsFragment extends Fragment {
                 new Response.Listener<ShopResponse>() {
                     @Override
                     public void onResponse(@NonNull ShopResponse response) {
-                        Timber.d("Available shops response:" + response.toString());
+                        Timber.d("Available shops response: %s", response.toString());
                         setSpinShops(response.getShopList());
                         if (progressDialog != null) progressDialog.cancel();
                     }
@@ -101,8 +101,7 @@ public class SettingsFragment extends Fragment {
      * @param shops list of shops received from server.
      */
     private void setSpinShops(List<Shop> shops) {
-        ShopSpinnerAdapter adapterLanguage = new ShopSpinnerAdapter(getActivity(), shops);
-        adapterLanguage.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ShopSpinnerAdapter adapterLanguage = new ShopSpinnerAdapter(getActivity(), shops, false);
         spinShopSelection.setAdapter(adapterLanguage);
 
         int position = 0;

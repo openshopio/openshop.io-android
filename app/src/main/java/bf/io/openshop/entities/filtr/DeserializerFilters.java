@@ -14,11 +14,11 @@ import java.util.List;
 
 public class DeserializerFilters implements JsonDeserializer<Filters> {
 
-    public static final String TAG_ID = "id";
-    public static final String TAG_NAME = "name";
-    public static final String TAG_TYPE = "type";
-    public static final String TAG_LABEL = "label";
-    public static final String TAG_VALUES = "values";
+    private static final String TAG_ID = "id";
+    private static final String TAG_NAME = "name";
+    private static final String TAG_TYPE = "type";
+    private static final String TAG_LABEL = "label";
+    private static final String TAG_VALUES = "values";
 
     public static final String FILTER_TYPE_COLOR = "color";
     public static final String FILTER_TYPE_SELECT = "select";

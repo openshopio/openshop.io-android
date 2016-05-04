@@ -63,7 +63,7 @@ public class PaymentDialogFragment extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Timber.d(PaymentDialogFragment.class.getSimpleName() + " onCreateView");
+        Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.payment_dialog, container, false);
 
         ListView paymentList = (ListView) view.findViewById(R.id.payment_dialog_list);
@@ -85,7 +85,7 @@ public class PaymentDialogFragment extends DialogFragment {
                     Payment selectedPayment = paymentSpinnerAdapter.getItem(position);
                     if (paymentDialogInterface != null)
                         paymentDialogInterface.onPaymentSelected(selectedPayment);
-                    Timber.e("Payment click: " + selectedPayment.toString());
+                    Timber.d("Payment click: %s", selectedPayment.toString());
                     dismiss();
                 }
             });

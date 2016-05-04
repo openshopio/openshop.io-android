@@ -21,7 +21,7 @@ public class FilterSelectSpinnerAdapter extends ArrayAdapter<FilterValueSelect> 
     private static final int layoutID = R.layout.spinner_item_product_size;
     private final LayoutInflater layoutInflater;
 
-    public List<FilterValueSelect> selectValuesList;
+    private List<FilterValueSelect> selectValuesList;
 
     /**
      * Creates an filter adapter for select type selection.
@@ -52,7 +52,7 @@ public class FilterSelectSpinnerAdapter extends ArrayAdapter<FilterValueSelect> 
             this.selectValuesList.addAll(selectValues);
             notifyDataSetChanged();
         } else {
-            Timber.e("Trying set null size list in " + this.getClass().getSimpleName());
+            Timber.e("Trying set null size list in %s", this.getClass().getSimpleName());
         }
     }
 
@@ -83,7 +83,7 @@ public class FilterSelectSpinnerAdapter extends ArrayAdapter<FilterValueSelect> 
         if (selectValuesList.get(position) != null) {
             holder.sizeText.setText(selectValuesList.get(position).getValue());
         } else {
-            Timber.e("Received null productSize in " + this.getClass().getSimpleName());
+            Timber.e("Received null productSize in %s", this.getClass().getSimpleName());
         }
         return v;
     }

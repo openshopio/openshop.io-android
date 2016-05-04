@@ -147,7 +147,7 @@ public class SplashActivity extends AppCompatActivity {
                             if (applinkData != null) {
                                 String targetUrl = applinkData.getString("target_url");
                                 if (targetUrl != null && !targetUrl.isEmpty()) {
-                                    Timber.d("TargetUrl: " + targetUrl);
+                                    Timber.d("TargetUrl: %s", targetUrl);
                                     Analytics.setCampaignUriString(targetUrl);
                                 }
                             }
@@ -165,7 +165,7 @@ public class SplashActivity extends AppCompatActivity {
                                     if (appLinkData != null) {
                                         String targetUrl = appLinkData.getTargetUri().toString();
                                         if (targetUrl != null && !targetUrl.isEmpty()) {
-                                            Timber.e("TargetUrl: " + targetUrl);
+                                            Timber.e("TargetUrl: %s", targetUrl);
                                             Analytics.setCampaignUriString(targetUrl);
                                         }
                                     }
@@ -188,7 +188,7 @@ public class SplashActivity extends AppCompatActivity {
                 try {
                     String[] linkParams = type.split(":");
                     if (linkParams.length != 3) {
-                        Timber.e("Bad notification format. NotifyType:" + type);
+                        Timber.e("Bad notification format. NotifyType: %s", type);
                         throw new Exception("Bad notification format. NotifyType:" + type);
                     } else {
                         final String target = linkParams[1] + ":" + linkParams[2];
@@ -273,21 +273,25 @@ public class SplashActivity extends AppCompatActivity {
                 }
             });
             Button reRunButton = (Button) findViewById(R.id.splash_re_run_btn);
-            reRunButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    progressDialog.show();
-                    (new Handler()).postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            init();
-                        }
-                    }, 1000);
-                }
-            });
+            if (reRunButton != null) {
+                reRunButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        progressDialog.show();
+                        (new Handler()).postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                init();
+                            }
+                        }, 600);
+                    }
+                });
+            } else {
+                Timber.e(new RuntimeException(), "ReRunButton didn't found");
+            }
             layoutCreated = true;
         } else {
-            Timber.d(this.getClass().getSimpleName() + " screen is already created.");
+            Timber.d("%s screen is already created.", this.getClass().getSimpleName());
         }
     }
 
@@ -296,7 +300,7 @@ public class SplashActivity extends AppCompatActivity {
      *
      * @param bundle notification specific data.
      */
-    public void startMainActivity(Bundle bundle) {
+    private void startMainActivity(Bundle bundle) {
         if (SettingsMy.getActualShop() == null) {
             // First run, allow user choose desired shop.
             Timber.d("Missing active shop. Show shop selection.");
@@ -325,7 +329,7 @@ public class SplashActivity extends AppCompatActivity {
                 new Response.Listener<ShopResponse>() {
                     @Override
                     public void onResponse(@NonNull ShopResponse response) {
-                        Timber.d("Get shops response: " + response.toString());
+                        Timber.d("Get shops response: %s", response.toString());
                         setSpinShops(response.getShopList());
                         if (progressDialog != null) progressDialog.cancel();
                         animateContentVisible();
@@ -348,7 +352,7 @@ public class SplashActivity extends AppCompatActivity {
      *
      * @param shopList list of shops received from server.
      */
-    public void setSpinShops(List<Shop> shopList) {
+    private void setSpinShops(List<Shop> shopList) {
         if (shopList != null && shopList.size() > 0) {
             // preset shop selection title.
             Shop defaultEmptyValue = new Shop();
@@ -356,7 +360,7 @@ public class SplashActivity extends AppCompatActivity {
             defaultEmptyValue.setName(getString(R.string.Select_shop));
             shopList.add(0, defaultEmptyValue);
 
-            ShopSpinnerAdapter shopSpinnerAdapter = new ShopSpinnerAdapter(this, shopList);
+            ShopSpinnerAdapter shopSpinnerAdapter = new ShopSpinnerAdapter(this, shopList, true);
             shopSelectionSpinner.setAdapter(shopSpinnerAdapter);
             shopSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -382,7 +386,7 @@ public class SplashActivity extends AppCompatActivity {
             } else {
                 // pre-select shop based on language
                 String defaultLanguage = Locale.getDefault().getLanguage();
-                Timber.d("Default language: " + defaultLanguage);
+                Timber.d("Default language: %s", defaultLanguage);
                 long tempShopId = 0; // DEFAULT no language
 
                 // Find corresponding shop and language
@@ -396,7 +400,7 @@ public class SplashActivity extends AppCompatActivity {
                 // Select founded shop
                 for (int i = 0; i < shopList.size(); i++) {
                     if (shopList.get(i).getId() == tempShopId) {
-                        Timber.d("Preselect language position:" + i);
+                        Timber.d("Preselect language position: %s", i);
                         shopSelectionSpinner.setSelection(i);
                         break;
                     }
