@@ -1,12 +1,15 @@
 package bf.io.openshop.ux.dialogs;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import bf.io.openshop.R;
 import bf.io.openshop.SettingsMy;
@@ -25,18 +28,30 @@ public class RestartDialogFragment extends DialogFragment {
         return frag;
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog_NoActionBar_MinWidth);
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.getWindow().setWindowAnimations(R.style.dialogFragmentAnimation);
+        return dialog;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.alertDialogNoTitle);
-        builder.setTitle(R.string.Restart);
-        builder.setMessage(R.string.App_needs_to_be_restarted);
+        View view = inflater.inflate(R.layout.dialog_restart_app, container, false);
 
-        builder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
-
+        Button okBtn = (Button) view.findViewById(R.id.dialog_restart_app_ok);
+        okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View v) {
                 Analytics.logShopChange(SettingsMy.getActualNonNullShop(getActivity()), newShopSelected);
                 Analytics.deleteAppTrackers();
 
@@ -48,18 +63,17 @@ public class RestartDialogFragment extends DialogFragment {
 
                 startActivity(i);
                 getActivity().finish();
-                dialog.dismiss();
+                dismiss();
             }
         });
 
-        builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
+        Button cancelBtn = (Button) view.findViewById(R.id.dialog_restart_app_cancel);
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
+            public void onClick(View v) {
+                dismiss();
             }
         });
-
-        return builder.create();
+        return view;
     }
-
 }

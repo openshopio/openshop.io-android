@@ -239,6 +239,7 @@ public class CategoryFragment extends Fragment {
                 Analytics.logCategoryView(categoryId, categoryName, isSearch);
             } else {
                 prepareProductRecycler(view);
+                prepareSortSpinner();
                 Timber.d("Restore previous category state. (Products already loaded) ");
             }
         } else {

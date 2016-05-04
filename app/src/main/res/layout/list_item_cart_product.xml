@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.3">
 
-        <ImageView
+        <bf.io.openshop.views.ResizableImageView
             android:id="@+id/cart_product_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

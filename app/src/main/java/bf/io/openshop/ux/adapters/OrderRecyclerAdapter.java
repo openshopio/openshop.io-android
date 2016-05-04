@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -13,6 +12,7 @@ import com.squareup.picasso.Picasso;
 import bf.io.openshop.R;
 import bf.io.openshop.entities.order.Order;
 import bf.io.openshop.utils.Utils;
+import bf.io.openshop.views.ResizableImageView;
 import timber.log.Timber;
 
 /**
@@ -30,7 +30,7 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     /**
      * Creates an adapter that handles a list of order items.
      *
-     * @param context                 activity context.
+     * @param context activity context.
      */
     public OrderRecyclerAdapter(Context context) {
         this.context = context;
@@ -113,11 +113,11 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     // Provide a reference to the views for each data item
     public static class ViewHolderOrderProduct extends RecyclerView.ViewHolder {
-        ImageView productImage;
+        ResizableImageView productImage;
 
         public ViewHolderOrderProduct(View itemView) {
             super(itemView);
-            productImage = (ImageView) itemView.findViewById(R.id.list_item_product_images_view);
+            productImage = (ResizableImageView) itemView.findViewById(R.id.list_item_product_images_view);
         }
     }
 

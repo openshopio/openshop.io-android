@@ -85,7 +85,7 @@ public class PaymentDialogFragment extends DialogFragment {
                     Payment selectedPayment = paymentSpinnerAdapter.getItem(position);
                     if (paymentDialogInterface != null)
                         paymentDialogInterface.onPaymentSelected(selectedPayment);
-                    Timber.e("Payment click: %s", selectedPayment.toString());
+                    Timber.d("Payment click: %s", selectedPayment.toString());
                     dismiss();
                 }
             });

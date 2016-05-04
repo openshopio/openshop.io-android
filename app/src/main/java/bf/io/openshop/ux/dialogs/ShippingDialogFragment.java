@@ -163,7 +163,7 @@ public class ShippingDialogFragment extends DialogFragment {
     public void onShippingSelected(Shipping selectedShipping) {
         if (shippingDialogInterface != null)
             shippingDialogInterface.onShippingSelected(selectedShipping);
-        Timber.e("Shipping click: %s", selectedShipping.toString());
+        Timber.d("Shipping click: %s", selectedShipping.toString());
         dismiss();
     }
 

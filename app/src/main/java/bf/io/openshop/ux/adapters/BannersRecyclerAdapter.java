@@ -17,6 +17,7 @@ import bf.io.openshop.R;
 import bf.io.openshop.entities.Banner;
 import bf.io.openshop.interfaces.BannersRecyclerInterface;
 import bf.io.openshop.listeners.OnSingleClickListener;
+import bf.io.openshop.views.ResizableImageView;
 import timber.log.Timber;
 
 /**
@@ -96,12 +97,12 @@ public class BannersRecyclerAdapter extends RecyclerView.Adapter<BannersRecycler
 
     // Provide a reference to the views for each data item
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView bannerImage;
+        public ResizableImageView bannerImage;
         private Banner banner;
 
         public ViewHolder(View itemView, final BannersRecyclerInterface bannersRecyclerInterface) {
             super(itemView);
-            bannerImage = (ImageView) itemView.findViewById(R.id.banner_image);
+            bannerImage = (ResizableImageView) itemView.findViewById(R.id.banner_image);
             itemView.setOnClickListener(new OnSingleClickListener() {
                 @Override
                 public void onSingleClick(final View view) {

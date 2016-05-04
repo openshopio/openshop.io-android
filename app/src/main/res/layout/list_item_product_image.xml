@@ -4,20 +4,23 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_margin="3dp"
+                                    android:minWidth="160dp"
                                     card_view:cardCornerRadius="2sp"
                                     card_view:cardElevation="3sp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:minWidth="160dp"
         android:orientation="vertical">
 
-        <ImageView
+        <bf.io.openshop.views.ResizableImageViewHeight
             android:id="@+id/list_item_product_images_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
             android:contentDescription="@string/content_description_product_image"
+            android:minWidth="160dp"
             android:scaleType="fitCenter"/>
 
     </LinearLayout>

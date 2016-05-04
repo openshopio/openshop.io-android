@@ -275,7 +275,7 @@
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/product_recommended_images_recycler"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"/>
+                        android:layout_height="220dp"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
