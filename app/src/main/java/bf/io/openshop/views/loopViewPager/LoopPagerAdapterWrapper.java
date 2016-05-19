@@ -19,6 +19,8 @@ import android.view.ViewGroup;
  */
 public class LoopPagerAdapterWrapper extends PagerAdapter {
 
+    private static final int REAL_FIRST_POSITION = 1;
+
     private PagerAdapter mAdapter;
 
     private SparseArray<ToDestroy> mToDestroy = new SparseArray<ToDestroy>();
@@ -55,7 +57,7 @@ public class LoopPagerAdapterWrapper extends PagerAdapter {
     }
 
     private int getRealFirstPosition() {
-        return 1;
+        return REAL_FIRST_POSITION;
     }
 
     private int getRealLastPosition() {
