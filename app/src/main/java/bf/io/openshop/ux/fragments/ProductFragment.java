@@ -652,8 +652,8 @@ public class ProductFragment extends Fragment {
     private void addRecommendedProducts(ArrayList<Product> related) {
         if (related != null && !related.isEmpty()) {
             Timber.d("AddRecommendedProducts size : %d", related.size());
-            for (Product product : related) {
-                relatedProductsAdapter.addLast(product);
+            for (Product prod : related) {
+                relatedProductsAdapter.addLast(prod);
             }
         } else {
             Timber.d("Related products are null or empty.");
