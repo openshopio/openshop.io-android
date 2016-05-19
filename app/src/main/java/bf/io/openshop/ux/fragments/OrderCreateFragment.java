@@ -61,6 +61,7 @@ import timber.log.Timber;
  */
 public class OrderCreateFragment extends Fragment {
 
+    public static final String MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT = "loginExpiredDialogFragment";
     private ProgressDialog progressDialog;
 
     private ScrollView scrollLayout;
@@ -187,7 +188,7 @@ public class OrderCreateFragment extends Fragment {
             Utils.setTextToInputLayout(phoneInputWrapper, user.getPhone());
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-            loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
+            loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
         }
     }
 
@@ -353,7 +354,7 @@ public class OrderCreateFragment extends Fragment {
             MyApplication.getInstance().addToRequestQueue(getCart, CONST.order_create_requests_tag);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-            loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
+            loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
         }
     }
 
@@ -471,7 +472,7 @@ public class OrderCreateFragment extends Fragment {
             MyApplication.getInstance().addToRequestQueue(postOrderRequest, CONST.order_create_requests_tag);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-            loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
+            loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
         }
     }
 
