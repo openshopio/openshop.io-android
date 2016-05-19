@@ -116,10 +116,10 @@ public class MyRegistrationIntentService extends IntentService {
             if (shop != null) {
                 String url = String.format(EndPoints.REGISTER_NOTIFICATION, shop.getId());
                 JsonRequest req;
-                User ActiveUser = SettingsMy.getActiveUser();
-                if (ActiveUser != null) {
+                User activeUser = SettingsMy.getActiveUser();
+                if (activeUser != null) {
                     Timber.d("GCM registration send: authorized");
-                    req = new JsonRequest(Request.Method.POST, url, requestPost, future, errorListener, null, ActiveUser.getAccessToken());
+                    req = new JsonRequest(Request.Method.POST, url, requestPost, future, errorListener, null, activeUser.getAccessToken());
                 } else {
                     Timber.d("GCM registration send: non-authorized");
                     req = new JsonRequest(Request.Method.POST, url, requestPost, future, errorListener);

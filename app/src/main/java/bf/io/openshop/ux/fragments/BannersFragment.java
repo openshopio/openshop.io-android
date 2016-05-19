@@ -112,7 +112,7 @@ public class BannersFragment extends Fragment {
         bannersRecycler.setAdapter(bannersRecyclerAdapter);
         endlessRecyclerScrollListener = (new EndlessRecyclerScrollListener(layoutManager) {
             @Override
-            public void onLoadMore(int current_page) {
+            public void onLoadMore(int currentPage) {
                 if (bannersMetadata != null && bannersMetadata.getLinks() != null && bannersMetadata.getLinks().getNext() != null) {
                     loadBanners(bannersMetadata.getLinks().getNext());
                 } else {
