@@ -110,12 +110,10 @@ public class JsonRequest extends JsonObjectRequest {
                 Timber.e("%s URL: %s. ERROR: %s", this.getClass().getSimpleName(), requestUrl, new String(volleyError.networkResponse.data));
 
             // If AccessToken expired. Logout user and redirect to home page.
-            if (getStatusCode() == HttpURLConnection.HTTP_FORBIDDEN) {
-                if (fragmentManager != null) {
-                    LoginDialogFragment.logoutUser();
-                    DialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-                    loginExpiredDialogFragment.show(fragmentManager, LoginExpiredDialogFragment.class.getSimpleName());
-                }
+            if (getStatusCode() == HttpURLConnection.HTTP_FORBIDDEN && fragmentManager != null) {
+                LoginDialogFragment.logoutUser();
+                DialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
+                loginExpiredDialogFragment.show(fragmentManager, LoginExpiredDialogFragment.class.getSimpleName());
             }
         } else {
             requestStatusCode = CONST.MissingStatusCode;
