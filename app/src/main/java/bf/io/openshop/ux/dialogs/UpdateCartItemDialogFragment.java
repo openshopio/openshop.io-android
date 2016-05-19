@@ -264,7 +264,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
             CartSizeSpinnerAdapter adapterSize = new CartSizeSpinnerAdapter(getActivity(), variantSizeArrayList);
             itemSizesSpinner.setAdapter(adapterSize);
             // Select actual size
-            if (variantSizeArrayList.size() > 0) {
+            if (!variantSizeArrayList.isEmpty()) {
                 int sizeSelection = 0;
                 for (int i = 0; i < variantSizeArrayList.size(); i++) {
 //                    Timber.d("Compare list: " + variantSizeArrayList.get(i).getId() + " == " + cartProductItem.getVariant().getId() + " as actual");

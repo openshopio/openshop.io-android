@@ -26,7 +26,7 @@ public class ProductImagesDialogFragment extends DialogFragment {
     private ViewPager imagesPager;
 
     public static ProductImagesDialogFragment newInstance(ArrayList<String> images, int defaultPosition) {
-        if (images == null || images.size() == 0) return null;
+        if (images == null || images.isEmpty()) return null;
         ProductImagesDialogFragment frag = new ProductImagesDialogFragment();
         frag.images = images;
         frag.defaultPosition = defaultPosition;

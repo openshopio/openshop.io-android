@@ -445,7 +445,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         searchSuggestionsAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1,
                 null, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
-        if (navigation != null && navigation.size() > 0) {
+        if (navigation != null && !navigation.isEmpty()) {
             for (int i = 0; i < navigation.size(); i++) {
                 if (!searchSuggestionsList.contains(navigation.get(i).getName())) {
                     searchSuggestionsList.add(navigation.get(i).getName());

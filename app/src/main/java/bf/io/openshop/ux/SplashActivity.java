@@ -353,7 +353,7 @@ public class SplashActivity extends AppCompatActivity {
      * @param shopList list of shops received from server.
      */
     private void setSpinShops(List<Shop> shopList) {
-        if (shopList != null && shopList.size() > 0) {
+        if (shopList != null && !shopList.isEmpty()) {
             // preset shop selection title.
             Shop defaultEmptyValue = new Shop();
             defaultEmptyValue.setId(CONST.DEFAULT_EMPTY_ID);

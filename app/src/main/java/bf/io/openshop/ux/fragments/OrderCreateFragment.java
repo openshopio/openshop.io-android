@@ -360,7 +360,7 @@ public class OrderCreateFragment extends Fragment {
     private void refreshScreenContent(@NonNull Cart cart, User user) {
         this.cart = cart;
         List<CartProductItem> cartProductItems = cart.getItems();
-        if (cartProductItems == null || cartProductItems.size() < 1) {
+        if (cartProductItems == null || cartProductItems.isEmpty()) {
             Timber.e(new RuntimeException(), "Received null cart during order creation.");
             if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
         } else {
