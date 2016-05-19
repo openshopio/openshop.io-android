@@ -79,7 +79,7 @@ public class CartFragment extends Fragment {
                 // Just open drawer menu.
                 Activity activity = getActivity();
                 if (activity instanceof MainActivity) {
-                    MainActivity mainActivity = ((MainActivity) activity);
+                    MainActivity mainActivity = (MainActivity) activity;
                     if (mainActivity.drawerFragment != null)
                         mainActivity.drawerFragment.toggleDrawerMenu();
                 }

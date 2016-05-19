@@ -132,8 +132,8 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
             loadHighRes = true;
         } else if (highResolution) {
             // Load high resolution images only on better screens.
-            loadHighRes = (((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL)
-                    && densityDpi >= DisplayMetrics.DENSITY_XHIGH);
+            loadHighRes = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_NORMAL)
+                    && densityDpi >= DisplayMetrics.DENSITY_XHIGH;
         } else {
             // otherwise
             loadHighRes = false;

@@ -342,7 +342,7 @@ public class ProductFragment extends Fragment {
 
                     float alphaRatio;
                     if (productImagesRecycler.getHeight() > scrollY) {
-                        productImagesRecycler.setTranslationY((scrollY / 2));
+                        productImagesRecycler.setTranslationY(scrollY / 2);
                         alphaRatio = (float) scrollY / productImagesRecycler.getHeight();
                     } else {
                         alphaRatio = 1;
