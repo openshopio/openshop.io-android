@@ -39,7 +39,7 @@ public class CONST {
     /**
      * Volley request unknown status code
      */
-    public static int MissingStatusCode = 9999;
+    public static final int MISSING_STATUS_CODE = 9999;
 
     /**
      * Possible visibility states of layout parts.
