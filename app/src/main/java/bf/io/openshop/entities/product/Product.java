@@ -160,11 +160,11 @@ public class Product {
         this.variants = variants;
     }
 
-    public ArrayList<Product> getRelated() {
+    public List<Product> getRelated() {
         return related;
     }
 
-    public void setRelated(ArrayList<Product> related) {
+    public void setRelated(List<Product> related) {
         this.related = related;
     }
 

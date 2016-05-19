@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import bf.io.openshop.R;
 import bf.io.openshop.views.TouchImageView;
@@ -19,7 +19,7 @@ import bf.io.openshop.views.TouchImageView;
  */
 public class ProductImagesPagerAdapter extends PagerAdapter {
     private Context context;
-    private ArrayList<String> images;
+    private List<String> images;
 
     /**
      * Creates an adapter for viewing product images.
@@ -27,7 +27,7 @@ public class ProductImagesPagerAdapter extends PagerAdapter {
      * @param context activity context.
      * @param images  list of product images.
      */
-    public ProductImagesPagerAdapter(Context context, ArrayList<String> images) {
+    public ProductImagesPagerAdapter(Context context, List<String> images) {
         this.context = context;
         this.images = images;
     }
