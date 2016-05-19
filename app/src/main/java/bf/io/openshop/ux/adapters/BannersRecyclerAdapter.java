@@ -92,7 +92,7 @@ public class BannersRecyclerAdapter extends RecyclerView.Adapter<BannersRecycler
      * @return true if content is empty.
      */
     public boolean isEmpty() {
-        return banners == null || banners.size() == 0;
+        return banners == null || banners.isEmpty();
     }
 
     // Provide a reference to the views for each data item

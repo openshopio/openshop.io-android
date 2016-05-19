@@ -147,7 +147,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
      * @return true if adapter is empty. False otherwise.
      */
     public boolean isEmpty() {
-        return wishlistItems.size() <= 0;
+        return wishlistItems.isEmpty();
     }
 
 

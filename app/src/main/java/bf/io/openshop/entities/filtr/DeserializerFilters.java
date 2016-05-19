@@ -72,7 +72,7 @@ public class DeserializerFilters implements JsonDeserializer<Filters> {
                     }
                 }
             }
-            if (filterList.size() > 0)
+            if (!filterList.isEmpty())
                 filters.setFilters(filterList);
             return filters;
         }
@@ -105,7 +105,7 @@ public class DeserializerFilters implements JsonDeserializer<Filters> {
                 values.add(type.cast(context.deserialize(valuesArray.get(i), type)));
             }
         }
-        if (values == null || values.size() == 0)
+        if (values == null || values.isEmpty())
             return null;
         else
             return values;
