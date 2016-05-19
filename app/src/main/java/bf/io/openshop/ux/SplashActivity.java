@@ -63,6 +63,7 @@ import timber.log.Timber;
  */
 public class SplashActivity extends AppCompatActivity {
     private static final String TAG = SplashActivity.class.getSimpleName();
+    public static final String REFERRER = "referrer";
 
     private Activity activity;
     private ProgressDialog progressDialog;
@@ -129,13 +130,13 @@ public class SplashActivity extends AppCompatActivity {
             Intent intent = this.getIntent();
             if (intent != null) {
                 Uri uri = intent.getData();
-                if (uri != null && (uri.getQueryParameter("utm_source") != null || uri.getQueryParameter("referrer") != null)) {
+                if (uri != null && (uri.getQueryParameter("utm_source") != null || uri.getQueryParameter(REFERRER) != null)) {
                     // GA General Campaign & Traffic Source Attribution. Save camping data.
                     Timber.d("UTM source detected. - General Campaign & Traffic Source Attribution.");
                     if (uri.getQueryParameter("utm_source") != null) {
                         Analytics.setCampaignUriString(uri.toString());
-                    } else if (uri.getQueryParameter("referrer") != null) {
-                        Analytics.setCampaignUriString(uri.getQueryParameter("referrer"));
+                    } else if (uri.getQueryParameter(REFERRER) != null) {
+                        Analytics.setCampaignUriString(uri.getQueryParameter(REFERRER));
                     }
                 } else if (intent.getExtras() != null) {
                     // FB app link. For function needs server side implementation also. https://developers.facebook.com/docs/applinks

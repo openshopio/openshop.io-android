@@ -96,6 +96,7 @@ import timber.log.Timber;
  */
 public class MainActivity extends AppCompatActivity implements DrawerFragment.FragmentDrawerListener {
 
+    public static final String MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL = "MainActivity instance is null.";
     private static MainActivity mInstance = null;
 
     /**
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (instance != null) {
             instance.getCartCount(false);
         } else {
-            Timber.e("MainActivity instance is null.");
+            Timber.e(MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL);
         }
     }
 
@@ -150,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 //            instance.setTitle(s);
             instance.setTitle(title);
         } else {
-            Timber.e("MainActivity instance is null.");
+            Timber.e(MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL);
         }
     }
 
@@ -162,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (instance != null && instance.drawerFragment != null) {
             instance.drawerFragment.invalidateHeader();
         } else {
-            Timber.e("MainActivity instance is null.");
+            Timber.e(MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL);
         }
     }
 

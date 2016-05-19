@@ -69,6 +69,7 @@ import timber.log.Timber;
  */
 public class LoginDialogFragment extends DialogFragment implements FacebookCallback<LoginResult> {
 
+    public static final String MSG_RESPONSE = "response: %s";
     private CallbackManager callbackManager;
     private LoginDialogInterface loginDialogInterface;
     private ProgressDialog progressDialog;
@@ -368,7 +369,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response: %s", response.toString());
+                        Timber.d(MSG_RESPONSE, response.toString());
                         handleUserLogin(response);
                     }
                 }, new Response.ErrorListener() {
@@ -410,7 +411,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response: %s", response.toString());
+                        Timber.d(MSG_RESPONSE, response.toString());
                         handleUserLogin(response);
                     }
                 }, new Response.ErrorListener() {
@@ -667,7 +668,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
                 new Response.Listener<User>() {
                     @Override
                     public void onResponse(@NonNull User response) {
-                        Timber.d("response: %s", response.toString());
+                        Timber.d(MSG_RESPONSE, response.toString());
                         handleUserLogin(response);
                     }
                 }, new Response.ErrorListener() {
