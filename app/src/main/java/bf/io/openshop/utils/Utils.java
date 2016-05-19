@@ -32,6 +32,8 @@ public class Utils {
 
     private static Gson gson;
 
+    private Utils() {}
+
     /**
      * Add specific parsing to gson
      *

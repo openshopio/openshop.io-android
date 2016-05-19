@@ -31,6 +31,8 @@ public class Analytics {
     private static AppEventsLogger facebookLogger;
     private static String campaignUri;
 
+    private Analytics() {}
+
     /**
      * Prepare Google analytics trackers and Facebook events logger.
      * Send UTM campaign if exist.
