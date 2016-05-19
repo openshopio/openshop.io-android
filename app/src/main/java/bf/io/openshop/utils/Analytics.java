@@ -196,9 +196,9 @@ public class Analytics {
      *
      * @param remoteId       remote id of the viewed product.
      * @param name           name of the viewed product.
-     * @param discount_price product price.
+     * @param discountPrice product price.
      */
-    public static void logAddProductToCart(long remoteId, String name, double discount_price) {
+    public static void logAddProductToCart(long remoteId, String name, double discountPrice) {
         // FB facebookLogger
         Bundle parameters = new Bundle();
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, "product");
@@ -210,7 +210,7 @@ public class Analytics {
         Map<String, String> event = new HitBuilders.EventBuilder()
                 .setCategory("ADDED_TO_CART")
                 .setAction("ADDED_TO_CART")
-                .setLabel("ADDED TO CART" + " product id: " + remoteId + " product name: " + name + " price: " + discount_price)
+                .setLabel("ADDED TO CART" + " product id: " + remoteId + " product name: " + name + " price: " + discountPrice)
                 .build();
         sendEventToAppTrackers(event);
     }

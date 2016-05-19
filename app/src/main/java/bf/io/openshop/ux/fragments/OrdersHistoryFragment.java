@@ -102,7 +102,7 @@ public class OrdersHistoryFragment extends Fragment {
 
         endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(layoutManager) {
             @Override
-            public void onLoadMore(int current_page) {
+            public void onLoadMore(int currentPage) {
                 if (ordersMetadata != null && ordersMetadata.getLinks() != null && ordersMetadata.getLinks().getNext() != null) {
                     loadOrders(ordersMetadata.getLinks().getNext());
                 } else {

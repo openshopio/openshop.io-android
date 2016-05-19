@@ -137,10 +137,10 @@ public class MyGcmListenerService extends GcmListenerService {
             notificationIntent.putExtra(EndPoints.NOTIFICATION_TITLE, title);
         }
 
-        String utm_source = "utm_source=API";
-        String utm_medium = "utm_medium=notification";
-        String utm_campaign = "utm_campaign=" + title;
-        String utm = utm_source + "&" + utm_medium + "&" + utm_campaign;
+        String utmSource = "utm_source=API";
+        String utmMedium = "utm_medium=notification";
+        String utmCampaign = "utm_campaign=" + title;
+        String utm = utmSource + "&" + utmMedium + "&" + utmCampaign;
         notificationIntent.putExtra(EndPoints.NOTIFICATION_UTM, utm);
         // Create notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);

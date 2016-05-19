@@ -277,7 +277,7 @@ public class CategoryFragment extends Fragment {
         productsRecycler.setLayoutManager(productsRecyclerLayoutManager);
         endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(productsRecyclerLayoutManager) {
             @Override
-            public void onLoadMore(int current_page) {
+            public void onLoadMore(int currentPage) {
                 Timber.e("Load more");
                 if (productsMetadata != null && productsMetadata.getLinks() != null && productsMetadata.getLinks().getNext() != null) {
                     getProducts(productsMetadata.getLinks().getNext());

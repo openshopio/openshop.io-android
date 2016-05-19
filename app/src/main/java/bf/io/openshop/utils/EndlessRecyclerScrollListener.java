@@ -104,8 +104,8 @@ public abstract class EndlessRecyclerScrollListener extends RecyclerView.OnScrol
 
     /**
      * Method indicates that end has been reached.
-     * @param current_page total number of loading calls.
+     * @param currentPage total number of loading calls.
      */
-    public abstract void onLoadMore(int current_page);
+    public abstract void onLoadMore(int currentPage);
 
 }
