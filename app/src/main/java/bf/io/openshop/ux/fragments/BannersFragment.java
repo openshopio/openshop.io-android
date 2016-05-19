@@ -110,7 +110,7 @@ public class BannersFragment extends Fragment {
         bannersRecycler.setItemAnimator(new DefaultItemAnimator());
         bannersRecycler.setHasFixedSize(true);
         bannersRecycler.setAdapter(bannersRecyclerAdapter);
-        endlessRecyclerScrollListener = (new EndlessRecyclerScrollListener(layoutManager) {
+        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(layoutManager) {
             @Override
             public void onLoadMore(int currentPage) {
                 if (bannersMetadata != null && bannersMetadata.getLinks() != null && bannersMetadata.getLinks().getNext() != null) {
@@ -119,7 +119,7 @@ public class BannersFragment extends Fragment {
                     Timber.d("CustomLoadMoreDataFromApi NO MORE DATA");
                 }
             }
-        });
+        };
         bannersRecycler.addOnScrollListener(endlessRecyclerScrollListener);
     }
 
@@ -137,7 +137,7 @@ public class BannersFragment extends Fragment {
                 // Just open drawer menu.
                 Activity activity = getActivity();
                 if (activity instanceof MainActivity) {
-                    MainActivity mainActivity = ((MainActivity) activity);
+                    MainActivity mainActivity = (MainActivity) activity;
                     if (mainActivity.drawerFragment != null)
                         mainActivity.drawerFragment.toggleDrawerMenu();
                 }

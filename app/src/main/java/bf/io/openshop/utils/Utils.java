@@ -139,7 +139,7 @@ public class Utils {
 
     private static float getPixelScaleFactor(Context context) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        return (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT);
+        return displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT;
     }
 
 
