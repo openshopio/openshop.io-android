@@ -31,8 +31,8 @@ public class MyApplication extends Application {
     private static final String TAG = MyApplication.class.getSimpleName();
 
 
-    public static String APP_VERSION = "0.0.0";
-    public static String ANDROID_ID = "0000000000000000";
+    public static final String APP_VERSION = "0.0.0";
+    public static final String ANDROID_ID = "0000000000000000";
 
     private static MyApplication mInstance;
 
