@@ -223,7 +223,7 @@ public class SplashActivity extends AppCompatActivity {
                         });
                         req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                         req.setShouldCache(false);
-                        MyApplication.getInstance().addToRequestQueue(req, CONST.splash_requests_tag);
+                        MyApplication.getInstance().addToRequestQueue(req, CONST.SPLASH_REQUESTS_TAG);
                     }
                 } catch (Exception e) {
                     Timber.e(e, "Skip Splash activity after notification error.");
@@ -345,7 +345,7 @@ public class SplashActivity extends AppCompatActivity {
         });
         getShopsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getShopsRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.splash_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.SPLASH_REQUESTS_TAG);
     }
 
     /**
@@ -478,7 +478,7 @@ public class SplashActivity extends AppCompatActivity {
         if (progressDialog != null) progressDialog.cancel();
         if (layoutIntroScreen != null) layoutIntroScreen.setVisibility(View.GONE);
         if (layoutContent != null) layoutContent.setVisibility(View.VISIBLE);
-        MyApplication.getInstance().cancelPendingRequests(CONST.splash_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.SPLASH_REQUESTS_TAG);
         super.onStop();
     }
 }

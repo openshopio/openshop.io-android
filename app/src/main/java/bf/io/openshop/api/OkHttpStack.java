@@ -125,8 +125,8 @@ public class OkHttpStack implements HttpStack {
         for (final Map.Entry<String, String> header : headers.entrySet()) {
             okHttpRequestBuilder.addHeader(header.getKey(), header.getValue());
         }
-        for (final Map.Entry<String, String> header : additionalHeaders.keySet()) {
-            okHttpRequestBuilder.addHeader(header.getKey(), header.getValue());
+        for (final Map.Entry<String, String> additionalHeader : additionalHeaders.entrySet()) {
+            okHttpRequestBuilder.addHeader(additionalHeader.getKey(), additionalHeader.getValue());
         }
 
         setConnectionParametersForRequest(okHttpRequestBuilder, request);

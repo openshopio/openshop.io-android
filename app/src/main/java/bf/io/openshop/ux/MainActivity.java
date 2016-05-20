@@ -322,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                     }, getSupportFragmentManager(), user.getAccessToken());
                     req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                     req.setShouldCache(false);
-                    MyApplication.getInstance().addToRequestQueue(req, CONST.main_activity_requests_tag);
+                    MyApplication.getInstance().addToRequestQueue(req, CONST.MAIN_ACTIVITY_REQUESTS_TAG);
                 } else {
                     String url = String.format(EndPoints.CART_INFO, SettingsMy.getActualNonNullShop(this).getId());
                     GsonRequest<CartInfo> req = new GsonRequest<>(Request.Method.GET, url, null, CartInfo.class, new Response.Listener<CartInfo>() {
@@ -340,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                     }, getSupportFragmentManager(), user.getAccessToken());
                     req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                     req.setShouldCache(false);
-                    MyApplication.getInstance().addToRequestQueue(req, CONST.main_activity_requests_tag);
+                    MyApplication.getInstance().addToRequestQueue(req, CONST.MAIN_ACTIVITY_REQUESTS_TAG);
                 }
             }
         }
@@ -777,7 +777,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         super.onPause();
         // FB base events logging
         AppEventsLogger.deactivateApp(this);
-        MyApplication.getInstance().cancelPendingRequests(CONST.main_activity_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.MAIN_ACTIVITY_REQUESTS_TAG);
 
         // GCM registration
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);

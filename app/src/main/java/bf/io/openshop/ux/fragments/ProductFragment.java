@@ -393,7 +393,7 @@ public class ProductFragment extends Fragment {
         });
         getProductRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getProductRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getProductRequest, CONST.product_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getProductRequest, CONST.PRODUCT_REQUESTS_TAG);
     }
 
     /**
@@ -420,7 +420,7 @@ public class ProductFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             getWishlistInfo.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             getWishlistInfo.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(getWishlistInfo, CONST.product_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(getWishlistInfo, CONST.PRODUCT_REQUESTS_TAG);
         }
     }
 
@@ -462,7 +462,7 @@ public class ProductFragment extends Fragment {
                                     wishlistButton.setIcon(R.drawable.wish_list_pressed, R.drawable.wish_list);
                                     wishlistButton.showProgress(true);
                                     if (wishlistId != CONST.DEFAULT_EMPTY_ID) {
-                                        WishlistFragment.removeFromWishList(getActivity(), wishlistId, user, CONST.product_requests_tag, new RequestListener() {
+                                        WishlistFragment.removeFromWishList(getActivity(), wishlistId, user, CONST.PRODUCT_REQUESTS_TAG, new RequestListener() {
                                             @Override
                                             public void requestSuccess(long newWishlistId) {
                                                 running = false;
@@ -485,7 +485,7 @@ public class ProductFragment extends Fragment {
                                     inWishlist = true;
                                     wishlistButton.setIcon(R.drawable.wish_list, R.drawable.wish_list_pressed);
                                     wishlistButton.showProgress(true);
-                                    WishlistFragment.addToWishList(getActivity(), product.getVariants().get(0).getId(), user, CONST.product_requests_tag, new RequestListener() {
+                                    WishlistFragment.addToWishList(getActivity(), product.getVariants().get(0).getId(), user, CONST.PRODUCT_REQUESTS_TAG, new RequestListener() {
                                         @Override
                                         public void requestSuccess(long newWishlistId) {
                                             running = false;
@@ -649,7 +649,7 @@ public class ProductFragment extends Fragment {
         }
     }
 
-    private void addRecommendedProducts(ArrayList<Product> related) {
+    private void addRecommendedProducts(List<Product> related) {
         if (related != null && !related.isEmpty()) {
             Timber.d("AddRecommendedProducts size : %d", related.size());
             for (Product prod : related) {
@@ -718,7 +718,7 @@ public class ProductFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             addToCart.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             addToCart.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(addToCart, CONST.product_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(addToCart, CONST.PRODUCT_REQUESTS_TAG);
         } else {
             LoginDialogFragment loginDialog = LoginDialogFragment.newInstance(new LoginDialogInterface() {
                 @Override
@@ -772,7 +772,7 @@ public class ProductFragment extends Fragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().cancelPendingRequests(CONST.product_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.PRODUCT_REQUESTS_TAG);
         setContentVisible(CONST.VISIBLE.CONTENT);
         if (addToCartImage != null) addToCartImage.setVisibility(View.VISIBLE);
         if (addToCartProgress != null) addToCartProgress.setVisibility(View.INVISIBLE);

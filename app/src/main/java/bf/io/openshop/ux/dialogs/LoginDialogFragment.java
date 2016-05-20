@@ -381,7 +381,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         });
         registerNewUser.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         registerNewUser.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(registerNewUser, CONST.login_dialog_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(registerNewUser, CONST.LOGIN_DIALOG_REQUESTS_TAG);
     }
 
     private void invokeLoginWithEmail() {
@@ -423,7 +423,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         });
         userLoginEmailRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         userLoginEmailRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(userLoginEmailRequest, CONST.login_dialog_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(userLoginEmailRequest, CONST.LOGIN_DIALOG_REQUESTS_TAG);
     }
 
     private void handleUserLogin(User user) {
@@ -489,7 +489,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         });
         req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         req.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(req, CONST.login_dialog_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(req, CONST.LOGIN_DIALOG_REQUESTS_TAG);
     }
 
     private void hideSoftKeyboard() {
@@ -588,7 +588,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     @Override
     public void onStop() {
         super.onStop();
-        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.login_dialog_requests_tag);
+        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.LOGIN_DIALOG_REQUESTS_TAG);
     }
 
     @Override
@@ -681,7 +681,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         }, getFragmentManager(), null);
         verifyFbUser.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         verifyFbUser.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(verifyFbUser, CONST.login_dialog_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(verifyFbUser, CONST.LOGIN_DIALOG_REQUESTS_TAG);
     }
 
     /**

@@ -265,7 +265,7 @@ public class AccountEditFragment extends Fragment {
                 }, getFragmentManager(), activeUser.getAccessToken());
                 req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                 req.setShouldCache(false);
-                MyApplication.getInstance().addToRequestQueue(req, CONST.account_edit_requests_tag);
+                MyApplication.getInstance().addToRequestQueue(req, CONST.ACCOUNT_EDIT_REQUESTS_TAG);
             } else {
                 LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
                 loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
@@ -316,7 +316,7 @@ public class AccountEditFragment extends Fragment {
 
                 req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                 req.setShouldCache(false);
-                MyApplication.getInstance().addToRequestQueue(req, CONST.account_edit_requests_tag);
+                MyApplication.getInstance().addToRequestQueue(req, CONST.ACCOUNT_EDIT_REQUESTS_TAG);
             } else {
                 LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
                 loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
@@ -327,7 +327,7 @@ public class AccountEditFragment extends Fragment {
     @Override
     public void onStop() {
         if (progressDialog != null) progressDialog.cancel();
-        MyApplication.getInstance().cancelPendingRequests(CONST.account_edit_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.ACCOUNT_EDIT_REQUESTS_TAG);
         super.onStop();
     }
 }

@@ -183,7 +183,7 @@ public class BannersFragment extends Fragment {
         });
         getBannersRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getBannersRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getBannersRequest, CONST.banner_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getBannersRequest, CONST.BANNER_REQUESTS_TAG);
     }
 
     @Override
@@ -196,7 +196,7 @@ public class BannersFragment extends Fragment {
             }
             progressDialog.cancel();
         }
-        MyApplication.getInstance().cancelPendingRequests(CONST.banner_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.BANNER_REQUESTS_TAG);
         super.onStop();
     }
 

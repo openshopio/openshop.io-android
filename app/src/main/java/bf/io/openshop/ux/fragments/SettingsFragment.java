@@ -92,7 +92,7 @@ public class SettingsFragment extends Fragment {
         });
         getShopsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getShopsRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.settings_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.SETTINGS_REQUESTS_TAG);
     }
 
     /**
@@ -133,7 +133,7 @@ public class SettingsFragment extends Fragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().cancelPendingRequests(CONST.settings_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.SETTINGS_REQUESTS_TAG);
         if (progressDialog != null) progressDialog.cancel();
         super.onStop();
     }

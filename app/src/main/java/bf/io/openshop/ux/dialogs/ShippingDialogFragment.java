@@ -216,7 +216,7 @@ public class ShippingDialogFragment extends DialogFragment {
         });
         getCart.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getCart.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getCart, CONST.delivery_dialog_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getCart, CONST.DELIVERY_DIALOG_REQUESTS_TAG);
     }
 
     private void setContentVisible(boolean visible) {
@@ -231,7 +231,7 @@ public class ShippingDialogFragment extends DialogFragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().cancelPendingRequests(CONST.delivery_dialog_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.DELIVERY_DIALOG_REQUESTS_TAG);
         super.onStop();
     }
 }

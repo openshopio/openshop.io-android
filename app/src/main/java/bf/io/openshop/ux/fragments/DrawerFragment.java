@@ -310,7 +310,7 @@ public class DrawerFragment extends Fragment {
         });
         getDrawerMenu.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getDrawerMenu.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getDrawerMenu, CONST.drawer_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getDrawerMenu, CONST.DRAWER_REQUESTS_TAG);
     }
 
     private void animateSubListHide() {
@@ -366,7 +366,7 @@ public class DrawerFragment extends Fragment {
     @Override
     public void onPause() {
         // Cancellation during onPause is needed because of app restarting during changing shop.
-        MyApplication.getInstance().cancelPendingRequests(CONST.drawer_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.DRAWER_REQUESTS_TAG);
         if (drawerLoading) {
             if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
             if (drawerRetryBtn != null) drawerRetryBtn.setVisibility(View.VISIBLE);

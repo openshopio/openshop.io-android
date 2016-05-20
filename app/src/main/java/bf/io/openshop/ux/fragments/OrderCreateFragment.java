@@ -351,7 +351,7 @@ public class OrderCreateFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             getCart.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             getCart.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(getCart, CONST.order_create_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(getCart, CONST.ORDER_CREATE_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
             loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
@@ -420,7 +420,7 @@ public class OrderCreateFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             getDelivery.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             getDelivery.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(getDelivery, CONST.order_create_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(getDelivery, CONST.ORDER_CREATE_REQUESTS_TAG);
         }
     }
 
@@ -469,7 +469,7 @@ public class OrderCreateFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             postOrderRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             postOrderRequest.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(postOrderRequest, CONST.order_create_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(postOrderRequest, CONST.ORDER_CREATE_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
             loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
@@ -502,7 +502,7 @@ public class OrderCreateFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        MyApplication.getInstance().cancelPendingRequests(CONST.order_create_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.ORDER_CREATE_REQUESTS_TAG);
         if (progressDialog != null) progressDialog.cancel();
         if (deliveryProgressBar != null) deliveryProgressBar.setVisibility(View.GONE);
     }
