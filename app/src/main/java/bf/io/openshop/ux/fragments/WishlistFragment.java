@@ -229,7 +229,7 @@ public class WishlistFragment extends Fragment {
             public void onRemoveItemFromWishList(View caller, final WishlistItem wishlistItem, final int adapterPosition) {
                 if (wishlistItem != null) {
                     progressDialog.show();
-                    removeFromWishList(getActivity(), wishlistItem.getId(), SettingsMy.getActiveUser(), CONST.wishlist_requests_tag, new RequestListener() {
+                    removeFromWishList(getActivity(), wishlistItem.getId(), SettingsMy.getActiveUser(), CONST.WISHLIST_REQUESTS_TAG, new RequestListener() {
                         @Override
                         public void requestSuccess(long newWishlistId) {
                             progressDialog.hide();
@@ -243,7 +243,7 @@ public class WishlistFragment extends Fragment {
                                         @Override
                                         public void onClick(View v) {
                                             progressDialog.show();
-                                            addToWishList(getActivity(), wishlistItem.getVariant().getId(), SettingsMy.getActiveUser(), CONST.wishlist_requests_tag, new RequestListener() {
+                                            addToWishList(getActivity(), wishlistItem.getVariant().getId(), SettingsMy.getActiveUser(), CONST.WISHLIST_REQUESTS_TAG, new RequestListener() {
                                                 @Override
                                                 public void requestSuccess(long newWishlistId) {
                                                     progressDialog.hide();
@@ -304,7 +304,7 @@ public class WishlistFragment extends Fragment {
         }, getFragmentManager(), user.getAccessToken());
         getWishlist.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getWishlist.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getWishlist, CONST.cart_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getWishlist, CONST.CART_REQUESTS_TAG);
     }
 
     private void checkIfEmpty() {
@@ -326,7 +326,7 @@ public class WishlistFragment extends Fragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().cancelPendingRequests(CONST.wishlist_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.WISHLIST_REQUESTS_TAG);
         if (progressDialog != null) progressDialog.cancel();
         super.onStop();
     }

@@ -29,6 +29,8 @@ public class SettingsMy {
     private static User activeUser;
     private static SharedPreferences sharedPref;
 
+    private SettingsMy() {}
+
     /**
      * Get actually selected shop.
      *

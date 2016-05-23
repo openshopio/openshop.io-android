@@ -173,7 +173,7 @@ public class AccountFragment extends Fragment {
         }, getFragmentManager(), user.getAccessToken());
         getUser.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getUser.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getUser, CONST.account_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getUser, CONST.ACCOUNT_REQUESTS_TAG);
     }
 
     private void refreshScreen(User user) {
@@ -225,7 +225,7 @@ public class AccountFragment extends Fragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.account_requests_tag);
+        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.ACCOUNT_REQUESTS_TAG);
         super.onStop();
     }
 }

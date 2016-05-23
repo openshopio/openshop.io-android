@@ -139,7 +139,7 @@ public class PageFragment extends Fragment {
         });
         getPage.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getPage.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getPage, CONST.page_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getPage, CONST.PAGE_REQUESTS_TAG);
     }
 
     /**
@@ -189,7 +189,7 @@ public class PageFragment extends Fragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().cancelPendingRequests(CONST.page_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.PAGE_REQUESTS_TAG);
         if (progressDialog != null) progressDialog.cancel();
         super.onStop();
     }

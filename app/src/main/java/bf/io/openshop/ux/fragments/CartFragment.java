@@ -79,7 +79,7 @@ public class CartFragment extends Fragment {
                 // Just open drawer menu.
                 Activity activity = getActivity();
                 if (activity instanceof MainActivity) {
-                    MainActivity mainActivity = ((MainActivity) activity);
+                    MainActivity mainActivity = (MainActivity) activity;
                     if (mainActivity.drawerFragment != null)
                         mainActivity.drawerFragment.toggleDrawerMenu();
                 }
@@ -158,7 +158,7 @@ public class CartFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             getCart.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             getCart.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(getCart, CONST.cart_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(getCart, CONST.CART_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
             loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
@@ -255,7 +255,7 @@ public class CartFragment extends Fragment {
                     }, getFragmentManager(), user.getAccessToken());
                     req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                     req.setShouldCache(false);
-                    MyApplication.getInstance().addToRequestQueue(req, CONST.cart_requests_tag);
+                    MyApplication.getInstance().addToRequestQueue(req, CONST.CART_REQUESTS_TAG);
                 } else {
                     LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
                     loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
@@ -267,7 +267,7 @@ public class CartFragment extends Fragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().cancelPendingRequests(CONST.cart_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.CART_REQUESTS_TAG);
         if (progressDialog != null) progressDialog.cancel();
         super.onStop();
     }

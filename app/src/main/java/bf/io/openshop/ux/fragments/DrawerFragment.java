@@ -50,6 +50,7 @@ import timber.log.Timber;
 public class DrawerFragment extends Fragment {
 
     private static final int BANNERS_ID = -123;
+    public static final String NULL_DRAWER_LISTENER_WTF = "Null drawer listener. WTF.";
 
     private ProgressBar drawerProgress;
 
@@ -137,7 +138,7 @@ public class DrawerFragment extends Fragment {
                             drawerListener.onDrawerItemCategorySelected(drawerItemCategory);
                         closeDrawerMenu();
                     } else {
-                        Timber.e(new RuntimeException(), "Null drawer listener. WTF.");
+                        Timber.e(new RuntimeException(), NULL_DRAWER_LISTENER_WTF);
                     }
                 } else
                     animateSubListShow(drawerItemCategory);
@@ -149,7 +150,7 @@ public class DrawerFragment extends Fragment {
                     drawerListener.onDrawerItemPageSelected(drawerItemPage);
                     closeDrawerMenu();
                 } else {
-                    Timber.e(new RuntimeException(), "Null drawer listener. WTF.");
+                    Timber.e(new RuntimeException(), NULL_DRAWER_LISTENER_WTF);
                 }
             }
 
@@ -159,7 +160,7 @@ public class DrawerFragment extends Fragment {
                     drawerListener.onAccountSelected();
                     closeDrawerMenu();
                 } else {
-                    Timber.e(new RuntimeException(), "Null drawer listener. WTF.");
+                    Timber.e(new RuntimeException(), NULL_DRAWER_LISTENER_WTF);
                 }
             }
         });
@@ -309,7 +310,7 @@ public class DrawerFragment extends Fragment {
         });
         getDrawerMenu.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getDrawerMenu.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getDrawerMenu, CONST.drawer_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getDrawerMenu, CONST.DRAWER_REQUESTS_TAG);
     }
 
     private void animateSubListHide() {
@@ -365,7 +366,7 @@ public class DrawerFragment extends Fragment {
     @Override
     public void onPause() {
         // Cancellation during onPause is needed because of app restarting during changing shop.
-        MyApplication.getInstance().cancelPendingRequests(CONST.drawer_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.DRAWER_REQUESTS_TAG);
         if (drawerLoading) {
             if (drawerProgress != null) drawerProgress.setVisibility(View.GONE);
             if (drawerRetryBtn != null) drawerRetryBtn.setVisibility(View.VISIBLE);

@@ -152,7 +152,7 @@ public class DiscountDialogFragment extends DialogFragment {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    MyApplication.getInstance().addToRequestQueue(req, CONST.cart_discounts_requests_tag);
+                    MyApplication.getInstance().addToRequestQueue(req, CONST.CART_DISCOUNTS_REQUESTS_TAG);
                 }
             }, 150);
         } else {
@@ -182,7 +182,7 @@ public class DiscountDialogFragment extends DialogFragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.cart_discounts_requests_tag);
+        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.CART_DISCOUNTS_REQUESTS_TAG);
         super.onStop();
     }
 }

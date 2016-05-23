@@ -3,7 +3,6 @@ package bf.io.openshop.entities.product;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -35,7 +34,7 @@ public class Product {
     @SerializedName("main_image_high_res")
     private String mainImageHighRes;
     private List<ProductVariant> variants;
-    private ArrayList<Product> related;
+    private List<Product> related;
 
     public Product() {
     }
@@ -160,11 +159,11 @@ public class Product {
         this.variants = variants;
     }
 
-    public ArrayList<Product> getRelated() {
+    public List<Product> getRelated() {
         return related;
     }
 
-    public void setRelated(ArrayList<Product> related) {
+    public void setRelated(List<Product> related) {
         this.related = related;
     }
 

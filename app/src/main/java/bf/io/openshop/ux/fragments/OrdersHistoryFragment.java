@@ -102,7 +102,7 @@ public class OrdersHistoryFragment extends Fragment {
 
         endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(layoutManager) {
             @Override
-            public void onLoadMore(int current_page) {
+            public void onLoadMore(int currentPage) {
                 if (ordersMetadata != null && ordersMetadata.getLinks() != null && ordersMetadata.getLinks().getNext() != null) {
                     loadOrders(ordersMetadata.getLinks().getNext());
                 } else {
@@ -151,7 +151,7 @@ public class OrdersHistoryFragment extends Fragment {
 
             req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             req.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(req, CONST.orders_history_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(req, CONST.ORDERS_HISTORY_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
             loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
@@ -168,7 +168,7 @@ public class OrdersHistoryFragment extends Fragment {
             }
             progressDialog.cancel();
         }
-        MyApplication.getInstance().cancelPendingRequests(CONST.orders_history_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.ORDERS_HISTORY_REQUESTS_TAG);
         super.onStop();
     }
 

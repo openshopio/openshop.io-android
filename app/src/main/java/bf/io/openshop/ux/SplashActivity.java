@@ -63,6 +63,7 @@ import timber.log.Timber;
  */
 public class SplashActivity extends AppCompatActivity {
     private static final String TAG = SplashActivity.class.getSimpleName();
+    public static final String REFERRER = "referrer";
 
     private Activity activity;
     private ProgressDialog progressDialog;
@@ -129,13 +130,13 @@ public class SplashActivity extends AppCompatActivity {
             Intent intent = this.getIntent();
             if (intent != null) {
                 Uri uri = intent.getData();
-                if (uri != null && (uri.getQueryParameter("utm_source") != null || uri.getQueryParameter("referrer") != null)) {
+                if (uri != null && (uri.getQueryParameter("utm_source") != null || uri.getQueryParameter(REFERRER) != null)) {
                     // GA General Campaign & Traffic Source Attribution. Save camping data.
                     Timber.d("UTM source detected. - General Campaign & Traffic Source Attribution.");
                     if (uri.getQueryParameter("utm_source") != null) {
                         Analytics.setCampaignUriString(uri.toString());
-                    } else if (uri.getQueryParameter("referrer") != null) {
-                        Analytics.setCampaignUriString(uri.getQueryParameter("referrer"));
+                    } else if (uri.getQueryParameter(REFERRER) != null) {
+                        Analytics.setCampaignUriString(uri.getQueryParameter(REFERRER));
                     }
                 } else if (intent.getExtras() != null) {
                     // FB app link. For function needs server side implementation also. https://developers.facebook.com/docs/applinks
@@ -222,7 +223,7 @@ public class SplashActivity extends AppCompatActivity {
                         });
                         req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                         req.setShouldCache(false);
-                        MyApplication.getInstance().addToRequestQueue(req, CONST.splash_requests_tag);
+                        MyApplication.getInstance().addToRequestQueue(req, CONST.SPLASH_REQUESTS_TAG);
                     }
                 } catch (Exception e) {
                     Timber.e(e, "Skip Splash activity after notification error.");
@@ -344,7 +345,7 @@ public class SplashActivity extends AppCompatActivity {
         });
         getShopsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getShopsRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.splash_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getShopsRequest, CONST.SPLASH_REQUESTS_TAG);
     }
 
     /**
@@ -353,7 +354,7 @@ public class SplashActivity extends AppCompatActivity {
      * @param shopList list of shops received from server.
      */
     private void setSpinShops(List<Shop> shopList) {
-        if (shopList != null && shopList.size() > 0) {
+        if (shopList != null && !shopList.isEmpty()) {
             // preset shop selection title.
             Shop defaultEmptyValue = new Shop();
             defaultEmptyValue.setId(CONST.DEFAULT_EMPTY_ID);
@@ -477,7 +478,7 @@ public class SplashActivity extends AppCompatActivity {
         if (progressDialog != null) progressDialog.cancel();
         if (layoutIntroScreen != null) layoutIntroScreen.setVisibility(View.GONE);
         if (layoutContent != null) layoutContent.setVisibility(View.VISIBLE);
-        MyApplication.getInstance().cancelPendingRequests(CONST.splash_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.SPLASH_REQUESTS_TAG);
         super.onStop();
     }
 }

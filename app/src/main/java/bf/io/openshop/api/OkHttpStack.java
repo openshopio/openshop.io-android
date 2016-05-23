@@ -122,11 +122,11 @@ public class OkHttpStack implements HttpStack {
         okHttpRequestBuilder.url(request.getUrl());
 
         Map<String, String> headers = request.getHeaders();
-        for (final String name : headers.keySet()) {
-            okHttpRequestBuilder.addHeader(name, headers.get(name));
+        for (final Map.Entry<String, String> header : headers.entrySet()) {
+            okHttpRequestBuilder.addHeader(header.getKey(), header.getValue());
         }
-        for (final String name : additionalHeaders.keySet()) {
-            okHttpRequestBuilder.addHeader(name, additionalHeaders.get(name));
+        for (final Map.Entry<String, String> additionalHeader : additionalHeaders.entrySet()) {
+            okHttpRequestBuilder.addHeader(additionalHeader.getKey(), additionalHeader.getValue());
         }
 
         setConnectionParametersForRequest(okHttpRequestBuilder, request);

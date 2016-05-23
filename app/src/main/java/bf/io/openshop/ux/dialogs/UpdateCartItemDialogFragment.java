@@ -179,7 +179,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
         });
         getProductRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getProductRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getProductRequest, CONST.update_cart_item_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getProductRequest, CONST.UPDATE_CART_ITEM_REQUESTS_TAG);
     }
 
 
@@ -264,7 +264,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
             CartSizeSpinnerAdapter adapterSize = new CartSizeSpinnerAdapter(getActivity(), variantSizeArrayList);
             itemSizesSpinner.setAdapter(adapterSize);
             // Select actual size
-            if (variantSizeArrayList.size() > 0) {
+            if (!variantSizeArrayList.isEmpty()) {
                 int sizeSelection = 0;
                 for (int i = 0; i < variantSizeArrayList.size(); i++) {
 //                    Timber.d("Compare list: " + variantSizeArrayList.get(i).getId() + " == " + cartProductItem.getVariant().getId() + " as actual");
@@ -314,7 +314,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
             }, getFragmentManager(), user.getAccessToken());
             req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             req.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(req, CONST.update_cart_item_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(req, CONST.UPDATE_CART_ITEM_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
             loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
@@ -334,7 +334,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
 
     @Override
     public void onStop() {
-        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.update_cart_item_requests_tag);
+        MyApplication.getInstance().getRequestQueue().cancelAll(CONST.UPDATE_CART_ITEM_REQUESTS_TAG);
         super.onStop();
     }
 }

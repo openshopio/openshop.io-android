@@ -32,10 +32,10 @@ public class SortSpinnerAdapter extends ArrayAdapter<SortItem> {
         sortItemList.add(newest);
         SortItem popularity = new SortItem("popularity", activity.getString(R.string.Recommended));
         sortItemList.add(popularity);
-        SortItem price_DESC = new SortItem("price_DESC", activity.getString(R.string.Highest_price));
-        sortItemList.add(price_DESC);
-        SortItem price_ASC = new SortItem("price_ASC", activity.getString(R.string.Lowest_price));
-        sortItemList.add(price_ASC);
+        SortItem priceDesc = new SortItem("price_DESC", activity.getString(R.string.Highest_price));
+        sortItemList.add(priceDesc);
+        SortItem priceAsc = new SortItem("price_ASC", activity.getString(R.string.Lowest_price));
+        sortItemList.add(priceAsc);
 
     }
 

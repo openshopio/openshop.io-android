@@ -61,6 +61,7 @@ import timber.log.Timber;
  */
 public class OrderCreateFragment extends Fragment {
 
+    public static final String MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT = "loginExpiredDialogFragment";
     private ProgressDialog progressDialog;
 
     private ScrollView scrollLayout;
@@ -187,7 +188,7 @@ public class OrderCreateFragment extends Fragment {
             Utils.setTextToInputLayout(phoneInputWrapper, user.getPhone());
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-            loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
+            loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
         }
     }
 
@@ -350,17 +351,17 @@ public class OrderCreateFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             getCart.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             getCart.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(getCart, CONST.order_create_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(getCart, CONST.ORDER_CREATE_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-            loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
+            loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
         }
     }
 
     private void refreshScreenContent(@NonNull Cart cart, User user) {
         this.cart = cart;
         List<CartProductItem> cartProductItems = cart.getItems();
-        if (cartProductItems == null || cartProductItems.size() < 1) {
+        if (cartProductItems == null || cartProductItems.isEmpty()) {
             Timber.e(new RuntimeException(), "Received null cart during order creation.");
             if (getActivity() instanceof MainActivity) ((MainActivity) getActivity()).onDrawerBannersSelected();
         } else {
@@ -419,7 +420,7 @@ public class OrderCreateFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             getDelivery.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             getDelivery.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(getDelivery, CONST.order_create_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(getDelivery, CONST.ORDER_CREATE_REQUESTS_TAG);
         }
     }
 
@@ -468,10 +469,10 @@ public class OrderCreateFragment extends Fragment {
             }, getFragmentManager(), user.getAccessToken());
             postOrderRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
             postOrderRequest.setShouldCache(false);
-            MyApplication.getInstance().addToRequestQueue(postOrderRequest, CONST.order_create_requests_tag);
+            MyApplication.getInstance().addToRequestQueue(postOrderRequest, CONST.ORDER_CREATE_REQUESTS_TAG);
         } else {
             LoginExpiredDialogFragment loginExpiredDialogFragment = new LoginExpiredDialogFragment();
-            loginExpiredDialogFragment.show(getFragmentManager(), "loginExpiredDialogFragment");
+            loginExpiredDialogFragment.show(getFragmentManager(), MSG_LOGIN_EXPIRED_DIALOG_FRAGMENT);
         }
     }
 
@@ -501,7 +502,7 @@ public class OrderCreateFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        MyApplication.getInstance().cancelPendingRequests(CONST.order_create_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.ORDER_CREATE_REQUESTS_TAG);
         if (progressDialog != null) progressDialog.cancel();
         if (deliveryProgressBar != null) deliveryProgressBar.setVisibility(View.GONE);
     }

@@ -44,6 +44,8 @@ public class JsonUtils {
     public static final String TAG_SHIPPING_PRICE_FORMATTED = "shipping_price_formatted";
     public static final String TAG_NOTE = "note";
 
+    private JsonUtils() {}
+
 
     /**
      * @param order

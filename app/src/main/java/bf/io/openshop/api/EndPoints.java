@@ -46,4 +46,6 @@ public class EndPoints {
     public static final String NOTIFICATION_IMAGE_URL   = "image_url";
     public static final String NOTIFICATION_SHOP_ID     = "shop_id";
     public static final String NOTIFICATION_UTM         = "utm";
+
+    private EndPoints() {}
 }

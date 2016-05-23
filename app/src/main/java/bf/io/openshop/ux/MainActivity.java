@@ -96,6 +96,7 @@ import timber.log.Timber;
  */
 public class MainActivity extends AppCompatActivity implements DrawerFragment.FragmentDrawerListener {
 
+    public static final String MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL = "MainActivity instance is null.";
     private static MainActivity mInstance = null;
 
     /**
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (instance != null) {
             instance.getCartCount(false);
         } else {
-            Timber.e("MainActivity instance is null.");
+            Timber.e(MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL);
         }
     }
 
@@ -150,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 //            instance.setTitle(s);
             instance.setTitle(title);
         } else {
-            Timber.e("MainActivity instance is null.");
+            Timber.e(MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL);
         }
     }
 
@@ -162,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (instance != null && instance.drawerFragment != null) {
             instance.drawerFragment.invalidateHeader();
         } else {
-            Timber.e("MainActivity instance is null.");
+            Timber.e(MSG_MAIN_ACTIVITY_INSTANCE_IS_NULL);
         }
     }
 
@@ -321,7 +322,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                     }, getSupportFragmentManager(), user.getAccessToken());
                     req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                     req.setShouldCache(false);
-                    MyApplication.getInstance().addToRequestQueue(req, CONST.main_activity_requests_tag);
+                    MyApplication.getInstance().addToRequestQueue(req, CONST.MAIN_ACTIVITY_REQUESTS_TAG);
                 } else {
                     String url = String.format(EndPoints.CART_INFO, SettingsMy.getActualNonNullShop(this).getId());
                     GsonRequest<CartInfo> req = new GsonRequest<>(Request.Method.GET, url, null, CartInfo.class, new Response.Listener<CartInfo>() {
@@ -339,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                     }, getSupportFragmentManager(), user.getAccessToken());
                     req.setRetryPolicy(MyApplication.getDefaultRetryPolice());
                     req.setShouldCache(false);
-                    MyApplication.getInstance().addToRequestQueue(req, CONST.main_activity_requests_tag);
+                    MyApplication.getInstance().addToRequestQueue(req, CONST.MAIN_ACTIVITY_REQUESTS_TAG);
                 }
             }
         }
@@ -445,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         searchSuggestionsAdapter = new SimpleCursorAdapter(this, android.R.layout.simple_list_item_1,
                 null, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
-        if (navigation != null && navigation.size() > 0) {
+        if (navigation != null && !navigation.isEmpty()) {
             for (int i = 0; i < navigation.size(); i++) {
                 if (!searchSuggestionsList.contains(navigation.get(i).getName())) {
                     searchSuggestionsList.add(navigation.get(i).getName());
@@ -776,7 +777,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         super.onPause();
         // FB base events logging
         AppEventsLogger.deactivateApp(this);
-        MyApplication.getInstance().cancelPendingRequests(CONST.main_activity_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.MAIN_ACTIVITY_REQUESTS_TAG);
 
         // GCM registration
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);

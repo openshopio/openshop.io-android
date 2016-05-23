@@ -110,16 +110,16 @@ public class BannersFragment extends Fragment {
         bannersRecycler.setItemAnimator(new DefaultItemAnimator());
         bannersRecycler.setHasFixedSize(true);
         bannersRecycler.setAdapter(bannersRecyclerAdapter);
-        endlessRecyclerScrollListener = (new EndlessRecyclerScrollListener(layoutManager) {
+        endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(layoutManager) {
             @Override
-            public void onLoadMore(int current_page) {
+            public void onLoadMore(int currentPage) {
                 if (bannersMetadata != null && bannersMetadata.getLinks() != null && bannersMetadata.getLinks().getNext() != null) {
                     loadBanners(bannersMetadata.getLinks().getNext());
                 } else {
                     Timber.d("CustomLoadMoreDataFromApi NO MORE DATA");
                 }
             }
-        });
+        };
         bannersRecycler.addOnScrollListener(endlessRecyclerScrollListener);
     }
 
@@ -137,7 +137,7 @@ public class BannersFragment extends Fragment {
                 // Just open drawer menu.
                 Activity activity = getActivity();
                 if (activity instanceof MainActivity) {
-                    MainActivity mainActivity = ((MainActivity) activity);
+                    MainActivity mainActivity = (MainActivity) activity;
                     if (mainActivity.drawerFragment != null)
                         mainActivity.drawerFragment.toggleDrawerMenu();
                 }
@@ -183,7 +183,7 @@ public class BannersFragment extends Fragment {
         });
         getBannersRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getBannersRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getBannersRequest, CONST.banner_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getBannersRequest, CONST.BANNER_REQUESTS_TAG);
     }
 
     @Override
@@ -196,7 +196,7 @@ public class BannersFragment extends Fragment {
             }
             progressDialog.cancel();
         }
-        MyApplication.getInstance().cancelPendingRequests(CONST.banner_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.BANNER_REQUESTS_TAG);
         super.onStop();
     }
 

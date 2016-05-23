@@ -588,8 +588,8 @@ public class RangeSeekBar<T extends Number> extends ImageView {
         mRect.right = getWidth() - padding;
         canvas.drawRect(mRect, paint);
 
-        boolean selectedValuesAreDefault = (getSelectedMinValue().equals(getAbsoluteMinValue()) &&
-                getSelectedMaxValue().equals(getAbsoluteMaxValue()));
+        boolean selectedValuesAreDefault = getSelectedMinValue().equals(getAbsoluteMinValue()) &&
+                getSelectedMaxValue().equals(getAbsoluteMaxValue());
 
         int colorToUseForButtonsAndHighlightedLine = !mAlwaysActive && !mActivateOnDefaultValues && selectedValuesAreDefault ?
                 mDefaultColor : // default values

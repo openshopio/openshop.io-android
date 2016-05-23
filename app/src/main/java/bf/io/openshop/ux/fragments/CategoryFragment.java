@@ -277,7 +277,7 @@ public class CategoryFragment extends Fragment {
         productsRecycler.setLayoutManager(productsRecyclerLayoutManager);
         endlessRecyclerScrollListener = new EndlessRecyclerScrollListener(productsRecyclerLayoutManager) {
             @Override
-            public void onLoadMore(int current_page) {
+            public void onLoadMore(int currentPage) {
                 Timber.e("Load more");
                 if (productsMetadata != null && productsMetadata.getLinks() != null && productsMetadata.getLinks().getNext() != null) {
                     getProducts(productsMetadata.getLinks().getNext());
@@ -451,7 +451,7 @@ public class CategoryFragment extends Fragment {
         });
         getProductsRequest.setRetryPolicy(MyApplication.getDefaultRetryPolice());
         getProductsRequest.setShouldCache(false);
-        MyApplication.getInstance().addToRequestQueue(getProductsRequest, CONST.category_requests_tag);
+        MyApplication.getInstance().addToRequestQueue(getProductsRequest, CONST.CATEGORY_REQUESTS_TAG);
     }
 
     private void checkEmptyContent() {
@@ -474,7 +474,7 @@ public class CategoryFragment extends Fragment {
             }
             loadMoreProgress.setVisibility(View.GONE);
         }
-        MyApplication.getInstance().cancelPendingRequests(CONST.category_requests_tag);
+        MyApplication.getInstance().cancelPendingRequests(CONST.CATEGORY_REQUESTS_TAG);
         super.onStop();
     }
 

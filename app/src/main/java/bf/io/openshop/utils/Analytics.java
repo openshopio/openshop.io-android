@@ -26,10 +26,14 @@ public class Analytics {
 
     private static final String TRACKER_GLOBAL = "Global";
     private static final String TRACKER_APP = "App";
+    public static final String PRODUCT = "product";
+    public static final String POST_ORDER = "POST_ORDER";
     private static HashMap<String, Tracker> mTrackers = new HashMap<>();
 
     private static AppEventsLogger facebookLogger;
     private static String campaignUri;
+
+    private Analytics() {}
 
     /**
      * Prepare Google analytics trackers and Facebook events logger.
@@ -177,14 +181,14 @@ public class Analytics {
     public static void logProductView(long remoteId, String name) {
         // FB event log
         Bundle parameters = new Bundle();
-        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, "product");
+        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, PRODUCT);
         parameters.putLong(AppEventsConstants.EVENT_PARAM_CONTENT_ID, remoteId);
         parameters.putString(AppEventsConstants.EVENT_PARAM_DESCRIPTION, name);
         logFbEvent(AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, null, parameters);
 
         // GA event log
         Map<String, String> event = new HitBuilders.EventBuilder()
-                .setCategory("product")
+                .setCategory(PRODUCT)
                 .setAction("view")
                 .setLabel("product with id: " + remoteId + ", name: " + name)
                 .build();
@@ -196,12 +200,12 @@ public class Analytics {
      *
      * @param remoteId       remote id of the viewed product.
      * @param name           name of the viewed product.
-     * @param discount_price product price.
+     * @param discountPrice product price.
      */
-    public static void logAddProductToCart(long remoteId, String name, double discount_price) {
+    public static void logAddProductToCart(long remoteId, String name, double discountPrice) {
         // FB facebookLogger
         Bundle parameters = new Bundle();
-        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, "product");
+        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, PRODUCT);
         parameters.putLong(AppEventsConstants.EVENT_PARAM_CONTENT_ID, remoteId);
         parameters.putString(AppEventsConstants.EVENT_PARAM_DESCRIPTION, name);
         logFbEvent(AppEventsConstants.EVENT_NAME_ADDED_TO_CART, null, parameters);
@@ -210,7 +214,7 @@ public class Analytics {
         Map<String, String> event = new HitBuilders.EventBuilder()
                 .setCategory("ADDED_TO_CART")
                 .setAction("ADDED_TO_CART")
-                .setLabel("ADDED TO CART" + " product id: " + remoteId + " product name: " + name + " price: " + discount_price)
+                .setLabel("ADDED TO CART" + " product id: " + remoteId + " product name: " + name + " price: " + discountPrice)
                 .build();
         sendEventToAppTrackers(event);
     }
@@ -267,9 +271,9 @@ public class Analytics {
     public static void logOrderCreatedEvent(Cart orderCart, String orderRemoteId, Double orderTotalPrice, Shipping selectedShipping) {
         //GA
         Map<String, String> eventPostOrder = new HitBuilders.EventBuilder()
-                .setCategory("POST_ORDER")
-                .setAction("POST_ORDER")
-                .setLabel("POST_ORDER")
+                .setCategory(POST_ORDER)
+                .setAction(POST_ORDER)
+                .setLabel(POST_ORDER)
                 .build();
         sendEventToAppTrackers(eventPostOrder);
 
@@ -320,7 +324,7 @@ public class Analytics {
 
             // Fb events purchased
             Bundle parameters = new Bundle();
-            parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, "product");
+            parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, PRODUCT);
             parameters.putLong(AppEventsConstants.EVENT_PARAM_CONTENT_ID, item.getVariant().getRemoteId());
             parameters.putInt(AppEventsConstants.EVENT_PARAM_NUM_ITEMS, item.getQuantity());
             parameters.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, orderCart.getCurrency());
