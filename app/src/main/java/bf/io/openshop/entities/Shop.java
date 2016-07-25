@@ -9,7 +9,7 @@ public class Shop {
     private String description;
     private String url;
     private String logo;
-    
+
     @SerializedName("google_ua")
     private String googleUa;
     private String language;
@@ -21,6 +21,10 @@ public class Shop {
     public Shop() {
     }
 
+    public Shop(String name, String googleUa) {
+        this.name = name;
+        this.googleUa = googleUa;
+    }
 
     public long getId() {
         return id;

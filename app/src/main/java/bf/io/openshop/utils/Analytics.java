@@ -162,6 +162,7 @@ public class Analytics {
                     }
                 }
             } catch (Exception e) {
+                e.printStackTrace();
                 Timber.e(e, "Send campaign info exception.");
             }
         } else {
@@ -208,7 +209,7 @@ public class Analytics {
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, PRODUCT);
         parameters.putLong(AppEventsConstants.EVENT_PARAM_CONTENT_ID, remoteId);
         parameters.putString(AppEventsConstants.EVENT_PARAM_DESCRIPTION, name);
-        logFbEvent(AppEventsConstants.EVENT_NAME_ADDED_TO_CART, null, parameters);
+        logFbEvent(AppEventsConstants.EVENT_NAME_ADDED_TO_CART, discountPrice, parameters);
 
         // Ga
         Map<String, String> event = new HitBuilders.EventBuilder()

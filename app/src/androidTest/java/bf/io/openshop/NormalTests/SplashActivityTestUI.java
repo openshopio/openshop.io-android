@@ -39,17 +39,15 @@ public class SplashActivityTestUI {
 
     /**
      * {@link ActivityTestRule} is a JUnit {@link Rule @Rule} to launch your activity under test.
-     * <p/>
-     * <p/>
+     * <p>
      * Rules are interceptors which are executed for each test method and are important building
      * blocks of Junit tests.
      */
     @Rule
-    public IntentsTestRule<SplashActivity> mActivityTestRule = new IntentsTestRule<>(SplashActivity.class);
+    public IntentsTestRule<SplashActivity> mActivityTestRule = new IntentsTestRule<>(SplashActivity.class, false, true);
 
     @BeforeClass
     public static void fakeNetworkLayer() {
-
         RequestQueue requestQueue = new FakeRequestQueue(MyApplication.getInstance());
         MyApplication.getInstance().setRequestQueue(requestQueue);
     }
@@ -73,9 +71,6 @@ public class SplashActivityTestUI {
 
         // Check if continue button is prepared
         onView(withId(R.id.splash_continue_to_shop_btn)).check(matches(isDisplayed()));
-
-//        onView(withId(R.id.splash_continue_to_shop_btn)).perform(click());
-//        intended(toPackage("bf.io.openshop.ux.MainActivity"));
     }
 
     @Test
@@ -83,8 +78,6 @@ public class SplashActivityTestUI {
         onView(withId(R.id.splash_continue_to_shop_btn)).perform(click());
         intended(hasComponent(MainActivity.class.getName()));
     }
-
-    // TODO also test incoming intents
 
     //      instead of threadSleep  loopMainThreadForAtLeast(millis);
 
