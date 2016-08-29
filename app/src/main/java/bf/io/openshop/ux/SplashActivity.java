@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (C) 2016 Business Factory, s.r.o.
- * <p/>
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p/>
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- * <p/>
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -49,6 +49,7 @@ import bf.io.openshop.api.EndPoints;
 import bf.io.openshop.api.GsonRequest;
 import bf.io.openshop.entities.Shop;
 import bf.io.openshop.entities.ShopResponse;
+import bf.io.openshop.testing.EspressoIdlingResource;
 import bf.io.openshop.utils.Analytics;
 import bf.io.openshop.utils.MsgUtils;
 import bf.io.openshop.utils.Utils;
@@ -58,18 +59,18 @@ import timber.log.Timber;
 
 /**
  * Initial activity. Handle install referrers, notifications and shop selection;
- * <p/>
+ * <p>
  * Created by Petr Melicherik.
  */
 public class SplashActivity extends AppCompatActivity {
-    private static final String TAG = SplashActivity.class.getSimpleName();
     public static final String REFERRER = "referrer";
+    private static final String TAG = SplashActivity.class.getSimpleName();
 
     private Activity activity;
     private ProgressDialog progressDialog;
 
     /**
-     * Indicates if layout has already been created.
+     * Indicates if layout has been already created.
      */
     private boolean layoutCreated = false;
 
@@ -83,12 +84,16 @@ public class SplashActivity extends AppCompatActivity {
      */
     private Button continueToShopBtn;
 
+    /**
+     * Indicates that window has been already detached.
+     */
+    private boolean windowDetached = false;
+
     // Possible layouts
     private View layoutIntroScreen;
     private View layoutContent;
     private View layoutContentNoConnection;
     private View layoutContentSelectShop;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -419,39 +424,44 @@ public class SplashActivity extends AppCompatActivity {
      */
     private void animateContentVisible() {
         if (layoutIntroScreen != null && layoutContent != null && layoutIntroScreen.getVisibility() == View.VISIBLE) {
+            EspressoIdlingResource.increment();
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-
-//                            // If lollipop use reveal animation. On older phones use fade animation.
-                            if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-                                Timber.d("Circular animation.");
-                                // get the center for the animation circle
-                                final int cx = (layoutContent.getLeft() + layoutContent.getRight()) / 2;
-                                final int cy = (layoutContent.getTop() + layoutContent.getBottom()) / 2;
-
-                                // get the final radius for the animation circle
-                                int dx = Math.max(cx, layoutContent.getWidth() - cx);
-                                int dy = Math.max(cy, layoutContent.getHeight() - cy);
-                                float finalRadius = (float) Math.hypot(dx, dy);
-
-                                Animator animator = ViewAnimationUtils.createCircularReveal(layoutContent, cx, cy, 0, finalRadius);
-                                animator.setInterpolator(new AccelerateDecelerateInterpolator());
-                                animator.setDuration(1250);
-                                layoutContent.setVisibility(View.VISIBLE);
-                                animator.start();
+                            if (windowDetached) {
+                                if (layoutContent != null) layoutContent.setVisibility(View.VISIBLE);
                             } else {
-                                Timber.d("Alpha animation.");
-                                layoutContent.setAlpha(0f);
-                                layoutContent.setVisibility(View.VISIBLE);
-                                layoutContent.animate()
-                                        .alpha(1f)
-                                        .setDuration(1000)
-                                        .setListener(null);
+//                            // If lollipop use reveal animation. On older phones use fade animation.
+                                if (android.os.Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                                    Timber.d("Circular animation.");
+                                    // get the center for the animation circle
+                                    final int cx = (layoutContent.getLeft() + layoutContent.getRight()) / 2;
+                                    final int cy = (layoutContent.getTop() + layoutContent.getBottom()) / 2;
+
+                                    // get the final radius for the animation circle
+                                    int dx = Math.max(cx, layoutContent.getWidth() - cx);
+                                    int dy = Math.max(cy, layoutContent.getHeight() - cy);
+                                    float finalRadius = (float) Math.hypot(dx, dy);
+
+                                    Animator animator = ViewAnimationUtils.createCircularReveal(layoutContent, cx, cy, 0, finalRadius);
+                                    animator.setInterpolator(new AccelerateDecelerateInterpolator());
+                                    animator.setDuration(1250);
+                                    layoutContent.setVisibility(View.VISIBLE);
+                                    animator.start();
+                                } else {
+                                    Timber.d("Alpha animation.");
+                                    layoutContent.setAlpha(0f);
+                                    layoutContent.setVisibility(View.VISIBLE);
+                                    layoutContent.animate()
+                                            .alpha(1f)
+                                            .setDuration(1000)
+                                            .setListener(null);
+                                }
                             }
+                            EspressoIdlingResource.decrement();
                         }
                     }, 330);
                 }
@@ -482,5 +492,17 @@ public class SplashActivity extends AppCompatActivity {
         if (layoutContent != null) layoutContent.setVisibility(View.VISIBLE);
         MyApplication.getInstance().cancelPendingRequests(CONST.SPLASH_REQUESTS_TAG);
         super.onStop();
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        windowDetached = false;
+        super.onAttachedToWindow();
+    }
+
+    @Override
+    public void onDetachedFromWindow() {
+        windowDetached = true;
+        super.onDetachedFromWindow();
     }
 }

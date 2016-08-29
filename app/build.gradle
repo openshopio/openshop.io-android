@@ -2,18 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
+    buildToolsVersion "23.0.3"
     // needed for okHttp from 23sdk. https://medium.com/android-news/android-networking-i-okhttp-volley-and-gson-72004efff196#.gsfpn3ez8
     useLibrary 'org.apache.http.legacy'
 
-    defaultConfig {
-        applicationId "bf.io.openshop"
-        minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 2
-        versionName "1.1"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    dexOptions {
+        javaMaxHeapSize "3g"
     }
 
     signingConfigs {
@@ -24,9 +18,19 @@ android {
                 keyAlias KEYSTORE_ALIAS
                 keyPassword KEY_PASSWORD
             } catch (ex) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD, KEYSTORE_ALIAS and KEY_PASSWORD in gradle.properties.")
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD, KEYSTORE_ALIAS and KEY_PASSWORD in gradle.properties." + ex)
             }
         }
+    }
+
+    defaultConfig {
+        applicationId "bf.io.openshop"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 2
+        versionName "1.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -50,14 +54,33 @@ android {
     testOptions {
         unitTests.returnDefaultValues = true
     }
+
+    productFlavors {
+        Modern {
+            minSdkVersion 23
+        }
+        Legacy {
+            minSdkVersion 15
+        }
+    }
+
+    sourceSets {
+        androidTest {
+            resources.srcDirs += ['src/androidTest/resources']
+        }
+    }
+}
+
+task clearData(type: Exec) {
+    def clearDataCommand = ['adb', 'shell', 'pm', 'clear', 'bf.io.openshop']
+    commandLine clearDataCommand
 }
 
 repositories { mavenCentral() }
 
 dependencies {
-//  if needed jar libraries, add them to libs folder and load them here:
-//  compile fileTree(include: ['*.jar'], dir: 'libs')
-
+    //  if needed jar libraries, add them to libs folder and load them here:
+    //  compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
@@ -71,15 +94,26 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.android.volley:volley:1.0.0'
+    compile 'com.android.support.test.espresso:espresso-idling-resource:2.2.2'
 
-    // Unit testing dependencies
+
+    //// Unit testing dependencies
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-all:1.10.19'
     // Set this dependency if you want to use the Hamcrest matcher library
     testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.4'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.4'
+    //// Instrumentation test dependencies
+    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 
 
 

@@ -8,6 +8,8 @@ import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
@@ -20,6 +22,7 @@ import com.facebook.FacebookSdk;
 import java.util.Locale;
 
 import bf.io.openshop.api.OkHttpStack;
+import bf.io.openshop.testing.EspressoIdlingResource;
 import timber.log.Timber;
 
 /**
@@ -127,6 +130,16 @@ public class MyApplication extends Application {
             mRequestQueue = Volley.newRequestQueue(this, new OkHttpStack());
         }
         return mRequestQueue;
+    }
+
+    @VisibleForTesting
+    public void setRequestQueue(RequestQueue requestQueue) {
+        mRequestQueue = requestQueue;
+    }
+
+    @VisibleForTesting
+    public IdlingResource getCountingIdlingResource() {
+        return EspressoIdlingResource.getIdlingResource();
     }
 
     public <T> void addToRequestQueue(Request<T> req, String tag) {
