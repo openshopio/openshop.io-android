@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "23.0.3"
     // needed for okHttp from 23sdk. https://medium.com/android-news/android-networking-i-okhttp-volley-and-gson-72004efff196#.gsfpn3ez8
     useLibrary 'org.apache.http.legacy'
 

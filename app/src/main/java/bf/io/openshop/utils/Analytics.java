@@ -82,6 +82,12 @@ public class Analytics {
         facebookLogger = AppEventsLogger.newLogger(MyApplication.getInstance());
     }
 
+    /**
+     * @return content of campaignUri private field.
+     */
+    public static String getCampaignUri(){
+        return campaignUri;
+    }
 
     /**
      * Method delete shop specific tracker if exist.

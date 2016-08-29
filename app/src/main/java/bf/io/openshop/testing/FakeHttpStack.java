@@ -20,7 +20,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.nio.CharBuffer;
-import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -96,17 +95,17 @@ public class FakeHttpStack implements HttpStack {
      * @return response data.
      * @throws UnsupportedEncodingException
      */
-    private HttpEntity createEntity(Request request) throws UnsupportedEncodingException {
+    private HttpEntity createEntity(Request request) throws IOException {
+        String fileName;
         if (request.getUrl().endsWith("/shops")) {
-            String fileName = "shops.txt";
-            try {
-                return loadResponse(this, fileName);
-            } catch (IOException e) {
-                throw new RuntimeException("Failed during loading test response file: " + fileName + ". " + e);
-            }
+            fileName = "shops.txt";
+        } else if (request.getUrl().matches(".*/shops/\\d+$")){
+            fileName = "shop_single.txt";
         } else {
             throw new NullPointerException("Unknown request for test class:" + request.getUrl());
         }
+
+        return loadResponse(this, fileName);
     }
 
     /**
@@ -121,7 +120,7 @@ public class FakeHttpStack implements HttpStack {
         InputStream stream = fakeHttpStack.getClass().getClassLoader().getResourceAsStream(fileName);
 
         StringBuilder sb = new StringBuilder();
-        copy(new InputStreamReader(stream, StandardCharsets.UTF_8), sb);
+        copy(new InputStreamReader(stream, "UTF-8"), sb);
         String string = sb.toString();
 
         return new StringEntity(string);

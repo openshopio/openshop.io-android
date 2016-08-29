@@ -129,14 +129,16 @@ public class SplashActivity extends AppCompatActivity {
         } else {
             progressDialog.hide();
 
-            // Google Install referrer is handled by CampaignTrackingService and CampaignTrackingReceiver defined in Manifest. Referrer is sent with first event.
+            // Google Install referrer is handled by CampaignTrackingService and CampaignTrackingReceiver defined in Manifest.
+            // Referrer is sent with first event.
 
             // Search for analytics data. General GA Campaign, and Facebook app links (if app links implemented on server side too).
             Intent intent = this.getIntent();
             if (intent != null) {
                 Uri uri = intent.getData();
-                if (uri != null && (uri.getQueryParameter("utm_source") != null || uri.getQueryParameter(REFERRER) != null)) {
+                if (uri != null && uri.isHierarchical() && (uri.getQueryParameter("utm_source") != null || uri.getQueryParameter(REFERRER) != null)) {
                     // GA General Campaign & Traffic Source Attribution. Save camping data.
+                    // https://developers.google.com/analytics/devguides/collection/android/v3/campaigns
                     Timber.d("UTM source detected. - General Campaign & Traffic Source Attribution.");
                     if (uri.getQueryParameter("utm_source") != null) {
                         Analytics.setCampaignUriString(uri.toString());
