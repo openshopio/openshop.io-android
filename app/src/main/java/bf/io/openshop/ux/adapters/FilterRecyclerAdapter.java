@@ -56,9 +56,23 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         // Add default values
         for (FilterType filterType : filterData.getFilters()) {
             if (DeserializerFilters.FILTER_TYPE_COLOR.equals(filterType.getType())) {
-                ((FilterTypeColor) filterType).getValues().add(0, new FilterValueColor(DEFAULT_ID, context.getString(R.string.All)));
+                try {
+                    List<FilterValueColor> colorValues = ((FilterTypeColor) filterType).getValues();
+                    if (colorValues.get(0).getId() != DEFAULT_ID || !colorValues.get(0).getValue().equals(context.getString(R.string.All))) {
+                        colorValues.add(0, new FilterValueColor(DEFAULT_ID, context.getString(R.string.All)));
+                    }
+                } catch (Exception e) {
+                    Timber.e(e, "Setting default value for color filter failed");
+                }
             } else if (DeserializerFilters.FILTER_TYPE_SELECT.equals(filterType.getType())) {
-                ((FilterTypeSelect) filterType).getValues().add(0, new FilterValueSelect(DEFAULT_ID, context.getString(R.string.All)));
+                try {
+                    List<FilterValueSelect> selectValues = ((FilterTypeSelect) filterType).getValues();
+                    if (selectValues.get(0).getId() != DEFAULT_ID || !selectValues.get(0).getValue().equals(context.getString(R.string.All))) {
+                        selectValues.add(0, new FilterValueSelect(DEFAULT_ID, context.getString(R.string.All)));
+                    }
+                } catch (Exception e) {
+                    Timber.e(e, "Setting default value for select filter failed");
+                }
             }
         }
 

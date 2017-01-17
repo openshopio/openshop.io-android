@@ -13,7 +13,7 @@ We as a Facebook Marketing Partner company have experienced neverending struggle
 
 Do you want to see the app in action? 
 
-<a href='http://play.google.com/store/apps'>
+<a href='https://play.google.com/store/apps/details?id=bf.io.openshop'>
 <img src='http://s24.postimg.org/mmox1wai9/google_play_badge.png' border='0' alt="google play badge" />
 </a>
 
