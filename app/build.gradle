@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
     // needed for okHttp from 23sdk. https://medium.com/android-news/android-networking-i-okhttp-volley-and-gson-72004efff196#.gsfpn3ez8
     useLibrary 'org.apache.http.legacy'
 
@@ -26,9 +26,9 @@ android {
     defaultConfig {
         applicationId "bf.io.openshop"
         minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 2
-        versionName "1.1"
+        targetSdkVersion 25
+        versionCode 3
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
@@ -81,13 +81,13 @@ repositories { mavenCentral() }
 dependencies {
     //  if needed jar libraries, add them to libs folder and load them here:
     //  compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    compile 'com.android.support:recyclerview-v7:23.3.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.jakewharton.timber:timber:4.1.2'
-    compile 'com.google.android.gms:play-services-analytics:8.4.0'
-    compile 'com.google.android.gms:play-services-gcm:8.4.0'
-    compile 'com.google.android.gms:play-services-maps:8.4.0'
+    compile 'com.google.android.gms:play-services-analytics:10.0.1'
+    compile 'com.google.android.gms:play-services-gcm:10.0.1'
+    compile 'com.google.android.gms:play-services-maps:10.0.1'
     compile 'com.google.code.gson:gson:2.6.2'
     compile 'mbanje.kurt:fabbutton:1.2.1'
     compile 'com.facebook.android:facebook-android-sdk:4.9.0'
@@ -105,7 +105,7 @@ dependencies {
     testCompile 'org.powermock:powermock-module-junit4:1.6.4'
     testCompile 'org.powermock:powermock-api-mockito:1.6.4'
     //// Instrumentation test dependencies
-    androidTestCompile 'com.android.support:support-annotations:23.4.0'
+    androidTestCompile 'com.android.support:support-annotations:25.1.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
     androidTestCompile 'com.android.support.test:rules:0.5'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'

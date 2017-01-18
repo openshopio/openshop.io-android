@@ -508,6 +508,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         if (newFragment != null) {
             FragmentManager frgManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = frgManager.beginTransaction();
+            fragmentTransaction.setAllowOptimization(false);
             fragmentTransaction.addToBackStack(transactionTag);
             fragmentTransaction.replace(R.id.main_content_frame, newFragment).commit();
             frgManager.executePendingTransactions();
@@ -529,7 +530,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
                 }
             }
             FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
-            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            manager.popBackStackImmediate(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
         Timber.d("backStack cleared.");
 //        TODO maybe implement own fragment backStack handling to prevent banner fragment recreation during clearing.
