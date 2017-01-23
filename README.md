@@ -94,6 +94,9 @@ Don't you have your mobile development team? We totally understand that pain, wh
 # TODO
 * Unit Tests
 
+# Contribution
+
+Feel free to build your own mobile ecommerce solution on top of OpenShop.io. Send us the name of the application on help@openshop.io to get **$500** advertisement credit on Facebook for free from [Business Factory](http://b.cz/en/) - one of the 50 official Facebook Marketing Partners worldwide.
 
 # Contact us
 
