@@ -57,6 +57,31 @@
             android:textSize="15sp"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/settings_privacy_policy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/base_margin_vertical"
+        android:paddingTop="@dimen/base_margin_vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Privacy_policy"
+            android:textColor="@color/textPrimary"
+            android:textSize="17sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Basic_information_about_Privacy_Policy"
+            android:textColor="@color/textSecondary"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/settings_buttons_layout"

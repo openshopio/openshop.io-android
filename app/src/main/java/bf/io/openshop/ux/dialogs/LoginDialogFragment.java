@@ -210,7 +210,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             emailForgottenPassword.setText(SettingsMy.getUserEmailHint());
 
         // Simple accounts whisperer.
-        Account[] accounts = AccountManager.get(getActivity()).getAccountsByType("com.google");
+        Account[] accounts = AccountManager.get(getActivity()).getAccounts();
         String[] addresses = new String[accounts.length];
         for (int i = 0; i < accounts.length; i++) {
             addresses[i] = accounts[i].name;
