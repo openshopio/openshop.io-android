@@ -161,6 +161,8 @@
     <string name="Select">Vybrat</string>
     <string name="Open_source_libraries">Open source knihovny</string>
     <string name="License_details_for_open_source_software">Podrobné informace o licencích použitého open source softwaru</string>
+    <string name="Privacy_policy">Zásady ochrany osobních údajů</string>
+    <string name="Basic_information_about_Privacy_Policy">Základní informace o zásadě ochrany osobních údajů</string>
     <string name="App_needs_to_be_restarted">Pro změnu obchodu je nutné restartovat aplikaci.</string>
     <string name="including_VAT">s DPH</string>
     <string name="Thank_you_for_your_order">Děkujeme za Vaši objednávku.</string>
