@@ -4,3 +4,9 @@
 .DS_Store
 /build
 /captures
+app.iml
+openshop.io-android.iml
+openshopKeystore.jks
+workspace.xml
+app/APK_stable/
+gradle.properties
