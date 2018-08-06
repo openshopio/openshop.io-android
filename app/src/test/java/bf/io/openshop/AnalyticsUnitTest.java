@@ -17,6 +17,7 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

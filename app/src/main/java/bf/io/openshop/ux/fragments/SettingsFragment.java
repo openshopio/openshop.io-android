@@ -1,6 +1,8 @@
 package bf.io.openshop.ux.fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,7 @@ import bf.io.openshop.api.EndPoints;
 import bf.io.openshop.api.GsonRequest;
 import bf.io.openshop.entities.Shop;
 import bf.io.openshop.entities.ShopResponse;
+import bf.io.openshop.listeners.OnSingleClickListener;
 import bf.io.openshop.utils.MsgUtils;
 import bf.io.openshop.utils.Utils;
 import bf.io.openshop.ux.MainActivity;
@@ -63,6 +66,16 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 LicensesDialogFragment df = new LicensesDialogFragment();
                 df.show(getFragmentManager(), LicensesDialogFragment.class.getSimpleName());
+            }
+        });
+
+        LinearLayout privacyPolicyLayout = (LinearLayout) view.findViewById(R.id.settings_privacy_policy);
+        privacyPolicyLayout.setOnClickListener(new OnSingleClickListener() {
+            @Override
+            public void onSingleClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://openshop.io/privacy-policy.html"));
+                startActivity(i);
             }
         });
 

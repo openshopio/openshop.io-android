@@ -164,6 +164,8 @@
     <string name="Select">Select</string>
     <string name="Open_source_libraries">Open source libraries</string>
     <string name="License_details_for_open_source_software">License details for open source software</string>
+    <string name="Privacy_policy">Privacy policy</string>
+    <string name="Basic_information_about_Privacy_Policy">Basic information about Privacy Policy</string>
     <string name="App_needs_to_be_restarted">To change the shop an app restart is needed.</string>
     <string name="including_VAT">inc. VAT</string>
     <string name="Thank_you_for_your_order">Thank you for your order</string>
