@@ -14,7 +14,7 @@ We as a Facebook Marketing Partner company have experienced neverending struggle
 Do you want to see the app in action? 
 
 <a href='https://play.google.com/store/apps/details?id=bf.io.openshop'>
-<img src='https://www.codot.gov/safety/alcohol-and-impaired-driving/planahead/2011-assets/android-market-icon.png/image' border='0' alt="google play badge" />
+<img src='https://freeiconshop.com/wp-content/uploads/edd/google-play-badge.png' border='0' alt="google play badge" />
 </a>
 
 
