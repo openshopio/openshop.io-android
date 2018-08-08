@@ -24,8 +24,8 @@ import bf.io.openshop.BuildConfig;
 import bf.io.openshop.CONST;
 import bf.io.openshop.MyApplication;
 import bf.io.openshop.utils.Utils;
-import bf.io.openshop.ux.dialogs.LoginDialogFragment;
-import bf.io.openshop.ux.dialogs.LoginExpiredDialogFragment;
+import bf.io.openshop.UX.dialogs.LoginDialogFragment;
+import bf.io.openshop.UX.dialogs.LoginExpiredDialogFragment;
 import timber.log.Timber;
 
 /**

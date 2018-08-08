@@ -21,7 +21,7 @@ import java.net.URL;
 import bf.io.openshop.BuildConfig;
 import bf.io.openshop.R;
 import bf.io.openshop.api.EndPoints;
-import bf.io.openshop.ux.SplashActivity;
+import bf.io.openshop.UX.SplashActivity;
 import timber.log.Timber;
 
 public class MyGcmListenerService extends GcmListenerService {

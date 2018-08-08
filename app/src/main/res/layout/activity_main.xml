@@ -36,7 +36,7 @@
     <!-- Drawer width no more than 320dp-->
     <fragment
         android:id="@+id/main_navigation_drawer_fragment"
-        android:name="bf.io.openshop.ux.fragments.DrawerFragment"
+        android:name="bf.io.openshop.UX.fragments.DrawerFragment"
         android:layout_width="@dimen/navigation_drawer_size"
         android:layout_height="match_parent"
         android:layout_gravity="start"

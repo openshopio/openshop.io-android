@@ -32,7 +32,7 @@
             android:value="@string/facebook_app_id"/>
 
         <activity
-            android:name=".ux.SplashActivity"
+            android:name=".UX.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -46,7 +46,7 @@
         </activity>
 
         <activity
-            android:name=".ux.MainActivity"
+            android:name=".UX.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustResize">
             <intent-filter>
@@ -59,7 +59,7 @@
         </activity>
 
         <activity
-            android:name="bf.io.openshop.ux.RestartAppActivity"
+            android:name="bf.io.openshop.UX.RestartAppActivity"
             android:screenOrientation="portrait"/>
 
         <!-- Facebook activity used for FB login-->

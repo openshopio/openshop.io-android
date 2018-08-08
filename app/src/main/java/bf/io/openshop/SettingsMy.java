@@ -10,7 +10,7 @@ import bf.io.openshop.entities.Shop;
 import bf.io.openshop.entities.User;
 import bf.io.openshop.utils.MsgUtils;
 import bf.io.openshop.utils.Utils;
-import bf.io.openshop.ux.SplashActivity;
+import bf.io.openshop.UX.SplashActivity;
 import timber.log.Timber;
 
 /**
