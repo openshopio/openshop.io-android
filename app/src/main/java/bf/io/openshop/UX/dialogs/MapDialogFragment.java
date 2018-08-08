@@ -118,7 +118,6 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
         TextView location = (TextView) view.findViewById(R.id.map_location);
         TextView openingTime = (TextView) view.findViewById(R.id.map_shop_info_time);
         TextView note = (TextView) view.findViewById(R.id.map_note);
-        LinearLayout locationPaths = (LinearLayout) view.findViewById(R.id.map_shop_info);
 
         if (branch != null) {
             title.setText(branch.getName());
@@ -145,6 +144,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
             }
 
             // TODO add "How to get here" options
+            LinearLayout locationPaths = (LinearLayout) view.findViewById(R.id.map_shop_info);
             // how would normal data looks like? Probably not strings like tram/train/sub
 ////            List<Transport> transports = branch.getTransports();
 ////            transports = new ArrayList<>();

@@ -1,5 +1,6 @@
 package bf.io.openshop.testing;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.android.volley.AuthFailureError;
@@ -33,10 +34,8 @@ import java.util.Map;
  */
 public class FakeHttpStack implements HttpStack {
 
-    private final Context context;
-
     FakeHttpStack(Context context) {
-        this.context = context;
+        Context context1 = context;
     }
 
     /**
@@ -82,7 +81,7 @@ public class FakeHttpStack implements HttpStack {
      * @return list with headers.
      */
     private List<Header> defaultHeaders() {
-        DateFormat dateFormat = new SimpleDateFormat("EEE, dd mmm yyyy HH:mm:ss zzz");
+        @SuppressLint("SimpleDateFormat") DateFormat dateFormat = new SimpleDateFormat("EEE, dd mmm yyyy HH:mm:ss zzz");
         List<Header> headers = new ArrayList<>();
         headers.add(new BasicHeader("Date", dateFormat.format(new Date())));
         return headers;

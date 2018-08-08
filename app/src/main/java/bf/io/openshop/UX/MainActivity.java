@@ -91,6 +91,9 @@ import bf.io.openshop.UX.fragments.SettingsFragment;
 import bf.io.openshop.UX.fragments.WishlistFragment;
 import timber.log.Timber;
 
+import static android.support.v4.view.MenuItemCompat.getActionView;
+import static android.support.v4.view.MenuItemCompat.setActionView;
+
 /**
  * Application is based on one core activity, which handles fragment operations.
  */
@@ -269,8 +272,8 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
 
         // Prepare cart count info
         MenuItem cartItem = menu.findItem(R.id.action_cart);
-        MenuItemCompat.setActionView(cartItem, R.layout.action_icon_shopping_cart);
-        View view = MenuItemCompat.getActionView(cartItem);
+        setActionView(cartItem, R.layout.action_icon_shopping_cart);
+        View view = getActionView(cartItem);
         cartCountView = view.findViewById(R.id.shopping_cart_notify);
         showNotifyCount(cartCountNotificationValue);
         view.setOnClickListener(new View.OnClickListener() {

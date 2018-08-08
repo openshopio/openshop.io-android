@@ -82,8 +82,8 @@ public class DeserializerFilters implements JsonDeserializer<Filters> {
     /**
      * Parse ID and NAME for a type of filter.
      *
-     * @param jObject
-     * @param filterType
+     * @param jObject object which will be parsed
+     * @param filterType filter object where values will be set
      */
     private void parseGeneralFields(JsonObject jObject, FilterType filterType) {
         if (jObject.has(TAG_ID))
@@ -95,7 +95,7 @@ public class DeserializerFilters implements JsonDeserializer<Filters> {
     }
 
 
-    private <T extends Object> List<T> parseTypeValues(Class<T> type, JsonObject jObject, JsonDeserializationContext context) {
+    private <T> List<T> parseTypeValues(Class<T> type, JsonObject jObject, JsonDeserializationContext context) {
         List<T> values = null;
         if (jObject.has(TAG_VALUES)) {
             JsonArray valuesArray = jObject.get(TAG_VALUES).getAsJsonArray();
