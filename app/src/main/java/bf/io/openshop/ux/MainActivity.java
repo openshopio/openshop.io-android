@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         Analytics.prepareTrackersAndFbLogger(SettingsMy.getActualNonNullShop(this), getApplicationContext());
 
         // Prepare toolbar and navigation drawer
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -271,7 +271,7 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         MenuItem cartItem = menu.findItem(R.id.action_cart);
         MenuItemCompat.setActionView(cartItem, R.layout.action_icon_shopping_cart);
         View view = MenuItemCompat.getActionView(cartItem);
-        cartCountView = (TextView) view.findViewById(R.id.shopping_cart_notify);
+        cartCountView = view.findViewById(R.id.shopping_cart_notify);
         showNotifyCount(cartCountNotificationValue);
         view.setOnClickListener(new View.OnClickListener() {
             @Override

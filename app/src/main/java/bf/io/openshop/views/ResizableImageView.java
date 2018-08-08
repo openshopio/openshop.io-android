@@ -3,9 +3,9 @@ package bf.io.openshop.views;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.support.v7.widget.AppCompatImageView;
 
-public class ResizableImageView extends ImageView {
+public class ResizableImageView extends AppCompatImageView {
 
     public ResizableImageView(Context context, AttributeSet attrs) {
         super(context, attrs);

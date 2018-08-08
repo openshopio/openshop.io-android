@@ -1,5 +1,6 @@
 package bf.io.openshop.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -21,7 +22,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import android.widget.ImageView;
+import android.support.v7.widget.AppCompatImageView;
 
 import java.math.BigDecimal;
 
@@ -41,7 +42,7 @@ import bf.io.openshop.utils.Utils;
  * @author Alex Florescu (alex@florescu.org)
  * @author Michael Keppler (bananeweizen@gmx.de)
  */
-public class RangeSeekBar<T extends Number> extends ImageView {
+public class RangeSeekBar<T extends Number> extends AppCompatImageView {
     /**
      * Default color of a {@link RangeSeekBar}, #FFee1f65.
      */
@@ -395,6 +396,7 @@ public class RangeSeekBar<T extends Number> extends ImageView {
     /**
      * Handles thumb selection and movement. Notifies listener callback on certain events.
      */
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent event) {
 

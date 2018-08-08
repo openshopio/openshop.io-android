@@ -12,11 +12,11 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.support.v7.widget.AppCompatImageView;
 
 //http://www.androidhub4you.com/2014/10/android-custom-shape-imageview-rounded.html
 
-public class RoundedImageView extends ImageView {
+public class RoundedImageView extends AppCompatImageView {
 
     public RoundedImageView(Context ctx, AttributeSet attrs) {
         super(ctx, attrs);

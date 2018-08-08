@@ -8,10 +8,10 @@
         android:id="@+id/shipping_dialog_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorAccent"
+        android:background="@color/colorAccent"
         android:elevation="3dp"
         android:gravity="center_vertical"
-        android:minHeight="?attr/actionBarSize">
+        android:minHeight="?android:attr/actionBarSize">
 
         <ImageView
             android:id="@+id/shipping_dialog_close"

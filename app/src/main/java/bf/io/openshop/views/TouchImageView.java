@@ -8,11 +8,11 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import android.widget.ImageView;
+import android.support.v7.widget.AppCompatImageView;
 
 import timber.log.Timber;
 
-public class TouchImageView extends ImageView {
+public class TouchImageView extends AppCompatImageView {
 
     Matrix matrix;
 
