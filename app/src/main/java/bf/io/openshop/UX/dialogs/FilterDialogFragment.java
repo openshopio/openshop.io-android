@@ -112,30 +112,30 @@ public class FilterDialogFragment extends DialogFragment {
     }
 
     private String buildFilterUrl() {
-        String filterUrl = "";
+        StringBuilder filterUrl = new StringBuilder();
 
         for (FilterType filterType : filterData.getFilters()) {
             if (DeserializerFilters.FILTER_TYPE_COLOR.equals(filterType.getType())) {
                 FilterTypeColor filterTypeColor = (FilterTypeColor) filterType;
                 if (filterTypeColor.getSelectedValue() != null) {
-                    filterUrl += "&" + filterType.getLabel() + "=" + filterTypeColor.getSelectedValue().getId();
+                    filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeColor.getSelectedValue().getId());
                 }
             } else if (DeserializerFilters.FILTER_TYPE_SELECT.equals(filterType.getType())) {
                 FilterTypeSelect filterTypeSelect = (FilterTypeSelect) filterType;
                 if (filterTypeSelect.getSelectedValue() != null) {
-                    filterUrl += "&" + filterType.getLabel() + "=" + filterTypeSelect.getSelectedValue().getId();
+                    filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeSelect.getSelectedValue().getId());
                 }
             } else if (DeserializerFilters.FILTER_TYPE_RANGE.equals(filterType.getType())) {
                 FilterTypeRange filterTypeRange = (FilterTypeRange) filterType;
                 if (filterTypeRange.getSelectedMin() >= 0 && filterTypeRange.getSelectedMax() > 0) {
-                    filterUrl += "&" + filterType.getLabel() + "=" + filterTypeRange.getSelectedMin() + "|" + filterTypeRange.getSelectedMax();
+                    filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeRange.getSelectedMin()).append("|").append(filterTypeRange.getSelectedMax());
                 }
             } else {
                 Timber.e("Unknown filter type.");
             }
         }
 
-        Timber.d("BuildFilterUrl - %s", filterUrl);
-        return filterUrl;
+        Timber.d("BuildFilterUrl - %s", filterUrl.toString());
+        return filterUrl.toString();
     }
 }

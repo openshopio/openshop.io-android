@@ -124,15 +124,15 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
             location.setText(branch.getAddress());
             if (branch.getOpeningHoursList() != null && branch.getOpeningHoursList().size() > 0) {
                 openingTime.setVisibility(View.VISIBLE);
-                String timeText = "";
+                StringBuilder timeText = new StringBuilder();
                 for (int i = 0; i < branch.getOpeningHoursList().size(); i++) {
                     OpeningHours openingHours = branch.getOpeningHoursList().get(i);
-                    timeText += openingHours.getDay() + " " + openingHours.getOpening();
+                    timeText.append(openingHours.getDay()).append(" ").append(openingHours.getOpening());
                     if (i != branch.getOpeningHoursList().size() - 1) {
-                        timeText += "\n";
+                        timeText.append("\n");
                     }
                 }
-                openingTime.setText(timeText);
+                openingTime.setText(timeText.toString());
             } else {
                 openingTime.setVisibility(View.GONE);
             }
