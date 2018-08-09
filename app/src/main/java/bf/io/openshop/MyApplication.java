@@ -21,7 +21,7 @@ import com.facebook.FacebookSdk;
 
 import java.util.Locale;
 
-import bf.io.openshop.API.OkHttpStack;
+import bf.io.openshop.api.OkHttpStack;
 import bf.io.openshop.testing.EspressoIdlingResource;
 import timber.log.Timber;
 
