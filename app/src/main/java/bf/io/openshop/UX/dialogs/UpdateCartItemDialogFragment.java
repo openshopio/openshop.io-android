@@ -103,9 +103,9 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
 
         dialogProgress = view.findViewById(R.id.dialog_update_cart_item_progress);
         dialogContent = view.findViewById(R.id.dialog_update_cart_item_content);
-        itemColorsSpinner = (Spinner) view.findViewById(R.id.dialog_update_cart_item_color_spin);
-        itemSizesSpinner = (Spinner) view.findViewById(R.id.dialog_update_cart_item_size_spin);
-        TextView itemName = (TextView) view.findViewById(R.id.dialog_update_cart_item_title);
+        itemColorsSpinner = view.findViewById(R.id.dialog_update_cart_item_color_spin);
+        itemSizesSpinner = view.findViewById(R.id.dialog_update_cart_item_size_spin);
+        TextView itemName = view.findViewById(R.id.dialog_update_cart_item_title);
         itemName.setText(cartProductItem.getVariant().getName());
 
         View btnSave = view.findViewById(R.id.dialog_update_cart_item_save_btn);
@@ -141,7 +141,7 @@ public class UpdateCartItemDialogFragment extends DialogFragment {
 
         // Set item quantity
         QuantitySpinnerAdapter adapterQuantity = new QuantitySpinnerAdapter(getActivity(), getQuantities());
-        quantitySpinner = (Spinner) view.findViewById(R.id.dialog_update_cart_item_quantity_spin);
+        quantitySpinner = view.findViewById(R.id.dialog_update_cart_item_quantity_spin);
         quantitySpinner.setAdapter(adapterQuantity);
 
         getProductDetail(cartProductItem);

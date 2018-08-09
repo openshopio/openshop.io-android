@@ -86,11 +86,11 @@ public class DrawerFragment extends Fragment {
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_drawer, container, false);
 
-        drawerSubmenuLayout = (LinearLayout) layout.findViewById(R.id.drawer_submenu_layout);
-        drawerSubmenuTitle = (TextView) layout.findViewById(R.id.drawer_submenu_title);
-        drawerProgress = (ProgressBar) layout.findViewById(R.id.drawer_progress);
+        drawerSubmenuLayout = layout.findViewById(R.id.drawer_submenu_layout);
+        drawerSubmenuTitle = layout.findViewById(R.id.drawer_submenu_title);
+        drawerProgress = layout.findViewById(R.id.drawer_progress);
 
-        drawerRetryBtn = (Button) layout.findViewById(R.id.drawer_retry_btn);
+        drawerRetryBtn = layout.findViewById(R.id.drawer_retry_btn);
         drawerRetryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +101,7 @@ public class DrawerFragment extends Fragment {
 
         prepareDrawerRecycler(layout);
 
-        Button backBtn = (Button) layout.findViewById(R.id.drawer_submenu_back_btn);
+        Button backBtn = layout.findViewById(R.id.drawer_submenu_back_btn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             private long mLastClickTime = 0;
 
@@ -126,7 +126,7 @@ public class DrawerFragment extends Fragment {
      * @param view fragment base view.
      */
     private void prepareDrawerRecycler(View view) {
-        drawerRecycler = (RecyclerView) view.findViewById(R.id.drawer_recycler);
+        drawerRecycler = view.findViewById(R.id.drawer_recycler);
         drawerRecyclerAdapter = new DrawerRecyclerAdapter(getContext(), new DrawerRecyclerInterface() {
             @Override
             public void onCategorySelected(View v, DrawerItemCategory drawerItemCategory) {
@@ -168,7 +168,7 @@ public class DrawerFragment extends Fragment {
         drawerRecycler.setHasFixedSize(true);
         drawerRecycler.setAdapter(drawerRecyclerAdapter);
 
-        RecyclerView drawerSubmenuRecycler = (RecyclerView) view.findViewById(R.id.drawer_submenu_recycler);
+        RecyclerView drawerSubmenuRecycler = view.findViewById(R.id.drawer_submenu_recycler);
         drawerSubmenuRecyclerAdapter = new DrawerSubmenuRecyclerAdapter(new DrawerSubmenuRecyclerInterface() {
             @Override
             public void onSubCategorySelected(View v, DrawerItemCategory drawerItemCategory) {

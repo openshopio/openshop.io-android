@@ -67,13 +67,13 @@ public class AccountFragment extends Fragment {
 
         pDialog = Utils.generateProgressDialog(getActivity(), false);
 
-        userInfoLayout = (LinearLayout) view.findViewById(R.id.account_user_info);
-        tvUserName = (TextView) view.findViewById(R.id.account_name);
-        tvAddress = (TextView) view.findViewById(R.id.account_address);
-        tvEmail = (TextView) view.findViewById(R.id.account_email);
-        tvPhone = (TextView) view.findViewById(R.id.account_phone);
+        userInfoLayout = view.findViewById(R.id.account_user_info);
+        tvUserName = view.findViewById(R.id.account_name);
+        tvAddress = view.findViewById(R.id.account_address);
+        tvEmail = view.findViewById(R.id.account_email);
+        tvPhone = view.findViewById(R.id.account_phone);
 
-        updateUserBtn = (Button) view.findViewById(R.id.account_update);
+        updateUserBtn = view.findViewById(R.id.account_update);
         updateUserBtn.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -81,7 +81,7 @@ public class AccountFragment extends Fragment {
                     ((MainActivity) getActivity()).onAccountEditSelected();
             }
         });
-        myOrdersBtn = (Button) view.findViewById(R.id.account_my_orders);
+        myOrdersBtn = view.findViewById(R.id.account_my_orders);
         myOrdersBtn.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -91,7 +91,7 @@ public class AccountFragment extends Fragment {
         });
 
 
-        Button settingsBtn = (Button) view.findViewById(R.id.account_settings);
+        Button settingsBtn = view.findViewById(R.id.account_settings);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +100,7 @@ public class AccountFragment extends Fragment {
                     ((MainActivity) getActivity()).startSettingsFragment();
             }
         });
-        Button dispensingPlaces = (Button) view.findViewById(R.id.account_dispensing_places);
+        Button dispensingPlaces = view.findViewById(R.id.account_dispensing_places);
         dispensingPlaces.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,7 +114,7 @@ public class AccountFragment extends Fragment {
             }
         });
 
-        loginLogoutBtn = (Button) view.findViewById(R.id.account_login_logout_btn);
+        loginLogoutBtn = view.findViewById(R.id.account_login_logout_btn);
         loginLogoutBtn.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {

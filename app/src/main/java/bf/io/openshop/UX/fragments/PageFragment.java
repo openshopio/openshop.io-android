@@ -94,8 +94,8 @@ public class PageFragment extends Fragment {
         layoutEmpty = view.findViewById(R.id.page_empty);
         layoutContent = view.findViewById(R.id.page_content_layout);
 
-        pageTitle = (TextView) view.findViewById(R.id.page_title);
-        pageContent = (WebView) view.findViewById(R.id.page_content);
+        pageTitle = view.findViewById(R.id.page_title);
+        pageContent = view.findViewById(R.id.page_content);
 
         // Check if fragment received some arguments.
         if (getArguments() != null && getArguments().getLong(PAGE_ID) != 0L) {

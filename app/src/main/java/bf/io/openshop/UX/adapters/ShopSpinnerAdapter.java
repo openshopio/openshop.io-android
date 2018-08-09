@@ -71,8 +71,8 @@ public class ShopSpinnerAdapter extends ArrayAdapter<Shop> {
         if (v == null) {
             v = layoutInflater.inflate(layoutID, parent, false);
             holder = new ListItemHolder();
-            holder.shopLanguageName = (TextView) v.findViewById(R.id.shop_language_name);
-            holder.shopFlagIcon = (ImageView) v.findViewById(R.id.shop_flag_icon);
+            holder.shopLanguageName = v.findViewById(R.id.shop_language_name);
+            holder.shopFlagIcon = v.findViewById(R.id.shop_flag_icon);
             v.setTag(holder);
         } else {
             holder = (ListItemHolder) v.getTag();

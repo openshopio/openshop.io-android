@@ -93,7 +93,7 @@ public class BannersFragment extends Fragment {
      * @param freshStart indicates when everything should be recreated.
      */
     private void prepareContentViews(View view, boolean freshStart) {
-        bannersRecycler = (RecyclerView) view.findViewById(R.id.banners_recycler);
+        bannersRecycler = view.findViewById(R.id.banners_recycler);
         if (freshStart) {
             bannersRecyclerAdapter = new BannersRecyclerAdapter(getActivity(), new BannersRecyclerInterface() {
                 @Override
@@ -130,7 +130,7 @@ public class BannersFragment extends Fragment {
      */
     private void prepareEmptyContent(View view) {
         emptyContent = view.findViewById(R.id.banners_empty);
-        TextView emptyContentAction = (TextView) view.findViewById(R.id.banners_empty_action);
+        TextView emptyContentAction = view.findViewById(R.id.banners_empty_action);
         emptyContentAction.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {

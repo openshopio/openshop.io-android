@@ -54,7 +54,7 @@ public class OrderCreateSuccessDialogFragment extends DialogFragment {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_order_create_success, container, false);
 
-        Button okBtn = (Button) view.findViewById(R.id.order_create_success_ok);
+        Button okBtn = view.findViewById(R.id.order_create_success_ok);
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,8 +64,8 @@ public class OrderCreateSuccessDialogFragment extends DialogFragment {
             }
         });
 
-        TextView title = (TextView) view.findViewById(R.id.order_create_success_title);
-        TextView description = (TextView) view.findViewById(R.id.order_create_success_description);
+        TextView title = view.findViewById(R.id.order_create_success_title);
+        TextView description = view.findViewById(R.id.order_create_success_description);
 
         if (sampleApplication) {
             title.setText(R.string.This_is_a_sample_app);

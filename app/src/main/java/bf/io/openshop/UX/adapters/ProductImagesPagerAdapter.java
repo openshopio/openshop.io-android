@@ -47,7 +47,7 @@ public class ProductImagesPagerAdapter extends PagerAdapter {
         TouchImageView imgDisplay;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View viewLayout = inflater.inflate(R.layout.layout_fullscreen_image, container, false);
-        imgDisplay = (TouchImageView) viewLayout.findViewById(R.id.fullscreen_image);
+        imgDisplay = viewLayout.findViewById(R.id.fullscreen_image);
 
         Picasso.with(context).load(images.get(position))
                 .fit().centerInside()

@@ -143,8 +143,8 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public ViewHolderDiscount(View itemView, final CartRecyclerInterface cartRecyclerInterface) {
             super(itemView);
-            cartDiscountName = (TextView) itemView.findViewById(R.id.cart_discount_name);
-            cartDiscountValue = (TextView) itemView.findViewById(R.id.cart_discount_value);
+            cartDiscountName = itemView.findViewById(R.id.cart_discount_name);
+            cartDiscountValue = itemView.findViewById(R.id.cart_discount_value);
             View deleteDiscount = itemView.findViewById(R.id.cart_discount_delete);
             deleteDiscount.setOnClickListener(new OnSingleClickListener() {
                 @Override
@@ -171,11 +171,11 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
         public ViewHolderProduct(View itemView, final CartRecyclerInterface cartRecyclerInterface) {
             super(itemView);
-            cartProductImage = (ResizableImageView) itemView.findViewById(R.id.cart_product_image);
-            cartProductQuantity = (TextView) itemView.findViewById(R.id.cart_product_quantity);
-            cartProductName = (TextView) itemView.findViewById(R.id.cart_product_name);
-            cartProductPrice = (TextView) itemView.findViewById(R.id.cart_product_price);
-            cartProductDetails = (TextView) itemView.findViewById(R.id.cart_product_details);
+            cartProductImage = itemView.findViewById(R.id.cart_product_image);
+            cartProductQuantity = itemView.findViewById(R.id.cart_product_quantity);
+            cartProductName = itemView.findViewById(R.id.cart_product_name);
+            cartProductPrice = itemView.findViewById(R.id.cart_product_price);
+            cartProductDetails = itemView.findViewById(R.id.cart_product_details);
 
             View deleteProduct = itemView.findViewById(R.id.cart_product_delete);
             deleteProduct.setOnClickListener(new OnSingleClickListener() {

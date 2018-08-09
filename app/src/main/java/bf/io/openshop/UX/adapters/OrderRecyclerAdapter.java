@@ -117,7 +117,7 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         public ViewHolderOrderProduct(View itemView) {
             super(itemView);
-            productImage = (ResizableImageView) itemView.findViewById(R.id.list_item_product_images_view);
+            productImage = itemView.findViewById(R.id.list_item_product_images_view);
         }
     }
 
@@ -132,12 +132,12 @@ public class OrderRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         public ViewHolderHeader(View headerView) {
             super(headerView);
-            orderId = (TextView) headerView.findViewById(R.id.list_item_order_header_id);
-            orderName = (TextView) headerView.findViewById(R.id.list_item_order_header_name);
-            orderDateCreated = (TextView) headerView.findViewById(R.id.list_item_order_header_dateCreated);
-            orderTotal = (TextView) headerView.findViewById(R.id.list_item_order_header_total);
-            orderShippingMethod = (TextView) headerView.findViewById(R.id.list_item_order_header_shipping_method);
-            orderShippingPrice = (TextView) headerView.findViewById(R.id.list_item_order_header_shipping_price);
+            orderId = headerView.findViewById(R.id.list_item_order_header_id);
+            orderName = headerView.findViewById(R.id.list_item_order_header_name);
+            orderDateCreated = headerView.findViewById(R.id.list_item_order_header_dateCreated);
+            orderTotal = headerView.findViewById(R.id.list_item_order_header_total);
+            orderShippingMethod = headerView.findViewById(R.id.list_item_order_header_shipping_method);
+            orderShippingPrice = headerView.findViewById(R.id.list_item_order_header_shipping_price);
         }
     }
 }

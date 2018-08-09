@@ -154,10 +154,10 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
 
         public ViewHolder(View v, final CategoryRecyclerInterface categoryRecyclerInterface) {
             super(v);
-            productNameTV = (TextView) v.findViewById(R.id.product_item_name);
-            productPriceTV = (TextView) v.findViewById(R.id.product_item_price);
-            productPriceDiscountTV = (TextView) v.findViewById(R.id.product_item_discount);
-            productImage = (ResizableImageView) v.findViewById(R.id.product_item_image);
+            productNameTV = v.findViewById(R.id.product_item_name);
+            productPriceTV = v.findViewById(R.id.product_item_price);
+            productPriceDiscountTV = v.findViewById(R.id.product_item_discount);
+            productImage = v.findViewById(R.id.product_item_image);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

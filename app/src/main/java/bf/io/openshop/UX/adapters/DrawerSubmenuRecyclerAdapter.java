@@ -81,9 +81,9 @@ public class DrawerSubmenuRecyclerAdapter extends RecyclerView.Adapter<RecyclerV
 
         public ViewHolderItemCategory(View itemView, final DrawerSubmenuRecyclerInterface drawerSubmenuRecyclerInterface) {
             super(itemView);
-            itemText = (TextView) itemView.findViewById(R.id.drawer_list_item_text);
-            subMenuIndicator = (ImageView) itemView.findViewById(R.id.drawer_list_item_indicator);
-            layout = (LinearLayout) itemView.findViewById(R.id.drawer_list_item_layout);
+            itemText = itemView.findViewById(R.id.drawer_list_item_text);
+            subMenuIndicator = itemView.findViewById(R.id.drawer_list_item_indicator);
+            layout = itemView.findViewById(R.id.drawer_list_item_layout);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

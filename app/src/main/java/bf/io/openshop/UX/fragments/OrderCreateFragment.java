@@ -105,12 +105,12 @@ public class OrderCreateFragment extends Fragment {
 
         progressDialog = Utils.generateProgressDialog(getActivity(), false);
 
-        scrollLayout = (ScrollView) view.findViewById(R.id.order_create_scroll_layout);
-        cartItemsLayout = (LinearLayout) view.findViewById(R.id.order_create_cart_items_layout);
-        cartItemsTotalPrice = (TextView) view.findViewById(R.id.order_create_total_price);
+        scrollLayout = view.findViewById(R.id.order_create_scroll_layout);
+        cartItemsLayout = view.findViewById(R.id.order_create_cart_items_layout);
+        cartItemsTotalPrice = view.findViewById(R.id.order_create_total_price);
 
-        orderTotalPriceTv = (TextView) view.findViewById(R.id.order_create_summary_total_price);
-        TextView termsAndConditionsTv = (TextView) view.findViewById(R.id.order_create_summary_terms_and_condition);
+        orderTotalPriceTv = view.findViewById(R.id.order_create_summary_total_price);
+        TextView termsAndConditionsTv = view.findViewById(R.id.order_create_summary_terms_and_condition);
         termsAndConditionsTv.setText(Html.fromHtml(getString(R.string.Click_on_Order_to_allow_our_Terms_and_Conditions)));
         termsAndConditionsTv.setOnClickListener(new OnSingleClickListener() {
             @Override
@@ -123,7 +123,7 @@ public class OrderCreateFragment extends Fragment {
         prepareFields(view);
         prepareDeliveryLayout(view);
 
-        Button finishOrder = (Button) view.findViewById(R.id.order_create_finish);
+        Button finishOrder = view.findViewById(R.id.order_create_finish);
         finishOrder.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -168,14 +168,14 @@ public class OrderCreateFragment extends Fragment {
      * @param view fragment base view.
      */
     private void prepareFields(View view) {
-        nameInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_name_wrapper);
-        streetInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_street_wrapper);
-        houseNumberInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_houseNumber_wrapper);
-        cityInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_city_wrapper);
-        zipInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_zip_wrapper);
-        phoneInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_phone_wrapper);
-        emailInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_email_wrapper);
-        noteInputWrapper = (TextInputLayout) view.findViewById(R.id.order_create_note_wrapper);
+        nameInputWrapper = view.findViewById(R.id.order_create_name_wrapper);
+        streetInputWrapper = view.findViewById(R.id.order_create_street_wrapper);
+        houseNumberInputWrapper = view.findViewById(R.id.order_create_houseNumber_wrapper);
+        cityInputWrapper = view.findViewById(R.id.order_create_city_wrapper);
+        zipInputWrapper = view.findViewById(R.id.order_create_zip_wrapper);
+        phoneInputWrapper = view.findViewById(R.id.order_create_phone_wrapper);
+        emailInputWrapper = view.findViewById(R.id.order_create_email_wrapper);
+        noteInputWrapper = view.findViewById(R.id.order_create_note_wrapper);
 
         User user = SettingsMy.getActiveUser();
         if (user != null) {
@@ -230,7 +230,7 @@ public class OrderCreateFragment extends Fragment {
 
 
     private void prepareDeliveryLayout(View view) {
-        deliveryProgressBar = (ProgressBar) view.findViewById(R.id.delivery_progress);
+        deliveryProgressBar = view.findViewById(R.id.delivery_progress);
 
 //        final View deliveryShippingBtn = view.findViewById(R.id.order_create_delivery_shipping_button);
 //        final View deliveryPaymentBtn = view.findViewById(R.id.order_create_delivery_payment_button);
@@ -238,10 +238,10 @@ public class OrderCreateFragment extends Fragment {
         this.deliveryShippingLayout = view.findViewById(R.id.order_create_delivery_shipping_layout);
         this.deliveryPaymentLayout = view.findViewById(R.id.order_create_delivery_payment_layout);
 
-        selectedShippingNameTv = (TextView) view.findViewById(R.id.order_create_delivery_shipping_name);
-        selectedShippingPriceTv = (TextView) view.findViewById(R.id.order_create_delivery_shipping_price);
-        selectedPaymentNameTv = (TextView) view.findViewById(R.id.order_create_delivery_payment_name);
-        selectedPaymentPriceTv = (TextView) view.findViewById(R.id.order_create_delivery_payment_price);
+        selectedShippingNameTv = view.findViewById(R.id.order_create_delivery_shipping_name);
+        selectedShippingPriceTv = view.findViewById(R.id.order_create_delivery_shipping_price);
+        selectedPaymentNameTv = view.findViewById(R.id.order_create_delivery_payment_name);
+        selectedPaymentPriceTv = view.findViewById(R.id.order_create_delivery_payment_price);
 
         deliveryShippingLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -369,13 +369,13 @@ public class OrderCreateFragment extends Fragment {
             LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             for (int i = 0; i < cartProductItems.size(); i++) {
                 LinearLayout llRow = (LinearLayout) inflater.inflate(R.layout.order_create_cart_item, cartItemsLayout, false);
-                TextView tvItemName = (TextView) llRow.findViewById(R.id.order_create_cart_item_name);
+                TextView tvItemName = llRow.findViewById(R.id.order_create_cart_item_name);
                 tvItemName.setText(cartProductItems.get(i).getVariant().getName());
-                TextView tvItemPrice = (TextView) llRow.findViewById(R.id.order_create_cart_item_price);
+                TextView tvItemPrice = llRow.findViewById(R.id.order_create_cart_item_price);
                 tvItemPrice.setText(cartProductItems.get(i).getTotalItemPriceFormatted());
-                TextView tvItemQuantity = (TextView) llRow.findViewById(R.id.order_create_cart_item_quantity);
+                TextView tvItemQuantity = llRow.findViewById(R.id.order_create_cart_item_quantity);
                 tvItemQuantity.setText(getString(R.string.format_quantity, cartProductItems.get(i).getQuantity()));
-                TextView tvItemDetails = (TextView) llRow.findViewById(R.id.order_create_cart_item_details);
+                TextView tvItemDetails = llRow.findViewById(R.id.order_create_cart_item_details);
                 tvItemDetails.setText(getString(R.string.format_string_division, cartProductItems.get(i).getVariant().getColor().getValue(),
                         cartProductItems.get(i).getVariant().getSize().getValue()));
                 cartItemsLayout.addView(llRow);
@@ -383,8 +383,8 @@ public class OrderCreateFragment extends Fragment {
             if (cart.getDiscounts() != null) {
                 for (int i = 0; i < cart.getDiscounts().size(); i++) {
                     LinearLayout llRow = (LinearLayout) inflater.inflate(R.layout.order_create_cart_item, cartItemsLayout, false);
-                    TextView tvItemName = (TextView) llRow.findViewById(R.id.order_create_cart_item_name);
-                    TextView tvItemPrice = (TextView) llRow.findViewById(R.id.order_create_cart_item_price);
+                    TextView tvItemName = llRow.findViewById(R.id.order_create_cart_item_name);
+                    TextView tvItemPrice = llRow.findViewById(R.id.order_create_cart_item_price);
                     tvItemName.setText(cart.getDiscounts().get(i).getDiscount().getName());
                     tvItemPrice.setText(cart.getDiscounts().get(i).getDiscount().getValueFormatted());
                     tvItemPrice.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));

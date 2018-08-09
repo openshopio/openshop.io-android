@@ -67,7 +67,7 @@ public class FilterDialogFragment extends DialogFragment {
 
         prepareFilterRecycler(view);
 
-        Button btnApply = (Button) view.findViewById(R.id.filter_btn_apply);
+        Button btnApply = view.findViewById(R.id.filter_btn_apply);
         btnApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class FilterDialogFragment extends DialogFragment {
             }
         });
 
-        Button btnCancel = (Button) view.findViewById(R.id.filter_btn_cancel);
+        Button btnCancel = view.findViewById(R.id.filter_btn_cancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

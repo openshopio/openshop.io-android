@@ -96,7 +96,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
             }
         });
 
-        Button selectionButton = (Button) view.findViewById(R.id.map_select);
+        Button selectionButton = view.findViewById(R.id.map_select);
         // If selection isn't supported, hide button.
         if (shippingDialogFragment == null || shipping == null) {
             selectionButton.setVisibility(View.GONE);
@@ -114,10 +114,10 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
             });
         }
 
-        TextView title = (TextView) view.findViewById(R.id.map_title);
-        TextView location = (TextView) view.findViewById(R.id.map_location);
-        TextView openingTime = (TextView) view.findViewById(R.id.map_shop_info_time);
-        TextView note = (TextView) view.findViewById(R.id.map_note);
+        TextView title = view.findViewById(R.id.map_title);
+        TextView location = view.findViewById(R.id.map_location);
+        TextView openingTime = view.findViewById(R.id.map_shop_info_time);
+        TextView note = view.findViewById(R.id.map_note);
 
         if (branch != null) {
             title.setText(branch.getName());
@@ -144,7 +144,7 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
             }
 
             // TODO add "How to get here" options
-            LinearLayout locationPaths = (LinearLayout) view.findViewById(R.id.map_shop_info);
+            LinearLayout locationPaths = view.findViewById(R.id.map_shop_info);
             // how would normal data looks like? Probably not strings like tram/train/sub
 ////            List<Transport> transports = branch.getTransports();
 ////            transports = new ArrayList<>();
@@ -164,8 +164,8 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
 //                }
 //            }
 
-            final ScrollView parentScrollView = (ScrollView) view.findViewById(R.id.map_fragment_scroll_view);
-            ImageView transparentImageView = (ImageView) view.findViewById(R.id.map_frame_overlay);
+            final ScrollView parentScrollView = view.findViewById(R.id.map_fragment_scroll_view);
+            ImageView transparentImageView = view.findViewById(R.id.map_frame_overlay);
             transparentImageView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {

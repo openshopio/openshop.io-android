@@ -74,23 +74,23 @@ public class AccountEditFragment extends Fragment {
         progressDialog = Utils.generateProgressDialog(getActivity(), false);
 
         // Account details form
-        accountForm = (LinearLayout) view.findViewById(R.id.account_edit_form);
+        accountForm = view.findViewById(R.id.account_edit_form);
 
-        nameInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_name_wrapper);
-        streetInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_street_wrapper);
-        houseNumberInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_house_number_wrapper);
-        cityInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_city_wrapper);
-        zipInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_zip_wrapper);
-        phoneInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_phone_wrapper);
-        emailInputWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_email_wrapper);
+        nameInputWrapper = view.findViewById(R.id.account_edit_name_wrapper);
+        streetInputWrapper = view.findViewById(R.id.account_edit_street_wrapper);
+        houseNumberInputWrapper = view.findViewById(R.id.account_edit_house_number_wrapper);
+        cityInputWrapper = view.findViewById(R.id.account_edit_city_wrapper);
+        zipInputWrapper = view.findViewById(R.id.account_edit_zip_wrapper);
+        phoneInputWrapper = view.findViewById(R.id.account_edit_phone_wrapper);
+        emailInputWrapper = view.findViewById(R.id.account_edit_email_wrapper);
 
         // Password form
-        passwordForm = (LinearLayout) view.findViewById(R.id.account_edit_password_form);
-        currentPasswordWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_password_current_wrapper);
-        newPasswordWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_password_new_wrapper);
-        newPasswordAgainWrapper = (TextInputLayout) view.findViewById(R.id.account_edit_password_new_again_wrapper);
+        passwordForm = view.findViewById(R.id.account_edit_password_form);
+        currentPasswordWrapper = view.findViewById(R.id.account_edit_password_current_wrapper);
+        newPasswordWrapper = view.findViewById(R.id.account_edit_password_new_wrapper);
+        newPasswordAgainWrapper = view.findViewById(R.id.account_edit_password_new_again_wrapper);
 
-        final Button btnChangePassword = (Button) view.findViewById(R.id.account_edit_change_form_btn);
+        final Button btnChangePassword = view.findViewById(R.id.account_edit_change_form_btn);
         btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +117,7 @@ public class AccountEditFragment extends Fragment {
             Timber.e(new RuntimeException(), "No active user. Shouldn't happen.");
         }
 
-        Button confirmButton = (Button) view.findViewById(R.id.account_edit_confirm_button);
+        Button confirmButton = view.findViewById(R.id.account_edit_confirm_button);
         confirmButton.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {

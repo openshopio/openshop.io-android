@@ -87,9 +87,9 @@ public class OrdersHistoryRecyclerAdapter extends RecyclerView.Adapter<OrdersHis
 
         public ViewHolder(View itemView, final OrdersRecyclerInterface ordersRecyclerInterface) {
             super(itemView);
-            orderIdTv = (TextView) itemView.findViewById(R.id.order_history_item_id);
-            orderDateCreatedTv = (TextView) itemView.findViewById(R.id.order_history_item_dateCreated);
-            orderTotalPriceTv = (TextView) itemView.findViewById(R.id.order_history_item_totalPrice);
+            orderIdTv = itemView.findViewById(R.id.order_history_item_id);
+            orderDateCreatedTv = itemView.findViewById(R.id.order_history_item_dateCreated);
+            orderTotalPriceTv = itemView.findViewById(R.id.order_history_item_totalPrice);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

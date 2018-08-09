@@ -90,8 +90,8 @@ public class DiscountDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.dialog_discount_fragment, container, false);
 
         progressLayout = view.findViewById(R.id.discount_code_progress);
-        discountCodeInput = (TextInputLayout) view.findViewById(R.id.discount_code_input_wrapper);
-        Button confirmDiscountCode = (Button) view.findViewById(R.id.discount_code_confirm);
+        discountCodeInput = view.findViewById(R.id.discount_code_input_wrapper);
+        Button confirmDiscountCode = view.findViewById(R.id.discount_code_confirm);
         confirmDiscountCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

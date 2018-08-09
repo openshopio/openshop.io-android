@@ -168,11 +168,11 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
         public ViewHolder(View v, ViewHolderClickListener viewHolderClickListener) {
             super(v);
             this.viewHolderClickListenerThis = viewHolderClickListener;
-            tvProductName = (TextView) v.findViewById(R.id.list_item_wishlist_name);
-            tvProductPrice = (TextView) v.findViewById(R.id.list_item_wishlist_price);
-            tvProductPriceDiscount = (TextView) v.findViewById(R.id.list_item_wishlist_discount);
-            ivThumb = (ResizableImageView) v.findViewById(R.id.list_item_wishlist_image);
-            wishList = (ImageView) v.findViewById(R.id.list_item_wishlist_button);
+            tvProductName = v.findViewById(R.id.list_item_wishlist_name);
+            tvProductPrice = v.findViewById(R.id.list_item_wishlist_price);
+            tvProductPriceDiscount = v.findViewById(R.id.list_item_wishlist_discount);
+            ivThumb = v.findViewById(R.id.list_item_wishlist_image);
+            wishList = v.findViewById(R.id.list_item_wishlist_button);
             wishList.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

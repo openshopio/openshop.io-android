@@ -162,10 +162,10 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         View view = inflater.inflate(R.layout.dialog_login, container, false);
         callbackManager = CallbackManager.Factory.create();
 
-        loginBaseForm = (LinearLayout) view.findViewById(R.id.login_base_form);
-        loginRegistrationForm = (LinearLayout) view.findViewById(R.id.login_registration_form);
-        loginEmailForm = (LinearLayout) view.findViewById(R.id.login_email_form);
-        loginEmailForgottenForm = (LinearLayout) view.findViewById(R.id.login_email_forgotten_form);
+        loginBaseForm = view.findViewById(R.id.login_base_form);
+        loginRegistrationForm = view.findViewById(R.id.login_registration_form);
+        loginEmailForm = view.findViewById(R.id.login_email_form);
+        loginEmailForgottenForm = view.findViewById(R.id.login_email_forgotten_form);
 
         prepareLoginFormNavigation(view);
         prepareInputBoxes(view);
@@ -175,9 +175,9 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
 
     private void prepareInputBoxes(View view) {
         // Registration form
-        loginRegistrationEmailWrapper = (TextInputLayout) view.findViewById(R.id.login_registration_email_wrapper);
-        loginRegistrationPasswordWrapper = (TextInputLayout) view.findViewById(R.id.login_registration_password_wrapper);
-        loginRegistrationGenderWoman = (RadioButton) view.findViewById(R.id.login_registration_sex_woman);
+        loginRegistrationEmailWrapper = view.findViewById(R.id.login_registration_email_wrapper);
+        loginRegistrationPasswordWrapper = view.findViewById(R.id.login_registration_password_wrapper);
+        loginRegistrationGenderWoman = view.findViewById(R.id.login_registration_sex_woman);
         EditText registrationPassword = loginRegistrationPasswordWrapper.getEditText();
         if (registrationPassword != null) {
             registrationPassword.setOnTouchListener(new OnTouchPasswordListener(registrationPassword));
@@ -185,10 +185,10 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
 
 
         // Login email form
-        loginEmailEmailWrapper = (TextInputLayout) view.findViewById(R.id.login_email_email_wrapper);
+        loginEmailEmailWrapper = view.findViewById(R.id.login_email_email_wrapper);
         EditText loginEmail = loginEmailEmailWrapper.getEditText();
         if (loginEmail != null) loginEmail.setText(SettingsMy.getUserEmailHint());
-        loginEmailPasswordWrapper = (TextInputLayout) view.findViewById(R.id.login_email_password_wrapper);
+        loginEmailPasswordWrapper = view.findViewById(R.id.login_email_password_wrapper);
         EditText emailPassword = loginEmailPasswordWrapper.getEditText();
         if (emailPassword != null) {
             emailPassword.setOnTouchListener(new OnTouchPasswordListener(emailPassword));
@@ -204,7 +204,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             });
         }
 
-        loginEmailForgottenEmailWrapper = (TextInputLayout) view.findViewById(R.id.login_email_forgotten_email_wrapper);
+        loginEmailForgottenEmailWrapper = view.findViewById(R.id.login_email_forgotten_email_wrapper);
         EditText emailForgottenPassword = loginEmailForgottenEmailWrapper.getEditText();
         if (emailForgottenPassword != null)
             emailForgottenPassword.setText(SettingsMy.getUserEmailHint());
@@ -218,20 +218,20 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         }
 
         ArrayAdapter<String> emails = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, addresses);
-        AutoCompleteTextView textView = (AutoCompleteTextView) view.findViewById(R.id.login_registration_email_text_auto);
+        AutoCompleteTextView textView = view.findViewById(R.id.login_registration_email_text_auto);
         textView.setAdapter(emails);
     }
 
     private void prepareLoginFormNavigation(View view) {
         // Login email
-        Button loginFormEmailButton = (Button) view.findViewById(R.id.login_form_email_btn);
+        Button loginFormEmailButton = view.findViewById(R.id.login_form_email_btn);
         loginFormEmailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setVisibilityOfEmailForm(true);
             }
         });
-        ImageButton closeEmailBtn = (ImageButton) view.findViewById(R.id.login_email_close_button);
+        ImageButton closeEmailBtn = view.findViewById(R.id.login_email_close_button);
         closeEmailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -246,14 +246,14 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         });
 
         // Registration
-        TextView loginFormRegistrationButton = (TextView) view.findViewById(R.id.login_form_registration_btn);
+        TextView loginFormRegistrationButton = view.findViewById(R.id.login_form_registration_btn);
         loginFormRegistrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setVisibilityOfRegistrationForm(true);
             }
         });
-        ImageButton closeRegistrationBtn = (ImageButton) view.findViewById(R.id.login_registration_close_button);
+        ImageButton closeRegistrationBtn = view.findViewById(R.id.login_registration_close_button);
         closeRegistrationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -268,14 +268,14 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         });
 
         // Email forgotten password
-        TextView loginEmailFormForgottenButton = (TextView) view.findViewById(R.id.login_email_forgotten_password);
+        TextView loginEmailFormForgottenButton = view.findViewById(R.id.login_email_forgotten_password);
         loginEmailFormForgottenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 setVisibilityOfEmailForgottenForm(true);
             }
         });
-        ImageButton closeEmailForgottenFormBtn = (ImageButton) view.findViewById(R.id.login_email_forgotten_back_button);
+        ImageButton closeEmailForgottenFormBtn = view.findViewById(R.id.login_email_forgotten_back_button);
         closeEmailForgottenFormBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,7 +291,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     }
 
     private void prepareActionButtons(View view) {
-        TextView loginBaseSkip = (TextView) view.findViewById(R.id.login_form_skip);
+        TextView loginBaseSkip = view.findViewById(R.id.login_form_skip);
         loginBaseSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -301,7 +301,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
         });
 
         // FB login
-        Button fbLogin = (Button) view.findViewById(R.id.login_form_facebook);
+        Button fbLogin = view.findViewById(R.id.login_form_facebook);
         fbLogin.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -309,7 +309,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             }
         });
 
-        Button emailLogin = (Button) view.findViewById(R.id.login_email_confirm);
+        Button emailLogin = view.findViewById(R.id.login_email_confirm);
         emailLogin.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -317,7 +317,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             }
         });
 
-        Button registerBtn = (Button) view.findViewById(R.id.login_registration_confirm);
+        Button registerBtn = view.findViewById(R.id.login_registration_confirm);
         registerBtn.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -325,7 +325,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
             }
         });
 
-        Button resetPassword = (Button) view.findViewById(R.id.login_email_forgotten_confirm);
+        Button resetPassword = view.findViewById(R.id.login_email_forgotten_confirm);
         resetPassword.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {

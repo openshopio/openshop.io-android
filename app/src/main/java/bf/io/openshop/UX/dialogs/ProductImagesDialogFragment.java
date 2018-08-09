@@ -57,7 +57,7 @@ public class ProductImagesDialogFragment extends DialogFragment {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_product_detail_images, container, false);
 
-        imagesPager = (ViewPager) view.findViewById(R.id.dialog_product_detail_images_pager);
+        imagesPager = view.findViewById(R.id.dialog_product_detail_images_pager);
 
         // Prepare endless image adapter
         PagerAdapter mPagerAdapter = new ProductImagesPagerAdapter(getActivity(), images);
@@ -68,7 +68,7 @@ public class ProductImagesDialogFragment extends DialogFragment {
         else
             imagesPager.setCurrentItem(0);
 
-        ImageView goLeft = (ImageView) view.findViewById(R.id.dialog_product_detail_images_left);
+        ImageView goLeft = view.findViewById(R.id.dialog_product_detail_images_left);
         goLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +77,7 @@ public class ProductImagesDialogFragment extends DialogFragment {
             }
         });
 
-        ImageView goRight = (ImageView) view.findViewById(R.id.dialog_product_detail_images_right);
+        ImageView goRight = view.findViewById(R.id.dialog_product_detail_images_right);
         goRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +86,7 @@ public class ProductImagesDialogFragment extends DialogFragment {
             }
         });
 
-        Button cancel = (Button) view.findViewById(R.id.pager_close);
+        Button cancel = view.findViewById(R.id.pager_close);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -109,7 +109,7 @@ public class ProductImagesRecyclerAdapter extends RecyclerView.Adapter<ProductIm
 
         public ViewHolder(View v, final ProductImagesRecyclerInterface productImagesRecyclerInterface) {
             super(v);
-            productImage = (ResizableImageViewHeight) v.findViewById(R.id.list_item_product_images_view);
+            productImage = v.findViewById(R.id.list_item_product_images_view);
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override

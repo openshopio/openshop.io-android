@@ -77,7 +77,7 @@ public class OrderFragment extends Fragment {
      * @param view root fragment view.
      */
     private void prepareOrder(View view) {
-        RecyclerView orderRecycler = (RecyclerView) view.findViewById(R.id.order_recycler);
+        RecyclerView orderRecycler = view.findViewById(R.id.order_recycler);
         orderRecyclerAdapter = new OrderRecyclerAdapter(getActivity());
         orderRecycler.setAdapter(orderRecyclerAdapter);
         orderRecycler.setLayoutManager(new LinearLayoutManager(orderRecycler.getContext()));

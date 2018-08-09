@@ -63,7 +63,7 @@ public class CartColorTextSpinnerAdapter extends ArrayAdapter<ProductColor> {
         if (v == null) {
             v = layoutInflater.inflate(layoutID, parent, false);
             holder = new ListItemHolder();
-            holder.colorText = (TextView) v.findViewById(R.id.text);
+            holder.colorText = v.findViewById(R.id.text);
             v.setTag(holder);
         } else {
             holder = (ListItemHolder) v.getTag();

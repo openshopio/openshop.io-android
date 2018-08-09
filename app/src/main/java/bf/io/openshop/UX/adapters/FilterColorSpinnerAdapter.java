@@ -74,7 +74,7 @@ public class FilterColorSpinnerAdapter extends ArrayAdapter<FilterValueColor> {
         if (v == null) {
             v = layoutInflater.inflate(layoutID, parent, false);
             holder = new ListItemHolder();
-            holder.sizeText = (TextView) v.findViewById(R.id.size_spinner_text);
+            holder.sizeText = v.findViewById(R.id.size_spinner_text);
             v.setTag(holder);
         } else {
             holder = (ListItemHolder) v.getTag();

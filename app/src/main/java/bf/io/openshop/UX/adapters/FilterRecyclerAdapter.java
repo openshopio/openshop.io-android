@@ -186,8 +186,8 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public ViewHolderColor(View itemView, Context context) {
             super(itemView);
-            colorName = (TextView) itemView.findViewById(R.id.list_item_filter_select_title);
-            colorSpinner = (Spinner) itemView.findViewById(R.id.list_item_filter_select_spinner);
+            colorName = itemView.findViewById(R.id.list_item_filter_select_title);
+            colorSpinner = itemView.findViewById(R.id.list_item_filter_select_spinner);
 
             colorSpinnerAdapter = new FilterColorSpinnerAdapter(context);
             colorSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -227,8 +227,8 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public ViewHolderSelect(View itemView, Context context) {
             super(itemView);
-            selectName = (TextView) itemView.findViewById(R.id.list_item_filter_select_title);
-            selectSpinner = (Spinner) itemView.findViewById(R.id.list_item_filter_select_spinner);
+            selectName = itemView.findViewById(R.id.list_item_filter_select_title);
+            selectSpinner = itemView.findViewById(R.id.list_item_filter_select_spinner);
 
             filterSelectSpinnerAdapter = new FilterSelectSpinnerAdapter(context);
             filterSelectSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -266,9 +266,9 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public ViewHolderRange(View itemView) {
             super(itemView);
-            rangeName = (TextView) itemView.findViewById(R.id.list_item_filter_range_title);
-            rangeResult = (TextView) itemView.findViewById(R.id.list_item_filter_range_result);
-            seekBarLayout = (LinearLayout) itemView.findViewById(R.id.list_item_filter_range_bar_layout);
+            rangeName = itemView.findViewById(R.id.list_item_filter_range_title);
+            rangeResult = itemView.findViewById(R.id.list_item_filter_range_result);
+            seekBarLayout = itemView.findViewById(R.id.list_item_filter_range_bar_layout);
         }
     }
 

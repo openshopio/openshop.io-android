@@ -59,10 +59,10 @@ public class BranchesAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.list_item_shipping, parent, false);
-            holder.title = (TextView) convertView.findViewById(R.id.shipping_title);
-            holder.description = (TextView) convertView.findViewById(R.id.shipping_description);
-            holder.price = (TextView) convertView.findViewById(R.id.shipping_price);
-            holder.shopInfo = (ImageView) convertView.findViewById(R.id.shipping_shop_info);
+            holder.title = convertView.findViewById(R.id.shipping_title);
+            holder.description = convertView.findViewById(R.id.shipping_description);
+            holder.price = convertView.findViewById(R.id.shipping_price);
+            holder.shopInfo = convertView.findViewById(R.id.shipping_shop_info);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

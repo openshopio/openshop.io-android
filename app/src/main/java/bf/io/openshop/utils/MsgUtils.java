@@ -82,8 +82,8 @@ public class MsgUtils {
         LayoutInflater inflater = activity.getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_custom, (ViewGroup) activity.findViewById(R.id.toast_layout_root));
 
-        TextView text = (TextView) layout.findViewById(R.id.toast_text);
-        ImageView iv = (ImageView) layout.findViewById(R.id.toast_image);
+        TextView text = layout.findViewById(R.id.toast_text);
+        ImageView iv = layout.findViewById(R.id.toast_image);
         String str = "";
         int icon = 0;
 

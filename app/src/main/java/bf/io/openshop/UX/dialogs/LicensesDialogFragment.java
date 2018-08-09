@@ -61,8 +61,8 @@ public class LicensesDialogFragment extends DialogFragment {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_license, container, false);
 
-        licenseWebView = (WebView) view.findViewById(R.id.license_web_view);
-        progressBar = (ProgressBar) view.findViewById(R.id.license_progress);
+        licenseWebView = view.findViewById(R.id.license_web_view);
+        progressBar = view.findViewById(R.id.license_progress);
         return view;
     }
 

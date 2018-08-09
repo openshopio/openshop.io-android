@@ -85,7 +85,7 @@ public class OrdersHistoryFragment extends Fragment {
      * @param view root fragment view.
      */
     private void prepareOrdersHistoryRecycler(View view) {
-        ordersRecycler = (RecyclerView) view.findViewById(R.id.orders_history_recycler);
+        ordersRecycler = view.findViewById(R.id.orders_history_recycler);
         ordersHistoryRecyclerAdapter = new OrdersHistoryRecyclerAdapter(new OrdersRecyclerInterface() {
             @Override
             public void onOrderSelected(View v, Order order) {

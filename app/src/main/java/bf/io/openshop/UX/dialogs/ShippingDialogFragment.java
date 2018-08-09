@@ -110,10 +110,10 @@ public class ShippingDialogFragment extends DialogFragment {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.shipping_delivery, container, false);
 
-        shippingList = (ListView) view.findViewById(R.id.shipping_dialog_list);
-        progressBar = (ProgressBar) view.findViewById(R.id.shipping_dialog_progressBar);
+        shippingList = view.findViewById(R.id.shipping_dialog_list);
+        progressBar = view.findViewById(R.id.shipping_dialog_progressBar);
         shippingEmpty = view.findViewById(R.id.shipping_dialog_empty);
-        TextView dialogTitle = (TextView) view.findViewById(R.id.shipping_dialog_title);
+        TextView dialogTitle = view.findViewById(R.id.shipping_dialog_title);
         View closeBtn = view.findViewById(R.id.shipping_dialog_close);
         closeBtn.setOnClickListener(new OnSingleClickListener() {
             @Override

@@ -162,10 +162,10 @@ public class CategoryFragment extends Fragment {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
-        this.emptyContentView = (TextView) view.findViewById(R.id.category_products_empty);
+        this.emptyContentView = view.findViewById(R.id.category_products_empty);
         this.loadMoreProgress = view.findViewById(R.id.category_load_more_progress);
-        this.sortSpinner = (Spinner) view.findViewById(R.id.category_sort_spinner);
-        this.switchLayoutManager = (ImageSwitcher) view.findViewById(R.id.category_switch_layout_manager);
+        this.sortSpinner = view.findViewById(R.id.category_sort_spinner);
+        this.switchLayoutManager = view.findViewById(R.id.category_switch_layout_manager);
 
         Bundle startBundle = getArguments();
         if (startBundle != null) {
@@ -182,7 +182,7 @@ public class CategoryFragment extends Fragment {
 
             Timber.d("Category type: %s. CategoryId: %d. FilterUrl: %s.", categoryType, categoryId, filterParameters);
 
-            AppBarLayout appBarLayout = (AppBarLayout) view.findViewById(R.id.category_appbar_layout);
+            AppBarLayout appBarLayout = view.findViewById(R.id.category_appbar_layout);
             if (toolbarOffset != -1) appBarLayout.offsetTopAndBottom(toolbarOffset);
             appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
                 @Override
@@ -191,7 +191,7 @@ public class CategoryFragment extends Fragment {
                 }
             });
             MainActivity.setActionBarTitle(categoryName);
-            this.filterButton = (ImageView) view.findViewById(R.id.category_filter_button);
+            this.filterButton = view.findViewById(R.id.category_filter_button);
             filterButton.setOnClickListener(new OnSingleClickListener() {
                 @Override
                 public void onSingleClick(View view) {
@@ -256,7 +256,7 @@ public class CategoryFragment extends Fragment {
      * @param view root fragment view.
      */
     private void prepareProductRecycler(View view) {
-        this.productsRecycler = (RecyclerView) view.findViewById(R.id.category_products_recycler);
+        this.productsRecycler = view.findViewById(R.id.category_products_recycler);
         productsRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.BOTH));
         productsRecycler.setItemAnimator(new DefaultItemAnimator());
         productsRecycler.setHasFixedSize(true);

@@ -154,19 +154,19 @@ public class ProductFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_product, container, false);
 
-        progressView = (ProgressBar) view.findViewById(R.id.product_progress);
+        progressView = view.findViewById(R.id.product_progress);
 
-        productContainer = (RelativeLayout) view.findViewById(R.id.product_container);
+        productContainer = view.findViewById(R.id.product_container);
         layoutEmpty = view.findViewById(R.id.product_empty_layout);
-        contentScrollLayout = (ScrollView) view.findViewById(R.id.product_scroll_layout);
+        contentScrollLayout = view.findViewById(R.id.product_scroll_layout);
 
-        productNameTv = (TextView) view.findViewById(R.id.product_name);
-        productPriceDiscountPercentTv = (TextView) view.findViewById(R.id.product_price_discount_percent);
-        productPriceDiscountTv = (TextView) view.findViewById(R.id.product_price_discount);
-        productPriceTv = (TextView) view.findViewById(R.id.product_price);
-        productInfoTv = (TextView) view.findViewById(R.id.product_info);
+        productNameTv = view.findViewById(R.id.product_name);
+        productPriceDiscountPercentTv = view.findViewById(R.id.product_price_discount_percent);
+        productPriceDiscountTv = view.findViewById(R.id.product_price_discount);
+        productPriceTv = view.findViewById(R.id.product_price);
+        productInfoTv = view.findViewById(R.id.product_info);
 
-        colorSpinner = (Spinner) view.findViewById(R.id.product_color_spinner);
+        colorSpinner = view.findViewById(R.id.product_color_spinner);
         prepareSizeSpinner(view);
 
         prepareButtons(view);
@@ -184,7 +184,7 @@ public class ProductFragment extends Fragment {
      * @param view fragment base view.
      */
     private void prepareSizeSpinner(View view) {
-        Spinner sizeSpinner = (Spinner) view.findViewById(R.id.product_size_spinner);
+        Spinner sizeSpinner = view.findViewById(R.id.product_size_spinner);
         sizeVariantSpinnerAdapter = new SizeVariantSpinnerAdapter(getActivity());
         sizeVariantSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sizeSpinner.setAdapter(sizeVariantSpinnerAdapter);
@@ -220,8 +220,8 @@ public class ProductFragment extends Fragment {
      * @param view fragment base view.
      */
     private void prepareButtons(View view) {
-        addToCartImage = (ImageView) view.findViewById(R.id.product_add_to_cart_image);
-        addToCartProgress = (ProgressBar) view.findViewById(R.id.product_add_to_cart_progress);
+        addToCartImage = view.findViewById(R.id.product_add_to_cart_image);
+        addToCartProgress = view.findViewById(R.id.product_add_to_cart_progress);
         addToCartProgress.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(), R.color.textIconColorPrimary), PorterDuff.Mode.MULTIPLY);
         View addToCart = view.findViewById(R.id.product_add_to_cart_layout);
 
@@ -232,7 +232,7 @@ public class ProductFragment extends Fragment {
             }
         });
 
-        Button sendToFriendBtn = (Button) view.findViewById(R.id.product_send_to_a_friend);
+        Button sendToFriendBtn = view.findViewById(R.id.product_send_to_a_friend);
         sendToFriendBtn.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -274,7 +274,7 @@ public class ProductFragment extends Fragment {
      * @param view fragment base view.
      */
     private void prepareProductImagesLayout(View view) {
-        productImagesRecycler = (RecyclerView) view.findViewById(R.id.product_images_recycler_view);
+        productImagesRecycler = view.findViewById(R.id.product_images_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         productImagesRecycler.setLayoutManager(linearLayoutManager);
         productImagesAdapter = new ProductImagesRecyclerAdapter(getActivity(), new ProductImagesRecyclerInterface() {
@@ -302,7 +302,7 @@ public class ProductFragment extends Fragment {
         }
 
         // Prepare related products
-        RecyclerView relatedProductsRecycler = (RecyclerView) view.findViewById(R.id.product_recommended_images_recycler);
+        RecyclerView relatedProductsRecycler = view.findViewById(R.id.product_recommended_images_recycler);
         relatedProductsRecycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         relatedProductsRecycler.addItemDecoration(new RecyclerMarginDecorator(getContext(), RecyclerMarginDecorator.ORIENTATION.HORIZONTAL));
         relatedProductsAdapter = new RelatedProductsRecyclerAdapter(getActivity(), new RelatedProductsRecyclerInterface() {
@@ -324,7 +324,7 @@ public class ProductFragment extends Fragment {
      */
     private void prepareScrollViewAndWishlist(View view) {
         final View productBackground = view.findViewById(R.id.product_background);
-        wishlistButton = (FabButton) view.findViewById(R.id.product_add_to_wish_list);
+        wishlistButton = view.findViewById(R.id.product_add_to_wish_list);
 
         scrollViewListener = new ViewTreeObserver.OnScrollChangedListener() {
             private boolean alphaFull = false;
@@ -502,7 +502,7 @@ public class ProductFragment extends Fragment {
                                                                 ((MainActivity) getActivity()).onWishlistSelected();
                                                         }
                                                     });
-                                            TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                                            TextView textView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
                                             textView.setTextColor(Color.WHITE);
                                             snackbar.show();
                                         }
@@ -704,7 +704,7 @@ public class ProductFragment extends Fragment {
                                         ((MainActivity) getActivity()).onCartSelected();
                                 }
                             });
-                    TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                    TextView textView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
                     textView.setTextColor(Color.WHITE);
                     snackbar.show();
                 }

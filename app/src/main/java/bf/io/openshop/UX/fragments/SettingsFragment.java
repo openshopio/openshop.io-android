@@ -58,9 +58,9 @@ public class SettingsFragment extends Fragment {
 
         progressDialog = Utils.generateProgressDialog(getActivity(), false);
 
-        spinShopSelection = (Spinner) view.findViewById(R.id.settings_shop_selection_spinner);
+        spinShopSelection = view.findViewById(R.id.settings_shop_selection_spinner);
 
-        LinearLayout licensesLayout = (LinearLayout) view.findViewById(R.id.settings_licenses_layout);
+        LinearLayout licensesLayout = view.findViewById(R.id.settings_licenses_layout);
         licensesLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +69,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        LinearLayout privacyPolicyLayout = (LinearLayout) view.findViewById(R.id.settings_privacy_policy);
+        LinearLayout privacyPolicyLayout = view.findViewById(R.id.settings_privacy_policy);
         privacyPolicyLayout.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {

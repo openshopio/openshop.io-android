@@ -207,7 +207,7 @@ public class WishlistFragment extends Fragment {
      * @param view fragment base view.
      */
     private void prepareWishlistRecycler(View view) {
-        RecyclerView wishlistRecycler = (RecyclerView) view.findViewById(R.id.wishlist_recycler);
+        RecyclerView wishlistRecycler = view.findViewById(R.id.wishlist_recycler);
         wishlistRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.BOTH));
         wishlistRecycler.setItemAnimator(new DefaultItemAnimator());
         wishlistRecycler.setHasFixedSize(true);
@@ -259,7 +259,7 @@ public class WishlistFragment extends Fragment {
                                             });
                                         }
                                     });
-                            TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+                            TextView textView = snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
                             textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.textIconColorPrimary));
                             snackbar.show();
                         }

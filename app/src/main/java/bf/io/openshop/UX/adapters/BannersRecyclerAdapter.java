@@ -101,7 +101,7 @@ public class BannersRecyclerAdapter extends RecyclerView.Adapter<BannersRecycler
 
         public ViewHolder(View itemView, final BannersRecyclerInterface bannersRecyclerInterface) {
             super(itemView);
-            bannerImage = (ResizableImageView) itemView.findViewById(R.id.banner_image);
+            bannerImage = itemView.findViewById(R.id.banner_image);
             itemView.setOnClickListener(new OnSingleClickListener() {
                 @Override
                 public void onSingleClick(final View view) {

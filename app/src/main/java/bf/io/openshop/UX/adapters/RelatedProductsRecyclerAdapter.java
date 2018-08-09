@@ -135,10 +135,10 @@ public class RelatedProductsRecyclerAdapter extends RecyclerView.Adapter<Related
 
         public ViewHolder(View v, final RelatedProductsRecyclerInterface relatedProductsRecyclerInterface) {
             super(v);
-            productImage = (ResizableImageViewHeight) v.findViewById(R.id.list_item_recommended_products_image);
-            productName = (TextView) v.findViewById(R.id.list_item_recommended_products_name);
-            productPrice = (TextView) v.findViewById(R.id.list_item_recommended_products_price);
-            productDiscount = (TextView) v.findViewById(R.id.list_item_recommended_products_discount);
+            productImage = v.findViewById(R.id.list_item_recommended_products_image);
+            productName = v.findViewById(R.id.list_item_recommended_products_name);
+            productPrice = v.findViewById(R.id.list_item_recommended_products_price);
+            productDiscount = v.findViewById(R.id.list_item_recommended_products_discount);
             v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

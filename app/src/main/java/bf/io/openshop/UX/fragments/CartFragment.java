@@ -87,8 +87,8 @@ public class CartFragment extends Fragment {
         });
 
         cartFooter = view.findViewById(R.id.cart_footer);
-        cartItemCountTv = (TextView) view.findViewById(R.id.cart_footer_quantity);
-        cartTotalPriceTv = (TextView) view.findViewById(R.id.cart_footer_price);
+        cartItemCountTv = view.findViewById(R.id.cart_footer_quantity);
+        cartTotalPriceTv = view.findViewById(R.id.cart_footer_price);
         view.findViewById(R.id.cart_footer_action).setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View view) {
@@ -110,7 +110,7 @@ public class CartFragment extends Fragment {
             }
         });
 
-        Button order = (Button) view.findViewById(R.id.cart_order);
+        Button order = view.findViewById(R.id.cart_order);
         order.setOnClickListener(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -180,7 +180,7 @@ public class CartFragment extends Fragment {
     }
 
     private void prepareCartRecycler(View view) {
-        this.cartRecycler = (RecyclerView) view.findViewById(R.id.cart_recycler);
+        this.cartRecycler = view.findViewById(R.id.cart_recycler);
         cartRecycler.addItemDecoration(new RecyclerDividerDecorator(getActivity()));
         cartRecycler.setItemAnimator(new DefaultItemAnimator());
         cartRecycler.setHasFixedSize(true);

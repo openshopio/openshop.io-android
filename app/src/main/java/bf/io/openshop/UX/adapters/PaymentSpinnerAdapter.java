@@ -65,11 +65,11 @@ public class PaymentSpinnerAdapter extends ArrayAdapter<Payment> {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.list_item_payment, parent, false);
-            holder.title = (TextView) convertView.findViewById(R.id.payment_title);
-            holder.description = (TextView) convertView.findViewById(R.id.payment_description);
+            holder.title = convertView.findViewById(R.id.payment_title);
+            holder.description = convertView.findViewById(R.id.payment_description);
             holder.isSelected = convertView.findViewById(R.id.payment_is_selected);
             holder.separator = convertView.findViewById(R.id.payment_separator);
-            holder.price = (TextView) convertView.findViewById(R.id.payment_price);
+            holder.price = convertView.findViewById(R.id.payment_price);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();

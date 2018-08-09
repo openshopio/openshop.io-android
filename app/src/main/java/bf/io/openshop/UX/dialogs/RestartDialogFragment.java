@@ -48,7 +48,7 @@ public class RestartDialogFragment extends DialogFragment {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_restart_app, container, false);
 
-        Button okBtn = (Button) view.findViewById(R.id.dialog_restart_app_ok);
+        Button okBtn = view.findViewById(R.id.dialog_restart_app_ok);
         okBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,7 @@ public class RestartDialogFragment extends DialogFragment {
             }
         });
 
-        Button cancelBtn = (Button) view.findViewById(R.id.dialog_restart_app_cancel);
+        Button cancelBtn = view.findViewById(R.id.dialog_restart_app_cancel);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -66,7 +66,7 @@ public class PaymentDialogFragment extends DialogFragment {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.payment_dialog, container, false);
 
-        ListView paymentList = (ListView) view.findViewById(R.id.payment_dialog_list);
+        ListView paymentList = view.findViewById(R.id.payment_dialog_list);
         View closeBtn = view.findViewById(R.id.payment_dialog_close);
         closeBtn.setOnClickListener(new OnSingleClickListener() {
             @Override

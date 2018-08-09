@@ -268,8 +268,8 @@ public class SplashActivity extends AppCompatActivity {
             layoutContentNoConnection = findViewById(R.id.splash_content_no_connection);
             layoutContentSelectShop = findViewById(R.id.splash_content_select_shop);
 
-            shopSelectionSpinner = (Spinner) findViewById(R.id.splash_shop_selection_spinner);
-            continueToShopBtn = (Button) findViewById(R.id.splash_continue_to_shop_btn);
+            shopSelectionSpinner = findViewById(R.id.splash_shop_selection_spinner);
+            continueToShopBtn = findViewById(R.id.splash_continue_to_shop_btn);
             continueToShopBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -280,7 +280,7 @@ public class SplashActivity extends AppCompatActivity {
                         Timber.e("Cannot continue. Shop is not selected or is null.");
                 }
             });
-            Button reRunButton = (Button) findViewById(R.id.splash_re_run_btn);
+            Button reRunButton = findViewById(R.id.splash_re_run_btn);
             if (reRunButton != null) {
                 reRunButton.setOnClickListener(new View.OnClickListener() {
                     @Override

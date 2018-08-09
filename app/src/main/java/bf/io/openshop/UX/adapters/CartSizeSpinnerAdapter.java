@@ -64,7 +64,7 @@ public class CartSizeSpinnerAdapter extends ArrayAdapter<ProductVariant> {
         if (v == null) {
             v = layoutInflater.inflate(layoutID, parent, false);
             holder = new ListItemHolder();
-            holder.text = (TextView) v.findViewById(R.id.text);
+            holder.text = v.findViewById(R.id.text);
             v.setTag(holder);
         } else {
             holder = (ListItemHolder) v.getTag();
