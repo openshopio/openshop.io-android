@@ -17,13 +17,17 @@ public class RecyclerMarginDecorator extends RecyclerView.ItemDecoration {
     }
 
     public RecyclerMarginDecorator(Context context, ORIENTATION orientation) {
-        if (orientation == ORIENTATION.VERTICAL) {
-            this.marginVertical = context.getResources().getDimensionPixelSize(R.dimen.base_recycler_margin);
-        } else if (orientation == ORIENTATION.HORIZONTAL) {
-            this.marginHorizontal = context.getResources().getDimensionPixelSize(R.dimen.base_recycler_margin);
-        } else {
-            this.marginVertical = context.getResources().getDimensionPixelSize(R.dimen.base_recycler_margin);
-            this.marginHorizontal = marginVertical;
+        switch (orientation) {
+            case VERTICAL:
+                this.marginVertical = context.getResources().getDimensionPixelSize(R.dimen.base_recycler_margin);
+                break;
+            case HORIZONTAL:
+                this.marginHorizontal = context.getResources().getDimensionPixelSize(R.dimen.base_recycler_margin);
+                break;
+            default:
+                this.marginVertical = context.getResources().getDimensionPixelSize(R.dimen.base_recycler_margin);
+                this.marginHorizontal = marginVertical;
+                break;
         }
     }
 

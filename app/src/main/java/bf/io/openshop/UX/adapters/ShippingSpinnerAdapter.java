@@ -119,16 +119,16 @@ public class ShippingSpinnerAdapter extends BaseAdapter {
             switch (rowType) {
                 case TYPE_ITEM:
                     convertView = layoutInflater.inflate(R.layout.list_item_shipping, parent, false);
-                    holder.title = (TextView) convertView.findViewById(R.id.shipping_title);
-                    holder.description = (TextView) convertView.findViewById(R.id.shipping_description);
-                    holder.price = (TextView) convertView.findViewById(R.id.shipping_price);
+                    holder.title = convertView.findViewById(R.id.shipping_title);
+                    holder.description = convertView.findViewById(R.id.shipping_description);
+                    holder.price = convertView.findViewById(R.id.shipping_price);
                     holder.isSelected = convertView.findViewById(R.id.shipping_is_selected);
                     holder.separator = convertView.findViewById(R.id.shipping_separator);
-                    holder.shopInfo = (ImageView) convertView.findViewById(R.id.shipping_shop_info);
+                    holder.shopInfo = convertView.findViewById(R.id.shipping_shop_info);
                     break;
                 default:
                     convertView = layoutInflater.inflate(R.layout.list_item_shipping_section, parent, false);
-                    holder.title = (TextView) convertView.findViewById(R.id.shipping_title);
+                    holder.title = convertView.findViewById(R.id.shipping_title);
                     break;
             }
             convertView.setTag(holder);

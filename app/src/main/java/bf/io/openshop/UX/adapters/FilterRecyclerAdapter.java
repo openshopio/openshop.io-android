@@ -90,12 +90,13 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public int getItemViewType(int position) {
         String type = filterTypeList.get(position).getType();
-        if (DeserializerFilters.FILTER_TYPE_RANGE.equals(type)) {
-            return TYPE_ITEM_RANGE;
-        } else if (DeserializerFilters.FILTER_TYPE_COLOR.equals(type)) {
-            return TYPE_ITEM_COLOR;
-        } else {
-            return TYPE_ITEM_SELECT;
+        switch (type) {
+            case DeserializerFilters.FILTER_TYPE_RANGE:
+                return TYPE_ITEM_RANGE;
+            case DeserializerFilters.FILTER_TYPE_COLOR:
+                return TYPE_ITEM_COLOR;
+            default:
+                return TYPE_ITEM_SELECT;
         }
     }
 
@@ -104,15 +105,19 @@ public class FilterRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         if (layoutInflater == null)
             layoutInflater = LayoutInflater.from(parent.getContext());
 
-        if (viewType == TYPE_ITEM_COLOR) {
-            View view = layoutInflater.inflate(R.layout.list_item_filter_select, parent, false);
-            return new ViewHolderColor(view, context);
-        } else if (viewType == TYPE_ITEM_SELECT) {
-            View view = layoutInflater.inflate(R.layout.list_item_filter_select, parent, false);
-            return new ViewHolderSelect(view, context);
-        } else {
-            View view = layoutInflater.inflate(R.layout.list_item_filter_range, parent, false);
-            return new ViewHolderRange(view);
+        switch (viewType) {
+            case TYPE_ITEM_COLOR: {
+                View view = layoutInflater.inflate(R.layout.list_item_filter_select, parent, false);
+                return new ViewHolderColor(view, context);
+            }
+            case TYPE_ITEM_SELECT: {
+                View view = layoutInflater.inflate(R.layout.list_item_filter_select, parent, false);
+                return new ViewHolderSelect(view, context);
+            }
+            default: {
+                View view = layoutInflater.inflate(R.layout.list_item_filter_range, parent, false);
+                return new ViewHolderRange(view);
+            }
         }
     }
 

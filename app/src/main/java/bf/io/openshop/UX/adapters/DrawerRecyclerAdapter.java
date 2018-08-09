@@ -53,15 +53,19 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (layoutInflater == null)
             layoutInflater = LayoutInflater.from(parent.getContext());
-        if (viewType == TYPE_ITEM_CATEGORY) {
-            View view = layoutInflater.inflate(R.layout.list_item_drawer_category, parent, false);
-            return new ViewHolderItemCategory(view, drawerRecyclerInterface);
-        } else if (viewType == TYPE_ITEM_PAGE) {
-            View view = layoutInflater.inflate(R.layout.list_item_drawer_page, parent, false);
-            return new ViewHolderItemPage(view, drawerRecyclerInterface);
-        } else {
-            View view = layoutInflater.inflate(R.layout.list_item_drawer_header, parent, false);
-            return new ViewHolderHeader(view, drawerRecyclerInterface);
+        switch (viewType) {
+            case TYPE_ITEM_CATEGORY: {
+                View view = layoutInflater.inflate(R.layout.list_item_drawer_category, parent, false);
+                return new ViewHolderItemCategory(view, drawerRecyclerInterface);
+            }
+            case TYPE_ITEM_PAGE: {
+                View view = layoutInflater.inflate(R.layout.list_item_drawer_page, parent, false);
+                return new ViewHolderItemPage(view, drawerRecyclerInterface);
+            }
+            default: {
+                View view = layoutInflater.inflate(R.layout.list_item_drawer_header, parent, false);
+                return new ViewHolderHeader(view, drawerRecyclerInterface);
+            }
         }
     }
 
@@ -182,7 +186,7 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public ViewHolderItemPage(View itemView, final DrawerRecyclerInterface drawerRecyclerInterface) {
             super(itemView);
-            itemText = (TextView) itemView.findViewById(R.id.drawer_list_item_text);
+            itemText = itemView.findViewById(R.id.drawer_list_item_text);
             layout = itemView.findViewById(R.id.drawer_list_item_layout);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -207,9 +211,9 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public ViewHolderItemCategory(View itemView, final DrawerRecyclerInterface drawerRecyclerInterface) {
             super(itemView);
-            itemText = (TextView) itemView.findViewById(R.id.drawer_list_item_text);
-            subMenuIndicator = (ImageView) itemView.findViewById(R.id.drawer_list_item_indicator);
-            layout = (LinearLayout) itemView.findViewById(R.id.drawer_list_item_layout);
+            itemText = itemView.findViewById(R.id.drawer_list_item_text);
+            subMenuIndicator = itemView.findViewById(R.id.drawer_list_item_indicator);
+            layout = itemView.findViewById(R.id.drawer_list_item_layout);
             divider = itemView.findViewById(R.id.drawer_list_item_divider);
             itemView.setOnClickListener(new OnSingleClickListener() {
                 @Override
@@ -229,7 +233,7 @@ public class DrawerRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
         public ViewHolderHeader(View headerView, final DrawerRecyclerInterface drawerRecyclerInterface) {
             super(headerView);
-            userName = (TextView) headerView.findViewById(R.id.navigation_drawer_list_header_text);
+            userName = headerView.findViewById(R.id.navigation_drawer_list_header_text);
             headerView.setOnClickListener(new OnSingleClickListener() {
                 @Override
                 public void onSingleClick(View v) {

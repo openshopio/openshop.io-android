@@ -84,13 +84,17 @@ public class FilterDialogFragment extends DialogFragment {
                 // Clear all selected values
                 if (filterData != null) {
                     for (FilterType filterType : filterData.getFilters()) {
-                        if (DeserializerFilters.FILTER_TYPE_RANGE.equals(filterType.getType())) {
-                            ((FilterTypeRange) filterType).setSelectedMin(-1);
-                            ((FilterTypeRange) filterType).setSelectedMax(-1);
-                        } else if (DeserializerFilters.FILTER_TYPE_COLOR.equals(filterType.getType())) {
-                            ((FilterTypeColor) filterType).setSelectedValue(null);
-                        } else if (DeserializerFilters.FILTER_TYPE_SELECT.equals(filterType.getType())) {
-                            ((FilterTypeSelect) filterType).setSelectedValue(null);
+                        switch (filterType.getType()) {
+                            case DeserializerFilters.FILTER_TYPE_RANGE:
+                                ((FilterTypeRange) filterType).setSelectedMin(-1);
+                                ((FilterTypeRange) filterType).setSelectedMax(-1);
+                                break;
+                            case DeserializerFilters.FILTER_TYPE_COLOR:
+                                ((FilterTypeColor) filterType).setSelectedValue(null);
+                                break;
+                            case DeserializerFilters.FILTER_TYPE_SELECT:
+                                ((FilterTypeSelect) filterType).setSelectedValue(null);
+                                break;
                         }
                     }
                 }
@@ -102,7 +106,7 @@ public class FilterDialogFragment extends DialogFragment {
     }
 
     private void prepareFilterRecycler(View view) {
-        RecyclerView filterRecycler = (RecyclerView) view.findViewById(R.id.filter_recycler);
+        RecyclerView filterRecycler = view.findViewById(R.id.filter_recycler);
         filterRecycler.addItemDecoration(new RecyclerMarginDecorator(getActivity(), RecyclerMarginDecorator.ORIENTATION.VERTICAL));
         filterRecycler.setItemAnimator(new DefaultItemAnimator());
         filterRecycler.setHasFixedSize(true);
@@ -115,23 +119,28 @@ public class FilterDialogFragment extends DialogFragment {
         StringBuilder filterUrl = new StringBuilder();
 
         for (FilterType filterType : filterData.getFilters()) {
-            if (DeserializerFilters.FILTER_TYPE_COLOR.equals(filterType.getType())) {
-                FilterTypeColor filterTypeColor = (FilterTypeColor) filterType;
-                if (filterTypeColor.getSelectedValue() != null) {
-                    filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeColor.getSelectedValue().getId());
-                }
-            } else if (DeserializerFilters.FILTER_TYPE_SELECT.equals(filterType.getType())) {
-                FilterTypeSelect filterTypeSelect = (FilterTypeSelect) filterType;
-                if (filterTypeSelect.getSelectedValue() != null) {
-                    filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeSelect.getSelectedValue().getId());
-                }
-            } else if (DeserializerFilters.FILTER_TYPE_RANGE.equals(filterType.getType())) {
-                FilterTypeRange filterTypeRange = (FilterTypeRange) filterType;
-                if (filterTypeRange.getSelectedMin() >= 0 && filterTypeRange.getSelectedMax() > 0) {
-                    filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeRange.getSelectedMin()).append("|").append(filterTypeRange.getSelectedMax());
-                }
-            } else {
-                Timber.e("Unknown filter type.");
+            switch (filterType.getType()) {
+                case DeserializerFilters.FILTER_TYPE_COLOR:
+                    FilterTypeColor filterTypeColor = (FilterTypeColor) filterType;
+                    if (filterTypeColor.getSelectedValue() != null) {
+                        filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeColor.getSelectedValue().getId());
+                    }
+                    break;
+                case DeserializerFilters.FILTER_TYPE_SELECT:
+                    FilterTypeSelect filterTypeSelect = (FilterTypeSelect) filterType;
+                    if (filterTypeSelect.getSelectedValue() != null) {
+                        filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeSelect.getSelectedValue().getId());
+                    }
+                    break;
+                case DeserializerFilters.FILTER_TYPE_RANGE:
+                    FilterTypeRange filterTypeRange = (FilterTypeRange) filterType;
+                    if (filterTypeRange.getSelectedMin() >= 0 && filterTypeRange.getSelectedMax() > 0) {
+                        filterUrl.append("&").append(filterType.getLabel()).append("=").append(filterTypeRange.getSelectedMin()).append("|").append(filterTypeRange.getSelectedMax());
+                    }
+                    break;
+                default:
+                    Timber.e("Unknown filter type.");
+                    break;
             }
         }
 

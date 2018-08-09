@@ -79,9 +79,9 @@ public class ColorSpinnerAdapter extends ArrayAdapter<ProductColor> {
         if (v == null) {
             v = layoutInflater.inflate(layoutID, parent, false);
             holder = new ListItemHolder();
-            holder.colorImage = (RoundedImageView) v.findViewById(R.id.color_picker_image_view);
-            holder.colorText = (TextView) v.findViewById(R.id.color_picker_text);
-            holder.colorStroke = (LinearLayout) v.findViewById(R.id.color_picker_image_stroke);
+            holder.colorImage = v.findViewById(R.id.color_picker_image_view);
+            holder.colorText = v.findViewById(R.id.color_picker_text);
+            holder.colorStroke = v.findViewById(R.id.color_picker_image_stroke);
             v.setTag(holder);
         } else {
             holder = (ListItemHolder) v.getTag();
