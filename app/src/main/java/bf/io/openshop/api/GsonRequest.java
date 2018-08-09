@@ -1,4 +1,4 @@
-package bf.io.openshop.API;
+package bf.io.openshop.api;
 
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;

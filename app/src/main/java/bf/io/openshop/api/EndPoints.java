@@ -1,4 +1,4 @@
-package bf.io.openshop.API;
+package bf.io.openshop.api;
 
 import bf.io.openshop.CONST;
 
