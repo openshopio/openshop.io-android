@@ -1,4 +1,4 @@
-package bf.io.openshop.api;
+package bf.io.openshop.API;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
