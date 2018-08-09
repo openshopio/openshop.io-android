@@ -48,9 +48,9 @@ public class JsonUtils {
 
 
     /**
-     * @param order
-     * @return
-     * @throws JSONException
+     * @param order create json from Order object
+     * @return return converted order JSON
+     * @throws JSONException throw exception
      */
     public static JSONObject createOrderJson(Order order) throws JSONException {
         JSONObject jo = new JSONObject();

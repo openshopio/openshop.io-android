@@ -40,8 +40,8 @@ public class LoopViewPager extends ViewPager {
     /**
      * helper function which may be used when implementing FragmentPagerAdapter
      *
-     * @param position
-     * @param count
+     * @param position page position
+     * @param count index in that page position
      * @return (position-1)%count
      */
     public static int toRealPosition( int position, int count ){
@@ -58,7 +58,7 @@ public class LoopViewPager extends ViewPager {
      * If set to true, the boundary views (i.e. first and last) will never be destroyed
      * This may help to prevent "blinking" of some views
      *
-     * @param flag
+     * @param flag true for enable boundaryCaching
      */
     public void setBoundaryCaching(boolean flag) {
         mBoundaryCaching = flag;

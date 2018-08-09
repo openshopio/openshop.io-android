@@ -92,7 +92,7 @@ public class FakeHttpStack implements HttpStack {
      *
      * @param request request to server.
      * @return response data.
-     * @throws UnsupportedEncodingException
+     * @throws UnsupportedEncodingException Custom exception
      */
     private HttpEntity createEntity(Request request) throws IOException {
         String fileName;
@@ -113,7 +113,7 @@ public class FakeHttpStack implements HttpStack {
      * @param fakeHttpStack object of the {@link FakeHttpStack} class.
      * @param fileName      name of the file from which to read the requests data.
      * @return testing data for requests response.
-     * @throws IOException
+     * @throws IOException Custom exception
      */
     private StringEntity loadResponse(FakeHttpStack fakeHttpStack, String fileName) throws IOException {
         InputStream stream = fakeHttpStack.getClass().getClassLoader().getResourceAsStream(fileName);
