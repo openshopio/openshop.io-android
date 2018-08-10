@@ -1,5 +1,6 @@
 package bf.io.openshop.UX.adapters;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +34,9 @@ public class OrdersHistoryRecyclerAdapter extends RecyclerView.Adapter<OrdersHis
         this.ordersRecyclerInterface = ordersRecyclerInterface;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (layoutInflater == null)
             layoutInflater = LayoutInflater.from(parent.getContext());
 
@@ -43,7 +45,7 @@ public class OrdersHistoryRecyclerAdapter extends RecyclerView.Adapter<OrdersHis
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Order order = getOrderItem(position);
         holder.bindContent(order);
 

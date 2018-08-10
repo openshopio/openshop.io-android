@@ -81,7 +81,7 @@ public class DrawerFragment extends Fragment {
     private DrawerSubmenuRecyclerAdapter drawerSubmenuRecyclerAdapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         // Inflating view layout
         View layout = inflater.inflate(R.layout.fragment_drawer, container, false);

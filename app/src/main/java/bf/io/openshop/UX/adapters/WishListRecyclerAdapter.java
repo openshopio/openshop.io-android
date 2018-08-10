@@ -3,6 +3,7 @@ package bf.io.openshop.UX.adapters;
 import android.content.Context;
 import android.graphics.Paint;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -54,8 +55,9 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
     }
 
     // Create new views (invoked by the layout manager)
+    @NonNull
     @Override
-    public WishListRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public WishListRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // create a new view
         final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_wishlist, parent, false);
         // set the view's size, margins, padding and layout parameters
@@ -80,7 +82,7 @@ public class WishListRecyclerAdapter extends RecyclerView.Adapter<WishListRecycl
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // - get element from your data set at this position
         WishlistItem wishlistItem = getItem(position);
         if (wishlistItem.getVariant() != null) {

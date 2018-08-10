@@ -157,7 +157,7 @@ public class LoginDialogFragment extends DialogFragment implements FacebookCallb
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - OnCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.dialog_login, container, false);
         callbackManager = CallbackManager.Factory.create();

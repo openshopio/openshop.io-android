@@ -158,7 +158,7 @@ public class CategoryFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Timber.d("%s - onCreateView", this.getClass().getSimpleName());
         View view = inflater.inflate(R.layout.fragment_category, container, false);
 
@@ -351,7 +351,7 @@ public class CategoryFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Animation in = AnimationUtils.loadAnimation(getContext(), R.anim.fade_in_slowed);
         Animation out = AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_out);
