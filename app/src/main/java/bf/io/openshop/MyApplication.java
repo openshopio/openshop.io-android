@@ -83,6 +83,7 @@ public class MyApplication extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         } else {
+            Timber.d("Here should come error reporting library initialization and connection.", TAG);
             // TODO example of implementation custom crash reporting solution -  Crashlytics.
 //            Fabric.with(this, new Crashlytics());
 //            Timber.plant(new CrashReportingTree());
