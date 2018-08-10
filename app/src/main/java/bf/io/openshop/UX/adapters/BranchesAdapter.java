@@ -19,7 +19,7 @@ import bf.io.openshop.entities.delivery.Branch;
  */
 public class BranchesAdapter extends BaseAdapter {
 
-    private List<Branch> branches = new ArrayList<>();
+    private List<Branch> branches;
     private LayoutInflater layoutInflater;
 
     /**

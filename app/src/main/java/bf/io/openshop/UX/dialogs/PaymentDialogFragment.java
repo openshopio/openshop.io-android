@@ -57,8 +57,10 @@ public class PaymentDialogFragment extends DialogFragment {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
             Window window = d.getWindow();
-            window.setLayout(width, height);
-            window.setWindowAnimations(R.style.alertDialogAnimation);
+            if (window != null) {
+                window.setLayout(width, height);
+                window.setWindowAnimations(R.style.alertDialogAnimation);
+            }
         }
     }
 
@@ -86,7 +88,7 @@ public class PaymentDialogFragment extends DialogFragment {
                     Payment selectedPayment = paymentSpinnerAdapter.getItem(position);
                     if (paymentDialogInterface != null)
                         paymentDialogInterface.onPaymentSelected(selectedPayment);
-                    Timber.d("Payment click: %s", selectedPayment.toString());
+                    Timber.d("Payment click: %s", selectedPayment != null ? selectedPayment.toString() : "Empty");
                     dismiss();
                 }
             });

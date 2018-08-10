@@ -382,7 +382,9 @@ public class MainActivity extends AppCompatActivity implements DrawerFragment.Fr
         final SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setSubmitButtonEnabled(true);
         SearchManager searchManager = (SearchManager) MainActivity.this.getSystemService(Context.SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
+        if (searchManager != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(MainActivity.this.getComponentName()));
+        }
         SearchView.OnQueryTextListener queryTextListener = new SearchView.OnQueryTextListener() {
             public boolean onQueryTextChange(String newText) {
                 Timber.d("Search query text changed to: %s", newText);

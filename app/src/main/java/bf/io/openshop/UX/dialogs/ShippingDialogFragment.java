@@ -100,8 +100,10 @@ public class ShippingDialogFragment extends DialogFragment {
             int width = ViewGroup.LayoutParams.MATCH_PARENT;
             int height = ViewGroup.LayoutParams.MATCH_PARENT;
             Window window = d.getWindow();
-            window.setLayout(width, height);
-            window.setWindowAnimations(R.style.alertDialogAnimation);
+            if (window != null) {
+                window.setLayout(width, height);
+                window.setWindowAnimations(R.style.alertDialogAnimation);
+            }
         }
     }
 
