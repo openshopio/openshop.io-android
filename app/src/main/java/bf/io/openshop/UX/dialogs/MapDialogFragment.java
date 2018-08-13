@@ -77,7 +77,10 @@ public class MapDialogFragment extends DialogFragment implements OnMapReadyCallb
     @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        Window window = dialog.getWindow();
+        if (window != null) {
+            window.requestFeature(Window.FEATURE_NO_TITLE);
+        }
         return dialog;
     }
 
