@@ -67,9 +67,7 @@ public class ShippingSpinnerAdapter extends BaseAdapter {
             }
 
             // Add shipping types
-            for (Shipping shipping : deliveryType.getShippingList()) {
-                shippingList.add(shipping);
-            }
+            shippingList.addAll(deliveryType.getShippingList());
         }
         notifyDataSetChanged();
     }

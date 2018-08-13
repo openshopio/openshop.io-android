@@ -56,24 +56,24 @@ import static org.powermock.api.mockito.PowerMockito.when;
 public class AnalyticsUnitTest {
 
     @Mock
-    Context mockContext;
+    private Context mockContext;
 
     @Mock
-    GoogleAnalytics mockAnalytics;
+    private GoogleAnalytics mockAnalytics;
 
     @Mock
-    Tracker mockTracker;
+    private Tracker mockTracker;
 
     @Mock
-    Tracker mockTrackerApp;
+    private Tracker mockTrackerApp;
 
     @Mock
-    AppEventsLogger mockAppEventsLogger;
+    private AppEventsLogger mockAppEventsLogger;
 
-    Shop testShop = new Shop("testShop", "UA-test");
+    private Shop testShop = new Shop("testShop", "UA-test");
 
     @Before
-    public void preparation() throws Exception {
+    public void preparation() {
         // clean up
         MockitoAnnotations.initMocks(this); // for case them used another runner
         PowerMockito.spy(Analytics.class);
